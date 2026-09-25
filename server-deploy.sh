@@ -18,8 +18,25 @@ GITHUB_REPO="https://github.com/hardadinuraziz/halobun.git"
 BRANCH="main"                      # Branch yang akan di-deploy (main/master)
 APP_DIR="$HOME/hallobun"           # Folder instalasi di server
 WEB_DIR="$HOME/public_html"        # Folder web publik (public_html / htdocs / www)
-PHP="php"                          # Path PHP: php / php8.2 / /usr/bin/php8.2
-COMPOSER="composer"                # Path composer (atau: $HOME/composer.phar)
+PHP="php"                          # Path PHP default
+COMPOSER="composer"                # Path composer default
+
+# Auto-detect PHP 8.2+ untuk environment cPanel
+for candidate in /usr/local/bin/ea-php83 /usr/local/bin/ea-php82 /usr/bin/php8.3 /usr/bin/php8.2 /usr/local/bin/alt-php83 /usr/local/bin/alt-php82; do
+    if [ -x "$candidate" ]; then
+        PHP="$candidate"
+        break
+    fi
+done
+
+# Auto-detect Composer jika command composer tidak ada di PATH
+if ! command -v "$COMPOSER" >/dev/null 2>&1; then
+    if [ -f "$HOME/composer.phar" ]; then
+        COMPOSER="$PHP $HOME/composer.phar"
+    elif [ -f "/usr/local/bin/composer" ]; then
+        COMPOSER="/usr/local/bin/composer"
+    fi
+fi
 # ════════════════════════════════════════════════════════════════════
 
 RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'
@@ -103,6 +120,7 @@ cmd_install() {
         INDEX="$WEB_DIR/index.php"
         if [ -f "$INDEX" ]; then
             # Deteksi path relatif dari public_html ke app_dir
+            sed -i "s|__DIR__.'/../storage|'$APP_DIR/storage|g" "$INDEX"
             sed -i "s|__DIR__.'/../vendor|'$APP_DIR/vendor|g" "$INDEX"
             sed -i "s|__DIR__.'/../bootstrap|'$APP_DIR/bootstrap|g" "$INDEX"
             success "index.php sudah di-patch → mengarah ke $APP_DIR"
@@ -178,12 +196,13 @@ cmd_update() {
     fi
 
     # ── Sinkron file public/ ke public_html ─────────────────────────
-    if [ -d "$APP_DIR/public/build" ]; then
+    if [ -d "$APP_DIR/public" ]; then
         step "SINKRON ASET KE $WEB_DIR"
-        info "Menyalin aset build terbaru ke $WEB_DIR ..."
-        rsync -a "$APP_DIR/public/build/" "$WEB_DIR/build/" 2>/dev/null && \
-            success "Aset build sinkron" || warn "rsync tidak tersedia, salin manual"
-        rsync -a "$APP_DIR/public/images/" "$WEB_DIR/images/" 2>/dev/null || true
+        info "Menyalin aset build & gambar terbaru ke $WEB_DIR ..."
+        cp -r "$APP_DIR/public/build" "$WEB_DIR/" 2>/dev/null || true
+        cp -r "$APP_DIR/public/images" "$WEB_DIR/" 2>/dev/null || true
+        [ -f "$APP_DIR/public/favicon.ico" ] && cp "$APP_DIR/public/favicon.ico" "$WEB_DIR/" 2>/dev/null || true
+        success "Aset public sinkron ke $WEB_DIR"
     fi
 
     # ── Optimasi cache ───────────────────────────────────────────────
