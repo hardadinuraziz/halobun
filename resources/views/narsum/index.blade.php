@@ -45,7 +45,7 @@
         </div>
 
         {{-- Form --}}
-        <div class="bg-white border border-[#E2EAE0] rounded-2xl p-8 shadow-sm">
+        <div class="bg-white border border-[#E2EAE0] rounded-2xl p-5 sm:p-8 shadow-sm">
             <h2 class="text-xl font-bold text-emerald-950 mb-6">Formulir Pengajuan Narasumber</h2>
 
             <form action="{{ route('narsum.store') }}" method="POST" class="space-y-5">

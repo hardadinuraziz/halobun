@@ -30,8 +30,8 @@
             <a href="{{ route('home') }}" class="flex items-center flex-shrink-0 group">
                 <img src="/images/logo.jpg"
                      alt="Hallobun"
-                     class="h-9 w-auto object-contain group-hover:opacity-85 transition-opacity"
-                     style="max-width:150px">
+                     class="h-8 sm:h-9 w-auto object-contain group-hover:opacity-85 transition-opacity"
+                     style="max-width:130px">
             </a>
 
             {{-- Desktop Menu --}}
@@ -108,14 +108,14 @@
                         Masuk
                     </a>
                     <a href="{{ route('register') }}"
-                       class="bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-semibold px-3.5 py-2 rounded-lg transition-colors shadow-sm whitespace-nowrap">
+                       class="bg-emerald-700 hover:bg-emerald-800 text-white text-xs sm:text-sm font-semibold px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg transition-colors shadow-sm whitespace-nowrap">
                         Daftar
                     </a>
                 @endauth
 
                 {{-- Hamburger button --}}
                 <button id="hamburger-btn"
-                        aria-label="Buka menu"
+                        aria-label="Buka menu navigasi"
                         aria-expanded="false"
                         aria-controls="mobile-menu"
                         class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-emerald-50 hover:text-emerald-700 transition-colors focus:outline-none">
@@ -133,7 +133,7 @@
     {{-- Mobile Menu --}}
     <div id="mobile-menu"
          role="navigation"
-         class="md:hidden border-t border-[#E3EAE0] bg-white/98">
+         class="md:hidden bg-white/98">
         <div class="px-4 py-3 space-y-1">
             <a href="{{ route('home') }}"
                class="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium
@@ -165,8 +165,27 @@
                       {{ request()->routeIs('sarana.*') ? 'bg-emerald-50 text-emerald-800' : 'text-gray-700 hover:bg-emerald-50 hover:text-emerald-700' }}">
                 🌿 Sarana & Bibit
             </a>
-            @guest
-            <div class="flex gap-2 pt-2 pb-1 border-t border-gray-100 mt-2">
+
+            @auth
+            <div class="pt-3 pb-1 border-t border-gray-100 mt-2 space-y-1">
+                <div class="px-3 py-1.5 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                    Akun: {{ auth()->user()->name }}
+                </div>
+                <a href="{{ route('dashboard') }}" class="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">
+                    📊 Dashboard
+                </a>
+                <a href="{{ route('konsultasi.riwayat') }}" class="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">
+                    📋 Riwayat Konsultasi
+                </a>
+                <form method="POST" action="{{ route('logout') }}" class="pt-1">
+                    @csrf
+                    <button type="submit" class="flex items-center gap-2 w-full text-left px-3 py-2 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50">
+                        🚪 Keluar
+                    </button>
+                </form>
+            </div>
+            @else
+            <div class="flex gap-2 pt-3 pb-1 border-t border-gray-100 mt-2">
                 <a href="{{ route('login') }}"
                    class="flex-1 text-center px-3 py-2.5 rounded-xl text-sm font-semibold text-emerald-700 border border-emerald-200 hover:bg-emerald-50">
                     Masuk
@@ -176,7 +195,7 @@
                     Daftar
                 </a>
             </div>
-            @endguest
+            @endauth
         </div>
     </div>
 </nav>

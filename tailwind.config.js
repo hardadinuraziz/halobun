@@ -9,6 +9,13 @@ export default {
         './resources/views/**/*.blade.php',
     ],
 
+    safelist: [
+        'bg-emerald-100', 'bg-blue-100', 'bg-amber-100', 'bg-lime-100',
+        'text-emerald-700', 'text-blue-700', 'text-amber-700', 'text-lime-700',
+        'text-emerald-800', 'text-blue-800', 'text-amber-800', 'text-lime-800',
+        'border-emerald-200', 'border-blue-200', 'border-amber-200', 'border-lime-200',
+    ],
+
     theme: {
         extend: {
             fontFamily: {

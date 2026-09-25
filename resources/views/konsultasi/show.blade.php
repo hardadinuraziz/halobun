@@ -52,7 +52,7 @@
 
             {{-- Right: Jadwal & Booking Form --}}
             <div class="lg:col-span-2">
-                <div class="bg-white border border-[#E2EAE0] rounded-2xl p-6 sm:p-8 shadow-sm">
+                <div class="bg-white border border-[#E2EAE0] rounded-2xl p-5 sm:p-8 shadow-sm">
                     <h2 class="text-xl font-bold text-emerald-950 mb-6">Buat Jadwal Konsultasi Kebun</h2>
 
                     @guest
