@@ -21,6 +21,153 @@
 </head>
 <body class="bg-[#F8FAF7] text-[#2D3A2C] antialiased">
 
+{{-- ══════════════════════════════════════════════════════════════════
+     PASTEL MINIMALIST OPENING (HALLOBUN)
+     FULL-SCREEN PASTEL BOTANICAL & GARDEN OPENING MODAL
+══════════════════════════════════════════════════════════════════ --}}
+@if(request()->routeIs('home'))
+<div id="consultationSplash"
+     class="fixed inset-0 z-[100] bg-[#FAFBF9] overflow-y-auto flex flex-col md:hidden transition-all duration-400 ease-out opacity-100"
+     role="dialog" aria-modal="true" aria-label="Selamat Datang di Hallobun"
+     style="display:none;">
+
+    <div class="w-full max-w-md mx-auto px-5 py-4 min-h-screen flex flex-col justify-between">
+
+        {{-- Top Bar / Header --}}
+        <header class="flex items-center justify-between gap-2 pt-1 pb-3">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+                <img src="/images/logo.jpg" alt="Hallobun" class="w-11 h-11 rounded-full object-cover shadow-sm border border-emerald-200 flex-shrink-0">
+                <div class="min-w-0">
+                    <h2 class="font-extrabold text-gray-900 text-base leading-tight tracking-tight">Shine Hallobun</h2>
+                    <p class="text-[8.5px] font-bold text-emerald-800 tracking-wider uppercase leading-tight mt-0.5">Platform Layanan Kebun &amp; Tani Online</p>
+                </div>
+            </div>
+
+            {{-- Aesthetic Palette Dots Widget --}}
+            <div class="flex items-center gap-1 bg-white/90 px-2 py-1.5 rounded-full border border-gray-200/80 shadow-xs flex-shrink-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#8E5E42]"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#4A7A48]"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#5D5778]"></span>
+                <span class="w-3.5 h-3.5 rounded-full border-2 border-[#2E4A2C] bg-white flex items-center justify-center">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#2E4A2C]"></span>
+                </span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#8C4656]"></span>
+            </div>
+
+            {{-- Circular "Lewati ke Web →" Button --}}
+            <button id="btn-skip-splash"
+                    onclick="dismissSplash()"
+                    class="w-15 h-15 rounded-full bg-[#2E4A2C] text-white flex flex-col items-center justify-center text-center p-1 shadow-md hover:bg-[#223921] transition-transform active:scale-95 flex-shrink-0"
+                    aria-label="Lewati ke website">
+                <span class="text-[10px] font-bold leading-tight">Lewati</span>
+                <span class="text-[10px] font-bold leading-tight flex items-center gap-0.5">ke Web <span>→</span></span>
+            </button>
+        </header>
+
+        {{-- Banner Card --}}
+        <div class="bg-gradient-to-b from-[#F2F7F0] via-[#F8FAF7] to-white rounded-3xl p-3 border border-[#D8E6D5] shadow-sm my-2">
+            <div class="rounded-2xl overflow-hidden aspect-[16/10] relative shadow-inner bg-[#EBF4EA]">
+                <img src="/images/hero_banner.jpg" alt="Konsultasi Berkebun Hallobun" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent"></div>
+            </div>
+            {{-- Carousel dots --}}
+            <div class="flex items-center justify-center gap-1.5 pt-2.5 pb-0.5">
+                <span class="w-2 h-2 rounded-full bg-[#CADBCA]"></span>
+                <span class="w-6 h-1.5 rounded-full bg-[#2E4A2C]"></span>
+                <span class="w-2 h-2 rounded-full bg-[#CADBCA]"></span>
+            </div>
+        </div>
+
+        {{-- Title & Subtitle --}}
+        <div class="text-center px-2 my-2">
+            <h1 class="text-3xl font-extrabold text-[#243723] tracking-tight font-serif-title">
+                Hallobun
+            </h1>
+            <p class="font-script text-2xl text-[#2E4A2C] font-bold mt-0.5">
+                Temani Setiap Langkah Berkebunmu ♡
+            </p>
+            <p class="text-[12.5px] text-[#4A6149] leading-relaxed mt-2 max-w-xs mx-auto">
+                Ruang aman dan terpercaya untuk kamu bercerita, memahami emosi tanaman, memulihkan energi kebun, dan menemukan solusi bersama agronomis berlisensi.
+            </p>
+        </div>
+
+        {{-- Pilihan Sesi Konsultasi --}}
+        <div class="text-center my-2">
+            <span class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-2.5">
+                Pilihan Sesi Konsultasi:
+            </span>
+            <div class="grid grid-cols-3 gap-2.5">
+                <a href="{{ route('konsultasi.index') }}" onclick="dismissSplash()" class="flex items-center justify-center gap-1.5 py-2.5 px-2 bg-white rounded-2xl border border-gray-200/90 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 text-xs font-bold">
+                    <span class="text-sm">💬</span>
+                    <span>Chat</span>
+                </a>
+                <a href="{{ route('konsultasi.index') }}" onclick="dismissSplash()" class="flex items-center justify-center gap-1.5 py-2.5 px-2 bg-white rounded-2xl border border-gray-200/90 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 text-xs font-bold">
+                    <span class="text-sm">📞</span>
+                    <span>Call</span>
+                </a>
+                <a href="{{ route('konsultasi.index') }}" onclick="dismissSplash()" class="flex items-center justify-center gap-1.5 py-2.5 px-2 bg-white rounded-2xl border border-gray-200/90 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 text-xs font-bold">
+                    <span class="text-sm">🎥</span>
+                    <span>Zoom</span>
+                </a>
+            </div>
+        </div>
+
+        {{-- Big CTA Button --}}
+        <div class="my-2">
+            <a href="{{ route('layanan') }}" onclick="dismissSplash()" class="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-[#2E4A2C] hover:bg-[#223921] text-white font-bold text-sm shadow-md transition-all active:scale-[0.98]">
+                <span>Temukan Layanan Kami</span>
+                <span>→</span>
+            </a>
+        </div>
+
+        {{-- Inspiring Quote --}}
+        <div class="text-center py-1.5 px-4 my-1">
+            <p class="font-script text-xl text-[#2E4A2C] font-bold leading-snug">
+                “Langkah kecil hari ini, bisa membawa perubahan besar esok hari.” ♡
+            </p>
+        </div>
+
+        {{-- Footer Contact Bar --}}
+        <footer class="pt-3 pb-1 border-t border-[#E3EAE0] text-[11px] text-[#5A6D59] mt-2">
+            <div class="grid grid-cols-2 gap-y-2 gap-x-2 text-center">
+                <a href="https://hallobun.com" class="hover:text-emerald-800 truncate">🌐 Hallobun.com</a>
+                <a href="mailto:info@hallobun.com" class="hover:text-emerald-800 truncate">✉️ info@hallobun.com</a>
+                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', config('hallobun.admin_phone', '6281234567890')) }}" class="hover:text-emerald-800 truncate">📞 +62 812-3456-7890</a>
+                <a href="https://instagram.com" class="hover:text-emerald-800 truncate">📷 @hallobun.id</a>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+<script>
+    function dismissSplash() {
+        var splash = document.getElementById('consultationSplash');
+        if (splash) {
+            splash.style.opacity = '0';
+            splash.style.transform = 'scale(0.98)';
+            setTimeout(function() {
+                splash.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300);
+            sessionStorage.setItem('hallobun_splash_dismissed', '1');
+        }
+    }
+
+    // Tampilkan splash otomatis saat buka di HP jika belum ditutup di sesi ini
+    (function initSplash() {
+        if (window.innerWidth < 768) {
+            var dismissed = sessionStorage.getItem('hallobun_splash_dismissed');
+            var splash = document.getElementById('consultationSplash');
+            if (splash && dismissed !== '1') {
+                splash.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+    })();
+</script>
+@endif
+
 {{-- ═══ NAVBAR ═══════════════════════════════════════════════════════════ --}}
 <nav class="bg-[#F8FAF7]/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-[#E3EAE0]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
