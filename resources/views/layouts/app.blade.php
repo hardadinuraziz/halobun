@@ -36,7 +36,7 @@
         {{-- Top Bar / Header --}}
         <header class="flex items-center justify-between gap-2 pt-1 pb-3">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
-                <img src="/images/logo.jpg" alt="Hallobun" class="w-11 h-11 rounded-full object-cover shadow-sm border border-emerald-200 flex-shrink-0">
+                <img src="/images/logo_icon.jpg" alt="Hallobun" class="w-11 h-11 rounded-full object-cover shadow-sm border border-emerald-200 flex-shrink-0 bg-white p-0.5">
                 <div class="min-w-0">
                     <h2 class="font-extrabold text-gray-900 text-base leading-tight tracking-tight">Shine Hallobun</h2>
                     <p class="text-[8.5px] font-bold text-emerald-800 tracking-wider uppercase leading-tight mt-0.5">Platform Layanan Kebun &amp; Tani Online</p>
@@ -65,16 +65,21 @@
         </header>
 
         {{-- Banner Card --}}
-        <div class="bg-gradient-to-b from-[#F2F7F0] via-[#F8FAF7] to-white rounded-3xl p-3 border border-[#D8E6D5] shadow-sm my-2">
-            <div class="rounded-2xl overflow-hidden aspect-[16/10] relative shadow-inner bg-[#EBF4EA]">
-                <img src="/images/hero_banner.jpg" alt="Konsultasi Berkebun Hallobun" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent"></div>
-            </div>
-            {{-- Carousel dots --}}
-            <div class="flex items-center justify-center gap-1.5 pt-2.5 pb-0.5">
-                <span class="w-2 h-2 rounded-full bg-[#CADBCA]"></span>
-                <span class="w-6 h-1.5 rounded-full bg-[#2E4A2C]"></span>
-                <span class="w-2 h-2 rounded-full bg-[#CADBCA]"></span>
+        <div class="bg-gradient-to-b from-[#F2F7F0] via-[#F8FAF7] to-white rounded-3xl p-2 sm:p-2.5 border border-[#D8E6D5] shadow-sm my-2">
+            <div class="rounded-2xl overflow-hidden aspect-[16/9] relative shadow-inner bg-[#EBF4EA] flex items-center justify-center">
+                <img src="/images/hero_banner.jpg" 
+                     alt="Konsultasi Berkebun Hallobun" 
+                     class="w-full h-full object-cover object-center select-none"
+                     loading="eager">
+                
+                {{-- Carousel Indicator Floating Pill (matching reference) --}}
+                <div class="absolute bottom-2 inset-x-0 flex items-center justify-center pointer-events-none">
+                    <div class="flex items-center gap-1.5 bg-white/85 backdrop-blur-xs px-3 py-1 rounded-full shadow-xs border border-white/70">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#CADBCA]"></span>
+                        <span class="w-5 h-1.5 rounded-full bg-[#2E4A2C]"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#CADBCA]"></span>
+                    </div>
+                </div>
             </div>
         </div>
 

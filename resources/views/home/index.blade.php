@@ -12,7 +12,7 @@
         {{-- Top Brand Row --}}
         <div class="flex items-center justify-between mb-3 px-0.5">
             <div class="flex items-center gap-2">
-                <img src="/images/logo.jpg" alt="Hallobun" class="w-9 h-9 rounded-full object-cover shadow-xs border border-emerald-200 flex-shrink-0">
+                <img src="/images/logo_icon.jpg" alt="Hallobun" class="w-9 h-9 rounded-full object-cover shadow-xs border border-emerald-200 flex-shrink-0 bg-white p-0.5">
                 <div>
                     <h2 class="font-extrabold text-gray-900 text-sm leading-tight tracking-tight">Hallobun</h2>
                     <p class="text-[8px] font-bold text-emerald-800 tracking-wider uppercase">Layanan Kebun &amp; Tani Online</p>
@@ -35,16 +35,21 @@
         </div>
 
         {{-- Banner Card --}}
-        <div class="bg-gradient-to-b from-[#E7F0E5] to-white rounded-3xl p-2.5 border border-[#D5E4D2] shadow-sm mb-4">
-            <div class="rounded-2xl overflow-hidden aspect-[16/10] relative shadow-inner bg-[#EBF4EA]">
-                <img src="/images/hero_banner.jpg" alt="Konsultasi Berkebun Hallobun" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent"></div>
-            </div>
-            {{-- Carousel indicators --}}
-            <div class="flex items-center justify-center gap-1.5 pt-2 pb-0.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-300"></span>
-                <span class="w-5 h-1.5 rounded-full bg-emerald-800"></span>
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-300"></span>
+        <div class="bg-gradient-to-b from-[#E7F0E5] to-white rounded-3xl p-2 sm:p-2.5 border border-[#D5E4D2] shadow-sm mb-4">
+            <div class="rounded-2xl overflow-hidden aspect-[16/9] relative shadow-inner bg-[#EBF4EA] flex items-center justify-center">
+                <img src="/images/hero_banner.jpg" 
+                     alt="Konsultasi Berkebun Hallobun" 
+                     class="w-full h-full object-cover object-center select-none"
+                     loading="eager">
+                
+                {{-- Carousel indicators floating pill --}}
+                <div class="absolute bottom-2 inset-x-0 flex items-center justify-center pointer-events-none">
+                    <div class="flex items-center gap-1.5 bg-white/85 backdrop-blur-xs px-3 py-1 rounded-full shadow-xs border border-white/70">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-300"></span>
+                        <span class="w-5 h-1.5 rounded-full bg-emerald-800"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-300"></span>
+                    </div>
+                </div>
             </div>
         </div>
 
