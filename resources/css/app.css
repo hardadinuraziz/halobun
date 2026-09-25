@@ -28,6 +28,13 @@
     }
 }
 
+.font-script {
+    font-family: 'Caveat', cursive, sans-serif;
+}
+.font-serif-title {
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
 /* ═══════════════════════════════════════════════════════════
    GRADIENTS
 ═══════════════════════════════════════════════════════════ */

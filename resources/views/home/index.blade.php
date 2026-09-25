@@ -5,7 +5,113 @@
 @section('content')
 
 {{-- ═══ HERO SECTION ═══════════════════════════════════════════════════════ --}}
-<section class="gradient-hero min-h-[60vh] sm:min-h-[80vh] flex items-center relative overflow-hidden">
+{{-- ═══ HERO SECTION — MOBILE VIEW (INSPIRASI SHINE JOURNEY CARD STYLE) ═══ --}}
+<section class="block md:hidden bg-gradient-to-b from-[#EEF5EC] via-[#F8FAF7] to-[#F8FAF7] px-4 pt-3 pb-8 border-b border-[#E2EAE0]">
+    <div class="max-w-sm mx-auto">
+
+        {{-- Top Brand Row --}}
+        <div class="flex items-center justify-between mb-3 px-0.5">
+            <div class="flex items-center gap-2">
+                <img src="/images/logo.jpg" alt="Hallobun" class="w-9 h-9 rounded-full object-cover shadow-xs border border-emerald-200 flex-shrink-0">
+                <div>
+                    <h2 class="font-extrabold text-gray-900 text-sm leading-tight tracking-tight">Hallobun</h2>
+                    <p class="text-[8px] font-bold text-emerald-800 tracking-wider uppercase">Layanan Kebun &amp; Tani Online</p>
+                </div>
+            </div>
+
+            {{-- Aesthetic Palette Dots --}}
+            <div class="flex items-center gap-1 bg-white/90 px-2 py-1 rounded-full border border-emerald-100 shadow-xs">
+                <span class="w-2 h-2 rounded-full bg-[#8BAF89]"></span>
+                <span class="w-2 h-2 rounded-full bg-[#4A7A48]"></span>
+                <span class="w-2 h-2 rounded-full bg-[#C28060]"></span>
+                <span class="w-2 h-2 rounded-full bg-[#3B5838]"></span>
+            </div>
+
+            {{-- Action Pill --}}
+            <a href="{{ route('layanan') }}" class="inline-flex items-center gap-1 bg-[#2E4A2C] text-white text-[11px] font-bold px-3 py-1.5 rounded-full shadow-xs hover:bg-[#223820] transition-colors">
+                <span>Katalog</span>
+                <span>→</span>
+            </a>
+        </div>
+
+        {{-- Banner Card --}}
+        <div class="bg-gradient-to-b from-[#E7F0E5] to-white rounded-3xl p-2.5 border border-[#D5E4D2] shadow-sm mb-4">
+            <div class="rounded-2xl overflow-hidden aspect-[16/10] relative shadow-inner bg-[#EBF4EA]">
+                <img src="/images/hero_banner.jpg" alt="Konsultasi Berkebun Hallobun" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent"></div>
+            </div>
+            {{-- Carousel indicators --}}
+            <div class="flex items-center justify-center gap-1.5 pt-2 pb-0.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-300"></span>
+                <span class="w-5 h-1.5 rounded-full bg-emerald-800"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-300"></span>
+            </div>
+        </div>
+
+        {{-- Main Headings --}}
+        <div class="text-center px-1 mb-4">
+            <h1 class="text-3xl font-extrabold text-[#243723] tracking-tight font-serif-title mb-0.5">
+                Hallobun
+            </h1>
+            <p class="font-script text-2xl text-[#2F5E2D] font-bold">
+                Temani Setiap Langkah Berkebunmu ♡
+            </p>
+            <p class="text-[12px] text-[#4A6149] leading-relaxed mt-2 max-w-xs mx-auto">
+                Ruang aman dan terpercaya untuk kamu bercerita seputar tanaman, mengatasi hama, memulihkan kebun yang layu, dan menemukan solusi bersama agronomis berpengalaman.
+            </p>
+        </div>
+
+        {{-- Consultation session pills --}}
+        <div class="text-center mb-4">
+            <span class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-2">
+                Pilihan Sesi Konsultasi:
+            </span>
+            <div class="grid grid-cols-3 gap-2">
+                <a href="{{ route('konsultasi.index') }}" class="flex items-center justify-center gap-1.5 py-2 px-1 bg-white rounded-2xl border border-gray-200 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 text-xs font-semibold">
+                    <span class="text-sm">💬</span>
+                    <span>Chat</span>
+                </a>
+                <a href="{{ route('konsultasi.index') }}" class="flex items-center justify-center gap-1.5 py-2 px-1 bg-white rounded-2xl border border-gray-200 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 text-xs font-semibold">
+                    <span class="text-sm">🎥</span>
+                    <span>Video</span>
+                </a>
+                <a href="{{ route('kunjungan.index') }}" class="flex items-center justify-center gap-1.5 py-2 px-1 bg-white rounded-2xl border border-gray-200 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 text-xs font-semibold">
+                    <span class="text-sm">🚜</span>
+                    <span>Visit</span>
+                </a>
+            </div>
+        </div>
+
+        {{-- Big Main CTA Button --}}
+        <div class="mb-4">
+            <a href="{{ route('layanan') }}" class="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-[#2E4A2C] hover:bg-[#223820] text-white font-bold text-sm shadow-md transition-all active:scale-[0.98]">
+                <span>Temukan Layanan Kami</span>
+                <span>→</span>
+            </a>
+        </div>
+
+        {{-- Quote --}}
+        <div class="text-center py-1 px-3 mb-4">
+            <p class="font-script text-xl text-[#2F5E2D] font-bold leading-snug">
+                “Langkah kecil hari ini, bisa membawa panen besar esok hari.” ♡
+            </p>
+        </div>
+
+        {{-- Contact bar --}}
+        <div class="pt-3 border-t border-[#E3EAE0] text-[11px] text-[#5A6D59]">
+            <div class="grid grid-cols-2 gap-y-1.5 gap-x-2 text-center">
+                <a href="{{ route('home') }}" class="hover:text-emerald-800 truncate">🌐 hallobun.com</a>
+                <a href="mailto:info@hallobun.com" class="hover:text-emerald-800 truncate">✉️ info@hallobun.com</a>
+                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', config('hallobun.admin_phone', '6281234567890')) }}" class="hover:text-emerald-800 truncate">📞 +62 812-3456-7890</a>
+                <a href="https://instagram.com" class="hover:text-emerald-800 truncate">📷 @hallobun.id</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{{-- ═══ HERO SECTION — TABLET & DESKTOP VIEW ════════════════════════════════ --}}
+<section class="hidden md:flex gradient-hero min-h-[70vh] items-center relative overflow-hidden">
     {{-- Decorative pastel garden blobs --}}
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <div class="absolute -top-32 -right-32 w-96 h-96 bg-[#DCEBCA] rounded-full opacity-20 blur-3xl"></div>
@@ -13,44 +119,46 @@
         <div class="absolute top-1/2 left-1/3 -translate-x-1/2 w-[550px] h-[550px] bg-[#CADBCA] rounded-full opacity-15 blur-3xl"></div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 relative z-10 w-full">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-20 relative z-10 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-                <div class="inline-flex items-center gap-2 bg-white/15 border border-white/25 text-[#E6F0E5] text-xs sm:text-sm font-medium px-3.5 sm:px-4 py-1.5 rounded-full mb-5 sm:mb-6 backdrop-blur-md shadow-sm max-w-full">
+                <div class="inline-flex items-center gap-2 bg-white/15 border border-white/25 text-[#E6F0E5] text-sm font-medium px-4 py-1.5 rounded-full mb-6 backdrop-blur-md shadow-sm">
                     <span class="w-2 h-2 bg-lime-300 rounded-full animate-pulse flex-shrink-0"></span>
-                    <span class="truncate">🌱 Ekosistem Berkebun & Pertanian Modern</span>
+                    <span>🌱 Ekosistem Berkebun &amp; Pertanian Modern</span>
                 </div>
-                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.2] mb-5 break-words">
-                    Solusi Berkebun & Tani<br class="hidden sm:inline">
-                    <span class="text-[#E7F0D8]">Cerdas, Asri & Terpercaya</span>
+                <h1 class="text-4xl lg:text-6xl font-extrabold text-white leading-[1.15] mb-5 break-words">
+                    Solusi Berkebun &amp; Tani<br>
+                    <span class="text-[#E7F0D8]">Cerdas, Asri &amp; Terpercaya</span>
                 </h1>
-                <p class="text-[#D8E6D7] text-base sm:text-lg leading-relaxed mb-7 sm:mb-8 max-w-lg">
+                <p class="text-[#D8E6D7] text-lg leading-relaxed mb-8 max-w-lg">
                     Konsultasikan kendala tanaman, hidroponik, hama kebun hingga perkebunan luas bersama pakar terpercaya. Video call santai, rekomendasi tepat, dan kunjungan on-site di Hallobun.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <div class="flex flex-wrap gap-4">
                     <a href="{{ route('konsultasi.index') }}" id="hero-cta-konsultasi"
-                       class="w-full sm:w-auto text-center justify-center bg-[#F8FAF7] text-emerald-800 font-bold px-6 py-3.5 rounded-xl hover:bg-[#EAF1E9] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 border border-white/60 text-sm sm:text-base">
+                       class="bg-[#F8FAF7] text-emerald-800 font-bold px-7 py-3.5 rounded-xl hover:bg-[#EAF1E9] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 border border-white/60">
                         Konsultasi Kebun Sekarang →
                     </a>
                     <a href="{{ route('narsum.index') }}"
-                       class="w-full sm:w-auto text-center justify-center glass text-white font-semibold px-6 py-3.5 rounded-xl hover:bg-white/20 transition-all border border-white/30 text-sm sm:text-base">
+                       class="glass text-white font-semibold px-7 py-3.5 rounded-xl hover:bg-white/20 transition-all border border-white/30">
                         Undang Narasumber
                     </a>
                 </div>
 
                 {{-- Stats --}}
-                <div class="grid grid-cols-3 gap-2 sm:gap-6 mt-8 sm:mt-10 pt-6 border-t border-white/15 text-center sm:text-left">
+                <div class="flex items-center gap-6 mt-10 pt-6 border-t border-white/15">
                     <div>
-                        <div class="text-2xl sm:text-3xl font-extrabold text-white">{{ number_format($totalKonsultan) }}+</div>
-                        <div class="text-[#CADACA] text-xs sm:text-sm mt-0.5">Pakar & Agronomis</div>
+                        <div class="text-3xl font-extrabold text-white">{{ number_format($totalKonsultan) }}+</div>
+                        <div class="text-[#CADACA] text-sm mt-0.5">Pakar &amp; Agronomis</div>
                     </div>
-                    <div class="border-x border-white/15 px-1 sm:border-0 sm:px-0">
-                        <div class="text-2xl sm:text-3xl font-extrabold text-white">{{ number_format($totalKonsultasi) }}+</div>
-                        <div class="text-[#CADACA] text-xs sm:text-sm mt-0.5">Sesi Selesai</div>
-                    </div>
+                    <div class="w-px h-10 bg-white/20"></div>
                     <div>
-                        <div class="text-2xl sm:text-3xl font-extrabold text-white">98%</div>
-                        <div class="text-[#CADACA] text-xs sm:text-sm mt-0.5">Pekebun Puas</div>
+                        <div class="text-3xl font-extrabold text-white">{{ number_format($totalKonsultasi) }}+</div>
+                        <div class="text-[#CADACA] text-sm mt-0.5">Sesi Selesai</div>
+                    </div>
+                    <div class="w-px h-10 bg-white/20"></div>
+                    <div>
+                        <div class="text-3xl font-extrabold text-white">98%</div>
+                        <div class="text-[#CADACA] text-sm mt-0.5">Pekebun Puas</div>
                     </div>
                 </div>
             </div>
@@ -64,7 +172,7 @@
                                 <div class="w-10 h-10 bg-emerald-300/80 rounded-full flex items-center justify-center text-xl shadow-inner">👨‍🌾</div>
                                 <div>
                                     <div class="text-white font-semibold text-sm">Sesi Konsultasi Kebun</div>
-                                    <div class="text-[#DCEBCA] text-xs">Dr. Budi Santoso — Kesehatan Tanaman & Tanah</div>
+                                    <div class="text-[#DCEBCA] text-xs">Dr. Budi Santoso — Kesehatan Tanaman &amp; Tanah</div>
                                 </div>
                                 <span class="ml-auto bg-amber-500/90 text-white text-xs px-2.5 py-0.5 rounded-full font-semibold animate-pulse shadow-sm">LIVE</span>
                             </div>
@@ -90,7 +198,7 @@
                             </div>
                             <div class="bg-white/15 rounded-xl p-3 text-center border border-white/10 hover:bg-white/20 transition-colors">
                                 <div class="text-2xl mb-1">🪴</div>
-                                <div class="text-white text-xs font-medium">Bibit & Sarana</div>
+                                <div class="text-white text-xs font-medium">Bibit &amp; Sarana</div>
                             </div>
                         </div>
                     </div>
