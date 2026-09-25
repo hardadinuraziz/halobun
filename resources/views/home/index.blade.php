@@ -5,54 +5,54 @@
 @section('content')
 
 {{-- ═══ HERO SECTION ═══════════════════════════════════════════════════════ --}}
-<section class="gradient-hero min-h-[85vh] flex items-center relative overflow-hidden">
-    {{-- Decorative blobs --}}
+<section class="gradient-hero min-h-[75vh] sm:min-h-[85vh] flex items-center relative overflow-hidden">
+    {{-- Decorative pastel garden blobs --}}
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute -top-32 -right-32 w-96 h-96 bg-emerald-400 rounded-full opacity-10 blur-3xl"></div>
-        <div class="absolute bottom-0 -left-20 w-72 h-72 bg-green-300 rounded-full opacity-10 blur-3xl"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-teal-400 rounded-full opacity-5 blur-3xl"></div>
+        <div class="absolute -top-32 -right-32 w-96 h-96 bg-[#DCEBCA] rounded-full opacity-20 blur-3xl"></div>
+        <div class="absolute bottom-0 -left-20 w-80 h-80 bg-[#F7ECC0] rounded-full opacity-20 blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/3 -translate-x-1/2 w-[550px] h-[550px] bg-[#CADBCA] rounded-full opacity-15 blur-3xl"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-                <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-emerald-100 text-sm font-medium px-4 py-1.5 rounded-full mb-6">
-                    <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-                    Platform Pertanian Digital #1 Indonesia
+                <div class="inline-flex items-center gap-2 bg-white/15 border border-white/25 text-[#E6F0E5] text-sm font-medium px-4 py-1.5 rounded-full mb-6 backdrop-blur-md shadow-sm">
+                    <span class="w-2 h-2 bg-lime-300 rounded-full animate-pulse"></span>
+                    🌱 Ekosistem Berkebun & Pertanian Modern
                 </div>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
-                    Solusi Pertanian<br>
-                    <span class="text-emerald-300">Cerdas & Terpercaya</span>
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.15] mb-6 break-words">
+                    Solusi Berkebun & Tani<br>
+                    <span class="text-[#E7F0D8]">Cerdas, Asri & Terpercaya</span>
                 </h1>
-                <p class="text-emerald-100 text-lg leading-relaxed mb-8 max-w-lg">
-                    Konsultasikan masalah pertanian Anda dengan pakar berpengalaman kapanpun dan dimanapun. Video call, kunjungan lapangan, semua ada di Hallobun.
+                <p class="text-[#D8E6D7] text-lg leading-relaxed mb-8 max-w-lg">
+                    Konsultasikan kendala tanaman, hidroponik, hama kebun hingga perkebunan luas bersama pakar terpercaya. Video call santai, rekomendasi tepat, dan kunjungan on-site di Hallobun.
                 </p>
                 <div class="flex flex-wrap gap-4">
                     <a href="{{ route('konsultasi.index') }}" id="hero-cta-konsultasi"
-                       class="bg-white text-emerald-700 font-bold px-7 py-3.5 rounded-xl hover:bg-emerald-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-                        Konsultasi Sekarang →
+                       class="bg-[#F8FAF7] text-emerald-800 font-bold px-7 py-3.5 rounded-xl hover:bg-[#EAF1E9] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 border border-white/60">
+                        Konsultasi Kebun Sekarang →
                     </a>
                     <a href="{{ route('narsum.index') }}"
-                       class="glass text-white font-semibold px-7 py-3.5 rounded-xl hover:bg-white/20 transition-all">
-                        Undang Narsum
+                       class="glass text-white font-semibold px-7 py-3.5 rounded-xl hover:bg-white/20 transition-all border border-white/30">
+                        Undang Narasumber
                     </a>
                 </div>
 
                 {{-- Stats --}}
-                <div class="flex gap-8 mt-12">
+                <div class="flex flex-wrap gap-x-6 gap-y-4 mt-10 pt-6 border-t border-white/15">
                     <div>
                         <div class="text-3xl font-extrabold text-white">{{ number_format($totalKonsultan) }}+</div>
-                        <div class="text-emerald-200 text-sm">Pakar Pertanian</div>
+                        <div class="text-[#CADACA] text-sm mt-0.5">Pakar & Agronomis</div>
                     </div>
                     <div class="w-px bg-white/20"></div>
                     <div>
                         <div class="text-3xl font-extrabold text-white">{{ number_format($totalKonsultasi) }}+</div>
-                        <div class="text-emerald-200 text-sm">Konsultasi Selesai</div>
+                        <div class="text-[#CADACA] text-sm mt-0.5">Sesi Terselesaikan</div>
                     </div>
                     <div class="w-px bg-white/20"></div>
                     <div>
                         <div class="text-3xl font-extrabold text-white">98%</div>
-                        <div class="text-emerald-200 text-sm">Tingkat Kepuasan</div>
+                        <div class="text-[#CADACA] text-sm mt-0.5">Pekebun Puas</div>
                     </div>
                 </div>
             </div>
@@ -60,45 +60,45 @@
             {{-- Hero illustration (card style) --}}
             <div class="hidden lg:block">
                 <div class="relative">
-                    <div class="glass rounded-3xl p-6 shadow-2xl">
-                        <div class="bg-white/10 rounded-2xl p-4 mb-4">
+                    <div class="glass rounded-3xl p-6 shadow-2xl border border-white/25">
+                        <div class="bg-white/15 rounded-2xl p-4 mb-4 border border-white/15">
                             <div class="flex items-center gap-3 mb-3">
-                                <div class="w-10 h-10 bg-emerald-400 rounded-full flex items-center justify-center text-xl">👨‍🌾</div>
+                                <div class="w-10 h-10 bg-emerald-300/80 rounded-full flex items-center justify-center text-xl shadow-inner">👨‍🌾</div>
                                 <div>
-                                    <div class="text-white font-semibold text-sm">Sesi Konsultasi Aktif</div>
-                                    <div class="text-emerald-300 text-xs">Dr. Budi Santoso — Penyakit Tanaman</div>
+                                    <div class="text-white font-semibold text-sm">Sesi Konsultasi Kebun</div>
+                                    <div class="text-[#DCEBCA] text-xs">Dr. Budi Santoso — Kesehatan Tanaman & Tanah</div>
                                 </div>
-                                <span class="ml-auto bg-red-500 text-white text-xs px-2 py-0.5 rounded-full animate-pulse">LIVE</span>
+                                <span class="ml-auto bg-amber-500/90 text-white text-xs px-2.5 py-0.5 rounded-full font-semibold animate-pulse shadow-sm">LIVE</span>
                             </div>
-                            <div class="bg-gray-900 rounded-xl h-36 flex items-center justify-center">
+                            <div class="bg-[#1C271C]/80 rounded-xl h-36 flex items-center justify-center border border-white/10">
                                 <div class="text-center">
-                                    <div class="text-5xl mb-2">🎥</div>
-                                    <div class="text-gray-400 text-xs">Video Call via Jitsi Meet</div>
+                                    <div class="text-4xl mb-2">🌿 🎥 🍃</div>
+                                    <div class="text-[#A2B8A1] text-xs font-medium">Video Call Interaktif via Jitsi Meet</div>
                                 </div>
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-3">
-                            <div class="bg-white/10 rounded-xl p-3 text-center">
+                            <div class="bg-white/15 rounded-xl p-3 text-center border border-white/10 hover:bg-white/20 transition-colors">
                                 <div class="text-2xl mb-1">💬</div>
                                 <div class="text-white text-xs font-medium">Konsultasi Online</div>
                             </div>
-                            <div class="bg-white/10 rounded-xl p-3 text-center">
+                            <div class="bg-white/15 rounded-xl p-3 text-center border border-white/10 hover:bg-white/20 transition-colors">
                                 <div class="text-2xl mb-1">🚜</div>
-                                <div class="text-white text-xs font-medium">Kunjungan Lapangan</div>
+                                <div class="text-white text-xs font-medium">Kunjungan Kebun</div>
                             </div>
-                            <div class="bg-white/10 rounded-xl p-3 text-center">
+                            <div class="bg-white/15 rounded-xl p-3 text-center border border-white/10 hover:bg-white/20 transition-colors">
                                 <div class="text-2xl mb-1">🎤</div>
                                 <div class="text-white text-xs font-medium">Undang Narsum</div>
                             </div>
-                            <div class="bg-white/10 rounded-xl p-3 text-center">
-                                <div class="text-2xl mb-1">🌿</div>
-                                <div class="text-white text-xs font-medium">Sarana Pertanian</div>
+                            <div class="bg-white/15 rounded-xl p-3 text-center border border-white/10 hover:bg-white/20 transition-colors">
+                                <div class="text-2xl mb-1">🪴</div>
+                                <div class="text-white text-xs font-medium">Bibit & Sarana</div>
                             </div>
                         </div>
                     </div>
                     {{-- Floating badge --}}
-                    <div class="absolute -top-4 -right-4 bg-yellow-400 text-yellow-900 font-bold text-sm px-3 py-1.5 rounded-full shadow-lg">
-                        ⭐ 4.9/5.0
+                    <div class="absolute -top-4 -right-4 bg-amber-300 text-amber-950 font-bold text-sm px-3.5 py-1.5 rounded-full shadow-lg border border-amber-200">
+                        ⭐ 4.9/5.0 Terpercaya
                     </div>
                 </div>
             </div>
@@ -107,71 +107,79 @@
 </section>
 
 {{-- ═══ LAYANAN SECTION ═══════════════════════════════════════════════════ --}}
-<section class="py-20 bg-white">
+<section class="py-20 bg-[#F4F7F3]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-            <span class="text-emerald-600 text-sm font-semibold uppercase tracking-widest">Layanan Kami</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2">Semua Kebutuhan Pertanian<br>Ada di Sini</h2>
-            <p class="text-gray-500 mt-3 max-w-xl mx-auto">Pilih layanan yang sesuai dengan kebutuhan Anda</p>
+            <span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Layanan Terpadu</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-emerald-950 mt-1">Semua Kebutuhan Berkebun<br>Ada di Sini</h2>
+            <p class="text-[#5A6D59] mt-3 max-w-xl mx-auto">Solusi lengkap dari konsultasi perawatan tanaman, bibit unggul, hingga pendampingan on-site.</p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             @foreach($layananList as $layanan)
-            <a href="{{ $layanan['url'] }}" class="card-hover bg-gray-50 border border-gray-100 rounded-2xl p-6 text-center group">
-                <div class="w-14 h-14 bg-{{ $layanan['color'] }}-100 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <a href="{{ $layanan['url'] }}" class="card-hover bg-white/90 border border-[#E2EAE0] rounded-2xl p-6 text-center group shadow-sm">
+                <div class="w-14 h-14 bg-{{ $layanan['color'] }}-100 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 group-hover:scale-110 transition-transform shadow-inner">
                     {{ $layanan['icon'] }}
                 </div>
-                <h3 class="font-bold text-gray-900 mb-2">{{ $layanan['title'] }}</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">{{ $layanan['desc'] }}</p>
-                <div class="mt-4 text-{{ $layanan['color'] }}-600 text-sm font-semibold group-hover:underline">
+                <h3 class="font-bold text-gray-900 mb-2 group-hover:text-emerald-800 transition-colors">{{ $layanan['title'] }}</h3>
+                <p class="text-[#5E715D] text-sm leading-relaxed">{{ $layanan['desc'] }}</p>
+                <div class="mt-4 text-{{ $layanan['color'] }}-700 text-sm font-semibold group-hover:underline">
                     Selengkapnya →
                 </div>
             </a>
             @endforeach
+        </div>
+
+        {{-- Link to Afriba-style full services page --}}
+        <div class="mt-10 text-center">
+            <a href="{{ route('layanan') }}" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-800 hover:bg-emerald-900 text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all">
+                <span>Lihat Katalog 7 Layanan Komprehensif (Produksi, Pelatihan, Uji Tanah, dll.)</span>
+                <span>→</span>
+            </a>
         </div>
     </div>
 </section>
 
 {{-- ═══ KONSULTAN FEATURED ═══════════════════════════════════════════════ --}}
 @if($konsultanFeatured->isNotEmpty())
-<section class="py-20 bg-gray-50">
+<section class="py-20 bg-[#F8FAF7]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-end justify-between mb-10">
             <div>
-                <span class="text-emerald-600 text-sm font-semibold uppercase tracking-widest">Tim Ahli</span>
-                <h2 class="text-3xl font-extrabold text-gray-900 mt-1">Pakar Pertanian Terbaik</h2>
+                <span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Praktisi & Pakar</span>
+                <h2 class="text-3xl font-extrabold text-emerald-950 mt-1">Konsultan Kebun & Pertanian</h2>
             </div>
-            <a href="{{ route('konsultasi.index') }}" class="text-emerald-600 font-semibold hover:underline text-sm hidden sm:block">
-                Lihat Semua →
+            <a href="{{ route('konsultasi.index') }}" class="text-emerald-700 font-bold hover:underline text-sm hidden sm:block">
+                Lihat Semua Konsultan →
             </a>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($konsultanFeatured as $konsultan)
-            <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6">
+            <div class="card-hover bg-white border border-[#E2EAE0] rounded-2xl p-6 shadow-sm">
                 <div class="flex items-start gap-4 mb-4">
-                    <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-2xl font-bold text-emerald-700 flex-shrink-0">
+                    <div class="w-14 h-14 bg-gradient-to-br from-emerald-100 to-emerald-200 border border-emerald-300/40 rounded-2xl flex items-center justify-center text-2xl font-bold text-emerald-800 flex-shrink-0 shadow-sm">
                         {{ substr($konsultan->user->name, 0, 1) }}
                     </div>
                     <div class="flex-1 min-w-0">
                         <h3 class="font-bold text-gray-900 truncate">{{ $konsultan->user->name }}</h3>
-                        <p class="text-emerald-600 text-sm font-medium">{{ $konsultan->spesialisasi }}</p>
+                        <p class="text-emerald-700 text-sm font-medium">{{ $konsultan->spesialisasi }}</p>
                         <div class="flex items-center gap-1 mt-1">
-                            <span class="text-yellow-400">⭐</span>
+                            <span class="text-amber-500">⭐</span>
                             <span class="text-sm font-semibold text-gray-700">{{ number_format($konsultan->rating, 1) }}</span>
                             <span class="text-gray-400 text-xs">({{ $konsultan->total_konsultasi }} sesi)</span>
                         </div>
                     </div>
                 </div>
                 @if($konsultan->bio)
-                <p class="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">{{ $konsultan->bio }}</p>
+                <p class="text-[#5A6D59] text-sm leading-relaxed mb-4 line-clamp-2">{{ $konsultan->bio }}</p>
                 @endif
-                <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                <div class="flex items-center justify-between pt-4 border-t border-[#EEF2EC]">
                     <div>
                         <div class="text-xs text-gray-400">Mulai dari</div>
-                        <div class="font-bold text-gray-900">Rp {{ number_format($konsultan->harga_per_sesi, 0, ',', '.') }}</div>
+                        <div class="font-bold text-emerald-900">Rp {{ number_format($konsultan->harga_per_sesi, 0, ',', '.') }}</div>
                     </div>
-                    <a href="{{ route('konsultasi.show', $konsultan) }}" class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors">
+                    <a href="{{ route('konsultasi.show', $konsultan) }}" class="bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors shadow-sm">
                         Konsultasi
                     </a>
                 </div>
@@ -183,28 +191,29 @@
 @endif
 
 {{-- ═══ HOW IT WORKS ════════════════════════════════════════════════════ --}}
-<section class="py-20 bg-white">
+<section class="py-20 bg-[#F4F7F3]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-14">
-            <span class="text-emerald-600 text-sm font-semibold uppercase tracking-widest">Cara Kerja</span>
-            <h2 class="text-3xl font-extrabold text-gray-900 mt-2">Mudah dalam 4 Langkah</h2>
+            <span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Cara Praktis</span>
+            <h2 class="text-3xl font-extrabold text-emerald-950 mt-1">Mudah dalam 4 Langkah</h2>
+            <p class="text-[#5A6D59] text-sm mt-2">Dapatkan bimbingan langsung tanpa ribet</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             @foreach([
-                ['step'=>'01','icon'=>'🔍','title'=>'Pilih Konsultan','desc'=>'Cari dan pilih pakar pertanian sesuai kebutuhan dan spesialisasi Anda.'],
-                ['step'=>'02','icon'=>'📅','title'=>'Pilih Jadwal','desc'=>'Tentukan tanggal dan waktu konsultasi yang sesuai dengan jadwal Anda.'],
-                ['step'=>'03','icon'=>'💳','title'=>'Bayar QRIS/Transfer','desc'=>'Lakukan pembayaran dengan QRIS atau transfer bank. Cepat & aman via Midtrans.'],
-                ['step'=>'04','icon'=>'📱','title'=>'Terima Link WA','desc'=>'Link meeting Jitsi dikirim otomatis ke WhatsApp dan email Anda. Siap konsultasi!'],
+                ['step'=>'01','icon'=>'🔍','title'=>'Pilih Konsultan','desc'=>'Pilih pakar kebun & tani yang pas dengan spesialisasi tanaman Anda.'],
+                ['step'=>'02','icon'=>'📅','title'=>'Tentukan Jadwal','desc'=>'Pilih tanggal & waktu luang yang paling nyaman untuk sesi konsultasi.'],
+                ['step'=>'03','icon'=>'💳','title'=>'Bayar Instan','desc'=>'Selesaikan pembayaran aman via QRIS atau Transfer Bank Midtrans.'],
+                ['step'=>'04','icon'=>'📱','title'=>'Mulai Sesi Kebun','desc'=>'Tautan meeting otomatis terkirim via WhatsApp. Sesi video call siap dimulai!'],
             ] as $step)
-            <div class="text-center relative">
-                <div class="w-16 h-16 bg-emerald-50 border-2 border-emerald-200 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">
+            <div class="text-center relative bg-white/80 border border-[#E3EAE0] rounded-2xl p-6 shadow-sm">
+                <div class="w-16 h-16 bg-emerald-50 border-2 border-emerald-200/80 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 shadow-sm">
                     {{ $step['icon'] }}
                 </div>
-                <div class="absolute top-0 right-0 sm:-right-4 w-7 h-7 bg-emerald-600 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                <div class="absolute -top-3 right-4 w-7 h-7 bg-emerald-700 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-md">
                     {{ $step['step'] }}
                 </div>
                 <h3 class="font-bold text-gray-900 mb-2">{{ $step['title'] }}</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">{{ $step['desc'] }}</p>
+                <p class="text-[#5A6D59] text-sm leading-relaxed">{{ $step['desc'] }}</p>
             </div>
             @endforeach
         </div>
@@ -212,20 +221,21 @@
 </section>
 
 {{-- ═══ CTA SECTION ════════════════════════════════════════════════════ --}}
-<section class="py-16 bg-emerald-700 relative overflow-hidden">
+<section class="py-16 bg-gradient-to-r from-emerald-800 via-emerald-700 to-emerald-800 relative overflow-hidden text-white">
     <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute -top-10 -right-10 w-64 h-64 bg-emerald-600 rounded-full opacity-50"></div>
-        <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-green-600 rounded-full opacity-50"></div>
+        <div class="absolute -top-10 -right-10 w-72 h-72 bg-[#DCEBCA] rounded-full opacity-15 blur-2xl"></div>
+        <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-[#F7ECC0] rounded-full opacity-15 blur-2xl"></div>
     </div>
     <div class="max-w-3xl mx-auto px-4 text-center relative z-10">
-        <h2 class="text-3xl font-extrabold text-white mb-4">Siap Atasi Masalah Pertanian Anda?</h2>
-        <p class="text-emerald-100 mb-8">Bergabung dengan ribuan petani yang telah mempercayai Hallobun sebagai mitra pertanian digital mereka.</p>
+        <span class="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 backdrop-blur-sm">Mulai Hari Ini</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Tanaman Subur, Kebun Asri, Hasil Melimpah</h2>
+        <p class="text-emerald-100 text-base mb-8 max-w-xl mx-auto">Bergabunglah bersama ribuan pekebun dan petani di seluruh Indonesia yang telah terbantu oleh Hallobun.</p>
         <div class="flex flex-wrap gap-4 justify-center">
-            <a href="{{ route('register') }}" id="cta-daftar-gratis" class="bg-white text-emerald-700 font-bold px-8 py-3.5 rounded-xl hover:bg-emerald-50 transition-all shadow-lg">
-                Daftar Gratis Sekarang
+            <a href="{{ route('register') }}" id="cta-daftar-gratis" class="bg-[#F8FAF7] text-emerald-900 font-bold px-8 py-3.5 rounded-xl hover:bg-[#EAF1EA] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 border border-white/60">
+                Daftar Akun Gratis Sekarang
             </a>
-            <a href="{{ route('konsultasi.index') }}" class="border-2 border-white text-white font-semibold px-8 py-3.5 rounded-xl hover:bg-white/10 transition-all">
-                Lihat Konsultan
+            <a href="{{ route('konsultasi.index') }}" class="border border-white/40 glass text-white font-semibold px-8 py-3.5 rounded-xl hover:bg-white/20 transition-all">
+                Jelajahi Konsultan
             </a>
         </div>
     </div>

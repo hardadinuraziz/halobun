@@ -1,3 +1,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        background-color: #F8FAF7;
+        color: #2D3A2C;
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+}
+
+/* Pastel Garden Aesthetics */
+.gradient-hero {
+    background: linear-gradient(135deg, #375136 0%, #466744 35%, #598057 70%, #70996D 100%);
+}
+
+.gradient-garden-sunset {
+    background: linear-gradient(135deg, #A86948 0%, #BA7B59 50%, #CD906D 100%);
+}
+
+.gradient-greenhouse {
+    background: linear-gradient(135deg, #446158 0%, #56786E 50%, #698F84 100%);
+}
+
+.gradient-nursery {
+    background: linear-gradient(135deg, #4F734D 0%, #628B60 50%, #77A374 100%);
+}
+
+.glass {
+    backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.glass-card {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid #E6ECE3;
+}
+
+.card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px -8px rgba(65, 99, 64, 0.12);
+    border-color: #B0C8AF;
+}
+
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #6E976D;
+    border-radius: 9999px;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}

@@ -7,14 +7,84 @@
     <title>@yield('title', 'Hallobun') - Platform Konsultasi Pertanian</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
                     colors: {
-                        emerald: { 50:'#ecfdf5',100:'#d1fae5',200:'#a7f3d0',300:'#6ee7b7',400:'#34d399',500:'#10b981',600:'#059669',700:'#047857',800:'#065f46',900:'#064e3b' },
+                        // Sage & Matcha Pastel Garden
+                        emerald: {
+                            50: '#F4F7F3',
+                            100: '#E5EDE3',
+                            200: '#CADBCA',
+                            300: '#B0C8AF',
+                            400: '#8EAF8D',
+                            500: '#6E976D',
+                            600: '#567D55',
+                            700: '#436342',
+                            800: '#334D32',
+                            900: '#243723',
+                        },
+                        // Warm Terracotta / Pot Tembikar & Tanah Kebun
+                        amber: {
+                            50: '#FDF9F6',
+                            100: '#FAF0E8',
+                            200: '#F4DFD2',
+                            300: '#E9C4AF',
+                            400: '#D99F80',
+                            500: '#C5805C',
+                            600: '#AA6743',
+                            700: '#894E30',
+                            800: '#6C3D26',
+                            900: '#4E2B1A',
+                        },
+                        // Sprout & Mint Herbal
+                        lime: {
+                            50: '#F8FAF3',
+                            100: '#EDF5E0',
+                            200: '#DCEBCA',
+                            300: '#C4DEAA',
+                            400: '#A4CD84',
+                            500: '#84B462',
+                            600: '#69954A',
+                            700: '#517439',
+                            800: '#3D572B',
+                            900: '#2A3C1D',
+                        },
+                        // Bunga Kebun / Lavender Sky
+                        blue: {
+                            50: '#F6F8FB',
+                            100: '#EAF0F6',
+                            200: '#D7E2EE',
+                            300: '#BACBE0',
+                            400: '#97AFCE',
+                            500: '#7592B8',
+                            600: '#5B769B',
+                            700: '#455C7B',
+                            800: '#33455D',
+                            900: '#222F40',
+                        },
+                        // Soft Warm Gray (Organic Paper & Stone)
+                        gray: {
+                            50: '#F8FAF7',
+                            100: '#F1F4EE',
+                            200: '#E4E8E0',
+                            300: '#CFD6CA',
+                            400: '#9EAA98',
+                            500: '#717E6B',
+                            600: '#546050',
+                            700: '#3E473B',
+                            800: '#2C3329',
+                            900: '#1B2119',
+                        },
                     }
                 }
             }
@@ -22,34 +92,38 @@
     </script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .gradient-hero { background: linear-gradient(135deg, #064e3b 0%, #065f46 40%, #047857 70%, #059669 100%); }
-        .glass { backdrop-filter: blur(16px); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); }
-        .card-hover { transition: all 0.3s ease; }
-        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+        * { box-sizing: border-box; }
+        html, body { overflow-x: hidden; max-width: 100vw; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8FAF7; color: #2D3A2C; }
+        .gradient-hero { background: linear-gradient(135deg, #375136 0%, #466744 35%, #598057 70%, #70996D 100%); }
+        .glass { backdrop-filter: blur(16px); background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.22); }
+        .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -8px rgba(65, 99, 64, 0.12); border-color: #B0C8AF; }
         .nav-link { position: relative; }
-        .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#10b981; transition:width 0.3s; }
+        .nav-link::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:2px; background:#6E976D; border-radius:9999px; transition:width 0.3s ease; }
         .nav-link:hover::after, .nav-link.active::after { width:100%; }
+        img { max-width: 100%; height: auto; }
     </style>
     @stack('styles')
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
+<body class="bg-[#F8FAF7] text-[#2D3A2C] antialiased selection:bg-emerald-200 selection:text-emerald-900">
 
 {{-- Navbar --}}
-<nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
+<nav class="bg-[#F8FAF7]/90 backdrop-blur-md shadow-[0_2px_12px_rgba(45,58,44,0.04)] sticky top-0 z-50 border-b border-[#E3EAE0]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
             {{-- Logo --}}
-            <a href="{{ route('home') }}" class="flex items-center gap-2">
-                <div class="w-9 h-9 bg-gradient-to-br from-emerald-500 to-green-700 rounded-xl flex items-center justify-center shadow-md">
-                    <span class="text-white font-black text-lg leading-none">H</span>
-                </div>
-                <span class="font-extrabold text-xl text-emerald-700 tracking-tight">hallo<span class="text-gray-800">bun</span></span>
+            <a href="{{ route('home') }}" class="flex items-center group flex-shrink-0">
+                <img src="/images/logo.jpg"
+                     alt="Hallobun — Layanan Perkebunan & Pertanian"
+                     class="h-9 sm:h-10 w-auto object-contain group-hover:opacity-90 transition-opacity"
+                     style="max-width:160px;object-position:left center">
             </a>
 
             {{-- Menu Desktop --}}
             <div class="hidden md:flex items-center gap-6">
                 <a href="{{ route('home') }}" class="nav-link text-sm font-medium text-gray-600 hover:text-emerald-600 transition-colors {{ request()->routeIs('home') ? 'text-emerald-600 active' : '' }}">Beranda</a>
+                <a href="{{ route('layanan') }}" class="nav-link text-sm font-medium text-gray-600 hover:text-emerald-600 transition-colors {{ request()->routeIs('layanan') ? 'text-emerald-600 active' : '' }}">Layanan</a>
                 <a href="{{ route('konsultasi.index') }}" class="nav-link text-sm font-medium text-gray-600 hover:text-emerald-600 transition-colors {{ request()->routeIs('konsultasi.*') ? 'text-emerald-600 active' : '' }}">Konsultasi</a>
                 <a href="{{ route('narsum.index') }}" class="nav-link text-sm font-medium text-gray-600 hover:text-emerald-600 transition-colors {{ request()->routeIs('narsum.*') ? 'text-emerald-600 active' : '' }}">Undang Narsum</a>
                 <a href="{{ route('kunjungan.index') }}" class="nav-link text-sm font-medium text-gray-600 hover:text-emerald-600 transition-colors {{ request()->routeIs('kunjungan.*') ? 'text-emerald-600 active' : '' }}">Kunjungan</a>
@@ -102,6 +176,7 @@
     {{-- Mobile Menu --}}
     <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 py-3 space-y-1">
         <a href="{{ route('home') }}" class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Beranda</a>
+        <a href="{{ route('layanan') }}" class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Semua Layanan</a>
         <a href="{{ route('konsultasi.index') }}" class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Konsultasi Online</a>
         <a href="{{ route('narsum.index') }}" class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Undang Narsum</a>
         <a href="{{ route('kunjungan.index') }}" class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Kunjungan Offline</a>
@@ -135,55 +210,73 @@
     @yield('content')
 </main>
 
+{{-- Floating WhatsApp Action Button (Afriba Global Style) --}}
+<aside aria-label="Bantuan WhatsApp" class="fixed bottom-6 right-6 z-40">
+    <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', config('hallobun.admin_phone', '6281234567890')) }}?text={{ urlencode('Halo Hallobun, saya ingin berkonsultasi mengenai layanan kebun dan pertanian.') }}" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="inline-flex items-center gap-2.5 bg-[#25D366] text-white pl-4 pr-5 py-3 rounded-full shadow-lg shadow-[#25D366]/30 hover:shadow-xl hover:shadow-[#25D366]/40 hover:-translate-y-1 transition-all duration-300 font-semibold text-sm group"
+       title="Chat via WhatsApp">
+        <span class="w-2.5 h-2.5 rounded-full bg-white animate-ping"></span>
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        <span class="hidden sm:inline">Tanya Kami</span>
+    </a>
+</aside>
+
 {{-- Footer --}}
-<footer class="bg-gray-900 text-gray-300 mt-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<footer class="bg-[#1F2C1F] text-[#CADACA] mt-24 border-t border-[#2C3E2C]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="col-span-1 md:col-span-1">
-                <div class="flex items-center gap-2 mb-4">
-                    <div class="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
-                        <span class="text-white font-black">H</span>
+                <a href="{{ route('home') }}" class="inline-block mb-4">
+                    {{-- Logo with green tint overlay for dark footer --}}
+                    <div class="relative inline-block">
+                        <img src="/images/logo.jpg"
+                             alt="Hallobun"
+                             class="h-10 w-auto object-contain"
+                             style="max-width:160px;filter:brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(80deg) brightness(1.4)">
                     </div>
-                    <span class="font-extrabold text-lg text-white">hallo<span class="text-emerald-400">bun</span></span>
-                </div>
-                <p class="text-sm text-gray-400 leading-relaxed">Platform digital konsultasi pertanian terpercaya. Solusi cerdas untuk petani Indonesia.</p>
-                <div class="flex gap-3 mt-4">
-                    <a href="#" class="w-8 h-8 bg-gray-800 hover:bg-emerald-600 rounded-lg flex items-center justify-center transition-colors">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                    </a>
-                    <a href="#" class="w-8 h-8 bg-gray-800 hover:bg-emerald-600 rounded-lg flex items-center justify-center transition-colors">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                    </a>
+                </a>
+                <p class="text-sm text-[#9BB19A] leading-relaxed">Platform digital terpadu untuk berkebun dan pertanian modern. Konsultasi ramah, ilmiah, dan tepat sasaran.</p>
+                <div class="flex gap-3 mt-5">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-medium bg-[#2C3E2C] text-emerald-300 px-3 py-1.5 rounded-full">
+                        🌱 Tumbuh Subur Bersama
+                    </span>
                 </div>
             </div>
             <div>
-                <h4 class="font-semibold text-white mb-4">Layanan</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="{{ route('konsultasi.index') }}" class="hover:text-emerald-400 transition-colors">Konsultasi Online</a></li>
-                    <li><a href="{{ route('narsum.index') }}" class="hover:text-emerald-400 transition-colors">Undang Narasumber</a></li>
-                    <li><a href="{{ route('kunjungan.index') }}" class="hover:text-emerald-400 transition-colors">Kunjungan Offline</a></li>
-                    <li><a href="{{ route('sarana.index') }}" class="hover:text-emerald-400 transition-colors">Sarana Pertanian</a></li>
+                <h4 class="font-bold text-white mb-4 text-sm tracking-wider uppercase">Layanan Kebun</h4>
+                <ul class="space-y-2.5 text-sm text-[#A8BEA7]">
+                    <li><a href="{{ route('layanan') }}" class="hover:text-emerald-300 transition-colors font-semibold text-emerald-400">📋 Katalog Layanan Lengkap</a></li>
+                    <li><a href="{{ route('konsultasi.index') }}" class="hover:text-emerald-300 transition-colors">💬 Konsultasi Online</a></li>
+                    <li><a href="{{ route('narsum.index') }}" class="hover:text-emerald-300 transition-colors">🎤 Undang Narasumber</a></li>
+                    <li><a href="{{ route('kunjungan.index') }}" class="hover:text-emerald-300 transition-colors">🚜 Kunjungan Lapangan</a></li>
+                    <li><a href="{{ route('sarana.index') }}" class="hover:text-emerald-300 transition-colors">🌿 Sarana & Bibit Kebun</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="font-semibold text-white mb-4">Akun</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="{{ route('login') }}" class="hover:text-emerald-400 transition-colors">Masuk</a></li>
-                    <li><a href="{{ route('register') }}" class="hover:text-emerald-400 transition-colors">Daftar</a></li>
-                    <li><a href="{{ route('dashboard') }}" class="hover:text-emerald-400 transition-colors">Dashboard</a></li>
+                <h4 class="font-bold text-white mb-4 text-sm tracking-wider uppercase">Navigasi</h4>
+                <ul class="space-y-2.5 text-sm text-[#A8BEA7]">
+                    <li><a href="{{ route('home') }}" class="hover:text-emerald-300 transition-colors">Beranda</a></li>
+                    <li><a href="{{ route('layanan') }}" class="hover:text-emerald-300 transition-colors">Layanan Pertanian & Kebun</a></li>
+                    <li><a href="{{ route('login') }}" class="hover:text-emerald-300 transition-colors">Masuk Akun</a></li>
+                    <li><a href="{{ route('register') }}" class="hover:text-emerald-300 transition-colors">Daftar Pengguna Baru</a></li>
+                    <li><a href="{{ route('dashboard') }}" class="hover:text-emerald-300 transition-colors">Dashboard Petani/Pekebun</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="font-semibold text-white mb-4">Kontak</h4>
-                <ul class="space-y-2 text-sm">
+                <h4 class="font-bold text-white mb-4 text-sm tracking-wider uppercase">Kontak & Bantuan</h4>
+                <ul class="space-y-2.5 text-sm text-[#A8BEA7]">
                     <li class="flex items-center gap-2"><span>📧</span><span>info@hallobun.com</span></li>
                     <li class="flex items-center gap-2"><span>📱</span><span>+62 812-3456-7890</span></li>
-                    <li class="flex items-center gap-2"><span>🕐</span><span>Senin-Jumat, 08.00-17.00</span></li>
+                    <li class="flex items-center gap-2"><span>🏡</span><span>Senin-Jumat, 08.00-17.00 WIB</span></li>
                 </ul>
             </div>
         </div>
-        <div class="border-t border-gray-800 mt-10 pt-6 text-center text-sm text-gray-500">
-            <p>© {{ date('Y') }} Hallobun. Platform Konsultasi Pertanian Indonesia. Hak Cipta Dilindungi.</p>
+        <div class="border-t border-[#2C3E2C] mt-12 pt-6 text-center text-xs text-[#7D967C]">
+            <p>© {{ date('Y') }} Hallobun. Sahabat Konsultasi Berkebun & Pertanian Indonesia. Hak Cipta Dilindungi.</p>
         </div>
     </div>
 </footer>

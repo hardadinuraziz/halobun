@@ -3,13 +3,17 @@
 @section('title', 'Undang Narasumber')
 
 @section('content')
-<div class="bg-gray-50 min-h-screen">
+<div class="bg-[#F8FAF7] min-h-screen">
     {{-- Header --}}
-    <div class="bg-gradient-to-r from-blue-700 to-blue-900 py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-            <div class="text-5xl mb-4">🎤</div>
-            <h1 class="text-3xl sm:text-4xl font-extrabold mb-3">Undang Narasumber Pertanian</h1>
-            <p class="text-blue-100 text-lg max-w-2xl mx-auto">Hadirkan pakar pertanian terbaik untuk seminar, penyuluhan, pelatihan, atau acara Anda</p>
+    <div class="gradient-greenhouse py-16 text-white relative overflow-hidden shadow-sm">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute -top-10 -right-10 w-72 h-72 bg-white/10 rounded-full blur-2xl"></div>
+            <div class="absolute -bottom-10 -left-10 w-52 h-52 bg-[#CADBCA]/20 rounded-full blur-2xl"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="text-5xl mb-3">🎤</div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold mb-2 text-white">Undang Narasumber & Trainer Kebun</h1>
+            <p class="text-[#E0ECE8] text-base max-w-2xl mx-auto">Hadirkan praktisi dan narasumber kredibel untuk webinar, pelatihan urban farming, lokakarya komunitas, dan seminar agribisnis.</p>
         </div>
     </div>
 
@@ -17,32 +21,32 @@
 
         {{-- Success Message --}}
         @if(session('success'))
-        <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 mb-8 flex gap-3">
-            <span class="text-2xl">✅</span>
+        <div class="bg-emerald-50 border border-emerald-200/80 rounded-2xl p-5 mb-8 flex gap-3 shadow-sm">
+            <span class="text-2xl">🌱</span>
             <div>
-                <p class="font-semibold text-emerald-800">{{ session('success') }}</p>
+                <p class="font-semibold text-emerald-900">{{ session('success') }}</p>
             </div>
         </div>
         @endif
 
         {{-- Keuntungan --}}
-        <div class="grid grid-cols-3 gap-4 mb-10">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
             @foreach([
-                ['🏆','Pakar Berpengalaman','Konsultan dengan pengalaman 10+ tahun'],
-                ['📍','Offline & Online','Bisa tatap muka atau virtual seminar'],
-                ['⚡','Respons Cepat','Tim kami merespons dalam 1x24 jam'],
+                ['🏆','Pakar Terverifikasi','Praktisi & akademisi teruji di bidangnya'],
+                ['📍','Online & On-Site','Fleksibel webinar atau praktik langsung'],
+                ['⚡','Koordinasi Cepat','Respons dan pendampingan dalam 1x24 jam'],
             ] as $item)
-            <div class="bg-white border border-gray-100 rounded-xl p-4 text-center">
+            <div class="bg-white/90 border border-[#E2EAE0] rounded-2xl p-4 text-center shadow-sm">
                 <div class="text-2xl mb-2">{{ $item[0] }}</div>
-                <div class="font-semibold text-gray-800 text-sm">{{ $item[1] }}</div>
-                <div class="text-gray-400 text-xs mt-1">{{ $item[2] }}</div>
+                <div class="font-bold text-emerald-950 text-sm">{{ $item[1] }}</div>
+                <div class="text-[#5A6D59] text-xs mt-1">{{ $item[2] }}</div>
             </div>
             @endforeach
         </div>
 
         {{-- Form --}}
-        <div class="bg-white border border-gray-100 rounded-2xl p-8">
-            <h2 class="text-xl font-bold text-gray-900 mb-6">Formulir Pengajuan Narsum</h2>
+        <div class="bg-white border border-[#E2EAE0] rounded-2xl p-8 shadow-sm">
+            <h2 class="text-xl font-bold text-emerald-950 mb-6">Formulir Pengajuan Narasumber</h2>
 
             <form action="{{ route('narsum.store') }}" method="POST" class="space-y-5">
                 @csrf
