@@ -159,12 +159,17 @@
         }
     }
 
-    // Tampilkan splash otomatis saat buka di HP jika belum ditutup di sesi ini
+    // Tampilkan splash otomatis saat buka di HP / DevTools mobile
     (function initSplash() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var forceSplash = urlParams.get('splash') === '1';
+        if (forceSplash) {
+            sessionStorage.removeItem('hallobun_splash_dismissed');
+        }
         if (window.innerWidth < 768) {
             var dismissed = sessionStorage.getItem('hallobun_splash_dismissed');
             var splash = document.getElementById('consultationSplash');
-            if (splash && dismissed !== '1') {
+            if (splash && (dismissed !== '1' || forceSplash)) {
                 splash.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
             }
