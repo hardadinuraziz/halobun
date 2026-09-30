@@ -444,7 +444,7 @@
                         @if($s->foto_url ?? false)
                             <img src="{{ $s->foto_url }}" alt="{{ $s->nama }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                         @else
-                            <img src="/images/layanan/benih.jpg" alt="{{ $s->nama }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <img src="/images/halobun_real_sarana.jpg" alt="{{ $s->nama }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                         @endif
                         <span class="absolute top-2 left-2 bg-white/95 text-gray-700 text-[10px] font-bold px-2 py-0.5 rounded-md shadow-2xs">
                             {{ $s->kategori ?? 'Nutrisi Kebun' }}
@@ -574,7 +574,7 @@
             {{-- Article 1 --}}
             <article class="bg-white rounded-2xl overflow-hidden border border-gray-200/90 hover:border-[#E0004D]/30 shadow-xs hover:shadow-md transition-all group flex flex-col">
                 <div class="aspect-[16/9] overflow-hidden bg-gray-100 relative">
-                    <img src="/images/layanan/konsultasi.jpg" alt="Panduan Hama Kutu Putih" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="/images/halobun_real_pest_control.jpg" alt="Panduan Pengendalian Hama Kutu Putih" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                     <span class="absolute top-3 left-3 bg-white text-[#E0004D] font-bold text-[10px] px-2.5 py-1 rounded-full shadow-xs">
                         Pengendalian Hama
                     </span>
@@ -598,7 +598,7 @@
             {{-- Article 2 --}}
             <article class="bg-white rounded-2xl overflow-hidden border border-gray-200/90 hover:border-[#E0004D]/30 shadow-xs hover:shadow-md transition-all group flex flex-col">
                 <div class="aspect-[16/9] overflow-hidden bg-gray-100 relative">
-                    <img src="/images/layanan/pelatihan.jpg" alt="Hidroponik Rumahan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="/images/halobun_real_hydroponics.jpg" alt="Hidroponik NFT Pekebun" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                     <span class="absolute top-3 left-3 bg-white text-[#E0004D] font-bold text-[10px] px-2.5 py-1 rounded-full shadow-xs">
                         Urban Farming
                     </span>
@@ -622,7 +622,7 @@
             {{-- Article 3 --}}
             <article class="bg-white rounded-2xl overflow-hidden border border-gray-200/90 hover:border-[#E0004D]/30 shadow-xs hover:shadow-md transition-all group flex flex-col">
                 <div class="aspect-[16/9] overflow-hidden bg-gray-100 relative">
-                    <img src="/images/layanan/riset.jpg" alt="Kesuburan Tanah" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <img src="/images/halobun_real_soil_test.jpg" alt="Manajemen Kesuburan Tanah" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                     <span class="absolute top-3 left-3 bg-white text-[#E0004D] font-bold text-[10px] px-2.5 py-1 rounded-full shadow-xs">
                         Manajemen Tanah
                     </span>
