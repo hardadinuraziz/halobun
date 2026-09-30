@@ -28,11 +28,11 @@
         <div class="flex items-center justify-between h-16">
 
             {{-- Logo --}}
-            <a href="{{ route('home') }}" class="flex items-center gap-2 group flex-shrink-0">
-                <img src="/images/logo.jpg"
-                     alt="Hallobun"
-                     class="h-8 sm:h-9 w-auto object-contain group-hover:opacity-90 transition-opacity"
-                     style="max-width:130px">
+            <a href="{{ route('home') }}" class="flex items-center gap-2 group flex-shrink-0 py-1">
+                <img src="/images/logo.png"
+                     alt="Hallobun - Layanan Perkebunan & Pertanian"
+                     class="h-9 sm:h-11 w-auto object-contain transition-transform group-hover:scale-105"
+                     style="max-width:180px">
             </a>
 
             {{-- Desktop Menu (Halodoc style) --}}
@@ -220,10 +220,10 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10">
             <div class="sm:col-span-2 md:col-span-1">
                 <a href="{{ route('home') }}" class="inline-block mb-3.5">
-                    <img src="/images/logo.jpg"
-                         alt="Hallobun"
-                         class="h-9 w-auto object-contain"
-                         style="max-width:140px">
+                    <img src="/images/logo.png"
+                         alt="Hallobun - Layanan Perkebunan & Pertanian"
+                         class="h-10 sm:h-12 w-auto object-contain"
+                         style="max-width:200px">
                 </a>
                 <p class="text-xs sm:text-sm text-gray-500 leading-relaxed mb-4">
                     Platform tele-agronomi dan perawatan kebun tepercaya. Menghubungkan pekebun dengan pakar berpengalaman untuk solusi cepat, ilmiah, dan akurat.
