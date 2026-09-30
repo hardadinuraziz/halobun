@@ -83,25 +83,73 @@
                 </div>
             </div>
 
-            {{-- Right Column: Real Agri Practitioner Photo --}}
-            <div class="lg:col-span-5 flex justify-center">
-                <div class="relative w-full max-w-md lg:max-w-none">
+            {{-- Right Column: Real Agri Practitioner Photo Slider (Auto 2 Images) --}}
+            <div class="lg:col-span-5 flex justify-center"
+                 x-data="{
+                     activeSlide: 0,
+                     slides: [
+                         {
+                             image: '{{ asset('images/halobun_real_practitioner.jpg') }}',
+                             alt: 'Praktisi Kebun & Tanaman Hias Halobun',
+                             title: 'Praktisi Kebun Aktif',
+                             subtitle: 'Bimbingan Agronomi Online'
+                         },
+                         {
+                             image: '{{ asset('images/halobun_real_practitioner_2.jpg') }}',
+                             alt: 'Dokter Tanaman & Pakar Hortikultura Halobun',
+                             title: 'Dokter Tanaman & Pangan',
+                             subtitle: 'Konsultasi Hama & Nutrisi'
+                         }
+                     ],
+                     timer: null,
+                     init() {
+                         this.timer = setInterval(() => {
+                             this.activeSlide = (this.activeSlide + 1) % this.slides.length;
+                         }, 4500);
+                     }
+                 }">
+                <div class="relative w-full max-w-md lg:max-w-none select-none">
                     {{-- Decorative Subtle Aura --}}
                     <div class="absolute -inset-2 bg-gradient-to-r from-[#F0FDF4] to-emerald-50 rounded-3xl blur-xl opacity-70"></div>
                     
-                    {{-- Main Photo Card --}}
+                    {{-- Main Photo Card with 2-Image Cross-Fade Slider --}}
                     <div class="relative bg-white rounded-3xl p-3 sm:p-4 border border-gray-200/80 shadow-md">
-                        <img src="/images/halobun_real_practitioner.jpg" 
-                             alt="Praktisi Kebun &amp; Pertanian Halobun" 
-                             class="w-full h-auto rounded-2xl object-cover shadow-2xs select-none"
-                             loading="eager">
+                        <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 shadow-2xs">
+                            {{-- Slide 1 --}}
+                            <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+                                 :class="activeSlide === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'">
+                                <img src="{{ asset('images/halobun_real_practitioner.jpg') }}" 
+                                     alt="Praktisi Kebun &amp; Pertanian Halobun" 
+                                     class="w-full h-full object-cover select-none">
+                            </div>
+
+                            {{-- Slide 2 --}}
+                            <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+                                 :class="activeSlide === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'">
+                                <img src="{{ asset('images/halobun_real_practitioner_2.jpg') }}" 
+                                     alt="Dokter Tanaman &amp; Pakar Hortikultura Halobun" 
+                                     class="w-full h-full object-cover select-none">
+                            </div>
+
+                            {{-- Slide Indicator Dots --}}
+                            <div class="absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">
+                                <button type="button" 
+                                        @click="activeSlide = 0" 
+                                        class="h-1.5 rounded-full transition-all duration-300"
+                                        :class="activeSlide === 0 ? 'w-5 bg-[#4ADE80]' : 'w-1.5 bg-white/60 hover:bg-white'"></button>
+                                <button type="button" 
+                                        @click="activeSlide = 1" 
+                                        class="h-1.5 rounded-full transition-all duration-300"
+                                        :class="activeSlide === 1 ? 'w-5 bg-[#4ADE80]' : 'w-1.5 bg-white/60 hover:bg-white'"></button>
+                            </div>
+                        </div>
                         
-                        {{-- Floating Mini Badge --}}
-                        <div class="absolute -bottom-3 left-6 sm:left-8 bg-white/95 backdrop-blur-md px-4 py-2 rounded-2xl border border-gray-100 shadow-lg flex items-center gap-2.5">
+                        {{-- Floating Mini Badge (Dynamic with active slide) --}}
+                        <div class="absolute -bottom-3 left-6 sm:left-8 bg-white/95 backdrop-blur-md px-4 py-2 rounded-2xl border border-gray-100 shadow-lg flex items-center gap-2.5 z-30">
                             <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"></span>
                             <div class="text-left">
-                                <p class="text-[11px] font-bold text-gray-900 leading-tight">Praktisi Kebun Aktif</p>
-                                <p class="text-[9.5px] text-[#16A34A] font-semibold leading-tight">Bimbingan Agronomi Online</p>
+                                <p class="text-[11px] font-bold text-gray-900 leading-tight" x-text="slides[activeSlide].title">Praktisi Kebun Aktif</p>
+                                <p class="text-[9.5px] text-[#16A34A] font-semibold leading-tight" x-text="slides[activeSlide].subtitle">Bimbingan Agronomi Online</p>
                             </div>
                         </div>
                     </div>

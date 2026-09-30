@@ -50,20 +50,63 @@
                     </div>
                 </div>
 
-                {{-- Right Real Person Illustration Photo --}}
-                <div class="lg:col-span-5 flex justify-center lg:justify-end">
-                    <div class="relative w-full max-w-[280px] sm:max-w-[320px]">
-                        {{-- Minimalist Photo Frame --}}
-                        <div class="relative aspect-square rounded-3xl overflow-hidden border-4 border-white/25 shadow-2xl bg-white/10 group">
-                            <img src="{{ asset('images/dashboard_praktisi_banner.jpg') }}"
-                                 alt="Praktisi Pertanian Hallobun"
-                                 class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                {{-- Right Real Person Illustration Photo Slider (Auto 2 Images) --}}
+                <div class="lg:col-span-5 flex justify-center lg:justify-end"
+                     x-data="{
+                         activeSlide: 0,
+                         slides: [
+                             {
+                                 image: '{{ asset('images/dashboard_praktisi_banner.jpg') }}',
+                                 alt: 'Praktisi Agronom Hallobun',
+                                 status: 'Praktisi Agronom Siap Konsultasi'
+                             },
+                             {
+                                 image: '{{ asset('images/halobun_real_practitioner.jpg') }}',
+                                 alt: 'Spesialis Tanaman & Kebun Hallobun',
+                                 status: 'Dokter Tanaman Aktif Melayani'
+                             }
+                         ],
+                         timer: null,
+                         init() {
+                             this.timer = setInterval(() => {
+                                 this.activeSlide = (this.activeSlide + 1) % this.slides.length;
+                             }, 4500);
+                         }
+                     }">
+                    <div class="relative w-full max-w-[280px] sm:max-w-[320px] select-none">
+                        {{-- Minimalist Photo Frame with 2-Image Slider --}}
+                        <div class="relative aspect-square rounded-3xl overflow-hidden border-4 border-white/25 shadow-2xl bg-white/10">
+                            {{-- Slide 1 --}}
+                            <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+                                 :class="activeSlide === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'">
+                                <img src="{{ asset('images/dashboard_praktisi_banner.jpg') }}"
+                                     alt="Praktisi Pertanian Hallobun"
+                                     class="w-full h-full object-cover object-top">
+                            </div>
+
+                            {{-- Slide 2 --}}
+                            <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+                                 :class="activeSlide === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'">
+                                <img src="{{ asset('images/halobun_real_practitioner.jpg') }}"
+                                     alt="Spesialis Tanaman Hallobun"
+                                     class="w-full h-full object-cover object-center">
+                            </div>
+
+                            {{-- Dots Indicator --}}
+                            <div class="absolute top-3 right-3 z-20 flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">
+                                <button type="button" @click="activeSlide = 0" 
+                                        class="h-1.5 rounded-full transition-all duration-300"
+                                        :class="activeSlide === 0 ? 'w-4 bg-[#4ADE80]' : 'w-1.5 bg-white/60'"></button>
+                                <button type="button" @click="activeSlide = 1" 
+                                        class="h-1.5 rounded-full transition-all duration-300"
+                                        :class="activeSlide === 1 ? 'w-4 bg-[#4ADE80]' : 'w-1.5 bg-white/60'"></button>
+                            </div>
                         </div>
 
-                        {{-- Floating Status Pill --}}
-                        <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white text-gray-800 px-3.5 py-1.5 rounded-full shadow-lg border border-gray-100 flex items-center gap-2 whitespace-nowrap">
+                        {{-- Floating Status Pill with dynamic status --}}
+                        <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white text-gray-800 px-3.5 py-1.5 rounded-full shadow-lg border border-gray-100 flex items-center gap-2 whitespace-nowrap z-30">
                             <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span class="text-[11px] font-extrabold text-[#15803D]">Praktisi Agronom Siap Konsultasi</span>
+                            <span class="text-[11px] font-extrabold text-[#15803D]" x-text="slides[activeSlide].status">Praktisi Agronom Siap Konsultasi</span>
                         </div>
                     </div>
                 </div>
