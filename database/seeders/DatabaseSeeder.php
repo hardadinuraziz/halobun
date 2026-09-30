@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             ['email' => 'admin@hallobun.com'],
             [
                 'name'     => 'Admin Hallobun',
-                'password' => Hash::make('password'),
+                'password' => Hash::make('halobun2026'),
                 'role'     => 'admin',
                 'phone'    => '081234567890',
                 'email_verified_at' => now(),
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
             $user = User::create([
                 'name'     => $name,
                 'email'    => strtolower(preg_replace('/[^a-z]/i', '.', $name)) . '@hallobun.com',
-                'password' => Hash::make('password'),
+                'password' => Hash::make('halobun2026'),
                 'role'     => 'konsultan',
                 'phone'    => '08' . rand(100000000, 999999999),
             ]);
@@ -114,7 +114,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name'     => 'Petani Demo',
             'email'    => 'demo@hallobun.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('halobun2026'),
             'role'     => 'user',
             'phone'    => '082345678901',
         ]);
