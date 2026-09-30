@@ -8,66 +8,106 @@
 {{-- ═══════════════════════════════════════════════════════════════════════════
      1. HERO SECTION (HALODOC CLEAN RED & WHITE THEME)
      ═══════════════════════════════════════════════════════════════════════════ --}}
-<section class="bg-white pt-8 sm:pt-12 pb-8 sm:pb-12 border-b border-gray-100">
+<section class="bg-white pt-6 sm:pt-10 pb-8 sm:pb-12 border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {{-- Headline & Subtitle --}}
-        <div class="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
-            <div class="inline-flex items-center gap-2 bg-[#FFF0F5] border border-[#FFD1DF] px-3.5 py-1 rounded-full mb-3.5 shadow-2xs">
-                <span class="w-2 h-2 rounded-full bg-[#E0004D] animate-pulse"></span>
-                <span class="text-[11px] sm:text-xs font-bold text-[#E0004D] tracking-wide uppercase">
-                    Tele-Agronomi &amp; Layanan Kebun #1
-                </span>
-            </div>
-
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-[1.2] mb-3">
-                Solusi Perawatan Kebun &amp; Pertanian<br class="hidden sm:inline">
-                <span class="text-[#E0004D]">Terlengkap di Tanganmu</span>
-            </h1>
-
-            <p class="text-xs sm:text-base text-gray-600 leading-relaxed max-w-2xl mx-auto">
-                Chat dokter tanaman terpercaya, belanja kebutuhan pupuk &amp; bibit unggul, hingga booking kunjungan lapangan langsung ke kebun Anda.
-            </p>
-        </div>
-
-        {{-- Halodoc Signature Clean Search Bar --}}
-        <div class="max-w-2xl mx-auto mb-8 sm:mb-10">
-            <form action="{{ route('konsultasi.index') }}" method="GET" class="bg-white rounded-2xl sm:rounded-full p-2 sm:p-2.5 border border-gray-200 shadow-sm flex flex-col sm:flex-row items-center gap-2 transition-all focus-within:border-[#E0004D] focus-within:ring-2 focus-within:ring-[#FFF0F5]">
-                <div class="flex items-center gap-3 flex-1 px-3 w-full">
-                    <svg class="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                    </svg>
-                    <input type="text" 
-                           name="search"
-                           id="homeSearchInput"
-                           placeholder="Cari dokter kebun, spesialisasi, kutu kebul, pupuk..."
-                           class="w-full bg-transparent border-none text-xs sm:text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-0 py-1.5">
+        {{-- 2-Column Hero: Copy & Search (Left) + Halodoc 3D Plant Doctor Illustration (Right) --}}
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center mb-10 sm:mb-12">
+            
+            {{-- Left Column: Copy & Search --}}
+            <div class="lg:col-span-7 text-left">
+                <div class="inline-flex items-center gap-2 bg-[#FFF0F5] border border-[#FFD1DF] px-3.5 py-1 rounded-full mb-3.5 shadow-2xs">
+                    <span class="w-2 h-2 rounded-full bg-[#E0004D] animate-pulse"></span>
+                    <span class="text-[11px] sm:text-xs font-bold text-[#E0004D] tracking-wide uppercase">
+                        Tele-Agronomi &amp; Layanan Kebun #1 Indonesia
+                    </span>
                 </div>
-                <button type="submit" 
-                        class="w-full sm:w-auto px-6 py-2.5 rounded-xl sm:rounded-full bg-[#E0004D] hover:bg-[#C70044] text-white text-xs sm:text-sm font-bold text-center transition-all shadow-xs flex-shrink-0 active:scale-95">
-                    Cari Solusi
-                </button>
-            </form>
 
-            {{-- Popular Search Chips --}}
-            <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mt-3 text-[11px] text-gray-500">
-                <span class="font-semibold text-gray-400">Populer:</span>
-                <a href="{{ route('konsultasi.index') }}?search=kutu+putih" class="bg-gray-50 hover:bg-[#FFF0F5] hover:text-[#E0004D] hover:border-[#FFD1DF] text-gray-600 px-3 py-1 rounded-full border border-gray-200 transition-colors">
-                    🐛 Kutu Putih
-                </a>
-                <a href="{{ route('konsultasi.index') }}?search=daun+kuning" class="bg-gray-50 hover:bg-[#FFF0F5] hover:text-[#E0004D] hover:border-[#FFD1DF] text-gray-600 px-3 py-1 rounded-full border border-gray-200 transition-colors">
-                    🍂 Daun Kuning
-                </a>
-                <a href="{{ route('sarana.index') }}" class="bg-gray-50 hover:bg-[#FFF0F5] hover:text-[#E0004D] hover:border-[#FFD1DF] text-gray-600 px-3 py-1 rounded-full border border-gray-200 transition-colors">
-                    🌱 Pupuk Organik
-                </a>
-                <a href="{{ route('konsultasi.index') }}?search=hidroponik" class="bg-gray-50 hover:bg-[#FFF0F5] hover:text-[#E0004D] hover:border-[#FFD1DF] text-gray-600 px-3 py-1 rounded-full border border-gray-200 transition-colors">
-                    🥬 Hidroponik
-                </a>
-                <a href="{{ route('kunjungan.index') }}" class="bg-gray-50 hover:bg-[#FFF0F5] hover:text-[#E0004D] hover:border-[#FFD1DF] text-gray-600 px-3 py-1 rounded-full border border-gray-200 transition-colors">
-                    🚜 Cek Lahan
-                </a>
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-[1.18] mb-3.5">
+                    Solusi Perawatan Kebun &amp; Pertanian<br>
+                    <span class="text-[#E0004D]">Terlengkap di Tanganmu</span>
+                </h1>
+
+                <p class="text-xs sm:text-base text-gray-600 leading-relaxed max-w-xl mb-6">
+                    Chat dokter tanaman terpercaya, beli nutrisi &amp; bibit unggul, hingga booking kunjungan lapangan langsung ke kebun Anda. Praktis, ilmiah, dan ramah pemula.
+                </p>
+
+                {{-- Halodoc Signature Clean Search Bar --}}
+                <div class="mb-4">
+                    <form action="{{ route('konsultasi.index') }}" method="GET" class="bg-white rounded-2xl sm:rounded-full p-2 border border-gray-200 shadow-sm flex flex-col sm:flex-row items-center gap-2 transition-all focus-within:border-[#E0004D] focus-within:ring-2 focus-within:ring-[#FFF0F5]">
+                        <div class="flex items-center gap-2.5 flex-1 px-3 w-full">
+                            <svg class="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                            <input type="text" 
+                                   name="search"
+                                   id="homeSearchInput"
+                                   placeholder="Cari dokter kebun, hama kutu kebul, pupuk NPK..."
+                                   class="w-full bg-transparent border-none text-xs sm:text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-0 py-1.5">
+                        </div>
+                        <button type="submit" 
+                                class="w-full sm:w-auto px-6 py-2.5 rounded-xl sm:rounded-full bg-[#E0004D] hover:bg-[#C70044] text-white text-xs sm:text-sm font-bold text-center transition-all shadow-xs flex-shrink-0 active:scale-95">
+                            Cari Solusi
+                        </button>
+                    </form>
+
+                    {{-- Popular Search Chips --}}
+                    <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-3 text-[11px] text-gray-500">
+                        <span class="font-semibold text-gray-400">Populer:</span>
+                        <a href="{{ route('konsultasi.index') }}?search=kutu+putih" class="bg-gray-50 hover:bg-[#FFF0F5] hover:text-[#E0004D] hover:border-[#FFD1DF] text-gray-600 px-3 py-1 rounded-full border border-gray-200 transition-colors">
+                            🐛 Kutu Putih
+                        </a>
+                        <a href="{{ route('konsultasi.index') }}?search=daun+kuning" class="bg-gray-50 hover:bg-[#FFF0F5] hover:text-[#E0004D] hover:border-[#FFD1DF] text-gray-600 px-3 py-1 rounded-full border border-gray-200 transition-colors">
+                            🍂 Daun Kuning
+                        </a>
+                        <a href="{{ route('sarana.index') }}" class="bg-gray-50 hover:bg-[#FFF0F5] hover:text-[#E0004D] hover:border-[#FFD1DF] text-gray-600 px-3 py-1 rounded-full border border-gray-200 transition-colors">
+                            🌱 Pupuk Organik
+                        </a>
+                        <a href="{{ route('konsultasi.index') }}?search=hidroponik" class="bg-gray-50 hover:bg-[#FFF0F5] hover:text-[#E0004D] hover:border-[#FFD1DF] text-gray-600 px-3 py-1 rounded-full border border-gray-200 transition-colors">
+                            🥬 Hidroponik
+                        </a>
+                    </div>
+                </div>
+
+                {{-- Fast Trust Highlights --}}
+                <div class="flex flex-wrap items-center gap-4 sm:gap-6 pt-3 text-xs text-gray-500 font-medium">
+                    <span class="flex items-center gap-1.5">
+                        <span class="text-emerald-500 font-bold">✓</span> Respon Cepat &lt; 5 Menit
+                    </span>
+                    <span class="flex items-center gap-1.5">
+                        <span class="text-emerald-500 font-bold">✓</span> 150+ Dokter Tanaman
+                    </span>
+                    <span class="flex items-center gap-1.5">
+                        <span class="text-emerald-500 font-bold">✓</span> Tarif Mulai Rp 25.000
+                    </span>
+                </div>
             </div>
+
+            {{-- Right Column: 3D Halodoc Agronomist Illustration --}}
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="relative w-full max-w-md lg:max-w-none">
+                    {{-- Decorative Subtle Aura --}}
+                    <div class="absolute -inset-2 bg-gradient-to-r from-[#FFF0F5] to-emerald-50 rounded-3xl blur-xl opacity-70"></div>
+                    
+                    {{-- Main 3D Card --}}
+                    <div class="relative bg-white rounded-3xl p-3 sm:p-4 border border-gray-200/80 shadow-md">
+                        <img src="/images/halobun_hero_halodoc.jpg" 
+                             alt="Dokter Tanaman &amp; Konsultasi Kebun Halobun" 
+                             class="w-full h-auto rounded-2xl object-cover shadow-2xs select-none"
+                             loading="eager">
+                        
+                        {{-- Floating Mini Badge --}}
+                        <div class="absolute -bottom-3 left-6 sm:left-8 bg-white/95 backdrop-blur-md px-4 py-2 rounded-2xl border border-gray-100 shadow-lg flex items-center gap-2.5">
+                            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"></span>
+                            <div class="text-left">
+                                <p class="text-[11px] font-bold text-gray-900 leading-tight">Dokter Tanaman Aktif</p>
+                                <p class="text-[9.5px] text-[#E0004D] font-semibold leading-tight">Bimbingan Diagnosa Online</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         {{-- ═══════════════════════════════════════════════════════════════════
