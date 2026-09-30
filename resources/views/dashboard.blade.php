@@ -5,37 +5,72 @@
 @section('content')
 <div class="bg-gray-50 min-h-screen py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        {{-- Welcome Banner --}}
-        <div class="bg-gradient-to-r from-[#16A34A] to-[#15803D] rounded-3xl p-6 sm:p-8 text-white shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div class="space-y-2">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-[#DCFCE7] backdrop-blur-xs">
-                    🌱 Akun Petani & Pekebun Aktif
-                </div>
-                <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
-                    Selamat Datang, {{ auth()->user()->name }}! 👋
-                </h1>
-                <p class="text-[#BBF7D0] text-sm max-w-xl">
-                    Melalui akun Hallobun Anda, Anda dapat berkonsultasi langsung dengan praktisi agronom, memesan inspeksi kebun, mengundang narasumber, dan memantau status seluruh layanan perkebunan Anda.
-                </p>
-            </div>
+        {{-- Welcome Banner with Real Agronomist Illustration --}}
+        <div class="relative overflow-hidden bg-gradient-to-r from-[#16A34A] via-[#15803D] to-[#166534] rounded-3xl text-white shadow-sm border border-[#BBF7D0]/20">
+            {{-- Decorative soft lighting --}}
+            <div class="absolute -right-16 -top-16 w-64 h-64 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="absolute right-1/3 -bottom-12 w-48 h-48 bg-emerald-400/10 rounded-full blur-xl pointer-events-none"></div>
 
-            <div class="flex flex-wrap items-center gap-3">
-                <a href="{{ route('konsultasi.index') }}"
-                   class="px-5 py-3 bg-white text-[#16A34A] hover:bg-gray-50 rounded-2xl font-bold text-xs sm:text-sm shadow-md transition-all active:scale-95 flex items-center gap-2">
-                    <span>💬</span>
-                    <span>Tanya Pakar Sekarang</span>
-                </a>
-                @if(auth()->user()->isAdmin())
-                    <a href="{{ route('admin.dashboard') }}"
-                       class="px-4 py-3 bg-[#052E16] hover:bg-[#042411] text-white rounded-2xl font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-1.5">
-                        <span>⚙️</span>
-                        <span>Panel Admin</span>
-                    </a>
-                @endif
+            <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 sm:p-8 lg:p-10">
+                {{-- Left Text Column --}}
+                <div class="lg:col-span-7 space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-white/15 text-[#DCFCE7] backdrop-blur-xs border border-white/10">
+                        <span class="w-2 h-2 rounded-full bg-[#4ADE80] animate-pulse"></span>
+                        Akun Petani & Pekebun Aktif
+                    </div>
+
+                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight">
+                        Selamat Datang, <br class="hidden sm:inline">{{ auth()->user()->name }}! 👋
+                    </h1>
+
+                    <p class="text-[#BBF7D0] text-sm sm:text-base leading-relaxed max-w-xl font-normal">
+                        Konsultasikan langsung kendala hama, penyakit tanaman, atau nutrisi tanah Anda bersama praktisi perkebunan terpercaya secara cepat, ilmiah, dan akurat.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-3 pt-2">
+                        <a href="{{ route('konsultasi.index') }}"
+                           class="px-5 py-3 bg-white text-[#16A34A] hover:bg-gray-50 rounded-2xl font-bold text-xs sm:text-sm shadow-md transition-all active:scale-95 inline-flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                            </svg>
+                            Tanya Pakar Sekarang
+                        </a>
+
+                        <a href="{{ route('kunjungan.index') }}"
+                           class="px-4 py-3 bg-white/15 hover:bg-white/25 text-white border border-white/20 rounded-2xl font-semibold text-xs sm:text-sm transition-all inline-flex items-center gap-1.5">
+                            🚜 Kunjungan Lahan
+                        </a>
+
+                        @if(auth()->user()->isAdmin())
+                            <a href="{{ route('admin.dashboard') }}"
+                               class="px-4 py-3 bg-[#052E16] hover:bg-[#042411] text-white rounded-2xl font-bold text-xs sm:text-sm shadow-md transition-all inline-flex items-center gap-1.5">
+                                ⚙️ Panel Admin
+                            </a>
+                        @endif
+                    </div>
+                </div>
+
+                {{-- Right Real Person Illustration Photo --}}
+                <div class="lg:col-span-5 flex justify-center lg:justify-end">
+                    <div class="relative w-full max-w-[280px] sm:max-w-[320px]">
+                        {{-- Minimalist Photo Frame --}}
+                        <div class="relative aspect-square rounded-3xl overflow-hidden border-4 border-white/25 shadow-2xl bg-white/10 group">
+                            <img src="{{ asset('images/dashboard_praktisi_banner.jpg') }}"
+                                 alt="Praktisi Pertanian Hallobun"
+                                 class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        </div>
+
+                        {{-- Floating Status Pill --}}
+                        <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white text-gray-800 px-3.5 py-1.5 rounded-full shadow-lg border border-gray-100 flex items-center gap-2 whitespace-nowrap">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span class="text-[11px] font-extrabold text-[#15803D]">Praktisi Agronom Siap Konsultasi</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        {{-- Quick Service Action Cards --}}
+        {{-- Quick Service Action Cards with Real Photos --}}
         <div>
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-lg font-bold text-gray-900">Layanan yang Dapat Anda Akses</h2>
@@ -44,17 +79,24 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {{-- Layanan 1: Tanya Pakar --}}
                 <a href="{{ route('konsultasi.index') }}"
-                   class="bg-white p-5 rounded-2xl border border-gray-100 hover:border-[#16A34A] hover:shadow-md transition-all group flex flex-col justify-between">
+                   class="bg-white rounded-2xl border border-gray-100 hover:border-[#16A34A] hover:shadow-md transition-all group overflow-hidden flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center text-2xl group-hover:scale-105 transition-transform mb-4">
-                            💬
+                        <div class="h-32 w-full overflow-hidden bg-gray-100 relative">
+                            <img src="{{ asset('images/halobun_praktisi_hero.jpg') }}"
+                                 alt="Tanya Pakar"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-xs text-[10px] font-bold text-[#16A34A]">
+                                Tele-Agronomi
+                            </span>
                         </div>
-                        <h3 class="font-extrabold text-gray-900 group-hover:text-[#16A34A] transition-colors text-base">Tanya Pakar Online</h3>
-                        <p class="text-xs text-gray-500 mt-1 leading-relaxed">
-                            Konsultasi via video call dengan praktisi agronom ahli untuk diagnosa hama, nutrisi, dan pemupukan.
-                        </p>
+                        <div class="p-4">
+                            <h3 class="font-extrabold text-gray-900 group-hover:text-[#16A34A] transition-colors text-base">Tanya Pakar Online</h3>
+                            <p class="text-xs text-gray-500 mt-1 leading-relaxed">
+                                Konsultasi video call dengan praktisi agronom untuk diagnosa penyakit, hama, & pemupukan.
+                            </p>
+                        </div>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-gray-50 flex items-center justify-between text-xs font-bold text-[#16A34A]">
+                    <div class="px-4 pb-4 pt-1 flex items-center justify-between text-xs font-bold text-[#16A34A]">
                         <span>Pilih Praktisi</span>
                         <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
                     </div>
@@ -62,17 +104,24 @@
 
                 {{-- Layanan 2: Kunjungan Lahan --}}
                 <a href="{{ route('kunjungan.index') }}"
-                   class="bg-white p-5 rounded-2xl border border-gray-100 hover:border-[#16A34A] hover:shadow-md transition-all group flex flex-col justify-between">
+                   class="bg-white rounded-2xl border border-gray-100 hover:border-[#16A34A] hover:shadow-md transition-all group overflow-hidden flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 rounded-xl bg-purple-50 border border-purple-200 flex items-center justify-center text-2xl group-hover:scale-105 transition-transform mb-4">
-                            🚜
+                        <div class="h-32 w-full overflow-hidden bg-gray-100 relative">
+                            <img src="{{ asset('images/halobun_real_soil_test.jpg') }}"
+                                 alt="Kunjungan Lahan"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-xs text-[10px] font-bold text-purple-700">
+                                On-Site Visit
+                            </span>
                         </div>
-                        <h3 class="font-extrabold text-gray-900 group-hover:text-purple-600 transition-colors text-base">Kunjungan Lahan</h3>
-                        <p class="text-xs text-gray-500 mt-1 leading-relaxed">
-                            Undang tim ahli datang langsung ke kebun Anda untuk survei tanah, kesehatan tanaman, dan bimbingan lapangan.
-                        </p>
+                        <div class="p-4">
+                            <h3 class="font-extrabold text-gray-900 group-hover:text-purple-600 transition-colors text-base">Kunjungan Lahan</h3>
+                            <p class="text-xs text-gray-500 mt-1 leading-relaxed">
+                                Datangkan praktisi langsung ke kebun Anda untuk survei tanah, pH, dan bimbingan lapangan.
+                            </p>
+                        </div>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-gray-50 flex items-center justify-between text-xs font-bold text-purple-600">
+                    <div class="px-4 pb-4 pt-1 flex items-center justify-between text-xs font-bold text-purple-600">
                         <span>Ajukan Kunjungan</span>
                         <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
                     </div>
@@ -80,17 +129,24 @@
 
                 {{-- Layanan 3: Undang Narasumber --}}
                 <a href="{{ route('narsum.index') }}"
-                   class="bg-white p-5 rounded-2xl border border-gray-100 hover:border-[#16A34A] hover:shadow-md transition-all group flex flex-col justify-between">
+                   class="bg-white rounded-2xl border border-gray-100 hover:border-[#16A34A] hover:shadow-md transition-all group overflow-hidden flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-2xl group-hover:scale-105 transition-transform mb-4">
-                            🎤
+                        <div class="h-32 w-full overflow-hidden bg-gray-100 relative">
+                            <img src="{{ asset('images/halobun_real_training.jpg') }}"
+                                 alt="Undang Narasumber"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-xs text-[10px] font-bold text-blue-700">
+                                Workshop & Pelatihan
+                            </span>
                         </div>
-                        <h3 class="font-extrabold text-gray-900 group-hover:text-blue-600 transition-colors text-base">Undang Narasumber</h3>
-                        <p class="text-xs text-gray-500 mt-1 leading-relaxed">
-                            Pemateri praktisi berpengalaman untuk penyuluhan kelompok tani, webinar, atau workshop perkebunan.
-                        </p>
+                        <div class="p-4">
+                            <h3 class="font-extrabold text-gray-900 group-hover:text-blue-600 transition-colors text-base">Undang Narasumber</h3>
+                            <p class="text-xs text-gray-500 mt-1 leading-relaxed">
+                                Pemateri praktisi berpengalaman untuk penyuluhan kelompok tani, webinar, atau seminar kebun.
+                            </p>
+                        </div>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-gray-50 flex items-center justify-between text-xs font-bold text-blue-600">
+                    <div class="px-4 pb-4 pt-1 flex items-center justify-between text-xs font-bold text-blue-600">
                         <span>Undang Pemateri</span>
                         <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
                     </div>
@@ -98,17 +154,24 @@
 
                 {{-- Layanan 4: Toko Sarana --}}
                 <a href="{{ route('sarana.index') }}"
-                   class="bg-white p-5 rounded-2xl border border-gray-100 hover:border-[#16A34A] hover:shadow-md transition-all group flex flex-col justify-between">
+                   class="bg-white rounded-2xl border border-gray-100 hover:border-[#16A34A] hover:shadow-md transition-all group overflow-hidden flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center text-2xl group-hover:scale-105 transition-transform mb-4">
-                            🛍️
+                        <div class="h-32 w-full overflow-hidden bg-gray-100 relative">
+                            <img src="{{ asset('images/halobun_real_sarana.jpg') }}"
+                                 alt="Toko Sarana Tani"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-xs text-[10px] font-bold text-orange-700">
+                                Sarana Produksi
+                            </span>
                         </div>
-                        <h3 class="font-extrabold text-gray-900 group-hover:text-orange-600 transition-colors text-base">Toko Sarana Tani</h3>
-                        <p class="text-xs text-gray-500 mt-1 leading-relaxed">
-                            Beli benih unggul, pupuk organik, pestisida ramah lingkungan, dan peralatan kebun bersertifikat.
-                        </p>
+                        <div class="p-4">
+                            <h3 class="font-extrabold text-gray-900 group-hover:text-orange-600 transition-colors text-base">Toko Sarana Tani</h3>
+                            <p class="text-xs text-gray-500 mt-1 leading-relaxed">
+                                Beli benih bersertifikat, pupuk organik, pestisida terdaftar, dan perlengkapan perkebunan.
+                            </p>
+                        </div>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-gray-50 flex items-center justify-between text-xs font-bold text-orange-600">
+                    <div class="px-4 pb-4 pt-1 flex items-center justify-between text-xs font-bold text-orange-600">
                         <span>Katalog Produk</span>
                         <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
                     </div>
