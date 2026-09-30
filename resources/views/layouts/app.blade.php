@@ -91,7 +91,15 @@
                             </a>
                             <a href="{{ route('konsultasi.riwayat') }}"
                                class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-[#F0FDF4] hover:text-[#16A34A]">
-                                📋 Riwayat Konsultasi
+                                💬 Riwayat Konsultasi
+                            </a>
+                            <a href="{{ route('kunjungan.riwayat') }}"
+                               class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-[#F0FDF4] hover:text-[#16A34A]">
+                                🚜 Riwayat Kunjungan
+                            </a>
+                            <a href="{{ route('narsum.riwayat') }}"
+                               class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-[#F0FDF4] hover:text-[#16A34A]">
+                                🎤 Riwayat Narasumber
                             </a>
                             <hr class="my-1 border-gray-100">
                             <form method="POST" action="{{ route('logout') }}">
@@ -170,16 +178,24 @@
                     @endif
                     <a href="{{ route('dashboard') }}"
                        class="block px-3 py-2 rounded-xl text-base font-semibold text-gray-700 hover:bg-gray-50">
-                        Dashboard User
+                        📊 Dashboard User
                     </a>
                     <a href="{{ route('konsultasi.riwayat') }}"
                        class="block px-3 py-2 rounded-xl text-base font-semibold text-gray-700 hover:bg-gray-50">
-                        Riwayat Konsultasi
+                        💬 Riwayat Konsultasi
+                    </a>
+                    <a href="{{ route('kunjungan.riwayat') }}"
+                       class="block px-3 py-2 rounded-xl text-base font-semibold text-gray-700 hover:bg-gray-50">
+                        🚜 Riwayat Kunjungan
+                    </a>
+                    <a href="{{ route('narsum.riwayat') }}"
+                       class="block px-3 py-2 rounded-xl text-base font-semibold text-gray-700 hover:bg-gray-50">
+                        🎤 Riwayat Narasumber
                     </a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="w-full text-left px-3 py-2 rounded-xl text-base font-semibold text-red-600 hover:bg-red-50">
-                            Keluar
+                            🚪 Keluar
                         </button>
                     </form>
                 </div>

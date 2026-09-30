@@ -67,7 +67,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     // Dashboard user
-    Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
+    Route::get('/dashboard', function () {
+        $user = auth()->user();
+        $bookings = \App\Models\Booking::with(['konsultan.user', 'jadwal', 'payment'])
+            ->where('user_id', $user->id)
+            ->latest()
+            ->take(5)
+            ->get();
+        $kunjungans = \App\Models\KunjunganOffline::where('user_id', $user->id)->latest()->take(5)->get();
+        $narsums = \App\Models\NarsumUndangan::where('user_id', $user->id)->latest()->take(5)->get();
+        return view('dashboard', compact('bookings', 'kunjungans', 'narsums'));
+    })->name('dashboard');
 });
 
 // ─── Payment Webhook (no CSRF) ──────────────────────────────────────────────
