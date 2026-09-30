@@ -244,6 +244,7 @@
 {{-- Main Content --}}
 <main>
     @yield('content')
+    {{ $slot ?? '' }}
 </main>
 
 {{-- WhatsApp FAB --}}
