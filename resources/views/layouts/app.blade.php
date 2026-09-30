@@ -235,7 +235,7 @@
             <div>
                 <h4 class="font-bold text-gray-900 mb-4 text-xs sm:text-sm tracking-wider uppercase">Layanan Utama</h4>
                 <ul class="space-y-2.5 text-xs sm:text-sm">
-                    <li><a href="{{ route('konsultasi.index') }}" class="hover:text-[#E0004D] transition-colors">💬 Tanya Dokter/Agronomis</a></li>
+                    <li><a href="{{ route('konsultasi.index') }}" class="hover:text-[#E0004D] transition-colors">💬 Tanya Praktisi Kebun</a></li>
                     <li><a href="{{ route('sarana.index') }}" class="hover:text-[#E0004D] transition-colors">🛒 Toko Sarana Kebun</a></li>
                     <li><a href="{{ route('kunjungan.index') }}" class="hover:text-[#E0004D] transition-colors">🚜 Kunjungan Lahan On-Site</a></li>
                     <li><a href="{{ route('narsum.index') }}" class="hover:text-[#E0004D] transition-colors">🎤 Undang Narasumber</a></li>

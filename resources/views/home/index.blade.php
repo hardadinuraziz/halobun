@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Solusi Perawatan Kebun & Pertanian Terlengkap')
-@section('meta_description', 'Platform tele-agronomi dan perawatan kebun terlengkap. Chat dokter tanaman, beli sarana & pupuk, hingga undang narasumber dan kunjungan lahan.')
+@section('meta_description', 'Platform tele-agronomi dan bimbingan berkebun terlengkap. Bimbingan bersama praktisi perkebunan & pertanian, beli sarana & pupuk, hingga undang narasumber dan kunjungan lahan.')
 
 @section('content')
 
@@ -11,7 +11,7 @@
 <section class="bg-white pt-6 sm:pt-10 pb-8 sm:pb-12 border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {{-- 2-Column Hero: Copy & Search (Left) + Halodoc 3D Plant Doctor Illustration (Right) --}}
+        {{-- 2-Column Hero: Copy & Search (Left) + Halodoc 3D Agri Practitioner Illustration (Right) --}}
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center mb-10 sm:mb-12">
             
             {{-- Left Column: Copy & Search --}}
@@ -29,7 +29,7 @@
                 </h1>
 
                 <p class="text-xs sm:text-base text-gray-600 leading-relaxed max-w-xl mb-6">
-                    Chat dokter tanaman terpercaya, beli nutrisi &amp; bibit unggul, hingga booking kunjungan lapangan langsung ke kebun Anda. Praktis, ilmiah, dan ramah pemula.
+                    Bimbingan langsung bersama praktisi perkebunan &amp; agronomis terpercaya, beli nutrisi &amp; bibit unggul, hingga booking kunjungan lapangan langsung ke kebun Anda. Praktis, ilmiah, dan ramah pemula.
                 </p>
 
                 {{-- Halodoc Signature Clean Search Bar --}}
@@ -42,7 +42,7 @@
                             <input type="text" 
                                    name="search"
                                    id="homeSearchInput"
-                                   placeholder="Cari dokter kebun, hama kutu kebul, pupuk NPK..."
+                                   placeholder="Cari praktisi kebun, agronomis, hama kutu kebul, pupuk NPK..."
                                    class="w-full bg-transparent border-none text-xs sm:text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-0 py-1.5">
                         </div>
                         <button type="submit" 
@@ -75,7 +75,7 @@
                         <span class="text-emerald-500 font-bold">✓</span> Respon Cepat &lt; 5 Menit
                     </span>
                     <span class="flex items-center gap-1.5">
-                        <span class="text-emerald-500 font-bold">✓</span> 150+ Dokter Tanaman
+                        <span class="text-emerald-500 font-bold">✓</span> 150+ Praktisi Berpengalaman
                     </span>
                     <span class="flex items-center gap-1.5">
                         <span class="text-emerald-500 font-bold">✓</span> Tarif Mulai Rp 25.000
@@ -83,7 +83,7 @@
                 </div>
             </div>
 
-            {{-- Right Column: 3D Halodoc Agronomist Illustration --}}
+            {{-- Right Column: 3D Agri Practitioner Illustration --}}
             <div class="lg:col-span-5 flex justify-center">
                 <div class="relative w-full max-w-md lg:max-w-none">
                     {{-- Decorative Subtle Aura --}}
@@ -91,8 +91,8 @@
                     
                     {{-- Main 3D Card --}}
                     <div class="relative bg-white rounded-3xl p-3 sm:p-4 border border-gray-200/80 shadow-md">
-                        <img src="/images/halobun_hero_halodoc.jpg" 
-                             alt="Dokter Tanaman &amp; Konsultasi Kebun Halobun" 
+                        <img src="/images/halobun_praktisi_hero.jpg" 
+                             alt="Praktisi Kebun &amp; Pertanian Halobun" 
                              class="w-full h-auto rounded-2xl object-cover shadow-2xs select-none"
                              loading="eager">
                         
@@ -100,8 +100,8 @@
                         <div class="absolute -bottom-3 left-6 sm:left-8 bg-white/95 backdrop-blur-md px-4 py-2 rounded-2xl border border-gray-100 shadow-lg flex items-center gap-2.5">
                             <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"></span>
                             <div class="text-left">
-                                <p class="text-[11px] font-bold text-gray-900 leading-tight">Dokter Tanaman Aktif</p>
-                                <p class="text-[9.5px] text-[#E0004D] font-semibold leading-tight">Bimbingan Diagnosa Online</p>
+                                <p class="text-[11px] font-bold text-gray-900 leading-tight">Praktisi Kebun Aktif</p>
+                                <p class="text-[9.5px] text-[#E0004D] font-semibold leading-tight">Bimbingan Agronomi Online</p>
                             </div>
                         </div>
                     </div>
@@ -115,7 +115,7 @@
              ═══════════════════════════════════════════════════════════════════ --}}
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 mb-2">
             
-            {{-- Service 1: Chat Dokter / Tanya Pakar --}}
+            {{-- Service 1: Tanya Praktisi / Pakar --}}
             <a href="{{ route('konsultasi.index') }}" 
                class="bg-white hover:bg-gray-50/80 rounded-2xl p-4 sm:p-5 border border-gray-200/90 hover:border-[#E0004D]/40 shadow-xs hover:shadow-md transition-all group flex flex-col items-center text-center">
                 <div class="w-14 h-14 rounded-2xl bg-[#FFF0F5] border border-[#FFD1DF] flex items-center justify-center text-2xl mb-2.5 group-hover:scale-110 transition-transform">
@@ -213,8 +213,8 @@
         <div class="flex items-end justify-between mb-6">
             <div>
                 <span class="text-xs font-bold text-[#E0004D] uppercase tracking-wider">Praktisi &amp; Agronomis Pilihan</span>
-                <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mt-1">Konsultasi dengan Dokter Tanaman</h2>
-                <p class="text-xs sm:text-sm text-gray-500 mt-0.5">Respon cepat via video call atau chat untuk solusi penyakit &amp; perawatan tanaman.</p>
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mt-1">Konsultasi dengan Praktisi Kebun &amp; Pertanian</h2>
+                <p class="text-xs sm:text-sm text-gray-500 mt-0.5">Bimbingan langsung via video call atau chat bersama praktisi berpengalaman dan agronomis.</p>
             </div>
             <a href="{{ route('konsultasi.index') }}" 
                class="text-xs sm:text-sm font-bold text-[#E0004D] hover:text-[#C70044] flex items-center gap-1 transition-colors flex-shrink-0">
@@ -408,7 +408,7 @@
                 </p>
                 <a :href="'{{ route('konsultasi.index') }}?search=' + encodeURIComponent(symptoms[activeTab].query)" 
                    class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#E0004D] hover:bg-[#C70044] text-white text-xs sm:text-sm font-bold px-6 py-2.5 rounded-xl transition-all shadow-xs active:scale-95">
-                    <span>Chat Dokter Tanaman</span>
+                    <span>Tanya Praktisi Kebun</span>
                     <span>→</span>
                 </a>
             </div>
@@ -418,14 +418,14 @@
 </section>
 
 {{-- ═══════════════════════════════════════════════════════════════════════════
-     4. TOKO SARANA & OBAT KEBUN (HALODOC HEALTH STORE STYLE)
+     4. TOKO SARANA & NUTRISI KEBUN (HALODOC HEALTH STORE STYLE)
      ═══════════════════════════════════════════════════════════════════════════ --}}
 <section class="py-10 sm:py-14 bg-[#F8F9FA] border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="flex items-end justify-between mb-6">
             <div>
-                <span class="text-xs font-bold text-[#E0004D] uppercase tracking-wider">Apotek Kebun &amp; Saprotan</span>
+                <span class="text-xs font-bold text-[#E0004D] uppercase tracking-wider">Toko Sarana Kebun &amp; Pertanian</span>
                 <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mt-1">Sarana &amp; Nutrisi Tanaman Pilihan</h2>
                 <p class="text-xs sm:text-sm text-gray-500 mt-0.5">Pupuk organik, nutrisi hidroponik, dan benih unggul dengan jaminan kualitas.</p>
             </div>
@@ -702,7 +702,7 @@
                     Tanamanmu Mengalami Masalah Hari Ini?
                 </h2>
                 <p class="text-xs sm:text-sm text-white/90 leading-relaxed">
-                    Jangan biarkan hama atau penyakit menyebar ke seluruh kebun. Konsultasikan sekarang bersama dokter tanaman Hallobun.
+                    Jangan biarkan hama atau penyakit menyebar ke seluruh kebun. Konsultasikan sekarang bersama praktisi perkebunan &amp; agronomis Hallobun.
                 </p>
             </div>
 
