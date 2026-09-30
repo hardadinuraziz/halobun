@@ -50,10 +50,11 @@
                     </div>
                 </div>
 
-                {{-- Right Real Person Illustration Photo Slider (Auto 2 Images) --}}
+                {{-- Right Real Person Illustration Photo Slider (Multi-Slide Auto) --}}
                 <div class="lg:col-span-5 flex justify-center lg:justify-end"
                      x-data="{
                          activeSlide: 0,
+                         isHovered: false,
                          slides: [
                              {
                                  image: '{{ asset('images/dashboard_praktisi_banner.jpg') }}',
@@ -63,43 +64,79 @@
                              {
                                  image: '{{ asset('images/halobun_real_practitioner.jpg') }}',
                                  alt: 'Spesialis Tanaman & Kebun Hallobun',
-                                 status: 'Dokter Tanaman Aktif Melayani'
+                                 status: 'Spesialis Tanaman & Kebun'
+                             },
+                             {
+                                 image: '{{ asset('images/halobun_real_practitioner_2.jpg') }}',
+                                 alt: 'Dokter Tanaman Sayur & Pangan',
+                                 status: 'Dokter Tanaman Sayur & Pangan'
+                             },
+                             {
+                                 image: '{{ asset('images/halobun_real_pest_control.jpg') }}',
+                                 alt: 'Inspeksi & Diagnosa Hama Kebun',
+                                 status: 'Inspeksi Hama & Penyakit'
+                             },
+                             {
+                                 image: '{{ asset('images/halobun_real_soil_test.jpg') }}',
+                                 alt: 'Pakar Kesuburan Tanah Kebun',
+                                 status: 'Pakar Tanah & Nutrisi Organik'
                              }
                          ],
                          timer: null,
+                         nextSlide() {
+                             this.activeSlide = (this.activeSlide + 1) % this.slides.length;
+                         },
+                         prevSlide() {
+                             this.activeSlide = (this.activeSlide - 1 + this.slides.length) % this.slides.length;
+                         },
                          init() {
                              this.timer = setInterval(() => {
-                                 this.activeSlide = (this.activeSlide + 1) % this.slides.length;
-                             }, 4500);
+                                 if (!this.isHovered) {
+                                     this.nextSlide();
+                                 }
+                             }, 4000);
                          }
                      }">
-                    <div class="relative w-full max-w-[280px] sm:max-w-[320px] select-none">
-                        {{-- Minimalist Photo Frame with 2-Image Slider --}}
+                    <div class="relative w-full max-w-[280px] sm:max-w-[320px] select-none group"
+                         @mouseenter="isHovered = true"
+                         @mouseleave="isHovered = false">
+                        {{-- Minimalist Photo Frame with Multi-Image Slider --}}
                         <div class="relative aspect-square rounded-3xl overflow-hidden border-4 border-white/25 shadow-2xl bg-white/10">
-                            {{-- Slide 1 --}}
-                            <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out"
-                                 :class="activeSlide === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'">
-                                <img src="{{ asset('images/dashboard_praktisi_banner.jpg') }}"
-                                     alt="Praktisi Pertanian Hallobun"
-                                     class="w-full h-full object-cover object-top">
-                            </div>
+                            {{-- Dynamic Slides --}}
+                            <template x-for="(slide, index) in slides" :key="index">
+                                <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+                                     :class="activeSlide === index ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'">
+                                    <img :src="slide.image"
+                                         :alt="slide.alt"
+                                         class="w-full h-full object-cover object-top">
+                                </div>
+                            </template>
 
-                            {{-- Slide 2 --}}
-                            <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out"
-                                 :class="activeSlide === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'">
-                                <img src="{{ asset('images/halobun_real_practitioner.jpg') }}"
-                                     alt="Spesialis Tanaman Hallobun"
-                                     class="w-full h-full object-cover object-center">
-                            </div>
+                            {{-- Navigation Buttons on Hover --}}
+                            <button type="button" 
+                                    @click="prevSlide()"
+                                    aria-label="Sebelumnya"
+                                    class="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-7 h-7 rounded-full bg-black/40 hover:bg-black/65 text-white flex items-center justify-center backdrop-blur-xs border border-white/20 transition-all opacity-0 group-hover:opacity-100 active:scale-95">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+                                </svg>
+                            </button>
+                            <button type="button" 
+                                    @click="nextSlide()"
+                                    aria-label="Selanjutnya"
+                                    class="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-7 h-7 rounded-full bg-black/40 hover:bg-black/65 text-white flex items-center justify-center backdrop-blur-xs border border-white/20 transition-all opacity-0 group-hover:opacity-100 active:scale-95">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
 
                             {{-- Dots Indicator --}}
                             <div class="absolute top-3 right-3 z-20 flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">
-                                <button type="button" @click="activeSlide = 0" 
-                                        class="h-1.5 rounded-full transition-all duration-300"
-                                        :class="activeSlide === 0 ? 'w-4 bg-[#4ADE80]' : 'w-1.5 bg-white/60'"></button>
-                                <button type="button" @click="activeSlide = 1" 
-                                        class="h-1.5 rounded-full transition-all duration-300"
-                                        :class="activeSlide === 1 ? 'w-4 bg-[#4ADE80]' : 'w-1.5 bg-white/60'"></button>
+                                <template x-for="(slide, index) in slides" :key="'dot-' + index">
+                                    <button type="button" @click="activeSlide = index" 
+                                            class="h-1.5 rounded-full transition-all duration-300"
+                                            :class="activeSlide === index ? 'w-4 bg-[#4ADE80]' : 'w-1.5 bg-white/60 hover:bg-white'"></button>
+                                </template>
                             </div>
                         </div>
 

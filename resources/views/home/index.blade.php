@@ -83,64 +83,109 @@
                 </div>
             </div>
 
-            {{-- Right Column: Real Agri Practitioner Photo Slider (Auto 2 Images) --}}
+            {{-- Right Column: Real Agri Practitioner Photo Slider (Multi-Slide Auto) --}}
             <div class="lg:col-span-5 flex justify-center"
                  x-data="{
                      activeSlide: 0,
+                     isHovered: false,
                      slides: [
                          {
                              image: '{{ asset('images/halobun_real_practitioner.jpg') }}',
                              alt: 'Praktisi Kebun & Tanaman Hias Halobun',
-                             title: 'Praktisi Kebun Aktif',
+                             title: 'Praktisi Kebun & Tanaman Hias',
                              subtitle: 'Bimbingan Agronomi Online'
                          },
                          {
                              image: '{{ asset('images/halobun_real_practitioner_2.jpg') }}',
                              alt: 'Dokter Tanaman & Pakar Hortikultura Halobun',
-                             title: 'Dokter Tanaman & Pangan',
-                             subtitle: 'Konsultasi Hama & Nutrisi'
+                             title: 'Dokter Tanaman & Sayuran',
+                             subtitle: 'Konsultasi Nutrisi & Hidroponik'
+                         },
+                         {
+                             image: '{{ asset('images/halobun_real_pest_control.jpg') }}',
+                             alt: 'Inspeksi & Diagnosa Penyakit Daun',
+                             title: 'Inspeksi & Diagnosa Hama',
+                             subtitle: 'Deteksi Dini Masalah Daun & Buah'
+                         },
+                         {
+                             image: '{{ asset('images/halobun_real_soil_test.jpg') }}',
+                             alt: 'Uji Kesuburan Tanah & Pemupukan',
+                             title: 'Uji Kesuburan Tanah',
+                             subtitle: 'Solusi Pemupukan & pH Kebun'
+                         },
+                         {
+                             image: '{{ asset('images/halobun_real_training.jpg') }}',
+                             alt: 'Pelatihan & Bimtek Kelompok Tani',
+                             title: 'Pelatihan & Narasumber Kebun',
+                             subtitle: 'Bimtek Kelompok Tani Nusantara'
                          }
                      ],
                      timer: null,
+                     nextSlide() {
+                         this.activeSlide = (this.activeSlide + 1) % this.slides.length;
+                     },
+                     prevSlide() {
+                         this.activeSlide = (this.activeSlide - 1 + this.slides.length) % this.slides.length;
+                     },
                      init() {
                          this.timer = setInterval(() => {
-                             this.activeSlide = (this.activeSlide + 1) % this.slides.length;
-                         }, 4500);
+                             if (!this.isHovered) {
+                                 this.nextSlide();
+                             }
+                         }, 4000);
                      }
                  }">
-                <div class="relative w-full max-w-md lg:max-w-none select-none">
+                <div class="relative w-full max-w-md lg:max-w-none select-none group"
+                     @mouseenter="isHovered = true"
+                     @mouseleave="isHovered = false">
                     {{-- Decorative Subtle Aura --}}
                     <div class="absolute -inset-2 bg-gradient-to-r from-[#F0FDF4] to-emerald-50 rounded-3xl blur-xl opacity-70"></div>
                     
-                    {{-- Main Photo Card with 2-Image Cross-Fade Slider --}}
+                    {{-- Main Photo Card with Multi-Image Cross-Fade Slider --}}
                     <div class="relative bg-white rounded-3xl p-3 sm:p-4 border border-gray-200/80 shadow-md">
                         <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 shadow-2xs">
-                            {{-- Slide 1 --}}
-                            <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out"
-                                 :class="activeSlide === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'">
-                                <img src="{{ asset('images/halobun_real_practitioner.jpg') }}" 
-                                     alt="Praktisi Kebun &amp; Pertanian Halobun" 
-                                     class="w-full h-full object-cover select-none">
-                            </div>
+                            {{-- Dynamic Slides --}}
+                            <template x-for="(slide, index) in slides" :key="index">
+                                <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+                                     :class="activeSlide === index ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'">
+                                    <img :src="slide.image" 
+                                         :alt="slide.alt" 
+                                         class="w-full h-full object-cover select-none">
+                                </div>
+                            </template>
 
-                            {{-- Slide 2 --}}
-                            <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out"
-                                 :class="activeSlide === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'">
-                                <img src="{{ asset('images/halobun_real_practitioner_2.jpg') }}" 
-                                     alt="Dokter Tanaman &amp; Pakar Hortikultura Halobun" 
-                                     class="w-full h-full object-cover select-none">
-                            </div>
+                            {{-- Static Fallback Image before Alpine init --}}
+                            <img src="{{ asset('images/halobun_real_practitioner.jpg') }}" 
+                                 alt="Praktisi Kebun &amp; Pertanian Halobun" 
+                                 class="w-full h-full object-cover select-none"
+                                 x-show="false">
+
+                            {{-- Navigation Buttons (Prev / Next) --}}
+                            <button type="button" 
+                                    @click="prevSlide()"
+                                    aria-label="Foto Sebelumnya"
+                                    class="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-black/40 hover:bg-black/65 text-white flex items-center justify-center backdrop-blur-xs border border-white/20 transition-all opacity-0 group-hover:opacity-100 active:scale-95">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+                                </svg>
+                            </button>
+                            <button type="button" 
+                                    @click="nextSlide()"
+                                    aria-label="Foto Selanjutnya"
+                                    class="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-black/40 hover:bg-black/65 text-white flex items-center justify-center backdrop-blur-xs border border-white/20 transition-all opacity-0 group-hover:opacity-100 active:scale-95">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
 
                             {{-- Slide Indicator Dots --}}
                             <div class="absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">
-                                <button type="button" 
-                                        @click="activeSlide = 0" 
-                                        class="h-1.5 rounded-full transition-all duration-300"
-                                        :class="activeSlide === 0 ? 'w-5 bg-[#4ADE80]' : 'w-1.5 bg-white/60 hover:bg-white'"></button>
-                                <button type="button" 
-                                        @click="activeSlide = 1" 
-                                        class="h-1.5 rounded-full transition-all duration-300"
-                                        :class="activeSlide === 1 ? 'w-5 bg-[#4ADE80]' : 'w-1.5 bg-white/60 hover:bg-white'"></button>
+                                <template x-for="(slide, index) in slides" :key="'dot-' + index">
+                                    <button type="button" 
+                                            @click="activeSlide = index" 
+                                            class="h-1.5 rounded-full transition-all duration-300"
+                                            :class="activeSlide === index ? 'w-5 bg-[#4ADE80]' : 'w-1.5 bg-white/60 hover:bg-white'"></button>
+                                </template>
                             </div>
                         </div>
                         
@@ -148,7 +193,7 @@
                         <div class="absolute -bottom-3 left-6 sm:left-8 bg-white/95 backdrop-blur-md px-4 py-2 rounded-2xl border border-gray-100 shadow-lg flex items-center gap-2.5 z-30">
                             <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"></span>
                             <div class="text-left">
-                                <p class="text-[11px] font-bold text-gray-900 leading-tight" x-text="slides[activeSlide].title">Praktisi Kebun Aktif</p>
+                                <p class="text-[11px] font-bold text-gray-900 leading-tight" x-text="slides[activeSlide].title">Praktisi Kebun &amp; Tanaman Hias</p>
                                 <p class="text-[9.5px] text-[#16A34A] font-semibold leading-tight" x-text="slides[activeSlide].subtitle">Bimbingan Agronomi Online</p>
                             </div>
                         </div>
