@@ -14,13 +14,16 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // ─── Admin ───────────────────────────────────────
-        User::create([
-            'name'     => 'Admin Hallobun',
-            'email'    => 'admin@hallobun.com',
-            'password' => Hash::make('password'),
-            'role'     => 'admin',
-            'phone'    => '081234567890',
-        ]);
+        User::updateOrCreate(
+            ['email' => 'admin@hallobun.com'],
+            [
+                'name'     => 'Admin Hallobun',
+                'password' => Hash::make('password'),
+                'role'     => 'admin',
+                'phone'    => '081234567890',
+                'email_verified_at' => now(),
+            ]
+        );
 
         // ─── Konsultan ────────────────────────────────────
         $konsultanData = [
