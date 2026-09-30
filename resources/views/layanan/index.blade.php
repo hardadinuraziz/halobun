@@ -6,20 +6,20 @@
 @section('content')
 
 {{-- ═══ HERO ═══════════════════════════════════════════════════════════════════ --}}
-<section class="bg-gradient-to-b from-white via-[#FFF8FA] to-white border-b border-slate-100 py-12 md:py-16">
+<section class="bg-gradient-to-b from-white via-[#F0FDF4] to-white border-b border-slate-100 py-12 md:py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {{-- Left Column: Hero Text --}}
             <div class="lg:col-span-7">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-[#FFF0F5] text-[#E0004D] border border-[#FFD1DF] mb-4">
-                    <span class="w-2 h-2 rounded-full bg-[#E0004D] animate-pulse"></span>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-[#F0FDF4] text-[#16A34A] border border-[#BBF7D0] mb-4">
+                    <span class="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse"></span>
                     Solusi Pertanian &amp; Berkebun Profesional
                 </div>
 
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1E293B] leading-tight mb-4 tracking-tight">
                     Layanan Terpadu<br>
-                    <span class="text-[#E0004D]">Praktisi Perkebunan</span> &amp; Pertanian
+                    <span class="text-[#16A34A]">Praktisi Perkebunan</span> &amp; Pertanian
                 </h1>
 
                 <p class="text-slate-600 text-base sm:text-lg leading-relaxed mb-6 max-w-2xl">
@@ -40,7 +40,7 @@
 
                 <div class="flex flex-col sm:flex-row gap-3">
                     <a href="{{ route('konsultasi.index') }}"
-                       class="inline-flex items-center justify-center gap-2 bg-[#E0004D] hover:bg-[#C70044] text-white font-bold px-6 py-3.5 rounded-xl shadow-sm hover:shadow transition-all text-sm">
+                       class="inline-flex items-center justify-center gap-2 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold px-6 py-3.5 rounded-xl shadow-sm hover:shadow transition-all text-sm">
                         Konsultasi Praktisi Sekarang
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>
@@ -62,7 +62,7 @@
                     {{-- Floating Trust Badge --}}
                     <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md rounded-xl p-3 border border-slate-100 shadow-sm flex items-center justify-between">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-lg bg-[#FFF0F5] text-[#E0004D] flex items-center justify-center font-bold text-lg">
+                            <div class="w-10 h-10 rounded-lg bg-[#F0FDF4] text-[#16A34A] flex items-center justify-center font-bold text-lg">
                                 👨‍🌾
                             </div>
                             <div>
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                         <div class="text-right">
-                            <div class="text-xs font-extrabold text-[#E0004D]">Rating 4.9/5</div>
+                            <div class="text-xs font-extrabold text-[#16A34A]">Rating 4.9/5</div>
                             <div class="text-[10px] text-slate-400">Terverifikasi</div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
 
         {{-- Section Header --}}
         <div class="text-center max-w-2xl mx-auto mb-12">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#FFF0F5] text-[#E0004D] border border-[#FFD1DF] mb-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#F0FDF4] text-[#16A34A] border border-[#BBF7D0] mb-2">
                 Katalog Layanan Lengkap
             </span>
             <h2 class="text-2xl sm:text-3xl font-extrabold text-[#1E293B]">
@@ -141,10 +141,10 @@
 
                 {{-- Content Body --}}
                 <div class="p-5 sm:p-6 flex flex-col flex-1">
-                    <div class="text-[11px] font-bold text-[#E0004D] uppercase tracking-wider mb-1">
+                    <div class="text-[11px] font-bold text-[#16A34A] uppercase tracking-wider mb-1">
                         {{ $service['title_en'] }}
                     </div>
-                    <h3 class="text-lg font-bold text-[#1E293B] mb-2 leading-snug group-hover:text-[#E0004D] transition-colors">
+                    <h3 class="text-lg font-bold text-[#1E293B] mb-2 leading-snug group-hover:text-[#16A34A] transition-colors">
                         {{ $service['title'] }}
                     </h3>
                     <p class="text-slate-600 text-sm leading-relaxed mb-4 flex-1">
@@ -155,7 +155,7 @@
                     <div class="space-y-1.5 mb-6 pt-3 border-t border-slate-100">
                         @foreach(array_slice($service['features'], 0, 3) as $feature)
                         <div class="flex items-start gap-2 text-xs text-slate-700">
-                            <svg class="w-3.5 h-3.5 text-[#E0004D] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-3.5 h-3.5 text-[#16A34A] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
                             </svg>
                             <span>{{ $feature }}</span>
@@ -166,7 +166,7 @@
                     {{-- Action Button --}}
                     <div class="pt-2">
                         <a href="{{ $service['action_url'] }}"
-                           class="w-full inline-flex items-center justify-center gap-2 bg-[#FFF0F5] hover:bg-[#E0004D] text-[#E0004D] hover:text-white font-bold px-4 py-2.5 rounded-xl border border-[#FFD1DF] hover:border-[#E0004D] text-sm transition-all">
+                           class="w-full inline-flex items-center justify-center gap-2 bg-[#F0FDF4] hover:bg-[#16A34A] text-[#16A34A] hover:text-white font-bold px-4 py-2.5 rounded-xl border border-[#BBF7D0] hover:border-[#16A34A] text-sm transition-all">
                             <span>{{ $service['action_text'] }}</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -187,7 +187,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-2xl mx-auto mb-12">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#FFF0F5] text-[#E0004D] border border-[#FFD1DF] mb-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#F0FDF4] text-[#16A34A] border border-[#BBF7D0] mb-2">
                 Mudah &amp; Transparan
             </span>
             <h2 class="text-2xl sm:text-3xl font-extrabold text-[#1E293B]">
@@ -202,7 +202,7 @@
             
             {{-- Step 1 --}}
             <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 relative flex flex-col">
-                <div class="w-10 h-10 rounded-xl bg-[#E0004D] text-white flex items-center justify-center font-extrabold text-base mb-4 shadow-sm">
+                <div class="w-10 h-10 rounded-xl bg-[#16A34A] text-white flex items-center justify-center font-extrabold text-base mb-4 shadow-sm">
                     1
                 </div>
                 <div class="rounded-xl overflow-hidden h-36 mb-4 bg-slate-200">
@@ -216,7 +216,7 @@
 
             {{-- Step 2 --}}
             <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 relative flex flex-col">
-                <div class="w-10 h-10 rounded-xl bg-[#E0004D] text-white flex items-center justify-center font-extrabold text-base mb-4 shadow-sm">
+                <div class="w-10 h-10 rounded-xl bg-[#16A34A] text-white flex items-center justify-center font-extrabold text-base mb-4 shadow-sm">
                     2
                 </div>
                 <div class="rounded-xl overflow-hidden h-36 mb-4 bg-slate-200">
@@ -230,7 +230,7 @@
 
             {{-- Step 3 --}}
             <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 relative flex flex-col">
-                <div class="w-10 h-10 rounded-xl bg-[#E0004D] text-white flex items-center justify-center font-extrabold text-base mb-4 shadow-sm">
+                <div class="w-10 h-10 rounded-xl bg-[#16A34A] text-white flex items-center justify-center font-extrabold text-base mb-4 shadow-sm">
                     3
                 </div>
                 <div class="rounded-xl overflow-hidden h-36 mb-4 bg-slate-200">
@@ -254,7 +254,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
                 
                 <div class="p-8 sm:p-12 lg:col-span-7">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#FFF0F5] text-[#E0004D] border border-[#FFD1DF] mb-3">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#F0FDF4] text-[#16A34A] border border-[#BBF7D0] mb-3">
                         Program Khusus &amp; Kustom
                     </span>
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-[#1E293B] mb-3">
@@ -294,7 +294,7 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center mb-10">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#FFF0F5] text-[#E0004D] border border-[#FFD1DF] mb-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#F0FDF4] text-[#16A34A] border border-[#BBF7D0] mb-2">
                 Tanya Jawab
             </span>
             <h2 class="text-2xl sm:text-3xl font-extrabold text-[#1E293B]">
@@ -311,15 +311,15 @@
             ] as $fi => $faq)
             <div class="bg-white border border-slate-200 rounded-xl overflow-hidden transition-all">
                 <button @click="active = active === {{ $fi }} ? null : {{ $fi }}"
-                        class="w-full px-5 py-4 text-left flex items-center justify-between font-bold text-slate-800 text-sm sm:text-base hover:text-[#E0004D] transition-colors">
+                        class="w-full px-5 py-4 text-left flex items-center justify-between font-bold text-slate-800 text-sm sm:text-base hover:text-[#16A34A] transition-colors">
                     <span class="flex items-center gap-3">
-                        <span class="w-6 h-6 rounded-lg bg-[#FFF0F5] text-[#E0004D] text-xs font-extrabold flex items-center justify-center flex-shrink-0">
+                        <span class="w-6 h-6 rounded-lg bg-[#F0FDF4] text-[#16A34A] text-xs font-extrabold flex items-center justify-center flex-shrink-0">
                             {{ $fi+1 }}
                         </span>
                         {{ $faq['q'] }}
                     </span>
                     <svg class="w-4 h-4 text-slate-400 flex-shrink-0 transition-transform duration-200"
-                         :class="active === {{ $fi }} ? 'rotate-180 text-[#E0004D]' : ''"
+                         :class="active === {{ $fi }} ? 'rotate-180 text-[#16A34A]' : ''"
                          fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>

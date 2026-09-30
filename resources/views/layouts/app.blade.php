@@ -19,7 +19,7 @@
 
     @stack('styles')
 </head>
-<body class="bg-white text-gray-800 antialiased selection:bg-[#FFF0F5] selection:text-[#E0004D]">
+<body class="bg-white text-gray-800 antialiased selection:bg-[#F0FDF4] selection:text-[#16A34A]">
 
 
 {{-- ═══ NAVBAR ═══════════════════════════════════════════════════════════ --}}
@@ -38,27 +38,27 @@
             {{-- Desktop Menu (Halodoc style) --}}
             <div class="hidden md:flex items-center gap-6 lg:gap-8">
                 <a href="{{ route('home') }}"
-                   class="nav-link text-sm font-semibold transition-colors py-1 {{ request()->routeIs('home') ? 'text-[#E0004D] border-b-2 border-[#E0004D]' : 'text-gray-600 hover:text-[#E0004D]' }}">
+                   class="nav-link text-sm font-semibold transition-colors py-1 {{ request()->routeIs('home') ? 'text-[#16A34A] border-b-2 border-[#16A34A]' : 'text-gray-600 hover:text-[#16A34A]' }}">
                     Beranda
                 </a>
                 <a href="{{ route('layanan') }}"
-                   class="nav-link text-sm font-semibold transition-colors py-1 {{ request()->routeIs('layanan') ? 'text-[#E0004D] border-b-2 border-[#E0004D]' : 'text-gray-600 hover:text-[#E0004D]' }}">
+                   class="nav-link text-sm font-semibold transition-colors py-1 {{ request()->routeIs('layanan') ? 'text-[#16A34A] border-b-2 border-[#16A34A]' : 'text-gray-600 hover:text-[#16A34A]' }}">
                     Layanan
                 </a>
                 <a href="{{ route('konsultasi.index') }}"
-                   class="nav-link text-sm font-semibold transition-colors py-1 {{ request()->routeIs('konsultasi.*') ? 'text-[#E0004D] border-b-2 border-[#E0004D]' : 'text-gray-600 hover:text-[#E0004D]' }}">
+                   class="nav-link text-sm font-semibold transition-colors py-1 {{ request()->routeIs('konsultasi.*') ? 'text-[#16A34A] border-b-2 border-[#16A34A]' : 'text-gray-600 hover:text-[#16A34A]' }}">
                     Tanya Pakar
                 </a>
                 <a href="{{ route('sarana.index') }}"
-                   class="nav-link text-sm font-semibold transition-colors py-1 {{ request()->routeIs('sarana.*') ? 'text-[#E0004D] border-b-2 border-[#E0004D]' : 'text-gray-600 hover:text-[#E0004D]' }}">
+                   class="nav-link text-sm font-semibold transition-colors py-1 {{ request()->routeIs('sarana.*') ? 'text-[#16A34A] border-b-2 border-[#16A34A]' : 'text-gray-600 hover:text-[#16A34A]' }}">
                     Toko Sarana
                 </a>
                 <a href="{{ route('kunjungan.index') }}"
-                   class="nav-link text-sm font-semibold transition-colors py-1 {{ request()->routeIs('kunjungan.*') ? 'text-[#E0004D] border-b-2 border-[#E0004D]' : 'text-gray-600 hover:text-[#E0004D]' }}">
+                   class="nav-link text-sm font-semibold transition-colors py-1 {{ request()->routeIs('kunjungan.*') ? 'text-[#16A34A] border-b-2 border-[#16A34A]' : 'text-gray-600 hover:text-[#16A34A]' }}">
                     Kunjungan Lahan
                 </a>
                 <a href="{{ route('narsum.index') }}"
-                   class="nav-link text-sm font-semibold transition-colors py-1 {{ request()->routeIs('narsum.*') ? 'text-[#E0004D] border-b-2 border-[#E0004D]' : 'text-gray-600 hover:text-[#E0004D]' }}">
+                   class="nav-link text-sm font-semibold transition-colors py-1 {{ request()->routeIs('narsum.*') ? 'text-[#16A34A] border-b-2 border-[#16A34A]' : 'text-gray-600 hover:text-[#16A34A]' }}">
                     Undang Narsum
                 </a>
             </div>
@@ -68,9 +68,9 @@
                 @auth
                     <div class="relative" x-data="{ open: false }">
                         <button @click="open = !open"
-                                class="flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-[#E0004D] transition-colors focus:outline-none">
-                            <div class="w-8 h-8 bg-[#FFF0F5] border border-[#FFD1DF] rounded-full flex items-center justify-center flex-shrink-0">
-                                <span class="text-[#E0004D] font-bold text-xs">{{ substr(auth()->user()->name, 0, 2) }}</span>
+                                class="flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-[#16A34A] transition-colors focus:outline-none">
+                            <div class="w-8 h-8 bg-[#F0FDF4] border border-[#BBF7D0] rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="text-[#16A34A] font-bold text-xs">{{ substr(auth()->user()->name, 0, 2) }}</span>
                             </div>
                             <span class="hidden sm:block max-w-[120px] truncate">{{ auth()->user()->name }}</span>
                             <svg class="w-3.5 h-3.5 flex-shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -80,11 +80,11 @@
                         <div x-show="open" @click.away="open = false" x-transition
                              class="absolute right-0 mt-2 w-48 bg-white rounded-2xl shadow-xl border border-gray-100 py-1.5 z-50">
                             <a href="{{ route('dashboard') }}"
-                               class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-[#FFF0F5] hover:text-[#E0004D]">
+                               class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-[#F0FDF4] hover:text-[#16A34A]">
                                 📊 Dashboard
                             </a>
                             <a href="{{ route('konsultasi.riwayat') }}"
-                               class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-[#FFF0F5] hover:text-[#E0004D]">
+                               class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-[#F0FDF4] hover:text-[#16A34A]">
                                 📋 Riwayat Konsultasi
                             </a>
                             <hr class="my-1 border-gray-100">
@@ -99,11 +99,11 @@
                     </div>
                 @else
                     <a href="{{ route('login') }}"
-                       class="text-sm font-semibold text-gray-700 hover:text-[#E0004D] px-3 py-2 transition-colors hidden sm:block">
+                       class="text-sm font-semibold text-gray-700 hover:text-[#16A34A] px-3 py-2 transition-colors hidden sm:block">
                         Masuk
                     </a>
                     <a href="{{ route('register') }}"
-                       class="bg-[#E0004D] hover:bg-[#C70044] text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-xl transition-all shadow-xs whitespace-nowrap active:scale-95">
+                       class="bg-[#16A34A] hover:bg-[#15803D] text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-xl transition-all shadow-xs whitespace-nowrap active:scale-95">
                         Daftar
                     </a>
                 @endauth
@@ -113,7 +113,7 @@
                         aria-label="Buka menu navigasi"
                         aria-expanded="false"
                         aria-controls="mobile-menu"
-                        class="md:hidden p-2 rounded-xl text-gray-600 hover:bg-gray-100 hover:text-[#E0004D] transition-colors focus:outline-none">
+                        class="md:hidden p-2 rounded-xl text-gray-600 hover:bg-gray-100 hover:text-[#16A34A] transition-colors focus:outline-none">
                     <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
@@ -131,27 +131,27 @@
          class="md:hidden bg-white border-b border-gray-100">
         <div class="px-4 py-3 space-y-1">
             <a href="{{ route('home') }}"
-               class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('home') ? 'bg-[#FFF0F5] text-[#E0004D]' : 'text-gray-700 hover:bg-gray-50' }}">
+               class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('home') ? 'bg-[#F0FDF4] text-[#16A34A]' : 'text-gray-700 hover:bg-gray-50' }}">
                 Beranda
             </a>
             <a href="{{ route('layanan') }}"
-               class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('layanan') ? 'bg-[#FFF0F5] text-[#E0004D]' : 'text-gray-700 hover:bg-gray-50' }}">
+               class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('layanan') ? 'bg-[#F0FDF4] text-[#16A34A]' : 'text-gray-700 hover:bg-gray-50' }}">
                 Layanan
             </a>
             <a href="{{ route('konsultasi.index') }}"
-               class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('konsultasi.*') ? 'bg-[#FFF0F5] text-[#E0004D]' : 'text-gray-700 hover:bg-gray-50' }}">
+               class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('konsultasi.*') ? 'bg-[#F0FDF4] text-[#16A34A]' : 'text-gray-700 hover:bg-gray-50' }}">
                 Tanya Pakar
             </a>
             <a href="{{ route('sarana.index') }}"
-               class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('sarana.*') ? 'bg-[#FFF0F5] text-[#E0004D]' : 'text-gray-700 hover:bg-gray-50' }}">
+               class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('sarana.*') ? 'bg-[#F0FDF4] text-[#16A34A]' : 'text-gray-700 hover:bg-gray-50' }}">
                 Toko Sarana
             </a>
             <a href="{{ route('kunjungan.index') }}"
-               class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('kunjungan.*') ? 'bg-[#FFF0F5] text-[#E0004D]' : 'text-gray-700 hover:bg-gray-50' }}">
+               class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('kunjungan.*') ? 'bg-[#F0FDF4] text-[#16A34A]' : 'text-gray-700 hover:bg-gray-50' }}">
                 Kunjungan Lahan
             </a>
             <a href="{{ route('narsum.index') }}"
-               class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('narsum.*') ? 'bg-[#FFF0F5] text-[#E0004D]' : 'text-gray-700 hover:bg-gray-50' }}">
+               class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('narsum.*') ? 'bg-[#F0FDF4] text-[#16A34A]' : 'text-gray-700 hover:bg-gray-50' }}">
                 Undang Narsum
             </a>
             @guest
@@ -161,7 +161,7 @@
                     Masuk
                 </a>
                 <a href="{{ route('register') }}"
-                   class="flex-1 text-center px-3 py-2.5 rounded-xl text-sm font-bold text-white bg-[#E0004D] hover:bg-[#C70044]">
+                   class="flex-1 text-center px-3 py-2.5 rounded-xl text-sm font-bold text-white bg-[#16A34A] hover:bg-[#15803D]">
                     Daftar
                 </a>
             </div>
@@ -228,43 +228,43 @@
                 <p class="text-xs sm:text-sm text-gray-500 leading-relaxed mb-4">
                     Platform tele-agronomi dan perawatan kebun tepercaya. Menghubungkan pekebun dengan pakar berpengalaman untuk solusi cepat, ilmiah, dan akurat.
                 </p>
-                <div class="inline-flex items-center gap-2 text-xs font-bold text-[#E0004D] bg-[#FFF0F5] px-3 py-1.5 rounded-full">
+                <div class="inline-flex items-center gap-2 text-xs font-bold text-[#16A34A] bg-[#F0FDF4] px-3 py-1.5 rounded-full">
                     🌱 Tumbuh Sehat Bersama Hallobun
                 </div>
             </div>
             <div>
                 <h4 class="font-bold text-gray-900 mb-4 text-xs sm:text-sm tracking-wider uppercase">Layanan Utama</h4>
                 <ul class="space-y-2.5 text-xs sm:text-sm">
-                    <li><a href="{{ route('konsultasi.index') }}" class="hover:text-[#E0004D] transition-colors">💬 Tanya Praktisi Kebun</a></li>
-                    <li><a href="{{ route('sarana.index') }}" class="hover:text-[#E0004D] transition-colors">🛒 Toko Sarana Kebun</a></li>
-                    <li><a href="{{ route('kunjungan.index') }}" class="hover:text-[#E0004D] transition-colors">🚜 Kunjungan Lahan On-Site</a></li>
-                    <li><a href="{{ route('narsum.index') }}" class="hover:text-[#E0004D] transition-colors">🎤 Undang Narasumber</a></li>
-                    <li><a href="{{ route('layanan') }}" class="hover:text-[#E0004D] transition-colors">📋 Semua Layanan</a></li>
+                    <li><a href="{{ route('konsultasi.index') }}" class="hover:text-[#16A34A] transition-colors">💬 Tanya Praktisi Kebun</a></li>
+                    <li><a href="{{ route('sarana.index') }}" class="hover:text-[#16A34A] transition-colors">🛒 Toko Sarana Kebun</a></li>
+                    <li><a href="{{ route('kunjungan.index') }}" class="hover:text-[#16A34A] transition-colors">🚜 Kunjungan Lahan On-Site</a></li>
+                    <li><a href="{{ route('narsum.index') }}" class="hover:text-[#16A34A] transition-colors">🎤 Undang Narasumber</a></li>
+                    <li><a href="{{ route('layanan') }}" class="hover:text-[#16A34A] transition-colors">📋 Semua Layanan</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="font-bold text-gray-900 mb-4 text-xs sm:text-sm tracking-wider uppercase">Akses Pengguna</h4>
                 <ul class="space-y-2.5 text-xs sm:text-sm">
-                    <li><a href="{{ route('home') }}" class="hover:text-[#E0004D] transition-colors">Beranda</a></li>
-                    <li><a href="{{ route('login') }}" class="hover:text-[#E0004D] transition-colors">Masuk ke Akun</a></li>
-                    <li><a href="{{ route('register') }}" class="hover:text-[#E0004D] transition-colors">Daftar Akun Baru</a></li>
-                    <li><a href="{{ route('dashboard') }}" class="hover:text-[#E0004D] transition-colors">Dashboard Pekebun</a></li>
+                    <li><a href="{{ route('home') }}" class="hover:text-[#16A34A] transition-colors">Beranda</a></li>
+                    <li><a href="{{ route('login') }}" class="hover:text-[#16A34A] transition-colors">Masuk ke Akun</a></li>
+                    <li><a href="{{ route('register') }}" class="hover:text-[#16A34A] transition-colors">Daftar Akun Baru</a></li>
+                    <li><a href="{{ route('dashboard') }}" class="hover:text-[#16A34A] transition-colors">Dashboard Pekebun</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="font-bold text-gray-900 mb-4 text-xs sm:text-sm tracking-wider uppercase">Bantuan &amp; Kontak</h4>
                 <ul class="space-y-2.5 text-xs sm:text-sm text-gray-500">
-                    <li class="flex items-center gap-2"><span class="text-[#E0004D]">✉️</span><span>info@hallobun.com</span></li>
-                    <li class="flex items-center gap-2"><span class="text-[#E0004D]">📞</span><span>+62 812-3456-7890</span></li>
-                    <li class="flex items-center gap-2"><span class="text-[#E0004D]">🕐</span><span>Senin – Sabtu, 08.00 – 17.00 WIB</span></li>
+                    <li class="flex items-center gap-2"><span class="text-[#16A34A]">✉️</span><span>info@hallobun.com</span></li>
+                    <li class="flex items-center gap-2"><span class="text-[#16A34A]">📞</span><span>+62 812-3456-7890</span></li>
+                    <li class="flex items-center gap-2"><span class="text-[#16A34A]">🕐</span><span>Senin – Sabtu, 08.00 – 17.00 WIB</span></li>
                 </ul>
             </div>
         </div>
         <div class="border-t border-gray-200 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400">
             <p>© {{ date('Y') }} Hallobun. Sahabat Kesehatan Kebun &amp; Pertanian Terlengkap di Indonesia.</p>
             <div class="flex items-center gap-4">
-                <a href="#" class="hover:text-[#E0004D]">Kebijakan Privasi</a>
-                <a href="#" class="hover:text-[#E0004D]">Syarat &amp; Ketentuan</a>
+                <a href="#" class="hover:text-[#16A34A]">Kebijakan Privasi</a>
+                <a href="#" class="hover:text-[#16A34A]">Syarat &amp; Ketentuan</a>
             </div>
         </div>
     </div>

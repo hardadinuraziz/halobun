@@ -16,16 +16,16 @@
             
             {{-- Left Column: Copy & Search --}}
             <div class="lg:col-span-7 text-left">
-                <div class="inline-flex items-center gap-2 bg-[#FFF0F5] border border-[#FFD1DF] px-3.5 py-1 rounded-full mb-3.5 shadow-2xs">
-                    <span class="w-2 h-2 rounded-full bg-[#E0004D] animate-pulse"></span>
-                    <span class="text-[11px] sm:text-xs font-bold text-[#E0004D] tracking-wide uppercase">
+                <div class="inline-flex items-center gap-2 bg-[#F0FDF4] border border-[#BBF7D0] px-3.5 py-1 rounded-full mb-3.5 shadow-2xs">
+                    <span class="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse"></span>
+                    <span class="text-[11px] sm:text-xs font-bold text-[#16A34A] tracking-wide uppercase">
                         Tele-Agronomi &amp; Layanan Kebun #1 Indonesia
                     </span>
                 </div>
 
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-[1.18] mb-3.5">
                     Solusi Perawatan Kebun &amp; Pertanian<br>
-                    <span class="text-[#E0004D]">Terlengkap di Tanganmu</span>
+                    <span class="text-[#16A34A]">Terlengkap di Tanganmu</span>
                 </h1>
 
                 <p class="text-xs sm:text-base text-gray-600 leading-relaxed max-w-xl mb-6">
@@ -34,7 +34,7 @@
 
                 {{-- Halodoc Signature Clean Search Bar --}}
                 <div class="mb-4">
-                    <form action="{{ route('konsultasi.index') }}" method="GET" class="bg-white rounded-2xl sm:rounded-full p-2 border border-gray-200 shadow-sm flex flex-col sm:flex-row items-center gap-2 transition-all focus-within:border-[#E0004D] focus-within:ring-2 focus-within:ring-[#FFF0F5]">
+                    <form action="{{ route('konsultasi.index') }}" method="GET" class="bg-white rounded-2xl sm:rounded-full p-2 border border-gray-200 shadow-sm flex flex-col sm:flex-row items-center gap-2 transition-all focus-within:border-[#16A34A] focus-within:ring-2 focus-within:ring-[#F0FDF4]">
                         <div class="flex items-center gap-2.5 flex-1 px-3 w-full">
                             <svg class="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
@@ -46,7 +46,7 @@
                                    class="w-full bg-transparent border-none text-xs sm:text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-0 py-1.5">
                         </div>
                         <button type="submit" 
-                                class="w-full sm:w-auto px-6 py-2.5 rounded-xl sm:rounded-full bg-[#E0004D] hover:bg-[#C70044] text-white text-xs sm:text-sm font-bold text-center transition-all shadow-xs flex-shrink-0 active:scale-95">
+                                class="w-full sm:w-auto px-6 py-2.5 rounded-xl sm:rounded-full bg-[#16A34A] hover:bg-[#15803D] text-white text-xs sm:text-sm font-bold text-center transition-all shadow-xs flex-shrink-0 active:scale-95">
                             Cari Solusi
                         </button>
                     </form>
@@ -54,16 +54,16 @@
                     {{-- Popular Search Chips --}}
                     <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-3 text-[11px] text-gray-500">
                         <span class="font-semibold text-gray-400">Populer:</span>
-                        <a href="{{ route('konsultasi.index') }}?search=kutu+putih" class="bg-gray-50 hover:bg-[#FFF0F5] hover:text-[#E0004D] hover:border-[#FFD1DF] text-gray-600 px-3 py-1 rounded-full border border-gray-200 transition-colors">
+                        <a href="{{ route('konsultasi.index') }}?search=kutu+putih" class="bg-gray-50 hover:bg-[#F0FDF4] hover:text-[#16A34A] hover:border-[#BBF7D0] text-gray-600 px-3 py-1 rounded-full border border-gray-200 transition-colors">
                             🐛 Kutu Putih
                         </a>
-                        <a href="{{ route('konsultasi.index') }}?search=daun+kuning" class="bg-gray-50 hover:bg-[#FFF0F5] hover:text-[#E0004D] hover:border-[#FFD1DF] text-gray-600 px-3 py-1 rounded-full border border-gray-200 transition-colors">
+                        <a href="{{ route('konsultasi.index') }}?search=daun+kuning" class="bg-gray-50 hover:bg-[#F0FDF4] hover:text-[#16A34A] hover:border-[#BBF7D0] text-gray-600 px-3 py-1 rounded-full border border-gray-200 transition-colors">
                             🍂 Daun Kuning
                         </a>
-                        <a href="{{ route('sarana.index') }}" class="bg-gray-50 hover:bg-[#FFF0F5] hover:text-[#E0004D] hover:border-[#FFD1DF] text-gray-600 px-3 py-1 rounded-full border border-gray-200 transition-colors">
+                        <a href="{{ route('sarana.index') }}" class="bg-gray-50 hover:bg-[#F0FDF4] hover:text-[#16A34A] hover:border-[#BBF7D0] text-gray-600 px-3 py-1 rounded-full border border-gray-200 transition-colors">
                             🌱 Pupuk Organik
                         </a>
-                        <a href="{{ route('konsultasi.index') }}?search=hidroponik" class="bg-gray-50 hover:bg-[#FFF0F5] hover:text-[#E0004D] hover:border-[#FFD1DF] text-gray-600 px-3 py-1 rounded-full border border-gray-200 transition-colors">
+                        <a href="{{ route('konsultasi.index') }}?search=hidroponik" class="bg-gray-50 hover:bg-[#F0FDF4] hover:text-[#16A34A] hover:border-[#BBF7D0] text-gray-600 px-3 py-1 rounded-full border border-gray-200 transition-colors">
                             🥬 Hidroponik
                         </a>
                     </div>
@@ -87,7 +87,7 @@
             <div class="lg:col-span-5 flex justify-center">
                 <div class="relative w-full max-w-md lg:max-w-none">
                     {{-- Decorative Subtle Aura --}}
-                    <div class="absolute -inset-2 bg-gradient-to-r from-[#FFF0F5] to-emerald-50 rounded-3xl blur-xl opacity-70"></div>
+                    <div class="absolute -inset-2 bg-gradient-to-r from-[#F0FDF4] to-emerald-50 rounded-3xl blur-xl opacity-70"></div>
                     
                     {{-- Main Photo Card --}}
                     <div class="relative bg-white rounded-3xl p-3 sm:p-4 border border-gray-200/80 shadow-md">
@@ -101,7 +101,7 @@
                             <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"></span>
                             <div class="text-left">
                                 <p class="text-[11px] font-bold text-gray-900 leading-tight">Praktisi Kebun Aktif</p>
-                                <p class="text-[9.5px] text-[#E0004D] font-semibold leading-tight">Bimbingan Agronomi Online</p>
+                                <p class="text-[9.5px] text-[#16A34A] font-semibold leading-tight">Bimbingan Agronomi Online</p>
                             </div>
                         </div>
                     </div>
@@ -117,11 +117,11 @@
             
             {{-- Service 1: Tanya Praktisi / Pakar --}}
             <a href="{{ route('konsultasi.index') }}" 
-               class="bg-white hover:bg-gray-50/80 rounded-2xl p-4 sm:p-5 border border-gray-200/90 hover:border-[#E0004D]/40 shadow-xs hover:shadow-md transition-all group flex flex-col items-center text-center">
-                <div class="w-14 h-14 rounded-2xl bg-[#FFF0F5] border border-[#FFD1DF] flex items-center justify-center text-2xl mb-2.5 group-hover:scale-110 transition-transform">
+               class="bg-white hover:bg-gray-50/80 rounded-2xl p-4 sm:p-5 border border-gray-200/90 hover:border-[#16A34A]/40 shadow-xs hover:shadow-md transition-all group flex flex-col items-center text-center">
+                <div class="w-14 h-14 rounded-2xl bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center text-2xl mb-2.5 group-hover:scale-110 transition-transform">
                     💬
                 </div>
-                <h3 class="font-bold text-gray-900 text-xs sm:text-sm group-hover:text-[#E0004D] transition-colors mb-0.5">
+                <h3 class="font-bold text-gray-900 text-xs sm:text-sm group-hover:text-[#16A34A] transition-colors mb-0.5">
                     Tanya Pakar
                 </h3>
                 <p class="text-[11px] text-gray-500 line-clamp-1">
@@ -212,19 +212,19 @@
         
         <div class="flex items-end justify-between mb-6">
             <div>
-                <span class="text-xs font-bold text-[#E0004D] uppercase tracking-wider">Praktisi &amp; Agronomis Pilihan</span>
+                <span class="text-xs font-bold text-[#16A34A] uppercase tracking-wider">Praktisi &amp; Agronomis Pilihan</span>
                 <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mt-1">Konsultasi dengan Praktisi Kebun &amp; Pertanian</h2>
                 <p class="text-xs sm:text-sm text-gray-500 mt-0.5">Bimbingan langsung via video call atau chat bersama praktisi berpengalaman dan agronomis.</p>
             </div>
             <a href="{{ route('konsultasi.index') }}" 
-               class="text-xs sm:text-sm font-bold text-[#E0004D] hover:text-[#C70044] flex items-center gap-1 transition-colors flex-shrink-0">
+               class="text-xs sm:text-sm font-bold text-[#16A34A] hover:text-[#15803D] flex items-center gap-1 transition-colors flex-shrink-0">
                 Lihat Semua Pakar <span class="text-base">→</span>
             </a>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             @forelse($konsultanFeatured as $k)
-            <div class="bg-white rounded-2xl p-5 border border-gray-200/90 hover:border-[#E0004D]/30 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
+            <div class="bg-white rounded-2xl p-5 border border-gray-200/90 hover:border-[#16A34A]/30 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
                 
                 <div>
                     {{-- Top: Avatar & Info --}}
@@ -233,7 +233,7 @@
                             @if($k->user->avatar_url ?? false)
                                 <img src="{{ $k->user->avatar_url }}" alt="{{ $k->user->name }}" class="w-14 h-14 rounded-2xl object-cover border border-gray-100 shadow-2xs">
                             @else
-                                <div class="w-14 h-14 rounded-2xl bg-[#FFF0F5] border border-[#FFD1DF] flex items-center justify-center text-[#E0004D] font-extrabold text-xl shadow-2xs">
+                                <div class="w-14 h-14 rounded-2xl bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center text-[#16A34A] font-extrabold text-xl shadow-2xs">
                                     {{ substr($k->user->name, 0, 1) }}
                                 </div>
                             @endif
@@ -242,10 +242,10 @@
 
                         <div class="min-w-0 flex-1">
                             <div class="flex items-center gap-1.5">
-                                <h3 class="font-bold text-gray-900 text-sm sm:text-base truncate group-hover:text-[#E0004D] transition-colors">
+                                <h3 class="font-bold text-gray-900 text-sm sm:text-base truncate group-hover:text-[#16A34A] transition-colors">
                                     {{ $k->user->name }}
                                 </h3>
-                                <span class="text-[#E0004D] text-xs" title="Terverifikasi">✓</span>
+                                <span class="text-[#16A34A] text-xs" title="Terverifikasi">✓</span>
                             </div>
                             <p class="text-xs text-gray-500 truncate mt-0.5">{{ $k->spesialisasi }}</p>
                             
@@ -280,7 +280,7 @@
                     </div>
 
                     <a href="{{ route('konsultasi.show', $k->id) }}" 
-                       class="border border-[#E0004D] text-[#E0004D] hover:bg-[#E0004D] hover:text-white font-bold text-xs sm:text-sm px-5 py-2 rounded-xl transition-all active:scale-95 shadow-2xs">
+                       class="border border-[#16A34A] text-[#16A34A] hover:bg-[#16A34A] hover:text-white font-bold text-xs sm:text-sm px-5 py-2 rounded-xl transition-all active:scale-95 shadow-2xs">
                         Chat
                     </a>
                 </div>
@@ -338,7 +338,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-            <span class="text-xs font-bold text-[#E0004D] uppercase tracking-wider">Diagnosa Mandiri</span>
+            <span class="text-xs font-bold text-[#16A34A] uppercase tracking-wider">Diagnosa Mandiri</span>
             <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mt-1">Cek Gejala Masalah Tanaman</h2>
             <p class="text-xs sm:text-sm text-gray-500 mt-1">Pilih keluhan yang terjadi pada tanaman Anda untuk melihat analisa awal dan rekomendasi penanganan.</p>
         </div>
@@ -347,31 +347,31 @@
         <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
             <button type="button" 
                     @click="activeTab = 'kuning'"
-                    :class="activeTab === 'kuning' ? 'bg-[#E0004D] text-white border-[#E0004D]' : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'"
+                    :class="activeTab === 'kuning' ? 'bg-[#16A34A] text-white border-[#16A34A]' : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'"
                     class="px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border transition-all">
                 🍂 Daun Kuning
             </button>
             <button type="button" 
                     @click="activeTab = 'kutu'"
-                    :class="activeTab === 'kutu' ? 'bg-[#E0004D] text-white border-[#E0004D]' : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'"
+                    :class="activeTab === 'kutu' ? 'bg-[#16A34A] text-white border-[#16A34A]' : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'"
                     class="px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border transition-all">
                 🐛 Kutu Putih
             </button>
             <button type="button" 
                     @click="activeTab = 'busuk'"
-                    :class="activeTab === 'busuk' ? 'bg-[#E0004D] text-white border-[#E0004D]' : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'"
+                    :class="activeTab === 'busuk' ? 'bg-[#16A34A] text-white border-[#16A34A]' : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'"
                     class="px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border transition-all">
                 🍄 Busuk Batang
             </button>
             <button type="button" 
                     @click="activeTab = 'rontok'"
-                    :class="activeTab === 'rontok' ? 'bg-[#E0004D] text-white border-[#E0004D]' : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'"
+                    :class="activeTab === 'rontok' ? 'bg-[#16A34A] text-white border-[#16A34A]' : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'"
                     class="px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border transition-all">
                 🥀 Buah Rontok
             </button>
             <button type="button" 
                     @click="activeTab = 'tanah'"
-                    :class="activeTab === 'tanah' ? 'bg-[#E0004D] text-white border-[#E0004D]' : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'"
+                    :class="activeTab === 'tanah' ? 'bg-[#16A34A] text-white border-[#16A34A]' : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'"
                     class="px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border transition-all">
                 🪴 Tanah Keras
             </button>
@@ -381,7 +381,7 @@
         <div class="max-w-3xl mx-auto bg-[#F8F9FA] rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-xs">
             <div class="flex items-start justify-between gap-4 mb-4">
                 <div>
-                    <span class="inline-block text-[11px] font-bold text-[#E0004D] bg-[#FFF0F5] px-2.5 py-0.5 rounded-full mb-1.5">
+                    <span class="inline-block text-[11px] font-bold text-[#16A34A] bg-[#F0FDF4] px-2.5 py-0.5 rounded-full mb-1.5">
                         Analisa Cepat Gejala
                     </span>
                     <h3 class="text-lg sm:text-xl font-bold text-gray-900" x-html="symptoms[activeTab].title"></h3>
@@ -407,7 +407,7 @@
                     Butuh analisa lebih mendalam bersama pakar spesialis tanaman?
                 </p>
                 <a :href="'{{ route('konsultasi.index') }}?search=' + encodeURIComponent(symptoms[activeTab].query)" 
-                   class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#E0004D] hover:bg-[#C70044] text-white text-xs sm:text-sm font-bold px-6 py-2.5 rounded-xl transition-all shadow-xs active:scale-95">
+                   class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#16A34A] hover:bg-[#15803D] text-white text-xs sm:text-sm font-bold px-6 py-2.5 rounded-xl transition-all shadow-xs active:scale-95">
                     <span>Tanya Praktisi Kebun</span>
                     <span>→</span>
                 </a>
@@ -425,19 +425,19 @@
         
         <div class="flex items-end justify-between mb-6">
             <div>
-                <span class="text-xs font-bold text-[#E0004D] uppercase tracking-wider">Toko Sarana Kebun &amp; Pertanian</span>
+                <span class="text-xs font-bold text-[#16A34A] uppercase tracking-wider">Toko Sarana Kebun &amp; Pertanian</span>
                 <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mt-1">Sarana &amp; Nutrisi Tanaman Pilihan</h2>
                 <p class="text-xs sm:text-sm text-gray-500 mt-0.5">Pupuk organik, nutrisi hidroponik, dan benih unggul dengan jaminan kualitas.</p>
             </div>
             <a href="{{ route('sarana.index') }}" 
-               class="text-xs sm:text-sm font-bold text-[#E0004D] hover:text-[#C70044] flex items-center gap-1 transition-colors flex-shrink-0">
+               class="text-xs sm:text-sm font-bold text-[#16A34A] hover:text-[#15803D] flex items-center gap-1 transition-colors flex-shrink-0">
                 Katalog Lengkap <span class="text-base">→</span>
             </a>
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
             @forelse($saranaFeatured as $s)
-            <div class="bg-white rounded-2xl p-4 border border-gray-200/90 hover:border-[#E0004D]/30 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
+            <div class="bg-white rounded-2xl p-4 border border-gray-200/90 hover:border-[#16A34A]/30 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
                 <div>
                     {{-- Image Container --}}
                     <div class="aspect-square rounded-xl overflow-hidden bg-gray-100 mb-3 relative">
@@ -451,7 +451,7 @@
                         </span>
                     </div>
 
-                    <h3 class="font-bold text-gray-900 text-xs sm:text-sm group-hover:text-[#E0004D] transition-colors line-clamp-2 mb-1">
+                    <h3 class="font-bold text-gray-900 text-xs sm:text-sm group-hover:text-[#16A34A] transition-colors line-clamp-2 mb-1">
                         {{ $s->nama }}
                     </h3>
                 </div>
@@ -463,7 +463,7 @@
                             Rp {{ number_format($s->harga, 0, ',', '.') }}
                         </span>
                         <a href="{{ route('sarana.index') }}" 
-                           class="border border-[#E0004D] text-[#E0004D] hover:bg-[#E0004D] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-all active:scale-95">
+                           class="border border-[#16A34A] text-[#16A34A] hover:bg-[#16A34A] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-all active:scale-95">
                             Beli
                         </a>
                     </div>
@@ -511,7 +511,7 @@
                     </div>
                 </div>
 
-                <a href="{{ route('konsultasi.index') }}" class="text-xs font-bold text-[#E0004D] hover:underline pt-2">
+                <a href="{{ route('konsultasi.index') }}" class="text-xs font-bold text-[#16A34A] hover:underline pt-2">
                     Tanya penyesuaian cuaca ke pakar →
                 </a>
             </div>
@@ -520,7 +520,7 @@
             <div class="lg:col-span-2 bg-[#F8F9FA] rounded-2xl p-6 border border-gray-200 shadow-xs">
                 <div class="flex items-center justify-between mb-4">
                     <div>
-                        <span class="text-xs font-bold text-[#E0004D] bg-[#FFF0F5] px-2.5 py-1 rounded-full">
+                        <span class="text-xs font-bold text-[#16A34A] bg-[#F0FDF4] px-2.5 py-1 rounded-full">
                             📈 Tren Pasar Terkini
                         </span>
                         <h3 class="text-base font-bold text-gray-900 mt-2">Harga Komoditas Acuan Petani</h3>
@@ -559,12 +559,12 @@
         
         <div class="flex items-end justify-between mb-8">
             <div>
-                <span class="text-xs font-bold text-[#E0004D] uppercase tracking-wider">Edukasi &amp; Panduan</span>
+                <span class="text-xs font-bold text-[#16A34A] uppercase tracking-wider">Edukasi &amp; Panduan</span>
                 <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mt-1">Artikel Kebun Terpopuler</h2>
                 <p class="text-xs sm:text-sm text-gray-500 mt-1">Tips praktis dan panduan budidaya yang ditinjau langsung oleh agronomis.</p>
             </div>
             <a href="{{ route('layanan') }}" 
-               class="text-xs sm:text-sm font-bold text-[#E0004D] hover:text-[#C70044] flex items-center gap-1 transition-colors flex-shrink-0">
+               class="text-xs sm:text-sm font-bold text-[#16A34A] hover:text-[#15803D] flex items-center gap-1 transition-colors flex-shrink-0">
                 Lihat Semua Artikel <span class="text-base">→</span>
             </a>
         </div>
@@ -572,16 +572,16 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             
             {{-- Article 1 --}}
-            <article class="bg-white rounded-2xl overflow-hidden border border-gray-200/90 hover:border-[#E0004D]/30 shadow-xs hover:shadow-md transition-all group flex flex-col">
+            <article class="bg-white rounded-2xl overflow-hidden border border-gray-200/90 hover:border-[#16A34A]/30 shadow-xs hover:shadow-md transition-all group flex flex-col">
                 <div class="aspect-[16/9] overflow-hidden bg-gray-100 relative">
                     <img src="/images/halobun_real_pest_control.jpg" alt="Panduan Pengendalian Hama Kutu Putih" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                    <span class="absolute top-3 left-3 bg-white text-[#E0004D] font-bold text-[10px] px-2.5 py-1 rounded-full shadow-xs">
+                    <span class="absolute top-3 left-3 bg-white text-[#16A34A] font-bold text-[10px] px-2.5 py-1 rounded-full shadow-xs">
                         Pengendalian Hama
                     </span>
                 </div>
                 <div class="p-5 flex flex-col flex-1 justify-between">
                     <div>
-                        <h3 class="font-bold text-gray-900 text-sm sm:text-base group-hover:text-[#E0004D] transition-colors line-clamp-2 leading-snug mb-2">
+                        <h3 class="font-bold text-gray-900 text-sm sm:text-base group-hover:text-[#16A34A] transition-colors line-clamp-2 leading-snug mb-2">
                             5 Cara Ampuh Basmi Kutu Putih Tanpa Racun Kimia Berbahaya
                         </h3>
                         <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed mb-4">
@@ -596,16 +596,16 @@
             </article>
 
             {{-- Article 2 --}}
-            <article class="bg-white rounded-2xl overflow-hidden border border-gray-200/90 hover:border-[#E0004D]/30 shadow-xs hover:shadow-md transition-all group flex flex-col">
+            <article class="bg-white rounded-2xl overflow-hidden border border-gray-200/90 hover:border-[#16A34A]/30 shadow-xs hover:shadow-md transition-all group flex flex-col">
                 <div class="aspect-[16/9] overflow-hidden bg-gray-100 relative">
                     <img src="/images/halobun_real_hydroponics.jpg" alt="Hidroponik NFT Pekebun" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                    <span class="absolute top-3 left-3 bg-white text-[#E0004D] font-bold text-[10px] px-2.5 py-1 rounded-full shadow-xs">
+                    <span class="absolute top-3 left-3 bg-white text-[#16A34A] font-bold text-[10px] px-2.5 py-1 rounded-full shadow-xs">
                         Urban Farming
                     </span>
                 </div>
                 <div class="p-5 flex flex-col flex-1 justify-between">
                     <div>
-                        <h3 class="font-bold text-gray-900 text-sm sm:text-base group-hover:text-[#E0004D] transition-colors line-clamp-2 leading-snug mb-2">
+                        <h3 class="font-bold text-gray-900 text-sm sm:text-base group-hover:text-[#16A34A] transition-colors line-clamp-2 leading-snug mb-2">
                             Panduan Memulai Hidroponik NFT untuk Pekebun Pemula
                         </h3>
                         <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed mb-4">
@@ -620,16 +620,16 @@
             </article>
 
             {{-- Article 3 --}}
-            <article class="bg-white rounded-2xl overflow-hidden border border-gray-200/90 hover:border-[#E0004D]/30 shadow-xs hover:shadow-md transition-all group flex flex-col">
+            <article class="bg-white rounded-2xl overflow-hidden border border-gray-200/90 hover:border-[#16A34A]/30 shadow-xs hover:shadow-md transition-all group flex flex-col">
                 <div class="aspect-[16/9] overflow-hidden bg-gray-100 relative">
                     <img src="/images/halobun_real_soil_test.jpg" alt="Manajemen Kesuburan Tanah" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                    <span class="absolute top-3 left-3 bg-white text-[#E0004D] font-bold text-[10px] px-2.5 py-1 rounded-full shadow-xs">
+                    <span class="absolute top-3 left-3 bg-white text-[#16A34A] font-bold text-[10px] px-2.5 py-1 rounded-full shadow-xs">
                         Manajemen Tanah
                     </span>
                 </div>
                 <div class="p-5 flex flex-col flex-1 justify-between">
                     <div>
-                        <h3 class="font-bold text-gray-900 text-sm sm:text-base group-hover:text-[#E0004D] transition-colors line-clamp-2 leading-snug mb-2">
+                        <h3 class="font-bold text-gray-900 text-sm sm:text-base group-hover:text-[#16A34A] transition-colors line-clamp-2 leading-snug mb-2">
                             Mengenal Tanda Tanah Kering Mati dan Cara Menghidupkannya
                         </h3>
                         <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed mb-4">
@@ -656,7 +656,7 @@
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             <div class="flex items-start gap-4 p-5 rounded-2xl bg-[#F8F9FA] border border-gray-200">
-                <div class="w-12 h-12 rounded-xl bg-[#FFF0F5] border border-[#FFD1DF] flex items-center justify-center text-2xl flex-shrink-0">
+                <div class="w-12 h-12 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center text-2xl flex-shrink-0">
                     🛡️
                 </div>
                 <div>
@@ -668,7 +668,7 @@
             </div>
 
             <div class="flex items-start gap-4 p-5 rounded-2xl bg-[#F8F9FA] border border-gray-200">
-                <div class="w-12 h-12 rounded-xl bg-[#FFF0F5] border border-[#FFD1DF] flex items-center justify-center text-2xl flex-shrink-0">
+                <div class="w-12 h-12 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center text-2xl flex-shrink-0">
                     ⚡
                 </div>
                 <div>
@@ -680,7 +680,7 @@
             </div>
 
             <div class="flex items-start gap-4 p-5 rounded-2xl bg-[#F8F9FA] border border-gray-200">
-                <div class="w-12 h-12 rounded-xl bg-[#FFF0F5] border border-[#FFD1DF] flex items-center justify-center text-2xl flex-shrink-0">
+                <div class="w-12 h-12 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center text-2xl flex-shrink-0">
                     🔒
                 </div>
                 <div>
@@ -693,7 +693,7 @@
         </div>
 
         {{-- Simple Halodoc Red CTA Card --}}
-        <div class="bg-gradient-to-r from-[#E0004D] to-[#C70044] rounded-3xl p-8 sm:p-12 text-white shadow-md relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="bg-gradient-to-r from-[#16A34A] to-[#15803D] rounded-3xl p-8 sm:p-12 text-white shadow-md relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="max-w-xl text-center md:text-left">
                 <span class="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full mb-3 backdrop-blur-xs">
                     ✦ Mulai Konsultasi Pertamamu
@@ -708,7 +708,7 @@
 
             <div class="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto flex-shrink-0">
                 <a href="{{ route('konsultasi.index') }}" 
-                   class="w-full sm:w-auto bg-white text-[#E0004D] hover:bg-gray-50 font-bold px-6 py-3.5 rounded-xl text-xs sm:text-sm text-center transition-all shadow-sm active:scale-95">
+                   class="w-full sm:w-auto bg-white text-[#16A34A] hover:bg-gray-50 font-bold px-6 py-3.5 rounded-xl text-xs sm:text-sm text-center transition-all shadow-sm active:scale-95">
                     Tanya Pakar Sekarang
                 </a>
                 <a href="{{ route('sarana.index') }}" 

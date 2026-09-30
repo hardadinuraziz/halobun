@@ -39,19 +39,19 @@
    HALODOC-INSPIRED CLEAN THEME SYSTEM
 ═══════════════════════════════════════════════════════════ */
 :root, [data-theme="halodoc"], [data-theme="sage"] {
-    --theme-primary: #E0004D;
-    --theme-primary-hover: #C70044;
+    --theme-primary: #16A34A;
+    --theme-primary-hover: #15803D;
     --theme-primary-text: #FFFFFF;
-    --theme-accent: #E0004D;
-    --theme-badge-bg: #FFF0F5;
-    --theme-badge-text: #E0004D;
+    --theme-accent: #16A34A;
+    --theme-badge-bg: #F0FDF4;
+    --theme-badge-text: #16A34A;
     --theme-bg-soft: #F8F9FA;
     --theme-border: #E5E7EB;
     --theme-card-bg: #FFFFFF;
-    --theme-glow-1: rgba(224, 0, 77, 0.08);
-    --theme-glow-2: rgba(224, 0, 77, 0.05);
-    --theme-glow-3: rgba(224, 0, 77, 0.03);
-    --theme-tagline: #E0004D;
+    --theme-glow-1: rgba(22, 163, 74, 0.08);
+    --theme-glow-2: rgba(22, 163, 74, 0.05);
+    --theme-glow-3: rgba(22, 163, 74, 0.03);
+    --theme-tagline: #16A34A;
 }
 
 [data-theme="terracotta"] {

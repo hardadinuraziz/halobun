@@ -8,7 +8,7 @@
     {{-- Header --}}
     <div class="bg-white border-b border-slate-200 py-10 sm:py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <span class="inline-flex items-center gap-1.5 bg-[#FFF0F5] text-[#E0004D] border border-[#FFD1DF] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">
+            <span class="inline-flex items-center gap-1.5 bg-[#F0FDF4] text-[#16A34A] border border-[#BBF7D0] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">
                 💬 Tanya Praktisi Kebun
             </span>
             <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1E293B]">Konsultasi Praktisi Perkebunan &amp; Agronomi</h1>
@@ -23,11 +23,11 @@
                 <div>
                     <label class="block text-xs font-semibold text-slate-600 mb-1.5">Cari Praktisi</label>
                     <input type="text" name="search" value="{{ request('search') }}" placeholder="Nama atau spesialisasi..."
-                        class="w-full border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#E0004D] focus:border-transparent bg-slate-50">
+                        class="w-full border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#16A34A] focus:border-transparent bg-slate-50">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-slate-600 mb-1.5">Spesialisasi</label>
-                    <select name="spesialisasi" class="w-full border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#E0004D] bg-slate-50">
+                    <select name="spesialisasi" class="w-full border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#16A34A] bg-slate-50">
                         <option value="">Semua Spesialisasi</option>
                         @foreach($spesialisasiList as $sp)
                         <option value="{{ $sp }}" {{ request('spesialisasi') == $sp ? 'selected' : '' }}>{{ $sp }}</option>
@@ -36,7 +36,7 @@
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-slate-600 mb-1.5">Harga Maks</label>
-                    <select name="harga_max" class="w-full border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#E0004D] bg-slate-50">
+                    <select name="harga_max" class="w-full border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#16A34A] bg-slate-50">
                         <option value="">Semua Harga</option>
                         <option value="50000" {{ request('harga_max')=='50000' ? 'selected' : '' }}>≤ Rp 50.000</option>
                         <option value="100000" {{ request('harga_max')=='100000' ? 'selected' : '' }}>≤ Rp 100.000</option>
@@ -45,7 +45,7 @@
                     </select>
                 </div>
                 <div class="flex items-end gap-2">
-                    <button type="submit" class="flex-1 bg-[#E0004D] hover:bg-[#C70044] text-white font-bold px-4 py-2.5 rounded-xl text-sm transition-colors shadow-sm">
+                    <button type="submit" class="flex-1 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold px-4 py-2.5 rounded-xl text-sm transition-colors shadow-sm">
                         Cari Praktisi
                     </button>
                     @if(request()->hasAny(['search','spesialisasi','harga_max']))
@@ -71,12 +71,12 @@
             @foreach($konsultans as $konsultan)
             <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 sm:p-6 flex flex-col shadow-sm hover:shadow-md transition-all">
                 <div class="flex items-start gap-4 mb-4">
-                    <div class="w-14 h-14 bg-[#FFF0F5] border border-[#FFD1DF] rounded-2xl flex items-center justify-center text-[#E0004D] font-extrabold text-2xl flex-shrink-0">
+                    <div class="w-14 h-14 bg-[#F0FDF4] border border-[#BBF7D0] rounded-2xl flex items-center justify-center text-[#16A34A] font-extrabold text-2xl flex-shrink-0">
                         {{ substr($konsultan->user->name, 0, 1) }}
                     </div>
                     <div class="flex-1 min-w-0">
                         <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug">{{ $konsultan->user->name }}</h3>
-                        <span class="inline-block bg-[#FFF0F5] text-[#E0004D] border border-[#FFD1DF] text-xs font-semibold px-2.5 py-0.5 rounded-full mt-1.5">
+                        <span class="inline-block bg-[#F0FDF4] text-[#16A34A] border border-[#BBF7D0] text-xs font-semibold px-2.5 py-0.5 rounded-full mt-1.5">
                             {{ $konsultan->spesialisasi }}
                         </span>
                     </div>
@@ -102,12 +102,12 @@
                 <div class="pt-4 border-t border-slate-100 flex items-center justify-between mt-auto">
                     <div>
                         <div class="text-[11px] text-slate-400 mb-0.5">Biaya per sesi</div>
-                        <div class="font-extrabold text-[#E0004D] text-base sm:text-lg">
+                        <div class="font-extrabold text-[#16A34A] text-base sm:text-lg">
                             Rp {{ number_format($konsultan->harga_per_sesi, 0, ',', '.') }}
                         </div>
                     </div>
                     <a href="{{ route('konsultasi.show', $konsultan) }}"
-                       class="bg-[#E0004D] hover:bg-[#C70044] text-white font-bold px-4 py-2 rounded-xl text-sm transition-colors shadow-sm">
+                       class="bg-[#16A34A] hover:bg-[#15803D] text-white font-bold px-4 py-2 rounded-xl text-sm transition-colors shadow-sm">
                         Konsultasi →
                     </a>
                 </div>

@@ -22,26 +22,29 @@ export default {
                 sans: ['Plus Jakarta Sans', 'Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                // Halodoc Signature Brand Palette
-                halodoc: {
-                    50: '#FFF0F5',
-                    100: '#FFE0EB',
-                    200: '#FFC2D6',
-                    300: '#FFA3C2',
-                    400: '#FF6B9B',
-                    500: '#E0004D', // Official Halodoc Primary Red
-                    600: '#C70044',
-                    700: '#A30038',
-                    800: '#7F002C',
-                    900: '#5C0020',
-                    DEFAULT: '#E0004D',
+                // JuruTani Signature Brand Palette (https://jurutani.com)
+                jurutani: {
+                    50: '#F0FDF4',
+                    100: '#DCFCE7',
+                    200: '#BBF7D0',
+                    300: '#86EFAC',
+                    400: '#4ADE80',
+                    500: '#22C55E',
+                    600: '#16A34A', // Official JuruTani Primary Green
+                    700: '#15803D',
+                    800: '#166534',
+                    900: '#14532D',
+                    950: '#052E16',
+                    DEFAULT: '#16A34A',
                 },
                 brand: {
-                    red: '#E0004D',
-                    redHover: '#C70044',
-                    redLight: '#FFF0F5',
-                    redBorder: '#FFD1DF',
-                    dark: '#1E293B',
+                    primary: '#16A34A',
+                    primaryHover: '#15803D',
+                    primaryLight: '#F0FDF4',
+                    primaryBorder: '#BBF7D0',
+                    accent: '#4ADE80',
+                    dark: '#052E16',
+                    text: '#1E293B',
                     muted: '#64748B',
                 },
             },
