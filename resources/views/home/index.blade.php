@@ -83,15 +83,15 @@
                 </div>
             </div>
 
-            {{-- Right Column: 3D Agri Practitioner Illustration --}}
+            {{-- Right Column: Real Agri Practitioner Photo --}}
             <div class="lg:col-span-5 flex justify-center">
                 <div class="relative w-full max-w-md lg:max-w-none">
                     {{-- Decorative Subtle Aura --}}
                     <div class="absolute -inset-2 bg-gradient-to-r from-[#FFF0F5] to-emerald-50 rounded-3xl blur-xl opacity-70"></div>
                     
-                    {{-- Main 3D Card --}}
+                    {{-- Main Photo Card --}}
                     <div class="relative bg-white rounded-3xl p-3 sm:p-4 border border-gray-200/80 shadow-md">
-                        <img src="/images/halobun_praktisi_hero.jpg" 
+                        <img src="/images/halobun_real_practitioner.jpg" 
                              alt="Praktisi Kebun &amp; Pertanian Halobun" 
                              class="w-full h-auto rounded-2xl object-cover shadow-2xs select-none"
                              loading="eager">
