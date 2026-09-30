@@ -17,8 +17,8 @@
     body {
         overflow-x: hidden;
         max-width: 100%;
-        background-color: #F8FAF7;
-        color: #2D3A2C;
+        background-color: #FFFFFF;
+        color: #1E293B;
         font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
         -webkit-font-smoothing: antialiased;
     }
@@ -36,22 +36,22 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
-   PASTEL DYNAMIC THEMES (SHINE BOTANICAL SYSTEM)
+   HALODOC-INSPIRED CLEAN THEME SYSTEM
 ═══════════════════════════════════════════════════════════ */
-:root, [data-theme="sage"] {
-    --theme-primary: #2E4A2C;
-    --theme-primary-hover: #223820;
+:root, [data-theme="halodoc"], [data-theme="sage"] {
+    --theme-primary: #E0004D;
+    --theme-primary-hover: #C70044;
     --theme-primary-text: #FFFFFF;
-    --theme-accent: #4A7A48;
-    --theme-badge-bg: rgba(74, 122, 72, 0.12);
-    --theme-badge-text: #2E4A2C;
-    --theme-bg-soft: #F2F7F0;
-    --theme-border: #D8E6D5;
-    --theme-card-bg: linear-gradient(180deg, #F3F8F2 0%, #FFFFFF 100%);
-    --theme-glow-1: rgba(139, 175, 137, 0.28);
-    --theme-glow-2: rgba(74, 122, 72, 0.18);
-    --theme-glow-3: rgba(205, 220, 171, 0.22);
-    --theme-tagline: #2E4A2C;
+    --theme-accent: #E0004D;
+    --theme-badge-bg: #FFF0F5;
+    --theme-badge-text: #E0004D;
+    --theme-bg-soft: #F8F9FA;
+    --theme-border: #E5E7EB;
+    --theme-card-bg: #FFFFFF;
+    --theme-glow-1: rgba(224, 0, 77, 0.08);
+    --theme-glow-2: rgba(224, 0, 77, 0.05);
+    --theme-glow-3: rgba(224, 0, 77, 0.03);
+    --theme-tagline: #E0004D;
 }
 
 [data-theme="terracotta"] {

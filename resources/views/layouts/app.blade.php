@@ -19,390 +19,72 @@
 
     @stack('styles')
 </head>
-<body class="bg-[#F8FAF7] text-[#2D3A2C] antialiased">
+<body class="bg-white text-gray-800 antialiased selection:bg-[#FFF0F5] selection:text-[#E0004D]">
 
-{{-- ══════════════════════════════════════════════════════════════════
-     PASTEL MINIMALIST OPENING (HALLOBUN)
-     FULL-SCREEN PASTEL BOTANICAL & GARDEN OPENING MODAL
-══════════════════════════════════════════════════════════════════ --}}
-@if(request()->routeIs('home'))
-<div id="consultationSplash"
-     class="fixed inset-0 z-[100] bg-[#FAFBF9] overflow-y-auto flex flex-col md:hidden transition-all duration-400 ease-out opacity-100 relative"
-     role="dialog" aria-modal="true" aria-label="Selamat Datang di Hallobun"
-     style="display:none;">
-
-    {{-- Ambient Warm Pastel Aura Glows --}}
-    <div class="aura-glow aura-glow-1"></div>
-    <div class="aura-glow aura-glow-2"></div>
-    <div class="aura-glow aura-glow-3"></div>
-
-    <div class="w-full max-w-md mx-auto px-4 sm:px-5 py-4 min-h-screen flex flex-col justify-between relative z-10">
-
-        {{-- Top Bar / Header --}}
-        <header class="flex items-center justify-between gap-2 pt-1 pb-2">
-            <div class="flex items-center gap-2.5 min-w-0 flex-1">
-                <img src="/images/logo_icon.jpg" alt="Hallobun" class="w-11 h-11 rounded-full object-cover shadow-sm border border-emerald-200 flex-shrink-0 bg-white p-0.5">
-                <div class="min-w-0">
-                    <h2 class="font-extrabold text-gray-900 text-base leading-tight tracking-tight">Shine Hallobun</h2>
-                    <p class="text-[8.5px] font-bold text-emerald-800 tracking-wider uppercase leading-tight mt-0.5">Platform Layanan Kebun &amp; Tani Online</p>
-                </div>
-            </div>
-
-            {{-- Aesthetic Palette Dots Widget (Interactive Theme Switcher) --}}
-            <div class="flex items-center gap-1.5 bg-white/90 px-2 py-1.5 rounded-full border border-gray-200/80 shadow-xs flex-shrink-0" title="Ganti Tema Warna Pastel">
-                <button type="button" onclick="setHallobunTheme('terracotta')" class="theme-chip-btn w-2.5 h-2.5 rounded-full bg-[#8E4A2E] transition-transform hover:scale-125 active:scale-95" aria-label="Tema Terracotta" title="Terracotta"></button>
-                <button type="button" onclick="setHallobunTheme('sage')" class="theme-chip-btn w-2.5 h-2.5 rounded-full bg-[#4A7A48] transition-transform hover:scale-125 active:scale-95" aria-label="Tema Sage Green" title="Sage Green"></button>
-                <button type="button" onclick="setHallobunTheme('lavender')" class="theme-chip-btn w-2.5 h-2.5 rounded-full bg-[#5D5778] transition-transform hover:scale-125 active:scale-95" aria-label="Tema Lavender" title="Lavender"></button>
-                <button type="button" onclick="setHallobunTheme('sky')" class="theme-chip-btn w-2.5 h-2.5 rounded-full bg-[#2B4E63] transition-transform hover:scale-125 active:scale-95" aria-label="Tema Sky Mist" title="Sky Mist"></button>
-                <button type="button" onclick="setHallobunTheme('rose')" class="theme-chip-btn w-2.5 h-2.5 rounded-full bg-[#8C3A4E] transition-transform hover:scale-125 active:scale-95" aria-label="Tema Rose Blush" title="Rose Blush"></button>
-            </div>
-
-            {{-- Circular "Lewati ke Web →" Button --}}
-            <button id="btn-skip-splash"
-                    onclick="dismissSplash()"
-                    class="w-14 h-14 rounded-full bg-[#2E4A2C] text-white flex flex-col items-center justify-center text-center p-1 shadow-md hover:bg-[#223921] transition-transform active:scale-95 flex-shrink-0"
-                    aria-label="Lewati ke website">
-                <span class="text-[9.5px] font-bold leading-tight">Lewati</span>
-                <span class="text-[9.5px] font-bold leading-tight flex items-center gap-0.5">ke Web <span>→</span></span>
-            </button>
-        </header>
-
-        {{-- Banner Card with Multi-Slide Carousel & Breathing Effect --}}
-        <div class="bg-gradient-to-b from-[#F2F7F0] via-[#F8FAF7] to-white rounded-3xl p-2 sm:p-2.5 border border-[#D8E6D5] shadow-sm my-2 art-card-breathe relative">
-            <div class="rounded-2xl overflow-hidden aspect-[16/9] relative shadow-inner bg-[#EBF4EA] flex items-center justify-center slider-container" id="splashSlider">
-                {{-- Slide 1 --}}
-                <div class="slider-slide active" data-slide="0">
-                    <img src="/images/hero_banner.jpg" 
-                         alt="Konsultasi Berkebun Hallobun" 
-                         class="w-full h-full object-cover object-center select-none"
-                         loading="eager">
-                    <div class="absolute inset-x-0 bottom-0 p-2.5 bg-gradient-to-t from-black/60 via-black/20 to-transparent text-white pointer-events-none">
-                        <span class="inline-block text-[9px] font-bold bg-white/20 backdrop-blur-xs px-2 py-0.5 rounded-full mb-0.5">✦ Lahan &amp; Kebun Sehat</span>
-                        <p class="text-[11px] font-semibold leading-tight drop-shadow-sm">Pikiran tenang, tanaman bertumbuh riang</p>
-                    </div>
-                </div>
-
-                {{-- Slide 2 --}}
-                <div class="slider-slide" data-slide="1">
-                    <img src="/images/layanan/konsultasi.jpg" 
-                         alt="Konsultasi Hangat Bersama Agronomis" 
-                         class="w-full h-full object-cover object-center select-none"
-                         loading="lazy">
-                    <div class="absolute inset-x-0 bottom-0 p-2.5 bg-gradient-to-t from-black/60 via-black/20 to-transparent text-white pointer-events-none">
-                        <span class="inline-block text-[9px] font-bold bg-white/20 backdrop-blur-xs px-2 py-0.5 rounded-full mb-0.5">✦ Teman Cerita Tanaman</span>
-                        <p class="text-[11px] font-semibold leading-tight drop-shadow-sm">Diskusi santai temukan solusi tepat</p>
-                    </div>
-                </div>
-
-                {{-- Slide 3 --}}
-                <div class="slider-slide" data-slide="2">
-                    <img src="/images/layanan/pelatihan.jpg" 
-                         alt="Edukasi Pekebun & Praktek Tani" 
-                         class="w-full h-full object-cover object-center select-none"
-                         loading="lazy">
-                    <div class="absolute inset-x-0 bottom-0 p-2.5 bg-gradient-to-t from-black/60 via-black/20 to-transparent text-white pointer-events-none">
-                        <span class="inline-block text-[9px] font-bold bg-white/20 backdrop-blur-xs px-2 py-0.5 rounded-full mb-0.5">✦ Edukasi &amp; Komunitas</span>
-                        <p class="text-[11px] font-semibold leading-tight drop-shadow-sm">Tumbuh bersama komunitas pekebun se-Indonesia</p>
-                    </div>
-                </div>
-
-                {{-- Carousel Indicator Floating Pill --}}
-                <div class="absolute bottom-2 inset-x-0 flex items-center justify-center z-10 pointer-events-auto">
-                    <div class="flex items-center gap-1.5 bg-white/85 backdrop-blur-xs px-3 py-1 rounded-full shadow-xs border border-white/70" id="splashSliderDots">
-                        <button type="button" onclick="goToSplashSlide(0)" class="splash-dot w-5 h-1.5 rounded-full bg-[#2E4A2C] transition-all" aria-label="Slide 1"></button>
-                        <button type="button" onclick="goToSplashSlide(1)" class="splash-dot w-1.5 h-1.5 rounded-full bg-[#CADBCA] transition-all" aria-label="Slide 2"></button>
-                        <button type="button" onclick="goToSplashSlide(2)" class="splash-dot w-1.5 h-1.5 rounded-full bg-[#CADBCA] transition-all" aria-label="Slide 3"></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {{-- Title & Subtitle --}}
-        <div class="text-center px-2 my-1">
-            <h1 class="text-3xl font-extrabold text-[#243723] tracking-tight font-serif-title">
-                Hallobun
-            </h1>
-            <p class="font-script text-2xl text-[#2E4A2C] font-bold mt-0.5">
-                Temani Setiap Langkah Berkebunmu ♡
-            </p>
-            <p class="text-[12px] text-[#4A6149] leading-relaxed mt-1.5 max-w-xs mx-auto">
-                Ruang aman dan terpercaya untuk kamu bercerita seputar tanaman, memahami emosi kebun, memulihkan tanaman yang layu, dan menemukan solusi bersama agronomis berlisensi.
-            </p>
-        </div>
-
-        {{-- Interactive Plant Health Symptom Selector --}}
-        <div class="my-2 bg-white/80 backdrop-blur-xs p-2.5 rounded-2xl border border-[#DCE8DB] shadow-xs">
-            <div class="flex items-center justify-between mb-1.5 px-0.5">
-                <span class="text-[10px] font-bold text-gray-600 uppercase tracking-wider flex items-center gap-1">
-                    <span>🌱</span> Tanamanmu sedang kenapa?
-                </span>
-                <span class="text-[9px] text-emerald-700 font-semibold" id="symptomHelpLabel">Pilih gejala</span>
-            </div>
-            <div class="flex flex-wrap gap-1.5 justify-center" id="symptomChips">
-                <button type="button" onclick="selectSymptom(this, 'Daun Menguning & Layu')" class="symptom-chip text-[10.5px] font-semibold px-2.5 py-1 rounded-xl bg-white border border-gray-200 text-gray-700 hover:border-emerald-500 hover:bg-emerald-50 transition-all flex items-center gap-1">
-                    <span>🍂</span> Daun Kuning
-                </button>
-                <button type="button" onclick="selectSymptom(this, 'Serangan Hama / Kutu Putih')" class="symptom-chip text-[10.5px] font-semibold px-2.5 py-1 rounded-xl bg-white border border-gray-200 text-gray-700 hover:border-emerald-500 hover:bg-emerald-50 transition-all flex items-center gap-1">
-                    <span>🐛</span> Hama &amp; Kutu
-                </button>
-                <button type="button" onclick="selectSymptom(this, 'Batang Layu / Membusuk')" class="symptom-chip text-[10.5px] font-semibold px-2.5 py-1 rounded-xl bg-white border border-gray-200 text-gray-700 hover:border-emerald-500 hover:bg-emerald-50 transition-all flex items-center gap-1">
-                    <span>🥀</span> Batang Layu
-                </button>
-                <button type="button" onclick="selectSymptom(this, 'Tanah Keras / Kurang Subur')" class="symptom-chip text-[10.5px] font-semibold px-2.5 py-1 rounded-xl bg-white border border-gray-200 text-gray-700 hover:border-emerald-500 hover:bg-emerald-50 transition-all flex items-center gap-1">
-                    <span>🌾</span> Tanah Keras
-                </button>
-                <button type="button" onclick="selectSymptom(this, 'Buah & Bunga Rontok')" class="symptom-chip text-[10.5px] font-semibold px-2.5 py-1 rounded-xl bg-white border border-gray-200 text-gray-700 hover:border-emerald-500 hover:bg-emerald-50 transition-all flex items-center gap-1">
-                    <span>🍓</span> Buah Rontok
-                </button>
-            </div>
-        </div>
-
-        {{-- Pilihan Sesi Konsultasi --}}
-        <div class="text-center my-1.5">
-            <span class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-2">
-                Pilihan Sesi Konsultasi:
-            </span>
-            <div class="grid grid-cols-3 gap-2">
-                <a id="channelChatBtn" href="{{ route('konsultasi.index') }}" onclick="dismissSplash()" class="flex flex-col items-center justify-center py-2 px-1 bg-white rounded-2xl border border-gray-200/90 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 group">
-                    <span class="text-base group-hover:scale-110 transition-transform">💬</span>
-                    <span class="text-xs font-bold text-gray-800 mt-0.5">Chat</span>
-                    <span class="text-[9px] text-gray-400">WhatsApp</span>
-                </a>
-                <a id="channelCallBtn" href="{{ route('konsultasi.index') }}" onclick="dismissSplash()" class="flex flex-col items-center justify-center py-2 px-1 bg-white rounded-2xl border border-gray-200/90 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 group">
-                    <span class="text-base group-hover:scale-110 transition-transform">📞</span>
-                    <span class="text-xs font-bold text-gray-800 mt-0.5">Call</span>
-                    <span class="text-[9px] text-gray-400">Suara Langsung</span>
-                </a>
-                <a id="channelZoomBtn" href="{{ route('konsultasi.index') }}" onclick="dismissSplash()" class="flex flex-col items-center justify-center py-2 px-1 bg-white rounded-2xl border border-gray-200/90 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 group">
-                    <span class="text-base group-hover:scale-110 transition-transform">🎥</span>
-                    <span class="text-xs font-bold text-gray-800 mt-0.5">Zoom</span>
-                    <span class="text-[9px] text-gray-400">Cek Live Tanaman</span>
-                </a>
-            </div>
-        </div>
-
-        {{-- Big CTA Button --}}
-        <div class="my-2">
-            <a id="mainSplashCta" href="{{ route('layanan') }}" onclick="dismissSplash()" class="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-[#2E4A2C] hover:bg-[#223921] text-white font-bold text-sm shadow-md transition-all active:scale-[0.98]">
-                <span id="mainSplashCtaText">Temukan Layanan Kami</span>
-                <span>→</span>
-            </a>
-        </div>
-
-        {{-- Inspiring Quote --}}
-        <div class="text-center py-1 px-4 my-0.5">
-            <p class="font-script text-xl text-[#2E4A2C] font-bold leading-snug">
-                “Langkah kecil hari ini, bisa membawa panen besar esok hari.” ♡
-            </p>
-        </div>
-
-        {{-- Footer Contact Bar --}}
-        <footer class="pt-2.5 pb-1 border-t border-[#E3EAE0] text-[10.5px] text-[#5A6D59] mt-1.5">
-            <div class="grid grid-cols-2 gap-y-1.5 gap-x-2 text-center">
-                <a href="https://hallobun.com" class="hover:text-emerald-800 truncate">🌐 Hallobun.com</a>
-                <a href="mailto:info@hallobun.com" class="hover:text-emerald-800 truncate">✉️ info@hallobun.com</a>
-                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', config('hallobun.admin_phone', '6281234567890')) }}" class="hover:text-emerald-800 truncate">📞 +62 812-3456-7890</a>
-                <a href="https://instagram.com" class="hover:text-emerald-800 truncate">📷 @hallobun.id</a>
-            </div>
-        </footer>
-
-    </div>
-</div>
-
-<script>
-    var currentSlide = 0;
-    var slideInterval = null;
-    var selectedSymptomName = '';
-    var adminWaNumber = "{{ preg_replace('/[^0-9]/', '', config('hallobun.admin_phone', '6281234567890')) }}";
-
-    function dismissSplash() {
-        var splash = document.getElementById('consultationSplash');
-        if (splash) {
-            splash.style.opacity = '0';
-            splash.style.transform = 'scale(0.98)';
-            setTimeout(function() {
-                splash.style.display = 'none';
-                document.body.style.overflow = '';
-            }, 300);
-            sessionStorage.setItem('hallobun_splash_dismissed', '1');
-            if (slideInterval) clearInterval(slideInterval);
-        }
-    }
-
-    function goToSplashSlide(idx) {
-        var slides = document.querySelectorAll('#splashSlider .slider-slide');
-        var dots = document.querySelectorAll('#splashSliderDots .splash-dot');
-        if (!slides.length) return;
-        currentSlide = (idx + slides.length) % slides.length;
-        slides.forEach(function(s, i) {
-            if (i === currentSlide) {
-                s.classList.add('active');
-            } else {
-                s.classList.remove('active');
-            }
-        });
-        dots.forEach(function(d, i) {
-            if (i === currentSlide) {
-                d.className = 'splash-dot w-5 h-1.5 rounded-full bg-[#2E4A2C] transition-all';
-            } else {
-                d.className = 'splash-dot w-1.5 h-1.5 rounded-full bg-[#CADBCA] transition-all';
-            }
-        });
-    }
-
-    function startSlideLoop() {
-        if (slideInterval) clearInterval(slideInterval);
-        slideInterval = setInterval(function() {
-            goToSplashSlide(currentSlide + 1);
-        }, 4500);
-    }
-
-    function selectSymptom(el, symptom) {
-        var chips = document.querySelectorAll('.symptom-chip');
-        chips.forEach(function(c) {
-            c.classList.remove('bg-emerald-600', 'text-white', 'border-emerald-600', 'shadow-xs');
-            c.classList.add('bg-white', 'text-gray-700', 'border-gray-200');
-        });
-        el.classList.remove('bg-white', 'text-gray-700', 'border-gray-200');
-        el.classList.add('bg-emerald-600', 'text-white', 'border-emerald-600', 'shadow-xs');
-
-        selectedSymptomName = symptom;
-        var helpLabel = document.getElementById('symptomHelpLabel');
-        if (helpLabel) helpLabel.textContent = '✓ Terpilih: ' + symptom;
-
-        var encodedMsg = encodeURIComponent("Halo Hallobun, saya ingin berkonsultasi mengenai masalah tanaman saya: " + symptom + ". Mohon bantuan diagnosis dan solusinya 🙏");
-        var waUrl = "https://wa.me/" + adminWaNumber + "?text=" + encodedMsg;
-
-        var chatBtn = document.getElementById('channelChatBtn');
-        if (chatBtn) chatBtn.href = waUrl;
-
-        var mainCta = document.getElementById('mainSplashCta');
-        var mainCtaText = document.getElementById('mainSplashCtaText');
-        if (mainCta && mainCtaText) {
-            mainCta.href = waUrl;
-            mainCtaText.textContent = "Konsultasi Masalah Ini Sekarang";
-        }
-    }
-
-    function setHallobunTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        document.body.setAttribute('data-theme', theme);
-        localStorage.setItem('hallobun_theme', theme);
-        updateThemeChips(theme);
-    }
-
-    function updateThemeChips(theme) {
-        document.querySelectorAll('.theme-chip-btn').forEach(function(btn) {
-            var onclickAttr = btn.getAttribute('onclick') || '';
-            if (onclickAttr.indexOf("'" + theme + "'") !== -1) {
-                btn.classList.add('ring-2', 'ring-offset-1', 'ring-gray-700', 'scale-125');
-            } else {
-                btn.classList.remove('ring-2', 'ring-offset-1', 'ring-gray-700', 'scale-125');
-            }
-        });
-    }
-
-    // Inisialisasi otomatis
-    (function initSplash() {
-        var savedTheme = localStorage.getItem('hallobun_theme') || 'sage';
-        setHallobunTheme(savedTheme);
-
-        var urlParams = new URLSearchParams(window.location.search);
-        var forceSplash = urlParams.get('splash') === '1';
-        if (forceSplash) {
-            sessionStorage.removeItem('hallobun_splash_dismissed');
-        }
-        if (window.innerWidth < 768) {
-            var dismissed = sessionStorage.getItem('hallobun_splash_dismissed');
-            var splash = document.getElementById('consultationSplash');
-            if (splash && (dismissed !== '1' || forceSplash)) {
-                splash.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-                startSlideLoop();
-            }
-        }
-    })();
-</script>
-@endif
 
 {{-- ═══ NAVBAR ═══════════════════════════════════════════════════════════ --}}
-<nav class="bg-[#F8FAF7]/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-[#E3EAE0]">
+<nav class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 shadow-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
 
             {{-- Logo --}}
-            <a href="{{ route('home') }}" class="flex items-center flex-shrink-0 group">
+            <a href="{{ route('home') }}" class="flex items-center gap-2 group flex-shrink-0">
                 <img src="/images/logo.jpg"
                      alt="Hallobun"
-                     class="h-8 sm:h-9 w-auto object-contain group-hover:opacity-85 transition-opacity"
+                     class="h-8 sm:h-9 w-auto object-contain group-hover:opacity-90 transition-opacity"
                      style="max-width:130px">
             </a>
 
-            {{-- Desktop Menu --}}
-            <div class="hidden md:flex items-center gap-5 lg:gap-6">
+            {{-- Desktop Menu (Halodoc style) --}}
+            <div class="hidden md:flex items-center gap-6 lg:gap-8">
                 <a href="{{ route('home') }}"
-                   class="nav-link text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors
-                          {{ request()->routeIs('home') ? 'text-emerald-700 active' : '' }}">
+                   class="nav-link text-sm font-semibold transition-colors py-1 {{ request()->routeIs('home') ? 'text-[#E0004D] border-b-2 border-[#E0004D]' : 'text-gray-600 hover:text-[#E0004D]' }}">
                     Beranda
                 </a>
                 <a href="{{ route('layanan') }}"
-                   class="nav-link text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors
-                          {{ request()->routeIs('layanan') ? 'text-emerald-700 active' : '' }}">
+                   class="nav-link text-sm font-semibold transition-colors py-1 {{ request()->routeIs('layanan') ? 'text-[#E0004D] border-b-2 border-[#E0004D]' : 'text-gray-600 hover:text-[#E0004D]' }}">
                     Layanan
                 </a>
                 <a href="{{ route('konsultasi.index') }}"
-                   class="nav-link text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors
-                          {{ request()->routeIs('konsultasi.*') ? 'text-emerald-700 active' : '' }}">
-                    Konsultasi
-                </a>
-                <a href="{{ route('narsum.index') }}"
-                   class="nav-link text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors
-                          {{ request()->routeIs('narsum.*') ? 'text-emerald-700 active' : '' }}">
-                    Narsum
-                </a>
-                <a href="{{ route('kunjungan.index') }}"
-                   class="nav-link text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors
-                          {{ request()->routeIs('kunjungan.*') ? 'text-emerald-700 active' : '' }}">
-                    Kunjungan
+                   class="nav-link text-sm font-semibold transition-colors py-1 {{ request()->routeIs('konsultasi.*') ? 'text-[#E0004D] border-b-2 border-[#E0004D]' : 'text-gray-600 hover:text-[#E0004D]' }}">
+                    Tanya Pakar
                 </a>
                 <a href="{{ route('sarana.index') }}"
-                   class="nav-link text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors
-                          {{ request()->routeIs('sarana.*') ? 'text-emerald-700 active' : '' }}">
-                    Sarana
+                   class="nav-link text-sm font-semibold transition-colors py-1 {{ request()->routeIs('sarana.*') ? 'text-[#E0004D] border-b-2 border-[#E0004D]' : 'text-gray-600 hover:text-[#E0004D]' }}">
+                    Toko Sarana
+                </a>
+                <a href="{{ route('kunjungan.index') }}"
+                   class="nav-link text-sm font-semibold transition-colors py-1 {{ request()->routeIs('kunjungan.*') ? 'text-[#E0004D] border-b-2 border-[#E0004D]' : 'text-gray-600 hover:text-[#E0004D]' }}">
+                    Kunjungan Lahan
+                </a>
+                <a href="{{ route('narsum.index') }}"
+                   class="nav-link text-sm font-semibold transition-colors py-1 {{ request()->routeIs('narsum.*') ? 'text-[#E0004D] border-b-2 border-[#E0004D]' : 'text-gray-600 hover:text-[#E0004D]' }}">
+                    Undang Narsum
                 </a>
             </div>
 
             {{-- Right side --}}
             <div class="flex items-center gap-2 sm:gap-3">
-                {{-- Desktop Pastel Theme Switcher --}}
-                <div class="hidden lg:flex items-center gap-1.5 bg-white/90 px-2.5 py-1.5 rounded-full border border-gray-200/80 shadow-xs" title="Ganti Tema Warna Pastel">
-                    <button type="button" onclick="setHallobunTheme('terracotta')" class="theme-chip-btn w-3 h-3 rounded-full bg-[#8E4A2E] transition-transform hover:scale-125 active:scale-95" title="Terracotta" aria-label="Tema Terracotta"></button>
-                    <button type="button" onclick="setHallobunTheme('sage')" class="theme-chip-btn w-3 h-3 rounded-full bg-[#4A7A48] transition-transform hover:scale-125 active:scale-95" title="Sage Green" aria-label="Tema Sage Green"></button>
-                    <button type="button" onclick="setHallobunTheme('lavender')" class="theme-chip-btn w-3 h-3 rounded-full bg-[#5D5778] transition-transform hover:scale-125 active:scale-95" title="Lavender" aria-label="Tema Lavender"></button>
-                    <button type="button" onclick="setHallobunTheme('sky')" class="theme-chip-btn w-3 h-3 rounded-full bg-[#2B4E63] transition-transform hover:scale-125 active:scale-95" title="Sky Mist" aria-label="Tema Sky Mist"></button>
-                    <button type="button" onclick="setHallobunTheme('rose')" class="theme-chip-btn w-3 h-3 rounded-full bg-[#8C3A4E] transition-transform hover:scale-125 active:scale-95" title="Rose Blush" aria-label="Tema Rose Blush"></button>
-                </div>
-
                 @auth
                     <div class="relative" x-data="{ open: false }">
                         <button @click="open = !open"
-                                class="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-emerald-700 transition-colors focus:outline-none">
-                            <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                <span class="text-emerald-700 font-bold text-xs">{{ substr(auth()->user()->name, 0, 2) }}</span>
+                                class="flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-[#E0004D] transition-colors focus:outline-none">
+                            <div class="w-8 h-8 bg-[#FFF0F5] border border-[#FFD1DF] rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="text-[#E0004D] font-bold text-xs">{{ substr(auth()->user()->name, 0, 2) }}</span>
                             </div>
-                            <span class="hidden sm:block max-w-[100px] truncate">{{ auth()->user()->name }}</span>
-                            <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <span class="hidden sm:block max-w-[120px] truncate">{{ auth()->user()->name }}</span>
+                            <svg class="w-3.5 h-3.5 flex-shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                             </svg>
                         </button>
                         <div x-show="open" @click.away="open = false" x-transition
-                             class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-1 z-50">
+                             class="absolute right-0 mt-2 w-48 bg-white rounded-2xl shadow-xl border border-gray-100 py-1.5 z-50">
                             <a href="{{ route('dashboard') }}"
-                               class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">
+                               class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-[#FFF0F5] hover:text-[#E0004D]">
                                 📊 Dashboard
                             </a>
                             <a href="{{ route('konsultasi.riwayat') }}"
-                               class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">
+                               class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-[#FFF0F5] hover:text-[#E0004D]">
                                 📋 Riwayat Konsultasi
                             </a>
                             <hr class="my-1 border-gray-100">
@@ -417,11 +99,11 @@
                     </div>
                 @else
                     <a href="{{ route('login') }}"
-                       class="text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors hidden sm:block">
+                       class="text-sm font-semibold text-gray-700 hover:text-[#E0004D] px-3 py-2 transition-colors hidden sm:block">
                         Masuk
                     </a>
                     <a href="{{ route('register') }}"
-                       class="bg-emerald-700 hover:bg-emerald-800 text-white text-xs sm:text-sm font-semibold px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg transition-colors shadow-sm whitespace-nowrap">
+                       class="bg-[#E0004D] hover:bg-[#C70044] text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-xl transition-all shadow-xs whitespace-nowrap active:scale-95">
                         Daftar
                     </a>
                 @endauth
@@ -431,11 +113,11 @@
                         aria-label="Buka menu navigasi"
                         aria-expanded="false"
                         aria-controls="mobile-menu"
-                        class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-emerald-50 hover:text-emerald-700 transition-colors focus:outline-none">
-                    <svg id="icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="md:hidden p-2 rounded-xl text-gray-600 hover:bg-gray-100 hover:text-[#E0004D] transition-colors focus:outline-none">
+                    <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
-                    <svg id="icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
                 </button>
@@ -446,69 +128,44 @@
     {{-- Mobile Menu --}}
     <div id="mobile-menu"
          role="navigation"
-         class="md:hidden bg-white/98">
+         class="md:hidden bg-white border-b border-gray-100">
         <div class="px-4 py-3 space-y-1">
             <a href="{{ route('home') }}"
-               class="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium
-                      {{ request()->routeIs('home') ? 'bg-emerald-50 text-emerald-800' : 'text-gray-700 hover:bg-emerald-50 hover:text-emerald-700' }}">
-                🏡 Beranda
+               class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('home') ? 'bg-[#FFF0F5] text-[#E0004D]' : 'text-gray-700 hover:bg-gray-50' }}">
+                Beranda
             </a>
             <a href="{{ route('layanan') }}"
-               class="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium
-                      {{ request()->routeIs('layanan') ? 'bg-emerald-50 text-emerald-800' : 'text-gray-700 hover:bg-emerald-50 hover:text-emerald-700' }}">
-                📋 Semua Layanan
+               class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('layanan') ? 'bg-[#FFF0F5] text-[#E0004D]' : 'text-gray-700 hover:bg-gray-50' }}">
+                Layanan
             </a>
             <a href="{{ route('konsultasi.index') }}"
-               class="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium
-                      {{ request()->routeIs('konsultasi.*') ? 'bg-emerald-50 text-emerald-800' : 'text-gray-700 hover:bg-emerald-50 hover:text-emerald-700' }}">
-                💬 Konsultasi Online
-            </a>
-            <a href="{{ route('narsum.index') }}"
-               class="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium
-                      {{ request()->routeIs('narsum.*') ? 'bg-emerald-50 text-emerald-800' : 'text-gray-700 hover:bg-emerald-50 hover:text-emerald-700' }}">
-                🎤 Undang Narsum
-            </a>
-            <a href="{{ route('kunjungan.index') }}"
-               class="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium
-                      {{ request()->routeIs('kunjungan.*') ? 'bg-emerald-50 text-emerald-800' : 'text-gray-700 hover:bg-emerald-50 hover:text-emerald-700' }}">
-                🚜 Kunjungan Lapangan
+               class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('konsultasi.*') ? 'bg-[#FFF0F5] text-[#E0004D]' : 'text-gray-700 hover:bg-gray-50' }}">
+                Tanya Pakar
             </a>
             <a href="{{ route('sarana.index') }}"
-               class="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium
-                      {{ request()->routeIs('sarana.*') ? 'bg-emerald-50 text-emerald-800' : 'text-gray-700 hover:bg-emerald-50 hover:text-emerald-700' }}">
-                🌿 Sarana & Bibit
+               class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('sarana.*') ? 'bg-[#FFF0F5] text-[#E0004D]' : 'text-gray-700 hover:bg-gray-50' }}">
+                Toko Sarana
             </a>
-
-            @auth
-            <div class="pt-3 pb-1 border-t border-gray-100 mt-2 space-y-1">
-                <div class="px-3 py-1.5 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                    Akun: {{ auth()->user()->name }}
-                </div>
-                <a href="{{ route('dashboard') }}" class="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">
-                    📊 Dashboard
-                </a>
-                <a href="{{ route('konsultasi.riwayat') }}" class="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">
-                    📋 Riwayat Konsultasi
-                </a>
-                <form method="POST" action="{{ route('logout') }}" class="pt-1">
-                    @csrf
-                    <button type="submit" class="flex items-center gap-2 w-full text-left px-3 py-2 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50">
-                        🚪 Keluar
-                    </button>
-                </form>
-            </div>
-            @else
+            <a href="{{ route('kunjungan.index') }}"
+               class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('kunjungan.*') ? 'bg-[#FFF0F5] text-[#E0004D]' : 'text-gray-700 hover:bg-gray-50' }}">
+                Kunjungan Lahan
+            </a>
+            <a href="{{ route('narsum.index') }}"
+               class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('narsum.*') ? 'bg-[#FFF0F5] text-[#E0004D]' : 'text-gray-700 hover:bg-gray-50' }}">
+                Undang Narsum
+            </a>
+            @guest
             <div class="flex gap-2 pt-3 pb-1 border-t border-gray-100 mt-2">
                 <a href="{{ route('login') }}"
-                   class="flex-1 text-center px-3 py-2.5 rounded-xl text-sm font-semibold text-emerald-700 border border-emerald-200 hover:bg-emerald-50">
+                   class="flex-1 text-center px-3 py-2.5 rounded-xl text-sm font-bold text-gray-700 border border-gray-200 hover:bg-gray-50">
                     Masuk
                 </a>
                 <a href="{{ route('register') }}"
-                   class="flex-1 text-center px-3 py-2.5 rounded-xl text-sm font-semibold text-white bg-emerald-700 hover:bg-emerald-800">
+                   class="flex-1 text-center px-3 py-2.5 rounded-xl text-sm font-bold text-white bg-[#E0004D] hover:bg-[#C70044]">
                     Daftar
                 </a>
             </div>
-            @endauth
+            @endguest
         </div>
     </div>
 </nav>
@@ -558,53 +215,57 @@
 </aside>
 
 {{-- Footer --}}
-<footer class="bg-[#1F2C1F] text-[#CADACA] mt-16 sm:mt-24 border-t border-[#2C3E2C]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+<footer class="bg-[#F8F9FA] text-gray-600 mt-16 sm:mt-24 border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10">
             <div class="sm:col-span-2 md:col-span-1">
-                <a href="{{ route('home') }}" class="inline-block mb-4">
+                <a href="{{ route('home') }}" class="inline-block mb-3.5">
                     <img src="/images/logo.jpg"
                          alt="Hallobun"
                          class="h-9 w-auto object-contain"
-                         style="max-width:140px;filter:brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(80deg) brightness(1.4)">
+                         style="max-width:140px">
                 </a>
-                <p class="text-sm text-[#9BB19A] leading-relaxed">Platform digital terpadu untuk berkebun dan pertanian modern. Konsultasi ramah, ilmiah, dan tepat sasaran.</p>
-                <div class="mt-4">
-                    <span class="inline-flex items-center gap-1.5 text-xs font-medium bg-[#2C3E2C] text-emerald-300 px-3 py-1.5 rounded-full">
-                        🌱 Tumbuh Subur Bersama
-                    </span>
+                <p class="text-xs sm:text-sm text-gray-500 leading-relaxed mb-4">
+                    Platform tele-agronomi dan perawatan kebun tepercaya. Menghubungkan pekebun dengan pakar berpengalaman untuk solusi cepat, ilmiah, dan akurat.
+                </p>
+                <div class="inline-flex items-center gap-2 text-xs font-bold text-[#E0004D] bg-[#FFF0F5] px-3 py-1.5 rounded-full">
+                    🌱 Tumbuh Sehat Bersama Hallobun
                 </div>
             </div>
             <div>
-                <h4 class="font-bold text-white mb-4 text-sm tracking-wider uppercase">Layanan Kebun</h4>
-                <ul class="space-y-2 text-sm text-[#A8BEA7]">
-                    <li><a href="{{ route('layanan') }}" class="hover:text-emerald-300 transition-colors font-semibold text-emerald-400">📋 Katalog Layanan</a></li>
-                    <li><a href="{{ route('konsultasi.index') }}" class="hover:text-emerald-300 transition-colors">💬 Konsultasi Online</a></li>
-                    <li><a href="{{ route('narsum.index') }}" class="hover:text-emerald-300 transition-colors">🎤 Undang Narasumber</a></li>
-                    <li><a href="{{ route('kunjungan.index') }}" class="hover:text-emerald-300 transition-colors">🚜 Kunjungan Lapangan</a></li>
-                    <li><a href="{{ route('sarana.index') }}" class="hover:text-emerald-300 transition-colors">🌿 Sarana & Bibit</a></li>
+                <h4 class="font-bold text-gray-900 mb-4 text-xs sm:text-sm tracking-wider uppercase">Layanan Utama</h4>
+                <ul class="space-y-2.5 text-xs sm:text-sm">
+                    <li><a href="{{ route('konsultasi.index') }}" class="hover:text-[#E0004D] transition-colors">💬 Tanya Dokter/Agronomis</a></li>
+                    <li><a href="{{ route('sarana.index') }}" class="hover:text-[#E0004D] transition-colors">🛒 Toko Sarana Kebun</a></li>
+                    <li><a href="{{ route('kunjungan.index') }}" class="hover:text-[#E0004D] transition-colors">🚜 Kunjungan Lahan On-Site</a></li>
+                    <li><a href="{{ route('narsum.index') }}" class="hover:text-[#E0004D] transition-colors">🎤 Undang Narasumber</a></li>
+                    <li><a href="{{ route('layanan') }}" class="hover:text-[#E0004D] transition-colors">📋 Semua Layanan</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="font-bold text-white mb-4 text-sm tracking-wider uppercase">Navigasi</h4>
-                <ul class="space-y-2 text-sm text-[#A8BEA7]">
-                    <li><a href="{{ route('home') }}" class="hover:text-emerald-300 transition-colors">Beranda</a></li>
-                    <li><a href="{{ route('login') }}" class="hover:text-emerald-300 transition-colors">Masuk Akun</a></li>
-                    <li><a href="{{ route('register') }}" class="hover:text-emerald-300 transition-colors">Daftar Pengguna Baru</a></li>
-                    <li><a href="{{ route('dashboard') }}" class="hover:text-emerald-300 transition-colors">Dashboard</a></li>
+                <h4 class="font-bold text-gray-900 mb-4 text-xs sm:text-sm tracking-wider uppercase">Akses Pengguna</h4>
+                <ul class="space-y-2.5 text-xs sm:text-sm">
+                    <li><a href="{{ route('home') }}" class="hover:text-[#E0004D] transition-colors">Beranda</a></li>
+                    <li><a href="{{ route('login') }}" class="hover:text-[#E0004D] transition-colors">Masuk ke Akun</a></li>
+                    <li><a href="{{ route('register') }}" class="hover:text-[#E0004D] transition-colors">Daftar Akun Baru</a></li>
+                    <li><a href="{{ route('dashboard') }}" class="hover:text-[#E0004D] transition-colors">Dashboard Pekebun</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="font-bold text-white mb-4 text-sm tracking-wider uppercase">Kontak</h4>
-                <ul class="space-y-2 text-sm text-[#A8BEA7]">
-                    <li class="flex items-start gap-2"><span>📧</span><span>info@hallobun.com</span></li>
-                    <li class="flex items-start gap-2"><span>📱</span><span>+62 812-3456-7890</span></li>
-                    <li class="flex items-start gap-2"><span>🕐</span><span>Senin–Jumat, 08.00–17.00 WIB</span></li>
+                <h4 class="font-bold text-gray-900 mb-4 text-xs sm:text-sm tracking-wider uppercase">Bantuan &amp; Kontak</h4>
+                <ul class="space-y-2.5 text-xs sm:text-sm text-gray-500">
+                    <li class="flex items-center gap-2"><span class="text-[#E0004D]">✉️</span><span>info@hallobun.com</span></li>
+                    <li class="flex items-center gap-2"><span class="text-[#E0004D]">📞</span><span>+62 812-3456-7890</span></li>
+                    <li class="flex items-center gap-2"><span class="text-[#E0004D]">🕐</span><span>Senin – Sabtu, 08.00 – 17.00 WIB</span></li>
                 </ul>
             </div>
         </div>
-        <div class="border-t border-[#2C3E2C] mt-10 pt-5 text-center text-xs text-[#7D967C]">
-            <p>© {{ date('Y') }} Hallobun. Sahabat Konsultasi Berkebun & Pertanian Indonesia.</p>
+        <div class="border-t border-gray-200 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400">
+            <p>© {{ date('Y') }} Hallobun. Sahabat Kesehatan Kebun &amp; Pertanian Terlengkap di Indonesia.</p>
+            <div class="flex items-center gap-4">
+                <a href="#" class="hover:text-[#E0004D]">Kebijakan Privasi</a>
+                <a href="#" class="hover:text-[#E0004D]">Syarat &amp; Ketentuan</a>
+            </div>
         </div>
     </div>
 </footer>
