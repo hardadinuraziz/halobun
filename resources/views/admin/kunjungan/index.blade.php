@@ -62,23 +62,26 @@
 
     {{-- Kunjungan Table --}}
     <div class="bg-white rounded-2xl border border-gray-100 shadow-xs overflow-hidden">
+        <div class="block lg:hidden px-4 py-2 bg-gray-50/90 border-b border-gray-100 text-[11px] text-gray-500 font-medium flex items-center gap-1.5">
+            <span>↔️</span> Geser ke samping untuk melihat detail kolom
+        </div>
         <div class="overflow-x-auto">
             <table class="w-full text-left text-xs">
                 <thead class="bg-gray-50 text-gray-500 uppercase font-bold border-b border-gray-100">
                     <tr>
-                        <th class="px-5 py-3.5">Pemilik & WhatsApp</th>
-                        <th class="px-5 py-3.5">Lokasi & Luas</th>
-                        <th class="px-5 py-3.5">Komoditas / Masalah</th>
-                        <th class="px-5 py-3.5">Tgl Rencana</th>
-                        <th class="px-5 py-3.5">Biaya</th>
-                        <th class="px-5 py-3.5">Status</th>
-                        <th class="px-5 py-3.5 text-right">Aksi</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Pemilik & WhatsApp</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Lokasi & Luas</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Komoditas / Masalah</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Tgl Rencana</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Biaya</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Status</th>
+                        <th class="px-5 py-3.5 text-right whitespace-nowrap">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
                     @forelse($kunjungans as $k)
                         <tr class="hover:bg-gray-50/70 transition-colors" x-data="{ editModal: false }">
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 <div class="font-bold text-gray-900">{{ $k->nama_pemilik }}</div>
                                 @php
                                     $cleanPhone = preg_replace('/[^0-9]/', '', $k->phone);
@@ -92,13 +95,13 @@
                                     💬 {{ $k->phone }}
                                 </a>
                             </td>
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 <div class="font-bold text-gray-800">{{ $k->kota }}</div>
                                 <div class="text-[11px] text-gray-500">{{ $k->luas_lahan ?? '-' }}</div>
                                 <div class="text-[10px] text-gray-400 truncate max-w-xs mt-0.5">{{ $k->alamat_lahan }}</div>
                             </td>
                             <td class="px-5 py-4">
-                                <span class="px-2 py-0.5 bg-[#F0FDF4] text-[#16A34A] border border-[#BBF7D0] rounded font-bold text-[10px]">
+                                <span class="px-2 py-0.5 bg-[#F0FDF4] text-[#16A34A] border border-[#BBF7D0] rounded font-bold text-[10px] whitespace-nowrap">
                                     {{ $k->jenis_tanaman }}
                                 </span>
                                 @if($k->keluhan)
@@ -107,7 +110,7 @@
                                     </div>
                                 @endif
                             </td>
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 @if($k->tanggal_kunjungan)
                                     <div class="font-bold text-gray-800">
                                         {{ \Carbon\Carbon::parse($k->tanggal_kunjungan)->translatedFormat('d M Y') }}
@@ -116,14 +119,14 @@
                                     <span class="text-gray-400 italic">Belum dijadwalkan</span>
                                 @endif
                             </td>
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 @if($k->biaya > 0)
                                     <div class="font-bold text-gray-900">Rp {{ number_format($k->biaya, 0, ',', '.') }}</div>
                                 @else
                                     <span class="text-gray-400 italic">Menunggu survei</span>
                                 @endif
                             </td>
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 @php
                                     $badge = match($k->status) {
                                         'confirmed' => ['bg' => 'bg-emerald-100 text-emerald-800', 'label' => 'Dikonfirmasi'],
@@ -136,7 +139,7 @@
                                     {{ $badge['label'] }}
                                 </span>
                             </td>
-                            <td class="px-5 py-4 text-right">
+                            <td class="px-5 py-4 text-right whitespace-nowrap">
                                 <button @click="editModal = true" class="px-3 py-1.5 bg-[#F0FDF4] hover:bg-[#DCFCE7] text-[#16A34A] border border-[#BBF7D0] rounded-xl font-bold text-xs transition-colors">
                                     Update
                                 </button>
@@ -145,7 +148,7 @@
                                 <div x-show="editModal"
                                      x-cloak
                                      class="fixed inset-0 z-50 overflow-y-auto bg-gray-900/50 backdrop-blur-xs flex items-center justify-center p-4">
-                                    <div @click.away="editModal = false" class="bg-white rounded-2xl max-w-lg w-full p-6 text-left shadow-2xl space-y-4">
+                                    <div @click.away="editModal = false" class="bg-white rounded-2xl max-w-lg w-full p-5 sm:p-6 text-left shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
                                         <div class="flex items-center justify-between pb-3 border-b border-gray-100">
                                             <div>
                                                 <h4 class="font-extrabold text-base text-gray-900">Kelola Kunjungan Lahan</h4>

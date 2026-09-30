@@ -64,35 +64,38 @@
 
     {{-- Bookings Table --}}
     <div class="bg-white rounded-2xl border border-gray-100 shadow-xs overflow-hidden">
+        <div class="block lg:hidden px-4 py-2 bg-gray-50/90 border-b border-gray-100 text-[11px] text-gray-500 font-medium flex items-center gap-1.5">
+            <span>↔️</span> Geser ke samping untuk melihat detail kolom
+        </div>
         <div class="overflow-x-auto">
             <table class="w-full text-left text-xs">
                 <thead class="bg-gray-50 text-gray-500 uppercase font-bold border-b border-gray-100">
                     <tr>
-                        <th class="px-5 py-3.5">Kode & Tanggal</th>
-                        <th class="px-5 py-3.5">Petani (Klien)</th>
-                        <th class="px-5 py-3.5">Praktisi Agronom</th>
-                        <th class="px-5 py-3.5">Jadwal Sesi</th>
-                        <th class="px-5 py-3.5">Pembayaran</th>
-                        <th class="px-5 py-3.5">Status & Link</th>
-                        <th class="px-5 py-3.5 text-right">Update Status</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Kode & Tanggal</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Petani (Klien)</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Praktisi Agronom</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Jadwal Sesi</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Pembayaran</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Status & Link</th>
+                        <th class="px-5 py-3.5 text-right whitespace-nowrap">Update Status</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
                     @forelse($bookings as $b)
                         <tr class="hover:bg-gray-50/70 transition-colors" x-data="{ editModal: false }">
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 <div class="font-extrabold text-gray-900">{{ $b->kode_booking }}</div>
                                 <div class="text-[11px] text-gray-400 mt-0.5">{{ $b->created_at->format('d M Y, H:i') }}</div>
                             </td>
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 <div class="font-bold text-gray-800">{{ $b->user->name ?? 'User dihapus' }}</div>
                                 <div class="text-[11px] text-gray-400">{{ $b->user->email ?? '-' }}</div>
                             </td>
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 <div class="font-bold text-[#16A34A]">{{ $b->konsultan->user->name ?? '-' }}</div>
                                 <div class="text-[11px] text-gray-500">{{ $b->konsultan->spesialisasi ?? 'Praktisi Kebun' }}</div>
                             </td>
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 @if($b->jadwal)
                                     <div class="font-semibold text-gray-800">{{ \Carbon\Carbon::parse($b->jadwal->tanggal)->translatedFormat('d M Y') }}</div>
                                     <div class="text-[11px] text-gray-500 font-mono">{{ $b->jadwal->jam_mulai }} - {{ $b->jadwal->jam_selesai }} WIB</div>
@@ -100,7 +103,7 @@
                                     <span class="text-gray-400 italic">Jadwal fleksibel</span>
                                 @endif
                             </td>
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 <div class="font-bold text-gray-900">Rp {{ number_format($b->payment->amount ?? $b->total_harga, 0, ',', '.') }}</div>
                                 @if($b->payment && $b->payment->status === 'paid')
                                     <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 mt-1">
@@ -112,7 +115,7 @@
                                     </span>
                                 @endif
                             </td>
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 @php
                                     $badge = match($b->status) {
                                         'confirmed' => ['bg' => 'bg-emerald-100 text-emerald-800', 'label' => 'Dikonfirmasi'],
@@ -132,7 +135,7 @@
                                     </div>
                                 @endif
                             </td>
-                            <td class="px-5 py-4 text-right">
+                            <td class="px-5 py-4 text-right whitespace-nowrap">
                                 <button @click="editModal = true" class="px-3 py-1.5 bg-[#F0FDF4] hover:bg-[#DCFCE7] text-[#16A34A] border border-[#BBF7D0] rounded-xl font-bold text-xs transition-colors">
                                     Edit Status
                                 </button>
@@ -141,7 +144,7 @@
                                 <div x-show="editModal"
                                      x-cloak
                                      class="fixed inset-0 z-50 overflow-y-auto bg-gray-900/50 backdrop-blur-xs flex items-center justify-center p-4">
-                                    <div @click.away="editModal = false" class="bg-white rounded-2xl max-w-md w-full p-6 text-left shadow-2xl space-y-4">
+                                    <div @click.away="editModal = false" class="bg-white rounded-2xl max-w-md w-full p-5 sm:p-6 text-left shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
                                         <div class="flex items-center justify-between pb-3 border-b border-gray-100">
                                             <h4 class="font-extrabold text-base text-gray-900">Update Booking {{ $b->kode_booking }}</h4>
                                             <button @click="editModal = false" class="text-gray-400 hover:text-gray-600">

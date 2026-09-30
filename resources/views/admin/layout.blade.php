@@ -141,21 +141,22 @@
         <div class="flex-1 flex flex-col min-w-0">
             {{-- Topbar --}}
             <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center gap-3">
-                    <button @click="sidebarOpen = true" class="lg:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-xl focus:outline-none">
+                <div class="flex items-center gap-3 min-w-0">
+                    <button @click="sidebarOpen = true" class="lg:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-xl focus:outline-none flex-shrink-0" aria-label="Buka Menu">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
                     </button>
-                    <h1 class="text-lg font-bold text-gray-900">@yield('page-title', 'Dashboard')</h1>
+                    <h1 class="text-base sm:text-lg font-bold text-gray-900 truncate">@yield('page-title', 'Dashboard')</h1>
                 </div>
 
-                <div class="flex items-center gap-3">
-                    <a href="{{ route('home') }}" class="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold text-[#16A34A] bg-[#F0FDF4] border border-[#BBF7D0] px-3 py-1.5 rounded-lg hover:bg-[#DCFCE7] transition-colors">
+                <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+                    <a href="{{ route('home') }}" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#16A34A] bg-[#F0FDF4] border border-[#BBF7D0] px-2.5 py-1.5 sm:px-3 rounded-lg hover:bg-[#DCFCE7] transition-colors">
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                         </svg>
-                        Buka Website
+                        <span class="hidden sm:inline">Buka Website</span>
+                        <span class="sm:hidden">Web</span>
                     </a>
                 </div>
             </header>

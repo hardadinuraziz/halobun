@@ -37,22 +37,25 @@
 
     {{-- Praktisi Table --}}
     <div class="bg-white rounded-2xl border border-gray-100 shadow-xs overflow-hidden">
+        <div class="block lg:hidden px-4 py-2 bg-gray-50/90 border-b border-gray-100 text-[11px] text-gray-500 font-medium flex items-center gap-1.5">
+            <span>↔️</span> Geser ke samping untuk melihat detail kolom
+        </div>
         <div class="overflow-x-auto">
             <table class="w-full text-left text-xs">
                 <thead class="bg-gray-50 text-gray-500 uppercase font-bold border-b border-gray-100">
                     <tr>
-                        <th class="px-5 py-3.5">Praktisi Agronom</th>
-                        <th class="px-5 py-3.5">Spesialisasi</th>
-                        <th class="px-5 py-3.5">Tarif / Sesi</th>
-                        <th class="px-5 py-3.5">Performa</th>
-                        <th class="px-5 py-3.5">Status Aktif</th>
-                        <th class="px-5 py-3.5 text-right">Aksi</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Praktisi Agronom</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Spesialisasi</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Tarif / Sesi</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Performa</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Status Aktif</th>
+                        <th class="px-5 py-3.5 text-right whitespace-nowrap">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
                     @forelse($konsultans as $k)
                         <tr class="hover:bg-gray-50/70 transition-colors" x-data="{ editModal: false }">
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 <div class="flex items-center gap-3">
                                     <div class="w-10 h-10 rounded-full bg-[#F0FDF4] border border-[#BBF7D0] overflow-hidden flex items-center justify-center flex-shrink-0">
                                         @if($k->foto)
@@ -71,23 +74,23 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 <div class="font-semibold text-gray-800">{{ $k->spesialisasi }}</div>
                                 @if($k->bio)
                                     <div class="text-[11px] text-gray-400 line-clamp-1 max-w-xs mt-0.5">{{ $k->bio }}</div>
                                 @endif
                             </td>
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 <div class="font-extrabold text-[#16A34A]">Rp {{ number_format($k->harga_per_sesi, 0, ',', '.') }}</div>
                                 <div class="text-[10px] text-gray-400">{{ $k->durasi_menit }} menit / sesi</div>
                             </td>
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 <div class="flex items-center gap-1 font-bold text-gray-800">
                                     <span class="text-amber-400">★</span> {{ number_format($k->rating, 1) }}
                                 </div>
                                 <div class="text-[10px] text-gray-400 mt-0.5">{{ $k->total_konsultasi }} konsultasi selesai</div>
                             </td>
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 <form method="POST" action="{{ route('admin.konsultan.toggle', $k) }}">
                                     @csrf
                                     @method('PATCH')
@@ -99,7 +102,7 @@
                                     </button>
                                 </form>
                             </td>
-                            <td class="px-5 py-4 text-right">
+                            <td class="px-5 py-4 text-right whitespace-nowrap">
                                 <button @click="editModal = true" class="px-3 py-1.5 bg-[#F0FDF4] hover:bg-[#DCFCE7] text-[#16A34A] border border-[#BBF7D0] rounded-xl font-bold text-xs transition-colors">
                                     Edit Tarif
                                 </button>
@@ -108,7 +111,7 @@
                                 <div x-show="editModal"
                                      x-cloak
                                      class="fixed inset-0 z-50 overflow-y-auto bg-gray-900/50 backdrop-blur-xs flex items-center justify-center p-4">
-                                    <div @click.away="editModal = false" class="bg-white rounded-2xl max-w-lg w-full p-6 text-left shadow-2xl space-y-4">
+                                    <div @click.away="editModal = false" class="bg-white rounded-2xl max-w-lg w-full p-5 sm:p-6 text-left shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
                                         <div class="flex items-center justify-between pb-3 border-b border-gray-100">
                                             <div>
                                                 <h4 class="font-extrabold text-base text-gray-900">Edit Praktisi: {{ $k->user->name ?? 'Praktisi' }}</h4>

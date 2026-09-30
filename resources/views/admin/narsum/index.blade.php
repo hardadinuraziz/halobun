@@ -62,29 +62,32 @@
 
     {{-- Narsum Table --}}
     <div class="bg-white rounded-2xl border border-gray-100 shadow-xs overflow-hidden">
+        <div class="block lg:hidden px-4 py-2 bg-gray-50/90 border-b border-gray-100 text-[11px] text-gray-500 font-medium flex items-center gap-1.5">
+            <span>↔️</span> Geser ke samping untuk melihat detail kolom
+        </div>
         <div class="overflow-x-auto">
             <table class="w-full text-left text-xs">
                 <thead class="bg-gray-50 text-gray-500 uppercase font-bold border-b border-gray-100">
                     <tr>
-                        <th class="px-5 py-3.5">Acara & Penyelenggara</th>
-                        <th class="px-5 py-3.5">PIC & Kontak</th>
-                        <th class="px-5 py-3.5">Tgl & Format</th>
-                        <th class="px-5 py-3.5">Topik Pelatihan</th>
-                        <th class="px-5 py-3.5">Status</th>
-                        <th class="px-5 py-3.5 text-right">Aksi</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Acara & Penyelenggara</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">PIC & Kontak</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Tgl & Format</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Topik Pelatihan</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Status</th>
+                        <th class="px-5 py-3.5 text-right whitespace-nowrap">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
                     @forelse($narsums as $n)
                         <tr class="hover:bg-gray-50/70 transition-colors" x-data="{ editModal: false }">
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 <div class="font-extrabold text-gray-900">{{ $n->nama_acara }}</div>
                                 <div class="text-[11px] text-gray-500 font-semibold mt-0.5">🏢 {{ $n->penyelenggara }}</div>
                                 @if($n->kota)
                                     <div class="text-[10px] text-gray-400">📍 {{ $n->kota }}</div>
                                 @endif
                             </td>
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 <div class="font-bold text-gray-800">{{ $n->kontak_pic }}</div>
                                 @php
                                     $cleanPhone = preg_replace('/[^0-9]/', '', $n->phone_pic);
@@ -98,7 +101,7 @@
                                     💬 {{ $n->phone_pic }}
                                 </a>
                             </td>
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 <div class="font-bold text-gray-800">
                                     {{ \Carbon\Carbon::parse($n->tanggal_acara)->translatedFormat('d M Y') }}
                                 </div>
@@ -112,7 +115,7 @@
                                     <div class="text-[11px] text-gray-400 mt-0.5">👥 Est. {{ $n->estimasi_peserta }} peserta</div>
                                 @endif
                             </td>
-                            <td class="px-5 py-4">
+                            <td class="px-5 py-4 whitespace-nowrap">
                                 @php
                                     $badge = match($n->status) {
                                         'confirmed' => ['bg' => 'bg-emerald-100 text-emerald-800', 'label' => 'Dikonfirmasi'],
@@ -125,7 +128,7 @@
                                     {{ $badge['label'] }}
                                 </span>
                             </td>
-                            <td class="px-5 py-4 text-right">
+                            <td class="px-5 py-4 text-right whitespace-nowrap">
                                 <button @click="editModal = true" class="px-3 py-1.5 bg-[#F0FDF4] hover:bg-[#DCFCE7] text-[#16A34A] border border-[#BBF7D0] rounded-xl font-bold text-xs transition-colors">
                                     Update
                                 </button>
@@ -134,7 +137,7 @@
                                 <div x-show="editModal"
                                      x-cloak
                                      class="fixed inset-0 z-50 overflow-y-auto bg-gray-900/50 backdrop-blur-xs flex items-center justify-center p-4">
-                                    <div @click.away="editModal = false" class="bg-white rounded-2xl max-w-md w-full p-6 text-left shadow-2xl space-y-4">
+                                    <div @click.away="editModal = false" class="bg-white rounded-2xl max-w-md w-full p-5 sm:p-6 text-left shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
                                         <div class="flex items-center justify-between pb-3 border-b border-gray-100">
                                             <div>
                                                 <h4 class="font-extrabold text-base text-gray-900">Kelola Undangan Narsum</h4>

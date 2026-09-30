@@ -58,16 +58,19 @@
 
     {{-- Sarana Products Table --}}
     <div class="bg-white rounded-2xl border border-gray-100 shadow-xs overflow-hidden">
+        <div class="block lg:hidden px-4 py-2 bg-gray-50/90 border-b border-gray-100 text-[11px] text-gray-500 font-medium flex items-center gap-1.5">
+            <span>↔️</span> Geser ke samping untuk melihat detail kolom
+        </div>
         <div class="overflow-x-auto">
             <table class="w-full text-left text-xs">
                 <thead class="bg-gray-50 text-gray-500 uppercase font-bold border-b border-gray-100">
                     <tr>
-                        <th class="px-5 py-3.5">Produk</th>
-                        <th class="px-5 py-3.5">Kategori & Merek</th>
-                        <th class="px-5 py-3.5">Harga</th>
-                        <th class="px-5 py-3.5">Stok & Satuan</th>
-                        <th class="px-5 py-3.5">Status</th>
-                        <th class="px-5 py-3.5 text-right">Aksi</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Produk</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Kategori & Merek</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Harga</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Stok & Satuan</th>
+                        <th class="px-5 py-3.5 whitespace-nowrap">Status</th>
+                        <th class="px-5 py-3.5 text-right whitespace-nowrap">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
