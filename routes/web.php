@@ -7,6 +7,12 @@ use App\Http\Controllers\KunjunganController;
 use App\Http\Controllers\SaranaController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminBookingController;
+use App\Http\Controllers\Admin\AdminKunjunganController;
+use App\Http\Controllers\Admin\AdminNarsumController;
+use App\Http\Controllers\Admin\AdminSaranaController;
+use App\Http\Controllers\Admin\AdminKonsultanController;
 use Illuminate\Support\Facades\Route;
 
 // ─── Public Routes ──────────────────────────────────────────────────────────
@@ -71,5 +77,30 @@ Route::post('/payment/callback', [PaymentController::class, 'callback'])
 
 Route::get('/payment/finish/{kodeBooking}', [PaymentController::class, 'finish'])
     ->name('payment.finish');
+
+// ─── Admin Management Panel ─────────────────────────────────────────────────
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+
+    // Booking Konsultasi
+    Route::get('/bookings', [AdminBookingController::class, 'index'])->name('bookings.index');
+    Route::patch('/bookings/{booking}/status', [AdminBookingController::class, 'updateStatus'])->name('bookings.update-status');
+
+    // Kunjungan Lahan
+    Route::get('/kunjungan', [AdminKunjunganController::class, 'index'])->name('kunjungan.index');
+    Route::patch('/kunjungan/{kunjungan}/status', [AdminKunjunganController::class, 'updateStatus'])->name('kunjungan.update-status');
+
+    // Undang Narasumber
+    Route::get('/narsum', [AdminNarsumController::class, 'index'])->name('narsum.index');
+    Route::patch('/narsum/{narsum}/status', [AdminNarsumController::class, 'updateStatus'])->name('narsum.update-status');
+
+    // Sarana Produk
+    Route::resource('sarana', AdminSaranaController::class);
+
+    // Praktisi / Konsultan
+    Route::get('/konsultan', [AdminKonsultanController::class, 'index'])->name('konsultan.index');
+    Route::patch('/konsultan/{konsultan}/toggle', [AdminKonsultanController::class, 'toggleStatus'])->name('konsultan.toggle');
+    Route::put('/konsultan/{konsultan}', [AdminKonsultanController::class, 'update'])->name('konsultan.update');
+});
 
 require __DIR__ . '/auth.php';

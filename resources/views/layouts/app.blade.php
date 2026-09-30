@@ -79,6 +79,12 @@
                         </button>
                         <div x-show="open" @click.away="open = false" x-transition
                              class="absolute right-0 mt-2 w-48 bg-white rounded-2xl shadow-xl border border-gray-100 py-1.5 z-50">
+                            @if(auth()->user()->isAdmin())
+                                <a href="{{ route('admin.dashboard') }}"
+                                   class="flex items-center gap-2 px-3 py-2 text-sm font-bold text-[#16A34A] bg-[#F0FDF4] hover:bg-[#DCFCE7] rounded-xl mx-2 mb-1">
+                                    ⚙️ Panel Admin
+                                </a>
+                            @endif
                             <a href="{{ route('dashboard') }}"
                                class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-[#F0FDF4] hover:text-[#16A34A]">
                                 📊 Dashboard
@@ -154,6 +160,30 @@
                class="block px-3 py-2 rounded-xl text-base font-semibold {{ request()->routeIs('narsum.*') ? 'bg-[#F0FDF4] text-[#16A34A]' : 'text-gray-700 hover:bg-gray-50' }}">
                 Undang Narsum
             </a>
+            @auth
+                <div class="pt-2 border-t border-gray-100 mt-2 space-y-1">
+                    @if(auth()->user()->isAdmin())
+                        <a href="{{ route('admin.dashboard') }}"
+                           class="block px-3 py-2 rounded-xl text-base font-bold bg-[#F0FDF4] text-[#16A34A] border border-[#BBF7D0]">
+                            ⚙️ Panel Admin
+                        </a>
+                    @endif
+                    <a href="{{ route('dashboard') }}"
+                       class="block px-3 py-2 rounded-xl text-base font-semibold text-gray-700 hover:bg-gray-50">
+                        Dashboard User
+                    </a>
+                    <a href="{{ route('konsultasi.riwayat') }}"
+                       class="block px-3 py-2 rounded-xl text-base font-semibold text-gray-700 hover:bg-gray-50">
+                        Riwayat Konsultasi
+                    </a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="w-full text-left px-3 py-2 rounded-xl text-base font-semibold text-red-600 hover:bg-red-50">
+                            Keluar
+                        </button>
+                    </form>
+                </div>
+            @endauth
             @guest
             <div class="flex gap-2 pt-3 pb-1 border-t border-gray-100 mt-2">
                 <a href="{{ route('login') }}"
