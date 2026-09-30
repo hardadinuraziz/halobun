@@ -36,6 +36,155 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
+   PASTEL DYNAMIC THEMES (SHINE BOTANICAL SYSTEM)
+═══════════════════════════════════════════════════════════ */
+:root, [data-theme="sage"] {
+    --theme-primary: #2E4A2C;
+    --theme-primary-hover: #223820;
+    --theme-primary-text: #FFFFFF;
+    --theme-accent: #4A7A48;
+    --theme-badge-bg: rgba(74, 122, 72, 0.12);
+    --theme-badge-text: #2E4A2C;
+    --theme-bg-soft: #F2F7F0;
+    --theme-border: #D8E6D5;
+    --theme-card-bg: linear-gradient(180deg, #F3F8F2 0%, #FFFFFF 100%);
+    --theme-glow-1: rgba(139, 175, 137, 0.28);
+    --theme-glow-2: rgba(74, 122, 72, 0.18);
+    --theme-glow-3: rgba(205, 220, 171, 0.22);
+    --theme-tagline: #2E4A2C;
+}
+
+[data-theme="terracotta"] {
+    --theme-primary: #8E4A2E;
+    --theme-primary-hover: #73371E;
+    --theme-primary-text: #FFFFFF;
+    --theme-accent: #C28060;
+    --theme-badge-bg: rgba(194, 128, 96, 0.14);
+    --theme-badge-text: #8E4A2E;
+    --theme-bg-soft: #FDF6F2;
+    --theme-border: #EEDCCE;
+    --theme-card-bg: linear-gradient(180deg, #FAF2EC 0%, #FFFFFF 100%);
+    --theme-glow-1: rgba(214, 142, 107, 0.30);
+    --theme-glow-2: rgba(142, 74, 46, 0.18);
+    --theme-glow-3: rgba(239, 186, 155, 0.22);
+    --theme-tagline: #8E4A2E;
+}
+
+[data-theme="rose"] {
+    --theme-primary: #8C3A4E;
+    --theme-primary-hover: #712B3C;
+    --theme-primary-text: #FFFFFF;
+    --theme-accent: #B86577;
+    --theme-badge-bg: rgba(184, 101, 119, 0.13);
+    --theme-badge-text: #8C3A4E;
+    --theme-bg-soft: #FAF3F5;
+    --theme-border: #EED8DE;
+    --theme-card-bg: linear-gradient(180deg, #FAF1F4 0%, #FFFFFF 100%);
+    --theme-glow-1: rgba(220, 140, 158, 0.28);
+    --theme-glow-2: rgba(140, 58, 78, 0.16);
+    --theme-glow-3: rgba(242, 192, 203, 0.22);
+    --theme-tagline: #8C3A4E;
+}
+
+[data-theme="lavender"] {
+    --theme-primary: #4B4668;
+    --theme-primary-hover: #373350;
+    --theme-primary-text: #FFFFFF;
+    --theme-accent: #746F97;
+    --theme-badge-bg: rgba(116, 111, 151, 0.13);
+    --theme-badge-text: #4B4668;
+    --theme-bg-soft: #F5F4F9;
+    --theme-border: #DEDCE8;
+    --theme-card-bg: linear-gradient(180deg, #F3F2F8 0%, #FFFFFF 100%);
+    --theme-glow-1: rgba(162, 156, 196, 0.30);
+    --theme-glow-2: rgba(75, 70, 104, 0.16);
+    --theme-glow-3: rgba(215, 211, 235, 0.24);
+    --theme-tagline: #4B4668;
+}
+
+[data-theme="sky"] {
+    --theme-primary: #2B4E63;
+    --theme-primary-hover: #1D394A;
+    --theme-primary-text: #FFFFFF;
+    --theme-accent: #507E9B;
+    --theme-badge-bg: rgba(80, 126, 155, 0.13);
+    --theme-badge-text: #2B4E63;
+    --theme-bg-soft: #F1F6F9;
+    --theme-border: #D2E2EB;
+    --theme-card-bg: linear-gradient(180deg, #EFF5F9 0%, #FFFFFF 100%);
+    --theme-glow-1: rgba(135, 185, 214, 0.30);
+    --theme-glow-2: rgba(43, 78, 99, 0.16);
+    --theme-glow-3: rgba(198, 226, 241, 0.24);
+    --theme-tagline: #2B4E63;
+}
+
+/* Ambient Aura Glows */
+.aura-glow {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(60px);
+    pointer-events: none;
+    z-index: 0;
+    transition: background 0.6s ease, transform 0.6s ease;
+}
+.aura-glow-1 {
+    width: 240px;
+    height: 240px;
+    top: -30px;
+    left: -30px;
+    background: var(--theme-glow-1);
+}
+.aura-glow-2 {
+    width: 260px;
+    height: 260px;
+    bottom: -40px;
+    right: -30px;
+    background: var(--theme-glow-2);
+}
+.aura-glow-3 {
+    width: 170px;
+    height: 170px;
+    top: 38%;
+    right: 10%;
+    background: var(--theme-glow-3);
+}
+
+/* Smooth Breathing Animation for Art Card */
+@keyframes hallobunBreathe {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-5px) scale(1.007); }
+    100% { transform: translateY(0) scale(1); }
+}
+.art-card-breathe {
+    animation: hallobunBreathe 7s ease-in-out infinite alternate;
+}
+
+/* Slideshow crossfade & subtle zoom */
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.slider-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+.slider-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.slider-slide img {
+    transform: scale(1);
+    transition: transform 7s ease-out;
+}
+.slider-slide.active img {
+    transform: scale(1.04);
+}
+
+/* ═══════════════════════════════════════════════════════════
    GRADIENTS
 ═══════════════════════════════════════════════════════════ */
 .gradient-hero {

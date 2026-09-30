@@ -5,12 +5,16 @@
 @section('content')
 
 {{-- ═══ HERO SECTION ═══════════════════════════════════════════════════════ --}}
-{{-- ═══ HERO SECTION — MOBILE VIEW (INSPIRASI SHINE JOURNEY CARD STYLE) ═══ --}}
-<section class="block md:hidden bg-gradient-to-b from-[#EEF5EC] via-[#F8FAF7] to-[#F8FAF7] px-4 pt-3 pb-8 border-b border-[#E2EAE0]">
-    <div class="max-w-sm mx-auto">
+{{-- ═══ HERO SECTION — MOBILE VIEW (INSPIRASI SHINE JOURNEY PASTEL CARD STYLE) ═══ --}}
+<section class="block md:hidden bg-gradient-to-b from-[#EEF5EC] via-[#F8FAF7] to-[#F8FAF7] px-4 pt-3 pb-8 border-b border-[#E2EAE0] relative overflow-hidden">
+    {{-- Ambient Aura Glows --}}
+    <div class="aura-glow aura-glow-1"></div>
+    <div class="aura-glow aura-glow-2"></div>
+
+    <div class="max-w-sm mx-auto relative z-10">
 
         {{-- Top Brand Row --}}
-        <div class="flex items-center justify-between mb-3 px-0.5">
+        <div class="flex items-center justify-between mb-2.5 px-0.5">
             <div class="flex items-center gap-2">
                 <img src="/images/logo_icon.jpg" alt="Hallobun" class="w-9 h-9 rounded-full object-cover shadow-xs border border-emerald-200 flex-shrink-0 bg-white p-0.5">
                 <div>
@@ -19,12 +23,13 @@
                 </div>
             </div>
 
-            {{-- Aesthetic Palette Dots --}}
-            <div class="flex items-center gap-1 bg-white/90 px-2 py-1 rounded-full border border-emerald-100 shadow-xs">
-                <span class="w-2 h-2 rounded-full bg-[#8BAF89]"></span>
-                <span class="w-2 h-2 rounded-full bg-[#4A7A48]"></span>
-                <span class="w-2 h-2 rounded-full bg-[#C28060]"></span>
-                <span class="w-2 h-2 rounded-full bg-[#3B5838]"></span>
+            {{-- Aesthetic Palette Dots (Interactive Theme Switcher) --}}
+            <div class="flex items-center gap-1 bg-white/90 px-2 py-1 rounded-full border border-emerald-100 shadow-xs" title="Ganti Tema Warna Pastel">
+                <button type="button" onclick="setHallobunTheme('terracotta')" class="theme-chip-btn w-2.5 h-2.5 rounded-full bg-[#8E4A2E] transition-transform hover:scale-125 active:scale-95" aria-label="Tema Terracotta" title="Terracotta"></button>
+                <button type="button" onclick="setHallobunTheme('sage')" class="theme-chip-btn w-2.5 h-2.5 rounded-full bg-[#4A7A48] transition-transform hover:scale-125 active:scale-95" aria-label="Tema Sage Green" title="Sage Green"></button>
+                <button type="button" onclick="setHallobunTheme('lavender')" class="theme-chip-btn w-2.5 h-2.5 rounded-full bg-[#5D5778] transition-transform hover:scale-125 active:scale-95" aria-label="Tema Lavender" title="Lavender"></button>
+                <button type="button" onclick="setHallobunTheme('sky')" class="theme-chip-btn w-2.5 h-2.5 rounded-full bg-[#2B4E63] transition-transform hover:scale-125 active:scale-95" aria-label="Tema Sky Mist" title="Sky Mist"></button>
+                <button type="button" onclick="setHallobunTheme('rose')" class="theme-chip-btn w-2.5 h-2.5 rounded-full bg-[#8C3A4E] transition-transform hover:scale-125 active:scale-95" aria-label="Tema Rose Blush" title="Rose Blush"></button>
             </div>
 
             {{-- Action Pill --}}
@@ -34,76 +39,137 @@
             </a>
         </div>
 
-        {{-- Banner Card --}}
-        <div class="bg-gradient-to-b from-[#E7F0E5] to-white rounded-3xl p-2 sm:p-2.5 border border-[#D5E4D2] shadow-sm mb-4">
-            <div class="rounded-2xl overflow-hidden aspect-[16/9] relative shadow-inner bg-[#EBF4EA] flex items-center justify-center">
-                <img src="/images/hero_banner.jpg" 
-                     alt="Konsultasi Berkebun Hallobun" 
-                     class="w-full h-full object-cover object-center select-none"
-                     loading="eager">
-                
+        {{-- Banner Card with Multi-Slide Carousel & Breathing Effect --}}
+        <div class="bg-gradient-to-b from-[#E7F0E5] to-white rounded-3xl p-2 sm:p-2.5 border border-[#D5E4D2] shadow-sm mb-3.5 art-card-breathe relative">
+            <div class="rounded-2xl overflow-hidden aspect-[16/9] relative shadow-inner bg-[#EBF4EA] flex items-center justify-center slider-container" id="homeMobileSlider">
+                {{-- Slide 1 --}}
+                <div class="slider-slide active" data-home-slide="0">
+                    <img src="/images/hero_banner.jpg" 
+                         alt="Konsultasi Berkebun Hallobun" 
+                         class="w-full h-full object-cover object-center select-none"
+                         loading="eager">
+                    <div class="absolute inset-x-0 bottom-0 p-2.5 bg-gradient-to-t from-black/60 via-black/20 to-transparent text-white pointer-events-none">
+                        <span class="inline-block text-[8.5px] font-bold bg-white/20 backdrop-blur-xs px-2 py-0.5 rounded-full mb-0.5">✦ Lahan &amp; Kebun Sehat</span>
+                        <p class="text-[10.5px] font-semibold leading-tight drop-shadow-sm">Pikiran tenang, tanaman bertumbuh riang</p>
+                    </div>
+                </div>
+
+                {{-- Slide 2 --}}
+                <div class="slider-slide" data-home-slide="1">
+                    <img src="/images/layanan/konsultasi.jpg" 
+                         alt="Konsultasi Hangat Bersama Agronomis" 
+                         class="w-full h-full object-cover object-center select-none"
+                         loading="lazy">
+                    <div class="absolute inset-x-0 bottom-0 p-2.5 bg-gradient-to-t from-black/60 via-black/20 to-transparent text-white pointer-events-none">
+                        <span class="inline-block text-[8.5px] font-bold bg-white/20 backdrop-blur-xs px-2 py-0.5 rounded-full mb-0.5">✦ Teman Cerita Tanaman</span>
+                        <p class="text-[10.5px] font-semibold leading-tight drop-shadow-sm">Diskusi santai temukan solusi tepat</p>
+                    </div>
+                </div>
+
+                {{-- Slide 3 --}}
+                <div class="slider-slide" data-home-slide="2">
+                    <img src="/images/layanan/pelatihan.jpg" 
+                         alt="Edukasi Pekebun & Praktek Tani" 
+                         class="w-full h-full object-cover object-center select-none"
+                         loading="lazy">
+                    <div class="absolute inset-x-0 bottom-0 p-2.5 bg-gradient-to-t from-black/60 via-black/20 to-transparent text-white pointer-events-none">
+                        <span class="inline-block text-[8.5px] font-bold bg-white/20 backdrop-blur-xs px-2 py-0.5 rounded-full mb-0.5">✦ Edukasi &amp; Komunitas</span>
+                        <p class="text-[10.5px] font-semibold leading-tight drop-shadow-sm">Tumbuh bersama komunitas pekebun se-Indonesia</p>
+                    </div>
+                </div>
+
                 {{-- Carousel indicators floating pill --}}
-                <div class="absolute bottom-2 inset-x-0 flex items-center justify-center pointer-events-none">
-                    <div class="flex items-center gap-1.5 bg-white/85 backdrop-blur-xs px-3 py-1 rounded-full shadow-xs border border-white/70">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-300"></span>
-                        <span class="w-5 h-1.5 rounded-full bg-emerald-800"></span>
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-300"></span>
+                <div class="absolute bottom-2 inset-x-0 flex items-center justify-center z-10 pointer-events-auto">
+                    <div class="flex items-center gap-1.5 bg-white/85 backdrop-blur-xs px-3 py-1 rounded-full shadow-xs border border-white/70" id="homeMobileSliderDots">
+                        <button type="button" onclick="goToHomeMobileSlide(0)" class="home-mobile-dot w-5 h-1.5 rounded-full bg-emerald-800 transition-all" aria-label="Slide 1"></button>
+                        <button type="button" onclick="goToHomeMobileSlide(1)" class="home-mobile-dot w-1.5 h-1.5 rounded-full bg-emerald-300 transition-all" aria-label="Slide 2"></button>
+                        <button type="button" onclick="goToHomeMobileSlide(2)" class="home-mobile-dot w-1.5 h-1.5 rounded-full bg-emerald-300 transition-all" aria-label="Slide 3"></button>
                     </div>
                 </div>
             </div>
         </div>
 
         {{-- Main Headings --}}
-        <div class="text-center px-1 mb-4">
+        <div class="text-center px-1 mb-2.5">
             <h1 class="text-3xl font-extrabold text-[#243723] tracking-tight font-serif-title mb-0.5">
                 Hallobun
             </h1>
             <p class="font-script text-2xl text-[#2F5E2D] font-bold">
                 Temani Setiap Langkah Berkebunmu ♡
             </p>
-            <p class="text-[12px] text-[#4A6149] leading-relaxed mt-2 max-w-xs mx-auto">
+            <p class="text-[12px] text-[#4A6149] leading-relaxed mt-1.5 max-w-xs mx-auto">
                 Ruang aman dan terpercaya untuk kamu bercerita seputar tanaman, mengatasi hama, memulihkan kebun yang layu, dan menemukan solusi bersama agronomis berpengalaman.
             </p>
         </div>
 
+        {{-- Interactive Plant Health Symptom Selector --}}
+        <div class="mb-3.5 bg-white/85 backdrop-blur-xs p-2.5 rounded-2xl border border-[#DCE8DB] shadow-xs">
+            <div class="flex items-center justify-between mb-1.5 px-0.5">
+                <span class="text-[10px] font-bold text-gray-600 uppercase tracking-wider flex items-center gap-1">
+                    <span>🌱</span> Tanamanmu sedang kenapa?
+                </span>
+                <span class="text-[9px] text-emerald-700 font-semibold" id="homeSymptomLabel">Pilih gejala</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5 justify-center" id="homeSymptomChips">
+                <button type="button" onclick="selectHomeSymptom(this, 'Daun Menguning & Layu')" class="home-symptom-chip text-[10.5px] font-semibold px-2.5 py-1 rounded-xl bg-white border border-gray-200 text-gray-700 hover:border-emerald-500 hover:bg-emerald-50 transition-all flex items-center gap-1">
+                    <span>🍂</span> Daun Kuning
+                </button>
+                <button type="button" onclick="selectHomeSymptom(this, 'Serangan Hama / Kutu Putih')" class="home-symptom-chip text-[10.5px] font-semibold px-2.5 py-1 rounded-xl bg-white border border-gray-200 text-gray-700 hover:border-emerald-500 hover:bg-emerald-50 transition-all flex items-center gap-1">
+                    <span>🐛</span> Hama &amp; Kutu
+                </button>
+                <button type="button" onclick="selectHomeSymptom(this, 'Batang Layu / Membusuk')" class="home-symptom-chip text-[10.5px] font-semibold px-2.5 py-1 rounded-xl bg-white border border-gray-200 text-gray-700 hover:border-emerald-500 hover:bg-emerald-50 transition-all flex items-center gap-1">
+                    <span>🥀</span> Batang Layu
+                </button>
+                <button type="button" onclick="selectHomeSymptom(this, 'Tanah Keras / Kurang Subur')" class="home-symptom-chip text-[10.5px] font-semibold px-2.5 py-1 rounded-xl bg-white border border-gray-200 text-gray-700 hover:border-emerald-500 hover:bg-emerald-50 transition-all flex items-center gap-1">
+                    <span>🌾</span> Tanah Keras
+                </button>
+                <button type="button" onclick="selectHomeSymptom(this, 'Buah & Bunga Rontok')" class="home-symptom-chip text-[10.5px] font-semibold px-2.5 py-1 rounded-xl bg-white border border-gray-200 text-gray-700 hover:border-emerald-500 hover:bg-emerald-50 transition-all flex items-center gap-1">
+                    <span>🍓</span> Buah Rontok
+                </button>
+            </div>
+        </div>
+
         {{-- Consultation session pills --}}
-        <div class="text-center mb-4">
+        <div class="text-center mb-3">
             <span class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-2">
                 Pilihan Sesi Konsultasi:
             </span>
             <div class="grid grid-cols-3 gap-2">
-                <a href="{{ route('konsultasi.index') }}" class="flex items-center justify-center gap-1.5 py-2 px-1 bg-white rounded-2xl border border-gray-200 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 text-xs font-semibold">
-                    <span class="text-sm">💬</span>
-                    <span>Chat</span>
+                <a id="homeChannelChatBtn" href="{{ route('konsultasi.index') }}" class="flex flex-col items-center justify-center py-2 px-1 bg-white rounded-2xl border border-gray-200 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 group">
+                    <span class="text-base group-hover:scale-110 transition-transform">💬</span>
+                    <span class="text-xs font-bold text-gray-800 mt-0.5">Chat</span>
+                    <span class="text-[9px] text-gray-400">WhatsApp</span>
                 </a>
-                <a href="{{ route('konsultasi.index') }}" class="flex items-center justify-center gap-1.5 py-2 px-1 bg-white rounded-2xl border border-gray-200 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 text-xs font-semibold">
-                    <span class="text-sm">🎥</span>
-                    <span>Video</span>
+                <a id="homeChannelCallBtn" href="{{ route('konsultasi.index') }}" class="flex flex-col items-center justify-center py-2 px-1 bg-white rounded-2xl border border-gray-200 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 group">
+                    <span class="text-base group-hover:scale-110 transition-transform">📞</span>
+                    <span class="text-xs font-bold text-gray-800 mt-0.5">Call</span>
+                    <span class="text-[9px] text-gray-400">Panggilan Suara</span>
                 </a>
-                <a href="{{ route('kunjungan.index') }}" class="flex items-center justify-center gap-1.5 py-2 px-1 bg-white rounded-2xl border border-gray-200 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 text-xs font-semibold">
-                    <span class="text-sm">🚜</span>
-                    <span>Visit</span>
+                <a id="homeChannelZoomBtn" href="{{ route('konsultasi.index') }}" class="flex flex-col items-center justify-center py-2 px-1 bg-white rounded-2xl border border-gray-200 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 group">
+                    <span class="text-base group-hover:scale-110 transition-transform">🎥</span>
+                    <span class="text-xs font-bold text-gray-800 mt-0.5">Zoom</span>
+                    <span class="text-[9px] text-gray-400">Cek Live Lahan</span>
                 </a>
             </div>
         </div>
 
         {{-- Big Main CTA Button --}}
-        <div class="mb-4">
-            <a href="{{ route('layanan') }}" class="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-[#2E4A2C] hover:bg-[#223820] text-white font-bold text-sm shadow-md transition-all active:scale-[0.98]">
-                <span>Temukan Layanan Kami</span>
+        <div class="mb-3">
+            <a id="homeMainCta" href="{{ route('layanan') }}" class="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-[#2E4A2C] hover:bg-[#223820] text-white font-bold text-sm shadow-md transition-all active:scale-[0.98]">
+                <span id="homeMainCtaText">Temukan Layanan Kami</span>
                 <span>→</span>
             </a>
         </div>
 
         {{-- Quote --}}
-        <div class="text-center py-1 px-3 mb-4">
+        <div class="text-center py-1 px-3 mb-3">
             <p class="font-script text-xl text-[#2F5E2D] font-bold leading-snug">
                 “Langkah kecil hari ini, bisa membawa panen besar esok hari.” ♡
             </p>
         </div>
 
         {{-- Contact bar --}}
-        <div class="pt-3 border-t border-[#E3EAE0] text-[11px] text-[#5A6D59]">
+        <div class="pt-2.5 border-t border-[#E3EAE0] text-[10.5px] text-[#5A6D59]">
             <div class="grid grid-cols-2 gap-y-1.5 gap-x-2 text-center">
                 <a href="{{ route('home') }}" class="hover:text-emerald-800 truncate">🌐 hallobun.com</a>
                 <a href="mailto:info@hallobun.com" class="hover:text-emerald-800 truncate">✉️ info@hallobun.com</a>
@@ -170,46 +236,50 @@
 
             {{-- Hero illustration (card style) --}}
             <div class="hidden lg:block">
-                <div class="relative">
-                    <div class="glass rounded-3xl p-6 shadow-2xl border border-white/25">
-                        <div class="bg-white/15 rounded-2xl p-4 mb-4 border border-white/15">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-10 h-10 bg-emerald-300/80 rounded-full flex items-center justify-center text-xl shadow-inner">👨‍🌾</div>
+                <div class="relative art-card-breathe">
+                    <div class="glass rounded-3xl p-5 shadow-2xl border border-white/25">
+                        <div class="rounded-2xl overflow-hidden aspect-[16/9] mb-4 relative shadow-inner border border-white/20 bg-emerald-950/40">
+                            <img src="/images/hero_banner.jpg" 
+                                 alt="Konsultasi Berkebun Hallobun" 
+                                 class="w-full h-full object-cover object-center select-none"
+                                 loading="eager">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
                                 <div>
-                                    <div class="text-white font-semibold text-sm">Sesi Konsultasi Kebun</div>
-                                    <div class="text-[#DCEBCA] text-xs">Dr. Budi Santoso — Kesehatan Tanaman &amp; Tanah</div>
+                                    <span class="inline-block text-[10px] font-bold bg-white/20 backdrop-blur-xs px-2.5 py-0.5 rounded-full mb-0.5">✦ Temani Setiap Langkah Berkebunmu ♡</span>
+                                    <div class="text-xs font-semibold text-emerald-100">Bimbingan agronomis berlisensi langsung ke kebunmu</div>
                                 </div>
-                                <span class="ml-auto bg-amber-500/90 text-white text-xs px-2.5 py-0.5 rounded-full font-semibold animate-pulse shadow-sm">LIVE</span>
-                            </div>
-                            <div class="bg-[#1C271C]/80 rounded-xl h-36 flex items-center justify-center border border-white/10">
-                                <div class="text-center">
-                                    <div class="text-4xl mb-2">🌿 🎥 🍃</div>
-                                    <div class="text-[#A2B8A1] text-xs font-medium">Video Call Interaktif via Jitsi Meet</div>
-                                </div>
+                                <span class="bg-emerald-400 text-emerald-950 text-xs px-2.5 py-1 rounded-full font-bold shadow-sm">ACTIVE</span>
                             </div>
                         </div>
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="bg-white/15 rounded-xl p-3 text-center border border-white/10 hover:bg-white/20 transition-colors">
-                                <div class="text-2xl mb-1">💬</div>
-                                <div class="text-white text-xs font-medium">Konsultasi Online</div>
-                            </div>
-                            <div class="bg-white/15 rounded-xl p-3 text-center border border-white/10 hover:bg-white/20 transition-colors">
-                                <div class="text-2xl mb-1">🚜</div>
-                                <div class="text-white text-xs font-medium">Kunjungan Kebun</div>
-                            </div>
-                            <div class="bg-white/15 rounded-xl p-3 text-center border border-white/10 hover:bg-white/20 transition-colors">
-                                <div class="text-2xl mb-1">🎤</div>
-                                <div class="text-white text-xs font-medium">Undang Narsum</div>
-                            </div>
-                            <div class="bg-white/15 rounded-xl p-3 text-center border border-white/10 hover:bg-white/20 transition-colors">
-                                <div class="text-2xl mb-1">🪴</div>
-                                <div class="text-white text-xs font-medium">Bibit &amp; Sarana</div>
-                            </div>
+
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <a href="{{ route('konsultasi.index') }}" class="bg-white/15 hover:bg-white/25 rounded-xl p-3 text-center border border-white/15 transition-all group">
+                                <div class="text-2xl mb-1 group-hover:scale-110 transition-transform">💬</div>
+                                <div class="text-white text-xs font-bold">Konsultasi Chat &amp; Call</div>
+                                <div class="text-emerald-200 text-[10px]">Tanya jawab fleksibel</div>
+                            </a>
+                            <a href="{{ route('kunjungan.index') }}" class="bg-white/15 hover:bg-white/25 rounded-xl p-3 text-center border border-white/15 transition-all group">
+                                <div class="text-2xl mb-1 group-hover:scale-110 transition-transform">🚜</div>
+                                <div class="text-white text-xs font-bold">Kunjungan On-Site</div>
+                                <div class="text-emerald-200 text-[10px]">Pakar cek ke kebun</div>
+                            </a>
+                            <a href="{{ route('narsum.index') }}" class="bg-white/15 hover:bg-white/25 rounded-xl p-3 text-center border border-white/15 transition-all group">
+                                <div class="text-2xl mb-1 group-hover:scale-110 transition-transform">🎤</div>
+                                <div class="text-white text-xs font-bold">Undang Narsum</div>
+                                <div class="text-emerald-200 text-[10px]">Workshop &amp; pelatihan</div>
+                            </a>
+                            <a href="{{ route('sarana.index') }}" class="bg-white/15 hover:bg-white/25 rounded-xl p-3 text-center border border-white/15 transition-all group">
+                                <div class="text-2xl mb-1 group-hover:scale-110 transition-transform">🪴</div>
+                                <div class="text-white text-xs font-bold">Bibit &amp; Sarana</div>
+                                <div class="text-emerald-200 text-[10px]">Produk uji agronomi</div>
+                            </a>
                         </div>
                     </div>
                     {{-- Floating badge --}}
-                    <div class="absolute -top-4 -right-4 bg-amber-300 text-amber-950 font-bold text-sm px-3.5 py-1.5 rounded-full shadow-lg border border-amber-200">
-                        ⭐ 4.9/5.0 Terpercaya
+                    <div class="absolute -top-3.5 -right-3.5 bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 font-bold text-xs sm:text-sm px-4 py-1.5 rounded-full shadow-lg border border-amber-200 flex items-center gap-1.5">
+                        <span>⭐</span>
+                        <span>4.9/5.0 Dari 1.200+ Pekebun</span>
                     </div>
                 </div>
             </div>
@@ -359,5 +429,69 @@
         </div>
     </div>
 </section>
+
+@push('scripts')
+<script>
+    var homeCurrentSlide = 0;
+    var homeSlideInterval = null;
+    var homeAdminWaNumber = "{{ preg_replace('/[^0-9]/', '', config('hallobun.admin_phone', '6281234567890')) }}";
+
+    function goToHomeMobileSlide(idx) {
+        var slides = document.querySelectorAll('#homeMobileSlider .slider-slide');
+        var dots = document.querySelectorAll('#homeMobileSliderDots .home-mobile-dot');
+        if (!slides.length) return;
+        homeCurrentSlide = (idx + slides.length) % slides.length;
+        slides.forEach(function(s, i) {
+            if (i === homeCurrentSlide) {
+                s.classList.add('active');
+            } else {
+                s.classList.remove('active');
+            }
+        });
+        dots.forEach(function(d, i) {
+            if (i === homeCurrentSlide) {
+                d.className = 'home-mobile-dot w-5 h-1.5 rounded-full bg-emerald-800 transition-all';
+            } else {
+                d.className = 'home-mobile-dot w-1.5 h-1.5 rounded-full bg-emerald-300 transition-all';
+            }
+        });
+    }
+
+    function selectHomeSymptom(el, symptom) {
+        var chips = document.querySelectorAll('.home-symptom-chip');
+        chips.forEach(function(c) {
+            c.classList.remove('bg-emerald-600', 'text-white', 'border-emerald-600', 'shadow-xs');
+            c.classList.add('bg-white', 'text-gray-700', 'border-gray-200');
+        });
+        el.classList.remove('bg-white', 'text-gray-700', 'border-gray-200');
+        el.classList.add('bg-emerald-600', 'text-white', 'border-emerald-600', 'shadow-xs');
+
+        var label = document.getElementById('homeSymptomLabel');
+        if (label) label.textContent = '✓ Terpilih: ' + symptom;
+
+        var encodedMsg = encodeURIComponent("Halo Hallobun, saya ingin berkonsultasi mengenai masalah tanaman saya: " + symptom + ". Mohon bantuan diagnosis dan solusinya 🙏");
+        var waUrl = "https://wa.me/" + homeAdminWaNumber + "?text=" + encodedMsg;
+
+        var chatBtn = document.getElementById('homeChannelChatBtn');
+        if (chatBtn) chatBtn.href = waUrl;
+
+        var mainCta = document.getElementById('homeMainCta');
+        var mainCtaText = document.getElementById('homeMainCtaText');
+        if (mainCta && mainCtaText) {
+            mainCta.href = waUrl;
+            mainCtaText.textContent = "Konsultasi Masalah Ini Sekarang";
+        }
+    }
+
+    // Auto rotate mobile hero slider
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.getElementById('homeMobileSlider')) {
+            homeSlideInterval = setInterval(function() {
+                goToHomeMobileSlide(homeCurrentSlide + 1);
+            }, 4500);
+        }
+    });
+</script>
+@endpush
 
 @endsection

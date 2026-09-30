@@ -27,14 +27,19 @@
 ══════════════════════════════════════════════════════════════════ --}}
 @if(request()->routeIs('home'))
 <div id="consultationSplash"
-     class="fixed inset-0 z-[100] bg-[#FAFBF9] overflow-y-auto flex flex-col md:hidden transition-all duration-400 ease-out opacity-100"
+     class="fixed inset-0 z-[100] bg-[#FAFBF9] overflow-y-auto flex flex-col md:hidden transition-all duration-400 ease-out opacity-100 relative"
      role="dialog" aria-modal="true" aria-label="Selamat Datang di Hallobun"
      style="display:none;">
 
-    <div class="w-full max-w-md mx-auto px-5 py-4 min-h-screen flex flex-col justify-between">
+    {{-- Ambient Warm Pastel Aura Glows --}}
+    <div class="aura-glow aura-glow-1"></div>
+    <div class="aura-glow aura-glow-2"></div>
+    <div class="aura-glow aura-glow-3"></div>
+
+    <div class="w-full max-w-md mx-auto px-4 sm:px-5 py-4 min-h-screen flex flex-col justify-between relative z-10">
 
         {{-- Top Bar / Header --}}
-        <header class="flex items-center justify-between gap-2 pt-1 pb-3">
+        <header class="flex items-center justify-between gap-2 pt-1 pb-2">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
                 <img src="/images/logo_icon.jpg" alt="Hallobun" class="w-11 h-11 rounded-full object-cover shadow-sm border border-emerald-200 flex-shrink-0 bg-white p-0.5">
                 <div class="min-w-0">
@@ -43,98 +48,157 @@
                 </div>
             </div>
 
-            {{-- Aesthetic Palette Dots Widget --}}
-            <div class="flex items-center gap-1 bg-white/90 px-2 py-1.5 rounded-full border border-gray-200/80 shadow-xs flex-shrink-0">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#8E5E42]"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-[#4A7A48]"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-[#5D5778]"></span>
-                <span class="w-3.5 h-3.5 rounded-full border-2 border-[#2E4A2C] bg-white flex items-center justify-center">
-                    <span class="w-1.5 h-1.5 rounded-full bg-[#2E4A2C]"></span>
-                </span>
-                <span class="w-2.5 h-2.5 rounded-full bg-[#8C4656]"></span>
+            {{-- Aesthetic Palette Dots Widget (Interactive Theme Switcher) --}}
+            <div class="flex items-center gap-1.5 bg-white/90 px-2 py-1.5 rounded-full border border-gray-200/80 shadow-xs flex-shrink-0" title="Ganti Tema Warna Pastel">
+                <button type="button" onclick="setHallobunTheme('terracotta')" class="theme-chip-btn w-2.5 h-2.5 rounded-full bg-[#8E4A2E] transition-transform hover:scale-125 active:scale-95" aria-label="Tema Terracotta" title="Terracotta"></button>
+                <button type="button" onclick="setHallobunTheme('sage')" class="theme-chip-btn w-2.5 h-2.5 rounded-full bg-[#4A7A48] transition-transform hover:scale-125 active:scale-95" aria-label="Tema Sage Green" title="Sage Green"></button>
+                <button type="button" onclick="setHallobunTheme('lavender')" class="theme-chip-btn w-2.5 h-2.5 rounded-full bg-[#5D5778] transition-transform hover:scale-125 active:scale-95" aria-label="Tema Lavender" title="Lavender"></button>
+                <button type="button" onclick="setHallobunTheme('sky')" class="theme-chip-btn w-2.5 h-2.5 rounded-full bg-[#2B4E63] transition-transform hover:scale-125 active:scale-95" aria-label="Tema Sky Mist" title="Sky Mist"></button>
+                <button type="button" onclick="setHallobunTheme('rose')" class="theme-chip-btn w-2.5 h-2.5 rounded-full bg-[#8C3A4E] transition-transform hover:scale-125 active:scale-95" aria-label="Tema Rose Blush" title="Rose Blush"></button>
             </div>
 
             {{-- Circular "Lewati ke Web →" Button --}}
             <button id="btn-skip-splash"
                     onclick="dismissSplash()"
-                    class="w-15 h-15 rounded-full bg-[#2E4A2C] text-white flex flex-col items-center justify-center text-center p-1 shadow-md hover:bg-[#223921] transition-transform active:scale-95 flex-shrink-0"
+                    class="w-14 h-14 rounded-full bg-[#2E4A2C] text-white flex flex-col items-center justify-center text-center p-1 shadow-md hover:bg-[#223921] transition-transform active:scale-95 flex-shrink-0"
                     aria-label="Lewati ke website">
-                <span class="text-[10px] font-bold leading-tight">Lewati</span>
-                <span class="text-[10px] font-bold leading-tight flex items-center gap-0.5">ke Web <span>→</span></span>
+                <span class="text-[9.5px] font-bold leading-tight">Lewati</span>
+                <span class="text-[9.5px] font-bold leading-tight flex items-center gap-0.5">ke Web <span>→</span></span>
             </button>
         </header>
 
-        {{-- Banner Card --}}
-        <div class="bg-gradient-to-b from-[#F2F7F0] via-[#F8FAF7] to-white rounded-3xl p-2 sm:p-2.5 border border-[#D8E6D5] shadow-sm my-2">
-            <div class="rounded-2xl overflow-hidden aspect-[16/9] relative shadow-inner bg-[#EBF4EA] flex items-center justify-center">
-                <img src="/images/hero_banner.jpg" 
-                     alt="Konsultasi Berkebun Hallobun" 
-                     class="w-full h-full object-cover object-center select-none"
-                     loading="eager">
-                
-                {{-- Carousel Indicator Floating Pill (matching reference) --}}
-                <div class="absolute bottom-2 inset-x-0 flex items-center justify-center pointer-events-none">
-                    <div class="flex items-center gap-1.5 bg-white/85 backdrop-blur-xs px-3 py-1 rounded-full shadow-xs border border-white/70">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#CADBCA]"></span>
-                        <span class="w-5 h-1.5 rounded-full bg-[#2E4A2C]"></span>
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#CADBCA]"></span>
+        {{-- Banner Card with Multi-Slide Carousel & Breathing Effect --}}
+        <div class="bg-gradient-to-b from-[#F2F7F0] via-[#F8FAF7] to-white rounded-3xl p-2 sm:p-2.5 border border-[#D8E6D5] shadow-sm my-2 art-card-breathe relative">
+            <div class="rounded-2xl overflow-hidden aspect-[16/9] relative shadow-inner bg-[#EBF4EA] flex items-center justify-center slider-container" id="splashSlider">
+                {{-- Slide 1 --}}
+                <div class="slider-slide active" data-slide="0">
+                    <img src="/images/hero_banner.jpg" 
+                         alt="Konsultasi Berkebun Hallobun" 
+                         class="w-full h-full object-cover object-center select-none"
+                         loading="eager">
+                    <div class="absolute inset-x-0 bottom-0 p-2.5 bg-gradient-to-t from-black/60 via-black/20 to-transparent text-white pointer-events-none">
+                        <span class="inline-block text-[9px] font-bold bg-white/20 backdrop-blur-xs px-2 py-0.5 rounded-full mb-0.5">✦ Lahan &amp; Kebun Sehat</span>
+                        <p class="text-[11px] font-semibold leading-tight drop-shadow-sm">Pikiran tenang, tanaman bertumbuh riang</p>
+                    </div>
+                </div>
+
+                {{-- Slide 2 --}}
+                <div class="slider-slide" data-slide="1">
+                    <img src="/images/layanan/konsultasi.jpg" 
+                         alt="Konsultasi Hangat Bersama Agronomis" 
+                         class="w-full h-full object-cover object-center select-none"
+                         loading="lazy">
+                    <div class="absolute inset-x-0 bottom-0 p-2.5 bg-gradient-to-t from-black/60 via-black/20 to-transparent text-white pointer-events-none">
+                        <span class="inline-block text-[9px] font-bold bg-white/20 backdrop-blur-xs px-2 py-0.5 rounded-full mb-0.5">✦ Teman Cerita Tanaman</span>
+                        <p class="text-[11px] font-semibold leading-tight drop-shadow-sm">Diskusi santai temukan solusi tepat</p>
+                    </div>
+                </div>
+
+                {{-- Slide 3 --}}
+                <div class="slider-slide" data-slide="2">
+                    <img src="/images/layanan/pelatihan.jpg" 
+                         alt="Edukasi Pekebun & Praktek Tani" 
+                         class="w-full h-full object-cover object-center select-none"
+                         loading="lazy">
+                    <div class="absolute inset-x-0 bottom-0 p-2.5 bg-gradient-to-t from-black/60 via-black/20 to-transparent text-white pointer-events-none">
+                        <span class="inline-block text-[9px] font-bold bg-white/20 backdrop-blur-xs px-2 py-0.5 rounded-full mb-0.5">✦ Edukasi &amp; Komunitas</span>
+                        <p class="text-[11px] font-semibold leading-tight drop-shadow-sm">Tumbuh bersama komunitas pekebun se-Indonesia</p>
+                    </div>
+                </div>
+
+                {{-- Carousel Indicator Floating Pill --}}
+                <div class="absolute bottom-2 inset-x-0 flex items-center justify-center z-10 pointer-events-auto">
+                    <div class="flex items-center gap-1.5 bg-white/85 backdrop-blur-xs px-3 py-1 rounded-full shadow-xs border border-white/70" id="splashSliderDots">
+                        <button type="button" onclick="goToSplashSlide(0)" class="splash-dot w-5 h-1.5 rounded-full bg-[#2E4A2C] transition-all" aria-label="Slide 1"></button>
+                        <button type="button" onclick="goToSplashSlide(1)" class="splash-dot w-1.5 h-1.5 rounded-full bg-[#CADBCA] transition-all" aria-label="Slide 2"></button>
+                        <button type="button" onclick="goToSplashSlide(2)" class="splash-dot w-1.5 h-1.5 rounded-full bg-[#CADBCA] transition-all" aria-label="Slide 3"></button>
                     </div>
                 </div>
             </div>
         </div>
 
         {{-- Title & Subtitle --}}
-        <div class="text-center px-2 my-2">
+        <div class="text-center px-2 my-1">
             <h1 class="text-3xl font-extrabold text-[#243723] tracking-tight font-serif-title">
                 Hallobun
             </h1>
             <p class="font-script text-2xl text-[#2E4A2C] font-bold mt-0.5">
                 Temani Setiap Langkah Berkebunmu ♡
             </p>
-            <p class="text-[12.5px] text-[#4A6149] leading-relaxed mt-2 max-w-xs mx-auto">
-                Ruang aman dan terpercaya untuk kamu bercerita, memahami emosi tanaman, memulihkan energi kebun, dan menemukan solusi bersama agronomis berlisensi.
+            <p class="text-[12px] text-[#4A6149] leading-relaxed mt-1.5 max-w-xs mx-auto">
+                Ruang aman dan terpercaya untuk kamu bercerita seputar tanaman, memahami emosi kebun, memulihkan tanaman yang layu, dan menemukan solusi bersama agronomis berlisensi.
             </p>
         </div>
 
+        {{-- Interactive Plant Health Symptom Selector --}}
+        <div class="my-2 bg-white/80 backdrop-blur-xs p-2.5 rounded-2xl border border-[#DCE8DB] shadow-xs">
+            <div class="flex items-center justify-between mb-1.5 px-0.5">
+                <span class="text-[10px] font-bold text-gray-600 uppercase tracking-wider flex items-center gap-1">
+                    <span>🌱</span> Tanamanmu sedang kenapa?
+                </span>
+                <span class="text-[9px] text-emerald-700 font-semibold" id="symptomHelpLabel">Pilih gejala</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5 justify-center" id="symptomChips">
+                <button type="button" onclick="selectSymptom(this, 'Daun Menguning & Layu')" class="symptom-chip text-[10.5px] font-semibold px-2.5 py-1 rounded-xl bg-white border border-gray-200 text-gray-700 hover:border-emerald-500 hover:bg-emerald-50 transition-all flex items-center gap-1">
+                    <span>🍂</span> Daun Kuning
+                </button>
+                <button type="button" onclick="selectSymptom(this, 'Serangan Hama / Kutu Putih')" class="symptom-chip text-[10.5px] font-semibold px-2.5 py-1 rounded-xl bg-white border border-gray-200 text-gray-700 hover:border-emerald-500 hover:bg-emerald-50 transition-all flex items-center gap-1">
+                    <span>🐛</span> Hama &amp; Kutu
+                </button>
+                <button type="button" onclick="selectSymptom(this, 'Batang Layu / Membusuk')" class="symptom-chip text-[10.5px] font-semibold px-2.5 py-1 rounded-xl bg-white border border-gray-200 text-gray-700 hover:border-emerald-500 hover:bg-emerald-50 transition-all flex items-center gap-1">
+                    <span>🥀</span> Batang Layu
+                </button>
+                <button type="button" onclick="selectSymptom(this, 'Tanah Keras / Kurang Subur')" class="symptom-chip text-[10.5px] font-semibold px-2.5 py-1 rounded-xl bg-white border border-gray-200 text-gray-700 hover:border-emerald-500 hover:bg-emerald-50 transition-all flex items-center gap-1">
+                    <span>🌾</span> Tanah Keras
+                </button>
+                <button type="button" onclick="selectSymptom(this, 'Buah & Bunga Rontok')" class="symptom-chip text-[10.5px] font-semibold px-2.5 py-1 rounded-xl bg-white border border-gray-200 text-gray-700 hover:border-emerald-500 hover:bg-emerald-50 transition-all flex items-center gap-1">
+                    <span>🍓</span> Buah Rontok
+                </button>
+            </div>
+        </div>
+
         {{-- Pilihan Sesi Konsultasi --}}
-        <div class="text-center my-2">
-            <span class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-2.5">
+        <div class="text-center my-1.5">
+            <span class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-2">
                 Pilihan Sesi Konsultasi:
             </span>
-            <div class="grid grid-cols-3 gap-2.5">
-                <a href="{{ route('konsultasi.index') }}" onclick="dismissSplash()" class="flex items-center justify-center gap-1.5 py-2.5 px-2 bg-white rounded-2xl border border-gray-200/90 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 text-xs font-bold">
-                    <span class="text-sm">💬</span>
-                    <span>Chat</span>
+            <div class="grid grid-cols-3 gap-2">
+                <a id="channelChatBtn" href="{{ route('konsultasi.index') }}" onclick="dismissSplash()" class="flex flex-col items-center justify-center py-2 px-1 bg-white rounded-2xl border border-gray-200/90 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 group">
+                    <span class="text-base group-hover:scale-110 transition-transform">💬</span>
+                    <span class="text-xs font-bold text-gray-800 mt-0.5">Chat</span>
+                    <span class="text-[9px] text-gray-400">WhatsApp</span>
                 </a>
-                <a href="{{ route('konsultasi.index') }}" onclick="dismissSplash()" class="flex items-center justify-center gap-1.5 py-2.5 px-2 bg-white rounded-2xl border border-gray-200/90 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 text-xs font-bold">
-                    <span class="text-sm">📞</span>
-                    <span>Call</span>
+                <a id="channelCallBtn" href="{{ route('konsultasi.index') }}" onclick="dismissSplash()" class="flex flex-col items-center justify-center py-2 px-1 bg-white rounded-2xl border border-gray-200/90 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 group">
+                    <span class="text-base group-hover:scale-110 transition-transform">📞</span>
+                    <span class="text-xs font-bold text-gray-800 mt-0.5">Call</span>
+                    <span class="text-[9px] text-gray-400">Suara Langsung</span>
                 </a>
-                <a href="{{ route('konsultasi.index') }}" onclick="dismissSplash()" class="flex items-center justify-center gap-1.5 py-2.5 px-2 bg-white rounded-2xl border border-gray-200/90 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 text-xs font-bold">
-                    <span class="text-sm">🎥</span>
-                    <span>Zoom</span>
+                <a id="channelZoomBtn" href="{{ route('konsultasi.index') }}" onclick="dismissSplash()" class="flex flex-col items-center justify-center py-2 px-1 bg-white rounded-2xl border border-gray-200/90 shadow-xs hover:border-emerald-500 hover:bg-emerald-50 transition-all text-gray-700 group">
+                    <span class="text-base group-hover:scale-110 transition-transform">🎥</span>
+                    <span class="text-xs font-bold text-gray-800 mt-0.5">Zoom</span>
+                    <span class="text-[9px] text-gray-400">Cek Live Tanaman</span>
                 </a>
             </div>
         </div>
 
         {{-- Big CTA Button --}}
         <div class="my-2">
-            <a href="{{ route('layanan') }}" onclick="dismissSplash()" class="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-[#2E4A2C] hover:bg-[#223921] text-white font-bold text-sm shadow-md transition-all active:scale-[0.98]">
-                <span>Temukan Layanan Kami</span>
+            <a id="mainSplashCta" href="{{ route('layanan') }}" onclick="dismissSplash()" class="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-[#2E4A2C] hover:bg-[#223921] text-white font-bold text-sm shadow-md transition-all active:scale-[0.98]">
+                <span id="mainSplashCtaText">Temukan Layanan Kami</span>
                 <span>→</span>
             </a>
         </div>
 
         {{-- Inspiring Quote --}}
-        <div class="text-center py-1.5 px-4 my-1">
+        <div class="text-center py-1 px-4 my-0.5">
             <p class="font-script text-xl text-[#2E4A2C] font-bold leading-snug">
-                “Langkah kecil hari ini, bisa membawa perubahan besar esok hari.” ♡
+                “Langkah kecil hari ini, bisa membawa panen besar esok hari.” ♡
             </p>
         </div>
 
         {{-- Footer Contact Bar --}}
-        <footer class="pt-3 pb-1 border-t border-[#E3EAE0] text-[11px] text-[#5A6D59] mt-2">
-            <div class="grid grid-cols-2 gap-y-2 gap-x-2 text-center">
+        <footer class="pt-2.5 pb-1 border-t border-[#E3EAE0] text-[10.5px] text-[#5A6D59] mt-1.5">
+            <div class="grid grid-cols-2 gap-y-1.5 gap-x-2 text-center">
                 <a href="https://hallobun.com" class="hover:text-emerald-800 truncate">🌐 Hallobun.com</a>
                 <a href="mailto:info@hallobun.com" class="hover:text-emerald-800 truncate">✉️ info@hallobun.com</a>
                 <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', config('hallobun.admin_phone', '6281234567890')) }}" class="hover:text-emerald-800 truncate">📞 +62 812-3456-7890</a>
@@ -146,6 +210,11 @@
 </div>
 
 <script>
+    var currentSlide = 0;
+    var slideInterval = null;
+    var selectedSymptomName = '';
+    var adminWaNumber = "{{ preg_replace('/[^0-9]/', '', config('hallobun.admin_phone', '6281234567890')) }}";
+
     function dismissSplash() {
         var splash = document.getElementById('consultationSplash');
         if (splash) {
@@ -156,11 +225,88 @@
                 document.body.style.overflow = '';
             }, 300);
             sessionStorage.setItem('hallobun_splash_dismissed', '1');
+            if (slideInterval) clearInterval(slideInterval);
         }
     }
 
-    // Tampilkan splash otomatis saat buka di HP / DevTools mobile
+    function goToSplashSlide(idx) {
+        var slides = document.querySelectorAll('#splashSlider .slider-slide');
+        var dots = document.querySelectorAll('#splashSliderDots .splash-dot');
+        if (!slides.length) return;
+        currentSlide = (idx + slides.length) % slides.length;
+        slides.forEach(function(s, i) {
+            if (i === currentSlide) {
+                s.classList.add('active');
+            } else {
+                s.classList.remove('active');
+            }
+        });
+        dots.forEach(function(d, i) {
+            if (i === currentSlide) {
+                d.className = 'splash-dot w-5 h-1.5 rounded-full bg-[#2E4A2C] transition-all';
+            } else {
+                d.className = 'splash-dot w-1.5 h-1.5 rounded-full bg-[#CADBCA] transition-all';
+            }
+        });
+    }
+
+    function startSlideLoop() {
+        if (slideInterval) clearInterval(slideInterval);
+        slideInterval = setInterval(function() {
+            goToSplashSlide(currentSlide + 1);
+        }, 4500);
+    }
+
+    function selectSymptom(el, symptom) {
+        var chips = document.querySelectorAll('.symptom-chip');
+        chips.forEach(function(c) {
+            c.classList.remove('bg-emerald-600', 'text-white', 'border-emerald-600', 'shadow-xs');
+            c.classList.add('bg-white', 'text-gray-700', 'border-gray-200');
+        });
+        el.classList.remove('bg-white', 'text-gray-700', 'border-gray-200');
+        el.classList.add('bg-emerald-600', 'text-white', 'border-emerald-600', 'shadow-xs');
+
+        selectedSymptomName = symptom;
+        var helpLabel = document.getElementById('symptomHelpLabel');
+        if (helpLabel) helpLabel.textContent = '✓ Terpilih: ' + symptom;
+
+        var encodedMsg = encodeURIComponent("Halo Hallobun, saya ingin berkonsultasi mengenai masalah tanaman saya: " + symptom + ". Mohon bantuan diagnosis dan solusinya 🙏");
+        var waUrl = "https://wa.me/" + adminWaNumber + "?text=" + encodedMsg;
+
+        var chatBtn = document.getElementById('channelChatBtn');
+        if (chatBtn) chatBtn.href = waUrl;
+
+        var mainCta = document.getElementById('mainSplashCta');
+        var mainCtaText = document.getElementById('mainSplashCtaText');
+        if (mainCta && mainCtaText) {
+            mainCta.href = waUrl;
+            mainCtaText.textContent = "Konsultasi Masalah Ini Sekarang";
+        }
+    }
+
+    function setHallobunTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        document.body.setAttribute('data-theme', theme);
+        localStorage.setItem('hallobun_theme', theme);
+        updateThemeChips(theme);
+    }
+
+    function updateThemeChips(theme) {
+        document.querySelectorAll('.theme-chip-btn').forEach(function(btn) {
+            var onclickAttr = btn.getAttribute('onclick') || '';
+            if (onclickAttr.indexOf("'" + theme + "'") !== -1) {
+                btn.classList.add('ring-2', 'ring-offset-1', 'ring-gray-700', 'scale-125');
+            } else {
+                btn.classList.remove('ring-2', 'ring-offset-1', 'ring-gray-700', 'scale-125');
+            }
+        });
+    }
+
+    // Inisialisasi otomatis
     (function initSplash() {
+        var savedTheme = localStorage.getItem('hallobun_theme') || 'sage';
+        setHallobunTheme(savedTheme);
+
         var urlParams = new URLSearchParams(window.location.search);
         var forceSplash = urlParams.get('splash') === '1';
         if (forceSplash) {
@@ -172,6 +318,7 @@
             if (splash && (dismissed !== '1' || forceSplash)) {
                 splash.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
+                startSlideLoop();
             }
         }
     })();
@@ -227,6 +374,15 @@
 
             {{-- Right side --}}
             <div class="flex items-center gap-2 sm:gap-3">
+                {{-- Desktop Pastel Theme Switcher --}}
+                <div class="hidden lg:flex items-center gap-1.5 bg-white/90 px-2.5 py-1.5 rounded-full border border-gray-200/80 shadow-xs" title="Ganti Tema Warna Pastel">
+                    <button type="button" onclick="setHallobunTheme('terracotta')" class="theme-chip-btn w-3 h-3 rounded-full bg-[#8E4A2E] transition-transform hover:scale-125 active:scale-95" title="Terracotta" aria-label="Tema Terracotta"></button>
+                    <button type="button" onclick="setHallobunTheme('sage')" class="theme-chip-btn w-3 h-3 rounded-full bg-[#4A7A48] transition-transform hover:scale-125 active:scale-95" title="Sage Green" aria-label="Tema Sage Green"></button>
+                    <button type="button" onclick="setHallobunTheme('lavender')" class="theme-chip-btn w-3 h-3 rounded-full bg-[#5D5778] transition-transform hover:scale-125 active:scale-95" title="Lavender" aria-label="Tema Lavender"></button>
+                    <button type="button" onclick="setHallobunTheme('sky')" class="theme-chip-btn w-3 h-3 rounded-full bg-[#2B4E63] transition-transform hover:scale-125 active:scale-95" title="Sky Mist" aria-label="Tema Sky Mist"></button>
+                    <button type="button" onclick="setHallobunTheme('rose')" class="theme-chip-btn w-3 h-3 rounded-full bg-[#8C3A4E] transition-transform hover:scale-125 active:scale-95" title="Rose Blush" aria-label="Tema Rose Blush"></button>
+                </div>
+
                 @auth
                     <div class="relative" x-data="{ open: false }">
                         <button @click="open = !open"
