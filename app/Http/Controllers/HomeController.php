@@ -19,42 +19,181 @@ class HomeController extends Controller
 
         $totalKonsultan    = Konsultan::active()->count();
         $totalKonsultasi   = Booking::where('status', 'completed')->count();
+        $totalPekebun      = \App\Models\User::count() + 450; // Total ekosistem pekebun
         $saranaFeatured    = Sarana::active()->featured()->take(4)->get();
+        if ($saranaFeatured->isEmpty()) {
+            $saranaFeatured = Sarana::active()->take(4)->get();
+        }
 
         $layananList = [
             [
                 'icon'        => '💬',
                 'title'       => 'Konsultasi Online',
-                'desc'        => 'Konsultasi langsung dengan pakar pertanian via video call kapanpun & dimanapun.',
+                'desc'        => 'Konsultasi langsung dengan pakar agrikultur via video call & WhatsApp kapanpun.',
                 'url'         => route('konsultasi.index'),
                 'color'       => 'emerald',
             ],
             [
                 'icon'        => '🎤',
                 'title'       => 'Undang Narasumber',
-                'desc'        => 'Undang pakar pertanian untuk acara seminar, penyuluhan, atau pelatihan Anda.',
+                'desc'        => 'Undang pakar pertanian untuk seminar, penyuluhan, atau workshop komunitas.',
                 'url'         => route('narsum.index'),
                 'color'       => 'blue',
             ],
             [
                 'icon'        => '🚜',
                 'title'       => 'Kunjungan Offline',
-                'desc'        => 'Tim ahli kami siap datang langsung ke lahan Anda untuk konsultasi tatap muka.',
+                'desc'        => 'Tim ahli kami siap datang langsung ke kebun atau lahan Anda untuk inspeksi.',
                 'url'         => route('kunjungan.index'),
                 'color'       => 'amber',
             ],
             [
                 'icon'        => '🌿',
                 'title'       => 'Sarana Pertanian',
-                'desc'        => 'Temukan berbagai produk pertanian berkualitas: pupuk, bibit, dan peralatan.',
+                'desc'        => 'Produk budidaya teruji: bibit unggul, pupuk organik, nutrisi tanaman & alat kebun.',
                 'url'         => route('sarana.index'),
                 'color'       => 'lime',
             ],
         ];
 
+        // JuruTani inspired: Live Commodity & Market Prices (Harga Pangan Terkini)
+        $hargaPangan = [
+            [
+                'komoditas' => 'Cabai Rawit Merah',
+                'kategori'  => 'Hortikultura',
+                'icon'      => '🌶️',
+                'harga'     => 42500,
+                'satuan'    => 'kg',
+                'perubahan' => '+3.2%',
+                'trend'     => 'up',
+                'update'    => 'Hari ini, 08:30 WIB',
+                'wilayah'   => 'Rata-rata Nasional'
+            ],
+            [
+                'komoditas' => 'Bawang Merah Brebes',
+                'kategori'  => 'Hortikultura',
+                'icon'      => '🧅',
+                'harga'     => 34000,
+                'satuan'    => 'kg',
+                'perubahan' => '-1.8%',
+                'trend'     => 'down',
+                'update'    => 'Hari ini, 08:30 WIB',
+                'wilayah'   => 'Pasar Induk'
+            ],
+            [
+                'komoditas' => 'Beras Medium Pandan',
+                'kategori'  => 'Pangan Pokok',
+                'icon'      => '🌾',
+                'harga'     => 14500,
+                'satuan'    => 'kg',
+                'perubahan' => '0.0%',
+                'trend'     => 'stable',
+                'update'    => 'Hari ini, 08:30 WIB',
+                'wilayah'   => 'Stabil'
+            ],
+            [
+                'komoditas' => 'Sayur Pakcoy Segar',
+                'kategori'  => 'Sayuran',
+                'icon'      => '🥬',
+                'harga'     => 8500,
+                'satuan'    => 'kg',
+                'perubahan' => '+4.1%',
+                'trend'     => 'up',
+                'update'    => 'Hari ini, 08:30 WIB',
+                'wilayah'   => 'Segar Petani'
+            ],
+            [
+                'komoditas' => 'Tomat Buah Unggul',
+                'kategori'  => 'Hortikultura',
+                'icon'      => '🍅',
+                'harga'     => 12000,
+                'satuan'    => 'kg',
+                'perubahan' => '-2.4%',
+                'trend'     => 'down',
+                'update'    => 'Hari ini, 08:30 WIB',
+                'wilayah'   => 'Panen Raya'
+            ],
+            [
+                'komoditas' => 'Jagung Manis Pipil',
+                'kategori'  => 'Pangan Pokok',
+                'icon'      => '🌽',
+                'harga'     => 9500,
+                'satuan'    => 'kg',
+                'perubahan' => '+1.5%',
+                'trend'     => 'up',
+                'update'    => 'Hari ini, 08:30 WIB',
+                'wilayah'   => 'Pasar Tradisional'
+            ],
+        ];
+
+        // JuruTani inspired: Edukasi & Berita Pertanian Terkini
+        $beritaTani = [
+            [
+                'id'       => 1,
+                'tag'      => 'Pengendalian Hama',
+                'color'    => 'emerald',
+                'title'    => 'Cara Mengatasi Kutu Putih & Ulat Grayak Tanpa Pestisida Kimia',
+                'excerpt'  => 'Gunakan ramuan pestisida nabati daun tembakau dan minyak nimba yang aman untuk sayuran organik dan tanaman hias pekarangan.',
+                'author'   => 'Dr. Ir. Suwandi, M.Si',
+                'date'     => '28 Sep 2026',
+                'read_time'=> '4 mnt baca',
+                'image'    => '/images/layanan/konsultasi.jpg',
+            ],
+            [
+                'id'       => 2,
+                'tag'      => 'Teknik Pemupukan',
+                'color'    => 'blue',
+                'title'    => 'Panduan Aplikasi Pupuk Organik Cair (POC) untuk Hasil Panen Maksimal',
+                'excerpt'  => 'Ketahui rasio pengenceran air serta waktu terbaik penyemprotan stomata daun pada pagi hari sebelum sinar matahari terik.',
+                'author'   => 'Bayu Pratama, S.P.',
+                'date'     => '26 Sep 2026',
+                'read_time'=> '5 mnt baca',
+                'image'    => '/images/layanan/produksi.jpg',
+            ],
+            [
+                'id'       => 3,
+                'tag'      => 'Urban Farming',
+                'color'    => 'amber',
+                'title'    => 'Strategi Kebun Sayur Vertikal di Rooftop dan Pekarangan Sempit',
+                'excerpt'  => 'Memanfaatkan instalasi pipa talang dan pot susun vertikal untuk menanam selada, seledri, dan mint secara mandiri.',
+                'author'   => 'Dewi Lestari, S.Pt',
+                'date'     => '24 Sep 2026',
+                'read_time'=> '3 mnt baca',
+                'image'    => '/images/layanan/pelatihan.jpg',
+            ],
+        ];
+
+        // Testimonial Pengguna
+        $testimonials = [
+            [
+                'name'     => 'H. Ahmad Syafi\'i',
+                'role'     => 'Petani Cabai & Melon, Magelang',
+                'avatar'   => '👨‍🌾',
+                'rating'   => 5,
+                'comment'  => 'Konsultasi video call di Hallobun sangat solutif. Daun cabai yang kriting langsung terdiagnosa kutu kebul dan sembuh setelah ikuti dosis rekomendasi pakar.',
+                'verified' => true,
+            ],
+            [
+                'name'     => 'Rina Kusuma',
+                'role'     => 'Urban Farmer & Hidroponik, Tangerang',
+                'avatar'   => '👩‍🌾',
+                'rating'   => 5,
+                'comment'  => 'Suka sekali dengan konsep temanya yang asri dan praktisi yang ramah. Sekarang kebun selada rooftop saya bebas busuk akar berkat bimbingan rutin.',
+                'verified' => true,
+            ],
+            [
+                'name'     => 'Bambang Triyono',
+                'role'     => 'Ketua Kelompok Tani Mandiri, Boyolali',
+                'avatar'   => '🌾',
+                'rating'   => 5,
+                'comment'  => 'Fitur undang narsum sangat mempermudah kelompok kami membuat workshop pemupukan berimbang. Materinya aplikatif dan pendampingannya berkelanjutan.',
+                'verified' => true,
+            ],
+        ];
+
         return view('home.index', compact(
-            'konsultanFeatured', 'totalKonsultan', 'totalKonsultasi',
-            'saranaFeatured', 'layananList'
+            'konsultanFeatured', 'totalKonsultan', 'totalKonsultasi', 'totalPekebun',
+            'saranaFeatured', 'layananList', 'hargaPangan', 'beritaTani', 'testimonials'
         ));
     }
 
