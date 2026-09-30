@@ -25,6 +25,12 @@ Route::prefix('sarana')->name('sarana.')->group(function () {
     Route::get('/{sarana:slug}', [SaranaController::class, 'show'])->name('show');
 });
 
+// Undang Narsum (Public Landing)
+Route::get('/narsum', [NarsumController::class, 'index'])->name('narsum.index');
+
+// Kunjungan Offline (Public Landing)
+Route::get('/kunjungan', [KunjunganController::class, 'index'])->name('kunjungan.index');
+
 // ─── Authenticated Routes ────────────────────────────────────────────────────
 Route::middleware(['auth', 'verified'])->group(function () {
 
@@ -42,16 +48,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/riwayat',                         [KonsultasiController::class, 'riwayat'])->name('riwayat');
     });
 
-    // Undang Narsum
+    // Undang Narsum (Submit & Riwayat)
     Route::prefix('narsum')->name('narsum.')->group(function () {
-        Route::get('/',          [NarsumController::class, 'index'])->name('index');
         Route::post('/store',    [NarsumController::class, 'store'])->name('store');
         Route::get('/riwayat',   [NarsumController::class, 'riwayat'])->name('riwayat');
     });
 
-    // Kunjungan Offline
+    // Kunjungan Offline (Submit & Riwayat)
     Route::prefix('kunjungan')->name('kunjungan.')->group(function () {
-        Route::get('/',          [KunjunganController::class, 'index'])->name('index');
         Route::post('/store',    [KunjunganController::class, 'store'])->name('store');
         Route::get('/riwayat',   [KunjunganController::class, 'riwayat'])->name('riwayat');
     });
