@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galeri Background Animasi Bergerak &amp; Pemandangan Alam — Hallobun</title>
+<style>
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 30px 20px;
+    background: #0B1329;
+    color: #F8FAFC;
+  }
+  .header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+  }
+  .header h1 {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #4ADE80, #FDE047);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .header p {
+    color: #94A3B8;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 800;
+    margin: 40px 0 20px;
+    color: #E2E8F0;
+    border-left: 4px solid #22C55E;
+    padding-left: 12px;
+  }
+  .grid-bg {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+  .card-bg {
+    background: #1E293B;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #334155;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+  }
+  .preview-window {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .preview-window img.bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .preview-window .overlay-content {
+    position: relative;
+    z-index: 2;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 24px 30px;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 80%;
+  }
+  .preview-window.light-overlay .overlay-content {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: #0F172A;
+  }
+  .card-info {
+    padding: 20px;
+  }
+  .card-info h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+  }
+  .card-info p {
+    margin: 0 0 14px;
+    font-size: 14px;
+    color: #94A3B8;
+    line-height: 1.5;
+  }
+  .tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: #064E3B;
+    color: #6EE7B7;
+    margin-right: 6px;
+  }
+  .btn-demo {
+    display: inline-block;
+    background: #22C55E;
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background 0.15s;
+  }
+  .btn-demo:hover {
+    background: #16A34A;
+  }
+  @media(max-width: 600px) {
+    .grid-bg { grid-template-columns: 1fr; }
+    .preview-window { height: 240px; }
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>Koleksi Background Animasi Bergerak &amp; Pemandangan Alam</h1>
+    <p>Aset visual bergerak bertema lukisan pemandangan sawah terasering &amp; dedaunan tanaman asli agar tampilan web hidup, dinamis, dan tidak monoton.</p>
+    <a href="index.html" class="btn-demo" style="margin-top: 10px;">&larr; Lihat Website Live Hallobun</a>
+  </div>
+
+  <div class="section-title">1. Animasi Pemandangan Sawah Terasering &amp; Perbukitan (Landscape Cinemagraph)</div>
+  <div class="grid-bg">
+    <!-- Card 1: Light Theme Web Overlay -->
+    <div class="card-bg">
+      <div class="preview-window light-overlay">
+        <img class="bg" src="images/nature_landscape_animated.gif" alt="Pemandangan Bergerak Terasering Sawah">
+        <div class="overlay-content">
+          <span style="font-size:12px;font-weight:800;color:#15803D;text-transform:uppercase">Contoh Penerapan Hero Web</span>
+          <h2 style="font-size:22px;margin:8px 0;color:#0F172A">Perawatan Kebun &amp; Tanaman</h2>
+          <p style="font-size:13px;color:#475569;margin:0 0 14px">Efek cahaya pagi berayun lembut, kabut bukit melayang, dan daun bertebangan di latar belakang.</p>
+          <span class="btn-demo" style="font-size:12px;padding:6px 14px">Konsultasi Praktisi</span>
+        </div>
+      </div>
+      <div class="card-info">
+        <span class="tag">Cinemagraph GIF</span>
+        <span class="tag">Pemandangan Alam</span>
+        <h3>nature_landscape_animated.gif</h3>
+        <p>Lukisan foto lanskap perbukitan teh, sawah terasering Jawa/Bali dengan sorot mentari terbit dan gerakan kabut pagi yang berputar loop tanpa putus.</p>
+      </div>
+    </div>
+
+    <!-- Card 2: Pure Visual Display -->
+    <div class="card-bg">
+      <div class="preview-window">
+        <img class="bg" src="images/nature_landscape_animated.gif" alt="Full Cinemagraph View">
+        <div style="position:absolute;bottom:14px;left:14px;background:rgba(0,0,0,0.6);padding:6px 12px;border-radius:6px;font-size:12px;color:#FEF08A">
+          &#9654; Animasi Berputar Mulus (Looping)
+        </div>
+      </div>
+      <div class="card-info">
+        <span class="tag">Resolusi 16:9</span>
+        <span class="tag">Web Hero Background</span>
+        <h3>Tampilan Penuh Tanpa Overlay</h3>
+        <p>Bisa digunakan sebagai video/gif background di hero section, landing page promosi, ataupun slide webinar pertanian.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">2. Animasi Dedaunan Tanaman Tropis &amp; Greenhouse (Foliage Cinemagraph)</div>
+  <div class="grid-bg">
+    <!-- Card 3: Greenhouse Header Overlay -->
+    <div class="card-bg">
+      <div class="preview-window">
+        <img class="bg" src="images/greenhouse_foliage_animated.gif" alt="Animasi Tanaman Greenhouse">
+        <div class="overlay-content">
+          <span style="font-size:12px;font-weight:800;color:#4ADE80;text-transform:uppercase">Contoh Penerapan Page Header</span>
+          <h2 style="font-size:22px;margin:8px 0;color:#FFFFFF">Layanan Sarana &amp; Bibit Tani</h2>
+          <p style="font-size:13px;color:#CBD5E1;margin:0">Latar daun monstera &amp; tanaman hias dengan pendar sinar matahari dan embun pagi.</p>
+        </div>
+      </div>
+      <div class="card-info">
+        <span class="tag">Cinemagraph GIF</span>
+        <span class="tag">Tanaman Asli</span>
+        <h3>greenhouse_foliage_animated.gif</h3>
+        <p>Foliage tanaman monstera, palem, dan calathea dengan butir embun dan sorotan cahaya kaca greenhouse yang bernapas hidup.</p>
+      </div>
+    </div>
+
+    <!-- Card 4: Pure Foliage View -->
+    <div class="card-bg">
+      <div class="preview-window">
+        <img class="bg" src="images/greenhouse_foliage_animated.gif" alt="Full Foliage View">
+        <div style="position:absolute;bottom:14px;left:14px;background:rgba(0,0,0,0.6);padding:6px 12px;border-radius:6px;font-size:12px;color:#86EFAC">
+          &#9654; Tanaman Hijau Bernapas Hidup
+        </div>
+      </div>
+      <div class="card-info">
+        <span class="tag">Suasana Kebun Modern</span>
+        <span class="tag">Page Banner</span>
+        <h3>Tampilan Daun &amp; Pencahayaan Alami</h3>
+        <p>Memberikan kesan segar, sejuk, dan terpercaya untuk pengunjung yang menyukai berkebun dan tanaman hias.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">3. Ilustrasi Bergerak Transparan Khusus Tanaman Bawang Merah (SVG &amp; GIF)</div>
+  <div class="grid-bg">
+    <!-- SVG Card -->
+    <div class="card-bg">
+      <div class="preview-window" style="background: radial-gradient(circle, #831843 0%, #4C0519 100%);">
+        <img src="images/halobun_onion_animation.svg" style="max-height:240px;width:auto;filter:drop-shadow(0 15px 25px rgba(0,0,0,0.5))" alt="Onion Vector Animated SVG">
+      </div>
+      <div class="card-info">
+        <span class="tag">Vector SVG</span>
+        <span class="tag">60 FPS Buttery-Smooth</span>
+        <span class="tag" style="background:#FFE4E6;color:#BE123C">🧅 Tanaman Bawang Merah</span>
+        <h3>halobun_onion_animation.svg</h3>
+        <p>Umbi merah ranum berkilau, daun bawang tubular berayun anggun, gembor emas menyiram bulir air murni, dan riak air tanah subur.</p>
+      </div>
+    </div>
+
+    <!-- GIF Card -->
+    <div class="card-bg">
+      <div class="preview-window" style="background: radial-gradient(circle, #0F172A 0%, #020617 100%);">
+        <img src="images/halobun_onion_animation.gif" style="max-height:240px;width:auto;filter:drop-shadow(0 15px 25px rgba(0,0,0,0.5))" alt="Onion Animated GIF">
+      </div>
+      <div class="card-info">
+        <span class="tag">Animated GIF</span>
+        <span class="tag">Pure Alpha Transparency</span>
+        <span class="tag" style="background:#FFE4E6;color:#BE123C">🧅 Tanaman Bawang Merah</span>
+        <h3>halobun_onion_animation.gif</h3>
+        <p>Format GIF 24 FPS dengan transparansi murni, dapat dipasang di sembarang media atau presentasi tanpa background kotak.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">4. Background Pemandangan Lahan Bawang Merah Indonesia</div>
+  <div class="grid-bg">
+    <div class="card-bg">
+      <div class="preview-window">
+        <img class="bg" src="images/onion_farmland_bg.jpg" alt="Hamparan Lahan Pertanian Bawang Merah">
+        <div style="position:absolute;bottom:14px;left:14px;background:rgba(0,0,0,0.65);padding:6px 14px;border-radius:6px;font-size:13px;color:#FEF08A;font-weight:700">
+          &#129477; Hamparan Lahan Bawang Merah &amp; Pegunungan Subur
+        </div>
+      </div>
+      <div class="card-info">
+        <span class="tag">High-Resolution</span>
+        <span class="tag">Hero Background Web</span>
+        <h3>onion_farmland_bg.jpg</h3>
+        <p>Pemandangan otentik bedengan tanaman bawang merah hijau subur berlatar megahnya fajar gunung Indonesia.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -33,7 +33,7 @@
             {{-- Brand / Logo --}}
             <div class="h-20 flex items-center justify-between px-6 border-b border-gray-100 bg-[#F0FDF4]/50">
                 <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2">
-                    <img src="{{ asset('images/logo.png') }}" alt="Hallobun Logo" class="h-9 w-auto object-contain">
+                    <img src="{{ asset('images/logo.svg') }}" alt="Hallobun Logo" class="h-9 w-auto object-contain">
                     <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#16A34A] text-white">
                         ADMIN
                     </span>

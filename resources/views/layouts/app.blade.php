@@ -17,6 +17,7 @@
     {{-- Alpine.js --}}
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+        <link rel="stylesheet" href="{{ asset('css/style.css?v=2.5') }}">
     @stack('styles')
 </head>
 <body class="bg-white text-gray-800 antialiased selection:bg-[#F0FDF4] selection:text-[#16A34A]">
@@ -29,7 +30,7 @@
 
             {{-- Logo --}}
             <a href="{{ route('home') }}" class="flex items-center gap-2 group flex-shrink-0 py-1">
-                <img src="/images/logo.png"
+                <img src="/images/logo.svg"
                      alt="Hallobun - Layanan Perkebunan & Pertanian"
                      class="h-9 sm:h-11 w-auto object-contain transition-transform group-hover:scale-105"
                      style="max-width:180px">
@@ -267,7 +268,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10">
             <div class="sm:col-span-2 md:col-span-1">
                 <a href="{{ route('home') }}" class="inline-block mb-3.5">
-                    <img src="/images/logo.png"
+                    <img src="/images/logo.svg"
                          alt="Hallobun - Layanan Perkebunan & Pertanian"
                          class="h-10 sm:h-12 w-auto object-contain"
                          style="max-width:200px">

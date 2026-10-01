@@ -8,8 +8,11 @@
 {{-- ═══════════════════════════════════════════════════════════════════════════
      1. HERO SECTION (MINIMALIST & PROFESSIONAL)
      ═══════════════════════════════════════════════════════════════════════════ --}}
-<section class="bg-white pt-6 sm:pt-10 pb-10 sm:pb-14 border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="hero relative overflow-hidden bg-slate-50 pt-6 sm:pt-10 pb-10 sm:pb-14 border-b border-gray-100">
+    <div class="hero-bg"></div>
+    <div class="hero-ov"></div>
+    <div class="hero-shimmer"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
@@ -26,7 +29,7 @@
                 </h1>
 
                 <p class="text-sm sm:text-base text-gray-600 leading-relaxed max-w-xl">
-                    Konsultasi langsung via video call, pemesanan inspeksi lahan fisik ke kebun Anda, hingga penyediaan bibit dan nutrisi organik terpercaya.
+                    Konsultasi langsung via video call, pemesanan inspeksi lahan fisik ke kebun Anda, hingga bimbingan budidaya tanaman bawang merah dan hortikultura terpercaya.
                 </p>
 
                 {{-- Clean Search Bar --}}
@@ -38,7 +41,7 @@
                             </svg>
                             <input type="text" 
                                    name="search"
-                                   placeholder="Cari praktisi, tanaman, atau kendala hama..."
+                                   placeholder="Cari praktisi bawang, kendala hama ulat/moler..."
                                    class="w-full bg-transparent border-none text-xs sm:text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-0 py-2">
                         </div>
                         <button type="submit" 
@@ -50,17 +53,20 @@
                     {{-- Popular Quick Chips --}}
                     <div class="flex flex-wrap items-center gap-1.5 mt-3 text-xs text-gray-500">
                         <span class="text-gray-400 font-medium">Populer:</span>
-                        <a href="{{ route('konsultasi.index') }}?search=kutu+putih" class="bg-gray-50 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors">
-                            🐛 Kutu Putih
+                        <a href="{{ route('konsultasi.index') }}?search=bawang+merah" class="bg-white/85 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors font-medium">
+                            🧅 Bawang Merah
                         </a>
-                        <a href="{{ route('konsultasi.index') }}?search=daun+kuning" class="bg-gray-50 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors">
+                        <a href="{{ route('konsultasi.index') }}?search=moler" class="bg-white/85 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors font-medium">
+                            🍄 Moler Bawang
+                        </a>
+                        <a href="{{ route('konsultasi.index') }}?search=ulat+grayak" class="bg-white/85 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors font-medium">
+                            🐛 Ulat Grayak
+                        </a>
+                        <a href="{{ route('sarana.index') }}" class="bg-white/85 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors font-medium">
+                            🧪 Nutrisi Umbi
+                        </a>
+                        <a href="{{ route('konsultasi.index') }}?search=daun+kuning" class="bg-white/85 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors font-medium">
                             🍂 Daun Kuning
-                        </a>
-                        <a href="{{ route('sarana.index') }}" class="bg-gray-50 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors">
-                            🌱 Pupuk Organik
-                        </a>
-                        <a href="{{ route('konsultasi.index') }}?search=hidroponik" class="bg-gray-50 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors">
-                            🥬 Hidroponik
                         </a>
                     </div>
                 </div>
@@ -438,29 +444,34 @@
 <section class="py-12 sm:py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="bg-gradient-to-r from-[#16A34A] via-[#15803D] to-[#166534] rounded-3xl p-6 sm:p-10 text-white shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="max-w-xl text-center md:text-left space-y-2">
+        <div class="bg-gradient-to-r from-[#064E3B] via-[#047857] to-[#059669] rounded-3xl p-6 sm:p-10 text-white shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden relative">
+            <div class="max-w-xl text-center md:text-left space-y-3 relative z-10">
                 <span class="inline-block bg-white/15 text-[#DCFCE7] text-xs font-bold px-3 py-1 rounded-full border border-white/10">
-                    Bimbingan Agronomi Terpercaya
+                    🧅 Panduan Budidaya Bawang Merah &amp; Pertanian Modern
                 </span>
                 <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
-                    Konsultasikan Kendala Kebun Anda Sekarang
+                    Panen Bawang Merah Melimpah, Bebas Moler &amp; Hama
                 </h2>
                 <p class="text-xs sm:text-sm text-[#BBF7D0] leading-relaxed">
-                    Dapatkan penanganan yang tepat dan ilmiah dari praktisi berpengalaman untuk menjaga tanaman Anda tetap sehat dan produktif.
+                    Konsultasi rutin bersama praktisi agronom spesialis hortikultura &amp; bawang merah. Panduan nutrisi umbi presisi, mitigasi penyakit moler (fusarium), dan manajemen air lahan.
                 </p>
+                <div class="pt-2 flex flex-col sm:flex-row items-center gap-3">
+                    <a href="{{ route('konsultasi.index') }}" 
+                       class="w-full sm:w-auto bg-white text-[#16A34A] hover:bg-gray-50 font-bold px-6 py-3 rounded-2xl text-xs sm:text-sm text-center transition-all shadow-md active:scale-95">
+                        Tanya Pakar Sekarang
+                    </a>
+                    <a href="https://wa.me/{{ config('hallobun.admin_phone', '081234567890') }}" 
+                       target="_blank"
+                       class="w-full sm:w-auto bg-white/15 hover:bg-white/25 border border-white/20 text-white font-bold px-5 py-3 rounded-2xl text-xs sm:text-sm text-center transition-all">
+                        Hubungi WhatsApp
+                    </a>
+                </div>
             </div>
 
-            <div class="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto flex-shrink-0">
-                <a href="{{ route('konsultasi.index') }}" 
-                   class="w-full sm:w-auto bg-white text-[#16A34A] hover:bg-gray-50 font-bold px-6 py-3 rounded-2xl text-xs sm:text-sm text-center transition-all shadow-md active:scale-95">
-                    Tanya Pakar Sekarang
-                </a>
-                <a href="https://wa.me/{{ config('hallobun.admin_phone', '081234567890') }}" 
-                   target="_blank"
-                   class="w-full sm:w-auto bg-white/15 hover:bg-white/25 border border-white/20 text-white font-bold px-5 py-3 rounded-2xl text-xs sm:text-sm text-center transition-all">
-                    Hubungi WhatsApp
-                </a>
+            <div class="w-48 sm:w-64 flex-shrink-0 flex items-center justify-center relative z-10">
+                <img src="{{ asset('images/halobun_onion_animation.svg') }}" 
+                     alt="Animasi Tanaman Bawang Merah" 
+                     class="w-full max-w-[210px] h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.3)]">
             </div>
         </div>
 
