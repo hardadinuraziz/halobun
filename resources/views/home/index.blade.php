@@ -48,35 +48,22 @@
                     {{-- Popular Quick Chips --}}
                     <div class="flex flex-wrap items-center gap-1.5 mt-3 text-xs text-gray-500">
                         <span class="text-gray-400 font-medium">Populer:</span>
-                        <a href="{{ route('konsultasi.index') }}?search=bawang+merah" class="bg-white/85 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors font-medium">
-                            🧅 Bawang Merah
+                        <a href="{{ route('konsultasi.index') }}?search=bawang+merah" class="bg-white/90 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors font-medium">
+                            Bawang Merah
                         </a>
-                        <a href="{{ route('konsultasi.index') }}?search=moler" class="bg-white/85 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors font-medium">
-                            🍄 Moler Bawang
+                        <a href="{{ route('konsultasi.index') }}?search=moler" class="bg-white/90 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors font-medium">
+                            Moler Bawang
                         </a>
-                        <a href="{{ route('konsultasi.index') }}?search=ulat+grayak" class="bg-white/85 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors font-medium">
-                            🐛 Ulat Grayak
+                        <a href="{{ route('konsultasi.index') }}?search=ulat+grayak" class="bg-white/90 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors font-medium">
+                            Ulat Grayak
                         </a>
-                        <a href="{{ route('sarana.index') }}" class="bg-white/85 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors font-medium">
-                            🧪 Nutrisi Umbi
+                        <a href="{{ route('sarana.index') }}" class="bg-white/90 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors font-medium">
+                            Nutrisi Umbi
                         </a>
-                        <a href="{{ route('konsultasi.index') }}?search=daun+kuning" class="bg-white/85 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors font-medium">
-                            🍂 Daun Kuning
+                        <a href="{{ route('konsultasi.index') }}?search=daun+kuning" class="bg-white/90 hover:bg-[#F0FDF4] hover:text-[#16A34A] px-2.5 py-0.5 rounded-full border border-gray-200 transition-colors font-medium">
+                            Daun Kuning
                         </a>
                     </div>
-                </div>
-
-                {{-- Fast Trust Highlights --}}
-                <div class="flex flex-wrap items-center gap-5 pt-2 text-xs text-gray-500 font-medium">
-                    <span class="flex items-center gap-1.5">
-                        <span class="text-[#16A34A] font-bold">✓</span> Respon Cepat
-                    </span>
-                    <span class="flex items-center gap-1.5">
-                        <span class="text-[#16A34A] font-bold">✓</span> Praktisi Bersertifikasi
-                    </span>
-                    <span class="flex items-center gap-1.5">
-                        <span class="text-[#16A34A] font-bold">✓</span> Tarif Terjangkau
-                    </span>
                 </div>
             </div>
 
@@ -174,15 +161,6 @@
                                             class="h-1.5 rounded-full transition-all duration-300"
                                             :class="activeSlide === index ? 'w-5 bg-[#4ADE80]' : 'w-1.5 bg-white/60 hover:bg-white'"></button>
                                 </template>
-                            </div>
-                        </div>
-                        
-                        {{-- Minimalist Floating Status Pill --}}
-                        <div class="absolute -bottom-3 left-6 sm:left-8 bg-white/95 backdrop-blur-md px-4 py-2 rounded-2xl border border-gray-100 shadow-md flex items-center gap-2.5 z-30">
-                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 flex-shrink-0"></span>
-                            <div class="text-left">
-                                <p class="text-[11px] font-bold text-gray-900 leading-tight" x-text="slides[activeSlide].title">Praktisi Kebun &amp; Tanaman Hias</p>
-                                <p class="text-[9.5px] text-[#16A34A] font-semibold leading-tight" x-text="slides[activeSlide].subtitle">Bimbingan Agronomi Online</p>
                             </div>
                         </div>
                     </div>
