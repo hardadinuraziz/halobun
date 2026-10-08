@@ -458,13 +458,7 @@
                     <div class="bg-white rounded-2xl p-4 border border-gray-200/80 hover:border-emerald-500/50 hover:shadow-md transition-all flex flex-col justify-between group">
                         <div class="flex items-start gap-3">
                             <div class="relative flex-shrink-0">
-                                @if($k->user->avatar_url ?? false)
-                                    <img src="{{ $k->user->avatar_url }}" alt="{{ $k->user->name }}" class="w-12 h-12 rounded-xl object-cover border border-gray-100">
-                                @else
-                                    <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 font-extrabold text-base">
-                                        {{ substr($k->user->name, 0, 1) }}
-                                    </div>
-                                @endif
+                                <img src="{{ $k->foto_url }}" alt="{{ $k->user->name }}" class="w-12 h-12 rounded-xl object-cover border border-emerald-100 shadow-2xs">
                                 <span class="absolute -bottom-1 -right-1 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white"></span>
                             </div>
                             <div class="min-w-0 flex-1">

@@ -36,6 +36,17 @@ class User extends Authenticatable
         return $this->role === 'konsultan';
     }
 
+    public function getAvatarUrlAttribute(): string
+    {
+        if ($this->avatar && file_exists(public_path($this->avatar))) {
+            return asset($this->avatar);
+        }
+        if ($this->konsultan) {
+            return $this->konsultan->foto_url;
+        }
+        return asset('/images/halobun_real_practitioner.jpg');
+    }
+
     public function konsultan()
     {
         return $this->hasOne(Konsultan::class);

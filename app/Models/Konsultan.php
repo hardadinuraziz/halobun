@@ -30,6 +30,29 @@ class Konsultan extends Model
         };
     }
 
+    public function getFotoUrlAttribute(): string
+    {
+        if ($this->foto && file_exists(public_path($this->foto))) {
+            return asset($this->foto);
+        }
+        if ($this->user && $this->user->avatar && file_exists(public_path($this->user->avatar))) {
+            return asset($this->user->avatar);
+        }
+
+        $map = [
+            1 => '/images/halobun_real_practitioner.jpg',     // Dr. Budi Santoso, M.Si
+            2 => '/images/halobun_praktisi_hero.jpg',         // Ir. Siti Rahayu, M.P
+            3 => '/images/halobun_hero_halodoc.jpg',          // Prof. Ahmad Fauzi, Ph.D
+            4 => '/images/halobun_real_female_1.jpg',         // Drh. Maya Kusuma
+            5 => '/images/dashboard_praktisi_banner.jpg',     // Rahmat Hidayat, S.P, M.Agr
+            6 => '/images/halobun_real_female_2.jpg',         // Dr. Lestari Wulandari
+            7 => '/images/halobun_real_practitioner_2.jpg',   // Bayu Pratama, S.P.
+            8 => '/images/halobun_real_soil_test.jpg',        // Prof. Dr. Ir. Suwandi, M.Sc
+        ];
+
+        return asset($map[$this->id] ?? '/images/halobun_real_practitioner.jpg');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

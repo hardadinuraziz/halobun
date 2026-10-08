@@ -186,13 +186,7 @@
             <div class="bg-white border border-slate-200 hover:border-emerald-500/50 rounded-2xl p-5 sm:p-6 flex flex-col shadow-xs hover:shadow-md transition-all group">
                 <div class="flex items-start gap-4 mb-4">
                     <div class="relative flex-shrink-0">
-                        @if($konsultan->user->avatar_url ?? false)
-                            <img src="{{ $konsultan->user->avatar_url }}" alt="{{ $konsultan->user->name }}" class="w-14 h-14 rounded-2xl object-cover border border-gray-100">
-                        @else
-                            <div class="w-14 h-14 bg-[#F0FDF4] border border-[#BBF7D0] rounded-2xl flex items-center justify-center text-[#16A34A] font-extrabold text-2xl">
-                                {{ substr($konsultan->user->name, 0, 1) }}
-                            </div>
-                        @endif
+                        <img src="{{ $konsultan->foto_url }}" alt="{{ $konsultan->user->name }}" class="w-14 h-14 rounded-2xl object-cover border border-emerald-100 shadow-xs">
                         <span class="absolute -bottom-1 -right-1 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white"></span>
                     </div>
 

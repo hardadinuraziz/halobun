@@ -12,9 +12,7 @@
             <div class="lg:col-span-1">
                 <div class="bg-white border border-slate-200 rounded-2xl p-6 sticky top-24 shadow-sm">
                     <div class="text-center mb-6">
-                        <div class="w-20 h-20 bg-[#F0FDF4] border border-[#BBF7D0] rounded-2xl flex items-center justify-center text-[#16A34A] font-extrabold text-3xl mx-auto mb-3">
-                            {{ substr($konsultan->user->name, 0, 1) }}
-                        </div>
+                        <img src="{{ $konsultan->foto_url }}" alt="{{ $konsultan->user->name }}" class="w-24 h-24 rounded-2xl object-cover border-2 border-emerald-200 shadow-md mx-auto mb-3">
                         <h1 class="text-lg font-bold text-slate-900 leading-snug">{{ $konsultan->user->name }}</h1>
                         <span class="inline-block bg-[#F0FDF4] text-[#16A34A] border border-[#BBF7D0] text-xs font-semibold px-3 py-1 rounded-full mt-2">
                             {{ $konsultan->spesialisasi }}

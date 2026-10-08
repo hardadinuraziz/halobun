@@ -57,16 +57,10 @@
                         <tr class="hover:bg-gray-50/70 transition-colors" x-data="{ editModal: false }">
                             <td class="px-5 py-4 whitespace-nowrap">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-[#F0FDF4] border border-[#BBF7D0] overflow-hidden flex items-center justify-center flex-shrink-0">
-                                        @if($k->foto)
-                                            <img src="{{ str_starts_with($k->foto, 'http') ? $k->foto : asset('storage/' . $k->foto) }}"
-                                                 alt="{{ $k->user->name ?? 'Praktisi' }}"
-                                                 class="w-full h-full object-cover">
-                                        @else
-                                            <span class="text-[#16A34A] font-extrabold text-xs">
-                                                {{ substr($k->user->name ?? 'PK', 0, 2) }}
-                                            </span>
-                                        @endif
+                                    <div class="w-10 h-10 rounded-full border border-emerald-200 overflow-hidden flex items-center justify-center flex-shrink-0 shadow-2xs">
+                                        <img src="{{ $k->foto_url }}"
+                                             alt="{{ $k->user->name ?? 'Praktisi' }}"
+                                             class="w-full h-full object-cover">
                                     </div>
                                     <div>
                                         <div class="font-bold text-gray-900">{{ $k->user->name ?? '-' }}</div>
