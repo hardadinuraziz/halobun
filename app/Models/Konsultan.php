@@ -10,7 +10,7 @@ class Konsultan extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'spesialisasi', 'bio', 'foto',
+        'user_id', 'klasifikasi', 'spesialisasi', 'bio', 'foto',
         'harga_per_sesi', 'durasi_menit', 'is_active',
         'rating', 'total_konsultasi',
     ];
@@ -20,6 +20,15 @@ class Konsultan extends Model
         'harga_per_sesi'   => 'decimal:2',
         'rating'           => 'decimal:2',
     ];
+
+    public function getKlasifikasiLabelAttribute(): string
+    {
+        return match($this->klasifikasi) {
+            'umum'             => 'Praktisi Umum',
+            'super_spesialis'  => 'Praktisi Super Spesialis',
+            default            => 'Praktisi Spesialis',
+        };
+    }
 
     public function user()
     {
@@ -46,5 +55,10 @@ class Konsultan extends Model
     public function scopeActive($query)
     {
         return $query->where('is_active', true);
+    }
+
+    public function scopeKlasifikasi($query, $klasifikasi)
+    {
+        return $query->where('klasifikasi', $klasifikasi);
     }
 }

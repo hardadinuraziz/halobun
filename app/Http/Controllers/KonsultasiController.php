@@ -25,6 +25,10 @@ class KonsultasiController extends Controller
     {
         $query = Konsultan::active()->with('user');
 
+        if ($request->filled('klasifikasi')) {
+            $query->where('klasifikasi', $request->klasifikasi);
+        }
+
         if ($request->filled('spesialisasi')) {
             $query->where('spesialisasi', $request->spesialisasi);
         }
@@ -34,14 +38,23 @@ class KonsultasiController extends Controller
         }
 
         if ($request->filled('search')) {
-            $query->whereHas('user', fn($q) => $q->where('name', 'like', "%{$request->search}%"))
+            $query->where(function($q) use ($request) {
+                $q->whereHas('user', fn($sq) => $sq->where('name', 'like', "%{$request->search}%"))
                   ->orWhere('spesialisasi', 'like', "%{$request->search}%");
+            });
         }
 
-        $konsultans      = $query->orderByDesc('rating')->paginate(12);
+        $konsultans       = $query->orderByDesc('rating')->paginate(12)->withQueryString();
         $spesialisasiList = Konsultan::active()->distinct()->pluck('spesialisasi');
 
-        return view('konsultasi.index', compact('konsultans', 'spesialisasiList'));
+        $klasifikasiCounts = [
+            'semua'          => Konsultan::active()->count(),
+            'umum'           => Konsultan::active()->where('klasifikasi', 'umum')->count(),
+            'spesialis'      => Konsultan::active()->where('klasifikasi', 'spesialis')->count(),
+            'super_spesialis'=> Konsultan::active()->where('klasifikasi', 'super_spesialis')->count(),
+        ];
+
+        return view('konsultasi.index', compact('konsultans', 'spesialisasiList', 'klasifikasiCounts'));
     }
 
     /**

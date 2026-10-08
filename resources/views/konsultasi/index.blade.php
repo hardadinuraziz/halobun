@@ -17,8 +17,112 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {{-- Halodoc-style Classification Tabs --}}
+        <div class="mb-6">
+            <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Pilih Klasifikasi Praktisi:</span>
+                @if(request('klasifikasi'))
+                <a href="{{ route('konsultasi.index') }}" class="text-xs font-bold text-[#16A34A] hover:underline">
+                    Reset Filter Klasifikasi &times;
+                </a>
+                @endif
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3">
+                {{-- Tab: Semua --}}
+                <a href="{{ route('konsultasi.index', array_merge(request()->except('klasifikasi', 'page'), [])) }}"
+                   class="rounded-2xl p-3 sm:p-4 border transition-all text-left flex flex-col justify-between {{ !request('klasifikasi') ? 'bg-[#16A34A] text-white border-[#16A34A] shadow-md shadow-emerald-900/10' : 'bg-white text-gray-700 border-gray-200 hover:border-emerald-300 hover:bg-emerald-50/30' }}">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xl">🌿</span>
+                        <span class="text-[11px] font-bold px-2 py-0.5 rounded-full {{ !request('klasifikasi') ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-600' }}">
+                            {{ $klasifikasiCounts['semua'] }}
+                        </span>
+                    </div>
+                    <div class="mt-2.5">
+                        <div class="font-extrabold text-xs sm:text-sm">Semua Praktisi</div>
+                        <div class="text-[10px] {{ !request('klasifikasi') ? 'text-emerald-100' : 'text-gray-400' }} truncate">Seluruh tingkatan</div>
+                    </div>
+                </a>
+
+                {{-- Tab: Praktisi Umum --}}
+                <a href="{{ route('konsultasi.index', array_merge(request()->except('page'), ['klasifikasi' => 'umum'])) }}"
+                   class="rounded-2xl p-3 sm:p-4 border transition-all text-left flex flex-col justify-between {{ request('klasifikasi') === 'umum' ? 'bg-emerald-600 text-white border-emerald-600 shadow-md shadow-emerald-900/10' : 'bg-white text-gray-700 border-gray-200 hover:border-emerald-300 hover:bg-emerald-50/30' }}">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xl">🌱</span>
+                        <span class="text-[11px] font-bold px-2 py-0.5 rounded-full {{ request('klasifikasi') === 'umum' ? 'bg-white/20 text-white' : 'bg-emerald-50 text-emerald-700 border border-emerald-200' }}">
+                            {{ $klasifikasiCounts['umum'] }}
+                        </span>
+                    </div>
+                    <div class="mt-2.5">
+                        <div class="font-extrabold text-xs sm:text-sm">Praktisi Umum</div>
+                        <div class="text-[10px] {{ request('klasifikasi') === 'umum' ? 'text-emerald-100' : 'text-gray-400' }} truncate">Kebun &amp; Pekarangan</div>
+                    </div>
+                </a>
+
+                {{-- Tab: Praktisi Spesialis --}}
+                <a href="{{ route('konsultasi.index', array_merge(request()->except('page'), ['klasifikasi' => 'spesialis'])) }}"
+                   class="rounded-2xl p-3 sm:p-4 border transition-all text-left flex flex-col justify-between {{ request('klasifikasi') === 'spesialis' ? 'bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-900/10' : 'bg-white text-gray-700 border-gray-200 hover:border-blue-300 hover:bg-blue-50/30' }}">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xl">🔬</span>
+                        <span class="text-[11px] font-bold px-2 py-0.5 rounded-full {{ request('klasifikasi') === 'spesialis' ? 'bg-white/20 text-white' : 'bg-blue-50 text-blue-700 border border-blue-200' }}">
+                            {{ $klasifikasiCounts['spesialis'] }}
+                        </span>
+                    </div>
+                    <div class="mt-2.5">
+                        <div class="font-extrabold text-xs sm:text-sm">Praktisi Spesialis</div>
+                        <div class="text-[10px] {{ request('klasifikasi') === 'spesialis' ? 'text-blue-100' : 'text-gray-400' }} truncate">Hama, OPT &amp; Komoditas</div>
+                    </div>
+                </a>
+
+                {{-- Tab: Praktisi Super Spesialis --}}
+                <a href="{{ route('konsultasi.index', array_merge(request()->except('page'), ['klasifikasi' => 'super_spesialis'])) }}"
+                   class="rounded-2xl p-3 sm:p-4 border transition-all text-left flex flex-col justify-between {{ request('klasifikasi') === 'super_spesialis' ? 'bg-purple-700 text-white border-purple-700 shadow-md shadow-purple-900/10' : 'bg-white text-gray-700 border-gray-200 hover:border-purple-300 hover:bg-purple-50/30' }}">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xl">🏛️</span>
+                        <span class="text-[11px] font-bold px-2 py-0.5 rounded-full {{ request('klasifikasi') === 'super_spesialis' ? 'bg-white/20 text-white' : 'bg-purple-50 text-purple-700 border border-purple-200' }}">
+                            {{ $klasifikasiCounts['super_spesialis'] }}
+                        </span>
+                    </div>
+                    <div class="mt-2.5">
+                        <div class="font-extrabold text-xs sm:text-sm">Super Spesialis</div>
+                        <div class="text-[10px] {{ request('klasifikasi') === 'super_spesialis' ? 'text-purple-100' : 'text-gray-400' }} truncate">Riset, Uji Lab &amp; Audit</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        {{-- Active Tier Info Banner --}}
+        @if(request('klasifikasi') === 'umum')
+        <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 sm:p-5 mb-6 flex items-start gap-3.5">
+            <span class="text-2xl flex-shrink-0">🌱</span>
+            <div class="text-xs sm:text-sm text-emerald-950">
+                <span class="font-bold text-emerald-900 block text-sm sm:text-base">Kategori: Praktisi Umum (Dokter Kebun Pemula)</span>
+                Bimbingan perawatan rutin pekarangan rumah, sayuran hidroponik hobi, media tanam pot, dan pencegahan hama dasar. Cocok untuk pekebun rumahan &amp; pemula. Tarif terjangkau mulai Rp 35.000 / sesi.
+            </div>
+        </div>
+        @elseif(request('klasifikasi') === 'spesialis')
+        <div class="bg-blue-50 border border-blue-200 rounded-2xl p-4 sm:p-5 mb-6 flex items-start gap-3.5">
+            <span class="text-2xl flex-shrink-0">🔬</span>
+            <div class="text-xs sm:text-sm text-blue-950">
+                <span class="font-bold text-blue-900 block text-sm sm:text-base">Kategori: Praktisi Spesialis (Dokter Tanaman Berlisensi)</span>
+                Pakar diagnosa spesifik organisme pengganggu tumbuhan (OPT), penyakit layu/daun, nutrisi presisi hidroponik komersial, dan budidaya cabai/bawang merah/padi.
+            </div>
+        </div>
+        @elseif(request('klasifikasi') === 'super_spesialis')
+        <div class="bg-purple-50 border border-purple-200 rounded-2xl p-4 sm:p-5 mb-6 flex items-start gap-3.5">
+            <span class="text-2xl flex-shrink-0">🏛️</span>
+            <div class="text-xs sm:text-sm text-purple-950">
+                <span class="font-bold text-purple-900 block text-sm sm:text-base">Kategori: Praktisi Super Spesialis (Guru Besar &amp; Konsultan Senior)</span>
+                Pakar uji laboratorium kimia tanah, bioteknologi tanaman hayati, audit kelayakan perkebunan industri luas hektaran, dan riset formulasi pupuk.
+            </div>
+        </div>
+        @endif
+
         {{-- Filter Bar --}}
-        <form method="GET" action="{{ route('konsultasi.index') }}" class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 mb-8 shadow-sm">
+        <form method="GET" action="{{ route('konsultasi.index') }}" class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 mb-8 shadow-xs">
+            @if(request('klasifikasi'))
+            <input type="hidden" name="klasifikasi" value="{{ request('klasifikasi') }}">
+            @endif
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 <div>
                     <label class="block text-xs font-semibold text-slate-600 mb-1.5">Cari Praktisi</label>
@@ -45,10 +149,10 @@
                     </select>
                 </div>
                 <div class="flex items-end gap-2">
-                    <button type="submit" class="flex-1 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold px-4 py-2.5 rounded-xl text-sm transition-colors shadow-sm">
-                        Cari Praktisi
+                    <button type="submit" class="flex-1 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold px-4 py-2.5 rounded-xl text-sm transition-colors shadow-xs">
+                        Terapkan Filter
                     </button>
-                    @if(request()->hasAny(['search','spesialisasi','harga_max']))
+                    @if(request()->hasAny(['search','spesialisasi','harga_max','klasifikasi']))
                     <a href="{{ route('konsultasi.index') }}" class="flex-shrink-0 text-slate-500 hover:text-slate-900 text-sm font-medium py-2.5 px-2">Reset</a>
                     @endif
                 </div>
@@ -61,22 +165,59 @@
             <div class="text-5xl mb-3">🪴</div>
             <h3 class="text-lg font-bold text-slate-800 mb-1">Praktisi tidak ditemukan</h3>
             <p class="text-slate-500 text-sm">Coba ubah kata kunci atau filter pencarian Anda</p>
+            @if(request('klasifikasi'))
+            <a href="{{ route('konsultasi.index') }}" class="inline-block mt-4 text-xs font-bold text-emerald-600 hover:underline">
+                Lihat Praktisi di Semua Klasifikasi &rarr;
+            </a>
+            @endif
         </div>
         @else
         <div class="flex items-center justify-between mb-4">
             <p class="text-sm text-slate-600">Menampilkan <strong class="text-slate-900">{{ $konsultans->total() }}</strong> praktisi perkebunan</p>
+            @if(request('klasifikasi'))
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-full {{ request('klasifikasi') === 'umum' ? 'bg-emerald-100 text-emerald-800' : (request('klasifikasi') === 'spesialis' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800') }}">
+                Filter: {{ request('klasifikasi') === 'umum' ? 'Praktisi Umum' : (request('klasifikasi') === 'spesialis' ? 'Praktisi Spesialis' : 'Praktisi Super Spesialis') }}
+            </span>
+            @endif
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($konsultans as $konsultan)
-            <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 sm:p-6 flex flex-col shadow-sm hover:shadow-md transition-all">
+            <div class="bg-white border border-slate-200 hover:border-emerald-500/50 rounded-2xl p-5 sm:p-6 flex flex-col shadow-xs hover:shadow-md transition-all group">
                 <div class="flex items-start gap-4 mb-4">
-                    <div class="w-14 h-14 bg-[#F0FDF4] border border-[#BBF7D0] rounded-2xl flex items-center justify-center text-[#16A34A] font-extrabold text-2xl flex-shrink-0">
-                        {{ substr($konsultan->user->name, 0, 1) }}
+                    <div class="relative flex-shrink-0">
+                        @if($konsultan->user->avatar_url ?? false)
+                            <img src="{{ $konsultan->user->avatar_url }}" alt="{{ $konsultan->user->name }}" class="w-14 h-14 rounded-2xl object-cover border border-gray-100">
+                        @else
+                            <div class="w-14 h-14 bg-[#F0FDF4] border border-[#BBF7D0] rounded-2xl flex items-center justify-center text-[#16A34A] font-extrabold text-2xl">
+                                {{ substr($konsultan->user->name, 0, 1) }}
+                            </div>
+                        @endif
+                        <span class="absolute -bottom-1 -right-1 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white"></span>
                     </div>
+
                     <div class="flex-1 min-w-0">
-                        <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug">{{ $konsultan->user->name }}</h3>
-                        <span class="inline-block bg-[#F0FDF4] text-[#16A34A] border border-[#BBF7D0] text-xs font-semibold px-2.5 py-0.5 rounded-full mt-1.5">
+                        {{-- Klasifikasi Badge --}}
+                        <div class="mb-1">
+                            @if($konsultan->klasifikasi === 'umum')
+                                <span class="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                    🌱 Praktisi Umum
+                                </span>
+                            @elseif($konsultan->klasifikasi === 'super_spesialis')
+                                <span class="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md bg-purple-50 text-purple-700 border border-purple-200">
+                                    🏛️ Super Spesialis
+                                </span>
+                            @else
+                                <span class="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200">
+                                    🔬 Praktisi Spesialis
+                                </span>
+                            @endif
+                        </div>
+
+                        <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug group-hover:text-emerald-600 transition-colors truncate">
+                            {{ $konsultan->user->name }}
+                        </h3>
+                        <span class="text-xs text-gray-500 block truncate">
                             {{ $konsultan->spesialisasi }}
                         </span>
                     </div>
@@ -94,7 +235,7 @@
                 </div>
 
                 @if($konsultan->bio)
-                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-1">{{ $konsultan->bio }}</p>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3 flex-1">{{ $konsultan->bio }}</p>
                 @else
                 <div class="flex-1"></div>
                 @endif
@@ -107,7 +248,7 @@
                         </div>
                     </div>
                     <a href="{{ route('konsultasi.show', $konsultan) }}"
-                       class="bg-[#16A34A] hover:bg-[#15803D] text-white font-bold px-4 py-2 rounded-xl text-sm transition-colors shadow-sm">
+                       class="bg-[#16A34A] hover:bg-[#15803D] text-white font-bold px-4 py-2 rounded-xl text-sm transition-colors shadow-xs active:scale-95">
                         Konsultasi →
                     </a>
                 </div>

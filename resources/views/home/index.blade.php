@@ -303,78 +303,211 @@
 </section>
 
 {{-- ═══════════════════════════════════════════════════════════════════════════
-     3. REKOMENDASI PAKAR AGRONOMI (CLEAN PROFILE CARDS)
+     3. KLASIFIKASI PRAKTISI & DOKTER KEBUN (HALODOC-STYLE TIERS)
      ═══════════════════════════════════════════════════════════════════════════ --}}
-<section class="py-12 sm:py-14 bg-white border-b border-gray-100">
+<section class="py-14 sm:py-16 bg-white border-b border-gray-100" x-data="{ activeTab: 'spesialis' }">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="flex items-center justify-between mb-6">
+        {{-- Section Header --}}
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
             <div>
-                <h2 class="text-lg sm:text-xl font-bold text-gray-900">Praktisi &amp; Agronom Pilihan</h2>
-                <p class="text-xs text-gray-500 mt-0.5">Siap membantu diagnosa dan bimbingan perawatan tanaman Anda.</p>
+                <span class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">
+                    🩺 Konsultasi Terstruktur Sesuai Kebutuhan
+                </span>
+                <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-gray-900">
+                    Klasifikasi Praktisi &amp; Pakar Kebun
+                </h2>
+                <p class="text-xs sm:text-sm text-gray-500 mt-1 max-w-2xl leading-relaxed">
+                    Pilih tingkatan praktisi berdasarkan kompleksitas kendala lahan Anda — mulai dari bimbingan pekarangan rumah, diagnosa OPT komersial, hingga uji lab &amp; riset tanah.
+                </p>
             </div>
             <a href="{{ route('konsultasi.index') }}" 
-               class="text-xs font-bold text-[#16A34A] hover:text-[#15803D] flex items-center gap-1">
-                Semua Pakar <span>&rarr;</span>
+               class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#16A34A] hover:text-[#15803D] transition-colors self-start md:self-auto">
+                <span>Buka Direktori Lengkap</span>
+                <span>&rarr;</span>
             </a>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-            @forelse($konsultanFeatured as $k)
-            <div class="bg-white rounded-2xl p-4 sm:p-5 border border-gray-100 hover:border-[#16A34A]/40 hover:shadow-md transition-all flex flex-col justify-between group">
+        {{-- 3 Main Halodoc Classification Cards --}}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
+            @foreach($klasifikasiPraktisi as $klas)
+            <div class="bg-gradient-to-b from-gray-50/70 to-white rounded-3xl p-6 sm:p-7 border border-gray-200/80 hover:border-[#16A34A]/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
                 
+                {{-- Decorative background glow on hover --}}
+                <div class="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-emerald-100/40 blur-2xl group-hover:scale-150 transition-transform pointer-events-none"></div>
+
                 <div>
-                    {{-- Avatar & Identity --}}
-                    <div class="flex items-start gap-3.5 mb-3">
-                        <div class="relative flex-shrink-0">
-                            @if($k->user->avatar_url ?? false)
-                                <img src="{{ $k->user->avatar_url }}" alt="{{ $k->user->name }}" class="w-13 h-13 rounded-2xl object-cover border border-gray-100">
-                            @else
-                                <div class="w-13 h-13 rounded-2xl bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center text-[#16A34A] font-extrabold text-lg">
-                                    {{ substr($k->user->name, 0, 1) }}
-                                </div>
-                            @endif
-                            <span class="absolute -bottom-1 -right-1 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white" title="Aktif"></span>
+                    {{-- Header / Badge & Icon --}}
+                    <div class="flex items-start justify-between gap-3 mb-4">
+                        <div class="w-14 h-14 rounded-2xl bg-white shadow-xs border border-gray-100 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
+                            {{ $klas['icon'] }}
                         </div>
-
-                        <div class="min-w-0 flex-1">
-                            <h3 class="font-bold text-gray-900 text-sm sm:text-base truncate group-hover:text-[#16A34A] transition-colors">
-                                {{ $k->user->name }}
-                            </h3>
-                            <p class="text-xs text-gray-500 truncate mt-0.5">{{ $k->spesialisasi }}</p>
-                            
-                            <div class="flex items-center gap-2 mt-1.5 text-xs text-gray-500">
-                                <span class="flex items-center gap-1 text-amber-500 font-bold">
-                                    ⭐ {{ number_format($k->rating, 1) }}
-                                </span>
-                                <span class="text-gray-300">·</span>
-                                <span>{{ $k->total_konsultasi }} sesi</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- Price & Action --}}
-                <div class="pt-3 border-t border-gray-100 flex items-center justify-between mt-2">
-                    <div>
-                        <span class="text-[10px] text-gray-400 block leading-tight">Tarif per Sesi</span>
-                        <span class="font-extrabold text-sm sm:text-base text-gray-900">
-                            Rp {{ number_format($k->harga_per_sesi, 0, ',', '.') }}
+                        <span class="text-[11px] font-bold px-2.5 py-1 rounded-full border {{ $klas['badge_color'] }}">
+                            {{ $klas['badge'] }}
                         </span>
                     </div>
 
-                    <a href="{{ route('konsultasi.show', $k->id) }}" 
-                       class="bg-[#F0FDF4] hover:bg-[#16A34A] text-[#16A34A] hover:text-white border border-[#BBF7D0] hover:border-[#16A34A] font-bold text-xs px-4 py-2 rounded-xl transition-all active:scale-95">
-                        Konsultasi
-                    </a>
+                    {{-- Title & Subtitle --}}
+                    <h3 class="text-lg sm:text-xl font-extrabold text-gray-900 group-hover:text-[#16A34A] transition-colors">
+                        {{ $klas['title'] }}
+                    </h3>
+                    <p class="text-xs font-semibold text-gray-500 mt-0.5">
+                        {{ $klas['subtitle'] }}
+                    </p>
+
+                    {{-- Description --}}
+                    <p class="text-xs text-gray-600 mt-3 leading-relaxed">
+                        {{ $klas['desc'] }}
+                    </p>
+
+                    {{-- Kualifikasi Info --}}
+                    <div class="mt-4 pt-3.5 border-t border-gray-100/80 flex items-center gap-2 text-[11px] text-gray-600">
+                        <span class="text-emerald-600 font-bold">🎓 Kualifikasi:</span>
+                        <span class="font-medium truncate">{{ $klas['kualifikasi'] }}</span>
+                    </div>
+
+                    {{-- Topik Populer / Kasus yang Ditangani --}}
+                    <div class="mt-3.5">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-gray-400 block mb-1.5">Topik Konsultasi:</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            @foreach($klas['topik'] as $topik)
+                            <span class="text-[11px] font-medium bg-white text-gray-700 border border-gray-200/80 px-2.5 py-0.5 rounded-lg shadow-2xs">
+                                {{ $topik }}
+                            </span>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Pricing & CTA Section --}}
+                <div class="mt-6 pt-4 border-t border-gray-100">
+                    <div class="flex items-center justify-between mb-3.5">
+                        <div>
+                            <span class="text-[10px] text-gray-400 block font-medium">Tarif Mulai</span>
+                            <div class="flex items-baseline gap-1">
+                                <span class="font-extrabold text-lg sm:text-xl text-gray-900">{{ $klas['harga_mulai'] }}</span>
+                                <span class="text-[10px] text-gray-500 font-normal">/sesi</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] text-gray-400 block font-medium">Tersedia Online</span>
+                            <span class="text-xs font-bold text-emerald-600 flex items-center gap-1 justify-end">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                {{ $klas['count'] }} Praktisi
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2">
+                        <a href="{{ $klas['url'] }}" 
+                           class="flex-1 text-center bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-xs sm:text-sm py-2.5 sm:py-3 px-4 rounded-xl shadow-xs transition-all active:scale-[0.98]">
+                            Pilih {{ $klas['title'] }} &rarr;
+                        </a>
+                        <button type="button" 
+                                @click="activeTab = '{{ $klas['key'] }}'"
+                                class="px-3 py-2.5 rounded-xl border border-gray-200 text-gray-600 hover:text-emerald-700 hover:border-emerald-300 hover:bg-emerald-50/50 text-xs font-bold transition-all"
+                                title="Lihat daftar dokter di tingkatan ini">
+                            Intip
+                        </button>
+                    </div>
                 </div>
 
             </div>
-            @empty
-            <div class="col-span-full text-center py-10 bg-white rounded-2xl border border-gray-100">
-                <p class="text-gray-500 text-sm">Belum ada profil pakar aktif saat ini.</p>
+            @endforeach
+        </div>
+
+        {{-- Interactive Tab Preview (Intip Praktisi per Klasifikasi) --}}
+        <div class="mt-10 bg-gray-50/70 border border-gray-200/80 rounded-3xl p-5 sm:p-6 lg:p-7">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 pb-4 border-b border-gray-200/70">
+                <div class="flex items-center gap-2">
+                    <span class="text-lg">👀</span>
+                    <div>
+                        <h4 class="text-sm font-bold text-gray-900">Intip Profil Praktisi Berdasarkan Klasifikasi</h4>
+                        <p class="text-xs text-gray-500">Klik salah satu klasifikasi untuk melihat praktisi yang sedang aktif bertugas</p>
+                    </div>
+                </div>
+                
+                {{-- Klasifikasi Switcher Pills --}}
+                <div class="flex items-center gap-1.5 p-1 bg-white border border-gray-200 rounded-xl overflow-x-auto max-w-full flex-nowrap scrollbar-none">
+                    <button type="button" 
+                            @click="activeTab = 'umum'"
+                            :class="activeTab === 'umum' ? 'bg-emerald-600 text-white shadow-xs font-bold' : 'text-gray-600 hover:text-gray-900 font-semibold'"
+                            class="flex-shrink-0 px-3 py-1.5 rounded-lg text-xs transition-all whitespace-nowrap">
+                        🌱 Praktisi Umum
+                    </button>
+                    <button type="button" 
+                            @click="activeTab = 'spesialis'"
+                            :class="activeTab === 'spesialis' ? 'bg-emerald-600 text-white shadow-xs font-bold' : 'text-gray-600 hover:text-gray-900 font-semibold'"
+                            class="flex-shrink-0 px-3 py-1.5 rounded-lg text-xs transition-all whitespace-nowrap">
+                        🔬 Praktisi Spesialis
+                    </button>
+                    <button type="button" 
+                            @click="activeTab = 'super_spesialis'"
+                            :class="activeTab === 'super_spesialis' ? 'bg-emerald-600 text-white shadow-xs font-bold' : 'text-gray-600 hover:text-gray-900 font-semibold'"
+                            class="flex-shrink-0 px-3 py-1.5 rounded-lg text-xs transition-all whitespace-nowrap">
+                        🏛️ Super Spesialis
+                    </button>
+                </div>
             </div>
-            @endforelse
+
+            {{-- Tab Contents --}}
+            @foreach($klasifikasiPraktisi as $klas)
+            <div x-show="activeTab === '{{ $klas['key'] }}'" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    @forelse($klas['konsultans'] as $k)
+                    <div class="bg-white rounded-2xl p-4 border border-gray-200/80 hover:border-emerald-500/50 hover:shadow-md transition-all flex flex-col justify-between group">
+                        <div class="flex items-start gap-3">
+                            <div class="relative flex-shrink-0">
+                                @if($k->user->avatar_url ?? false)
+                                    <img src="{{ $k->user->avatar_url }}" alt="{{ $k->user->name }}" class="w-12 h-12 rounded-xl object-cover border border-gray-100">
+                                @else
+                                    <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 font-extrabold text-base">
+                                        {{ substr($k->user->name, 0, 1) }}
+                                    </div>
+                                @endif
+                                <span class="absolute -bottom-1 -right-1 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white"></span>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <span class="inline-block text-[10px] font-bold px-2 py-0.5 rounded-md mb-1 {{ $klas['badge_color'] }}">
+                                    {{ $klas['title'] }}
+                                </span>
+                                <h5 class="font-bold text-gray-900 text-sm truncate group-hover:text-emerald-600 transition-colors">
+                                    {{ $k->user->name }}
+                                </h5>
+                                <p class="text-xs text-gray-500 truncate">{{ $k->spesialisasi }}</p>
+                                <div class="flex items-center gap-2 mt-1 text-[11px] text-gray-500">
+                                    <span class="text-amber-500 font-bold">⭐ {{ number_format($k->rating, 1) }}</span>
+                                    <span>·</span>
+                                    <span>{{ $k->total_konsultasi }} sesi</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between">
+                            <span class="font-extrabold text-sm text-gray-900">
+                                Rp {{ number_format($k->harga_per_sesi, 0, ',', '.') }}
+                            </span>
+                            <a href="{{ route('konsultasi.show', $k->id) }}" 
+                               class="bg-emerald-50 hover:bg-emerald-600 text-emerald-700 hover:text-white border border-emerald-200 hover:border-emerald-600 font-bold text-xs px-3 py-1.5 rounded-lg transition-all">
+                                Pilih Jadwal
+                            </a>
+                        </div>
+                    </div>
+                    @empty
+                    <div class="col-span-full text-center py-6 text-gray-400 text-xs">
+                        Belum ada praktisi terdaftar di kategori ini.
+                    </div>
+                    @endforelse
+                </div>
+
+                <div class="mt-4 text-center">
+                    <a href="{{ $klas['url'] }}" class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-800">
+                        <span>Lihat Semua {{ $klas['count'] }} Praktisi di {{ $klas['title'] }}</span>
+                        <span>&rarr;</span>
+                    </a>
+                </div>
+            </div>
+            @endforeach
         </div>
 
     </div>

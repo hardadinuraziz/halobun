@@ -25,6 +25,61 @@ class HomeController extends Controller
             $saranaFeatured = Sarana::active()->take(4)->get();
         }
 
+        // Halodoc-style Classification: Praktisi Umum, Praktisi Spesialis, Praktisi Super Spesialis
+        $klasifikasiPraktisi = [
+            [
+                'key'         => 'umum',
+                'title'       => 'Praktisi Umum',
+                'subtitle'    => 'General Agronomist / Dokter Kebun Umum',
+                'icon'        => '🌱',
+                'badge'       => 'Bimbingan Dasar',
+                'badge_color' => 'bg-emerald-50 text-emerald-700 border-emerald-200',
+                'border_color'=> 'hover:border-emerald-500',
+                'accent_color'=> 'text-emerald-600',
+                'desc'        => 'Konsultasi keluhan harian tanaman pekarangan rumah, sayuran hobi/urban farming, media tanam, pemupukan dasar, dan pencegahan hama pemula.',
+                'kualifikasi' => 'Sarjana Pertanian (S.P. / S.Pt) & PPL Lapangan',
+                'harga_mulai' => 'Rp 35.000',
+                'topik'       => ['Pekarangan Rumah', 'Sayuran Daun', 'Tanaman Hias', 'Kompos Dasar'],
+                'count'       => Konsultan::active()->where('klasifikasi', 'umum')->count(),
+                'url'         => route('konsultasi.index', ['klasifikasi' => 'umum']),
+                'konsultans'  => Konsultan::active()->where('klasifikasi', 'umum')->with('user')->take(3)->get(),
+            ],
+            [
+                'key'         => 'spesialis',
+                'title'       => 'Praktisi Spesialis',
+                'subtitle'    => 'Specialist Agronomist / Pakar Komoditas & OPT',
+                'icon'        => '🔬',
+                'badge'       => 'Paling Populer',
+                'badge_color' => 'bg-blue-50 text-blue-700 border-blue-200',
+                'border_color'=> 'hover:border-blue-500',
+                'accent_color'=> 'text-blue-600',
+                'desc'        => 'Diagnosa mendalam hama & penyakit (OPT), manajemen nutrisi presisi hidroponik, budidaya komersial cabai, bawang merah, padi, & hortikultura.',
+                'kualifikasi' => 'Magister Pertanian (M.P. / M.Si) & Dokter Tanaman Berlisensi',
+                'harga_mulai' => 'Rp 100.000',
+                'topik'       => ['Penyakit & Hama (OPT)', 'Bawang Merah & Cabai', 'Hidroponik & Nutrisi', 'Padi & Palawija'],
+                'count'       => Konsultan::active()->where('klasifikasi', 'spesialis')->count(),
+                'url'         => route('konsultasi.index', ['klasifikasi' => 'spesialis']),
+                'konsultans'  => Konsultan::active()->where('klasifikasi', 'spesialis')->with('user')->take(3)->get(),
+            ],
+            [
+                'key'         => 'super_spesialis',
+                'title'       => 'Praktisi Super Spesialis',
+                'subtitle'    => 'Senior Consultant / Guru Besar & Peneliti Utama',
+                'icon'        => '🏛️',
+                'badge'       => 'Pakar Riset & Audit',
+                'badge_color' => 'bg-purple-50 text-purple-700 border-purple-200',
+                'border_color'=> 'hover:border-purple-500',
+                'accent_color'=> 'text-purple-600',
+                'desc'        => 'Analisis laboratorium kimia tanah & mikrobiologi, formulasi pupuk/hayati khusus, audit perkebunan industri luas, dan bioteknologi tanaman.',
+                'kualifikasi' => 'Doktor (Dr.) / Ph.D / Profesor (Prof.) & Peneliti Utama',
+                'harga_mulai' => 'Rp 200.000',
+                'topik'       => ['Uji Tanah Lab & pH', 'Audit Kebun Hektaran', 'Bioteknologi Tanaman', 'Formulasi Hayati'],
+                'count'       => Konsultan::active()->where('klasifikasi', 'super_spesialis')->count(),
+                'url'         => route('konsultasi.index', ['klasifikasi' => 'super_spesialis']),
+                'konsultans'  => Konsultan::active()->where('klasifikasi', 'super_spesialis')->with('user')->take(3)->get(),
+            ],
+        ];
+
         $layananList = [
             [
                 'icon'        => '💬',
@@ -193,7 +248,8 @@ class HomeController extends Controller
 
         return view('home.index', compact(
             'konsultanFeatured', 'totalKonsultan', 'totalKonsultasi', 'totalPekebun',
-            'saranaFeatured', 'layananList', 'hargaPangan', 'beritaTani', 'testimonials'
+            'saranaFeatured', 'layananList', 'hargaPangan', 'beritaTani', 'testimonials',
+            'klasifikasiPraktisi'
         ));
     }
 
