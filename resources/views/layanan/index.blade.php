@@ -12,11 +12,6 @@
             
             {{-- Left Column: Hero Text --}}
             <div class="lg:col-span-7">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-[#F0FDF4] text-[#16A34A] border border-[#BBF7D0] mb-4">
-                    <span class="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse"></span>
-                    Solusi Pertanian &amp; Berkebun Profesional
-                </div>
-
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1E293B] leading-tight mb-4 tracking-tight">
                     Layanan Terpadu<br>
                     <span class="text-[#16A34A]">Praktisi Perkebunan</span> &amp; Pertanian

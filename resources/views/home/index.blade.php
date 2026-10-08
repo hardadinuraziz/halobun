@@ -18,11 +18,6 @@
             
             {{-- Left Column: Copy & Search --}}
             <div class="lg:col-span-7 text-left space-y-4">
-                <div class="inline-flex items-center gap-2 bg-[#F0FDF4] border border-[#BBF7D0] px-3 py-1 rounded-full text-xs font-bold text-[#16A34A]">
-                    <span class="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse"></span>
-                    Tele-Agronomi &amp; Layanan Kebun #1 Indonesia
-                </div>
-
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
                     Perawatan Kebun &amp; Tanaman<br>
                     <span class="text-[#16A34A]">Bersama Praktisi Ahli</span>
@@ -184,7 +179,7 @@
                         
                         {{-- Minimalist Floating Status Pill --}}
                         <div class="absolute -bottom-3 left-6 sm:left-8 bg-white/95 backdrop-blur-md px-4 py-2 rounded-2xl border border-gray-100 shadow-md flex items-center gap-2.5 z-30">
-                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 flex-shrink-0"></span>
                             <div class="text-left">
                                 <p class="text-[11px] font-bold text-gray-900 leading-tight" x-text="slides[activeSlide].title">Praktisi Kebun &amp; Tanaman Hias</p>
                                 <p class="text-[9.5px] text-[#16A34A] font-semibold leading-tight" x-text="slides[activeSlide].subtitle">Bimbingan Agronomi Online</p>
@@ -311,9 +306,6 @@
         {{-- Section Header --}}
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
             <div>
-                <span class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">
-                    🩺 Konsultasi Terstruktur Sesuai Kebutuhan
-                </span>
                 <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-gray-900">
                     Klasifikasi Praktisi &amp; Pakar Kebun
                 </h2>
@@ -392,7 +384,7 @@
                         <div class="text-right">
                             <span class="text-[10px] text-gray-400 block font-medium">Tersedia Online</span>
                             <span class="text-xs font-bold text-emerald-600 flex items-center gap-1 justify-end">
-                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                                 {{ $klas['count'] }} Praktisi
                             </span>
                         </div>

@@ -8,9 +8,6 @@
     {{-- Header --}}
     <div class="bg-white border-b border-slate-200 py-10 sm:py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <span class="inline-flex items-center gap-1.5 bg-[#F0FDF4] text-[#16A34A] border border-[#BBF7D0] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">
-                🚜 Kunjungan On-Site
-            </span>
             <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1E293B]">Kunjungan Lapangan &amp; Survei Kebun</h1>
             <p class="text-slate-600 mt-2 max-w-2xl text-sm sm:text-base">Praktisi dan agronomis kami hadir langsung ke lokasi kebun, pekarangan, atau greenhouse Anda untuk inspeksi mendalam.</p>
         </div>
