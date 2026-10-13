@@ -93,6 +93,17 @@ class DatabaseSeeder extends Seeder
                 'rating'        => 4.9,
                 'foto'          => '/images/praktisi/febriandi.jpg',
             ],
+            [
+                'name'          => 'Ahmad Suhaemi, S.TP',
+                'email'         => 'ahmad.suhaemi@hallobun.com',
+                'phone'         => '081200000006',
+                'spesialisasi'  => 'Sertifikasi Organik & Perkebunan Kelapa (Coconut Plantation & Farmer)',
+                'klasifikasi'   => 'spesialis',
+                'bio'           => 'Praktisi spesialis sertifikasi organik dengan pengalaman sebagai Organic Certification Officer & Internal Control System. Memiliki keahlian mendalam pada standar sertifikasi organik perkebunan kelapa (Coconut Plantation & Farmer) serta pendampingan budidaya petani berkelanjutan.',
+                'harga'         => 75000,
+                'rating'        => 4.9,
+                'foto'          => '/images/praktisi/ahmad_suhaemi.jpg',
+            ],
         ];
 
         // Hapus konsultan lama yang tidak ada di daftar resmi docx
