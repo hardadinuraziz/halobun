@@ -183,60 +183,72 @@ deploy_rumahweb() {
     # 2. Push ke GitHub
     push_github
 
-    # 3. Sinkronisasi file ke server hosting via rsync
-    info "Mengupload file ke server hosting via rsync..."
-    $SSH_CMD "mkdir -p $REMOTE_PATH"
-
-    rsync -az --progress \
-        --exclude='.git' \
-        --exclude='node_modules' \
-        --exclude='.env' \
-        --exclude='storage/logs/*.log' \
-        --exclude='storage/framework/sessions/*' \
-        --exclude='storage/framework/cache/data/*' \
-        -e "ssh -i $KEY -p $PORT -o StrictHostKeyChecking=no" \
-        "$APP_DIR/" "$USER@$HOST:$REMOTE_PATH/"
-    success "Upload file selesai!"
-
-    # 4. Jalankan perintah instalasi dan optimasi di server
-    info "Menjalankan konfigurasi Laravel di server..."
-    $SSH_CMD bash -s << REMOTE
+    # 3. Jalankan pembaruan di server via Git & PHP 8.4
+    info "Menjalankan deployment di server hosting..."
+    $SSH_CMD bash -s << 'REMOTE'
         set -e
-        cd $REMOTE_PATH
+        REMOTE_PATH="$HOME/hallobun"
+        PHP_BIN="/usr/local/bin/ea-php84"
+
+        # Pastikan composer.phar tersedia
+        if [ ! -f "$HOME/composer.phar" ]; then
+            echo "→ Mengunduh Composer..."
+            curl -sS https://getcomposer.org/installer | $PHP_BIN -- --install-dir=$HOME --filename=composer.phar
+        fi
+
+        # Clone atau pull git
+        if [ ! -d "$REMOTE_PATH/.git" ]; then
+            echo "→ Melakukan git clone dari GitHub..."
+            rm -rf "$REMOTE_PATH"
+            git clone https://github.com/hardadinuraziz/halobun.git "$REMOTE_PATH"
+        else
+            echo "→ Mengambil update terbaru dari GitHub..."
+            cd "$REMOTE_PATH"
+            git fetch origin main
+            git reset --hard origin/main
+        fi
+
+        cd "$REMOTE_PATH"
 
         # Setup .env jika belum ada
         if [ ! -f .env ]; then
-            echo "Membuat file .env awal..."
+            echo "→ Membuat file .env..."
             cp .env.example .env
-            php artisan key:generate
+            $PHP_BIN artisan key:generate
         fi
 
-        # Hubungkan public_html ke folder public Laravel jika belum terhubung
+        # Pastikan database sqlite ada
+        touch database/database.sqlite
+
+        # Install dependency vendor
+        echo "→ Mengupdate package composer..."
+        $PHP_BIN "$HOME/composer.phar" install --no-dev --prefer-dist --optimize-autoloader --no-interaction --no-scripts
+        $PHP_BIN "$HOME/composer.phar" dump-autoload --optimize --no-scripts
+
+        # Hubungkan public_html ke folder public Laravel jika belum
         if [ ! -L "$HOME/public_html" ]; then
-            echo "Menghubungkan public_html ke Laravel public..."
+            echo "→ Menghubungkan public_html ke Laravel public..."
             if [ -d "$HOME/public_html" ]; then
                 mv "$HOME/public_html" "$HOME/public_html_backup_\$(date +%s)"
             fi
             ln -s "$REMOTE_PATH/public" "$HOME/public_html"
         fi
 
-        echo "Menjalankan composer install..."
-        composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction 2>&1 | tail -3
+        # Migrasi & Cache
+        echo "→ Menjalankan migrasi database..."
+        $PHP_BIN artisan migrate --force
 
-        echo "Menjalankan database migrate..."
-        php artisan migrate --force
+        echo "→ Membuat storage link..."
+        $PHP_BIN artisan storage:link 2>/dev/null || true
 
-        echo "Membuat storage link..."
-        php artisan storage:link 2>/dev/null || true
-
-        echo "Mengoptimalkan cache Laravel..."
-        php artisan optimize:clear
-        php artisan config:cache
-        php artisan route:cache
-        php artisan view:cache
+        echo "→ Mengoptimalkan cache Laravel..."
+        $PHP_BIN artisan optimize:clear
+        $PHP_BIN artisan config:cache
+        $PHP_BIN artisan route:cache
+        $PHP_BIN artisan view:cache
 
         chmod -R 775 storage bootstrap/cache 2>/dev/null || true
-        echo "Setup hosting selesai!"
+        echo "Deploy di server selesai!"
 REMOTE
 
     success "Deploy ke halobun.com selesai! 🚀🌿"
