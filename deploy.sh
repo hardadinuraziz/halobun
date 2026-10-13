@@ -153,6 +153,97 @@ REMOTE
 }
 
 # ═══════════════════════════════════════════════════════════════════
+# FUNGSI: Deploy Otomatis ke Rumahweb (cPanel halobun.com via SSH)
+# ═══════════════════════════════════════════════════════════════════
+deploy_rumahweb() {
+    step "DEPLOY OTOMATIS KE RUMAHWEB (halobun.com)"
+
+    HOST="kumai.iixcp.rumahweb.net"
+    PORT="2223"
+    USER="halc6172"
+    KEY="$HOME/.ssh/id_ed25519"
+    REMOTE_PATH="/home/halc6172/hallobun"
+
+    SSH_CMD="ssh -i $KEY -p $PORT -o StrictHostKeyChecking=no $USER@$HOST"
+
+    info "Memeriksa koneksi SSH ke $HOST (port $PORT)..."
+    if ! $SSH_CMD "echo 'SSH OK'" 2>/dev/null; then
+        echo -e "${RED}[ERROR] Gagal terhubung via SSH!${NC}"
+        echo -e "${YELLOW}Pastikan Anda sudah mengimpor Public Key ke cPanel:${NC}"
+        echo -e "  1. Buka cPanel → SSH Access → Manage SSH Keys → Import Key"
+        echo -e "  2. Masukkan Public Key Anda (~/.ssh/id_ed25519.pub)"
+        echo -e "  3. Klik Manage → Authorize"
+        exit 1
+    fi
+    success "Koneksi SSH berhasil terhubung!"
+
+    # 1. Build aset lokal
+    build_local
+
+    # 2. Push ke GitHub
+    push_github
+
+    # 3. Sinkronisasi file ke server hosting via rsync
+    info "Mengupload file ke server hosting via rsync..."
+    $SSH_CMD "mkdir -p $REMOTE_PATH"
+
+    rsync -az --progress \
+        --exclude='.git' \
+        --exclude='node_modules' \
+        --exclude='.env' \
+        --exclude='storage/logs/*.log' \
+        --exclude='storage/framework/sessions/*' \
+        --exclude='storage/framework/cache/data/*' \
+        -e "ssh -i $KEY -p $PORT -o StrictHostKeyChecking=no" \
+        "$APP_DIR/" "$USER@$HOST:$REMOTE_PATH/"
+    success "Upload file selesai!"
+
+    # 4. Jalankan perintah instalasi dan optimasi di server
+    info "Menjalankan konfigurasi Laravel di server..."
+    $SSH_CMD bash -s << REMOTE
+        set -e
+        cd $REMOTE_PATH
+
+        # Setup .env jika belum ada
+        if [ ! -f .env ]; then
+            echo "Membuat file .env awal..."
+            cp .env.example .env
+            php artisan key:generate
+        fi
+
+        # Hubungkan public_html ke folder public Laravel jika belum terhubung
+        if [ ! -L "$HOME/public_html" ]; then
+            echo "Menghubungkan public_html ke Laravel public..."
+            if [ -d "$HOME/public_html" ]; then
+                mv "$HOME/public_html" "$HOME/public_html_backup_\$(date +%s)"
+            fi
+            ln -s "$REMOTE_PATH/public" "$HOME/public_html"
+        fi
+
+        echo "Menjalankan composer install..."
+        composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction 2>&1 | tail -3
+
+        echo "Menjalankan database migrate..."
+        php artisan migrate --force
+
+        echo "Membuat storage link..."
+        php artisan storage:link 2>/dev/null || true
+
+        echo "Mengoptimalkan cache Laravel..."
+        php artisan optimize:clear
+        php artisan config:cache
+        php artisan route:cache
+        php artisan view:cache
+
+        chmod -R 775 storage bootstrap/cache 2>/dev/null || true
+        echo "Setup hosting selesai!"
+REM
+
+    success "Deploy ke halobun.com selesai! 🚀🌿"
+    echo -e "  ${CYAN}Buka website: https://halobun.com${NC}"
+}
+
+# ═══════════════════════════════════════════════════════════════════
 # FUNGSI: Buat ZIP untuk Shared Hosting (cPanel)
 # ═══════════════════════════════════════════════════════════════════
 deploy_cpanel() {
@@ -323,18 +414,16 @@ full_deploy() {
 show_help() {
     echo -e "${BOLD}Penggunaan:${NC}  bash deploy.sh <perintah>"
     echo ""
+    echo -e "  ${GREEN}rumahweb${NC} → Deploy otomatis ke Rumahweb (halobun.com via SSH)"
     echo -e "  ${GREEN}build${NC}    → Build aset (npm + composer + cache)"
     echo -e "  ${GREEN}github${NC}   → Commit & push ke GitHub"
     echo -e "  ${GREEN}vps${NC}      → Deploy ke VPS via SSH + rsync"
-    echo -e "  ${GREEN}cpanel${NC}   → Buat ZIP untuk shared hosting cPanel"
+    echo -e "  ${GREEN}cpanel${NC}   → Buat ZIP untuk shared hosting cPanel manual"
     echo -e "  ${GREEN}full${NC}     → Build + GitHub + VPS sekaligus"
     echo ""
     echo -e "${BOLD}Contoh:${NC}"
-    echo -e "  bash deploy.sh build"
-    echo -e "  bash deploy.sh github"
-    echo -e "  bash deploy.sh cpanel"
-    echo -e "  bash deploy.sh vps"
-    echo -e "  VPS_HOST=1.2.3.4 VPS_USER=root bash deploy.sh vps"
+    echo -e "  ./deploy.sh rumahweb"
+    echo -e "  ./deploy.sh"
     echo ""
 }
 
@@ -342,11 +431,13 @@ show_help() {
 # MAIN
 # ═══════════════════════════════════════════════════════════════════
 case "$DEPLOY_MODE" in
+    rumahweb)      deploy_rumahweb ;;
     build)         build_local ;;
     github)        push_github ;;
     vps)           deploy_vps ;;
     cpanel)        deploy_cpanel ;;
     full)          full_deploy ;;
-    help|--help|-h|"") show_help ;;
+    help|--help|-h) show_help ;;
+    "")            deploy_rumahweb ;;
     *) error "Perintah tidak dikenal: '$DEPLOY_MODE'. Gunakan: bash deploy.sh help" ;;
 esac
