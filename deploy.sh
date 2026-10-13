@@ -29,7 +29,7 @@ echo -e "${NC}"
 # ── Konfigurasi ───────────────────────────────────────────────────
 GITHUB_REPO="git@github.com:hardadinuraziz/halobun.git"
 APP_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DEPLOY_MODE="${1:-help}"
+DEPLOY_MODE="${1:-rumahweb}"
 
 # ═══════════════════════════════════════════════════════════════════
 # FUNGSI: Build lokal
@@ -75,7 +75,10 @@ push_github() {
     git status --short | head -20
     echo ""
 
-    read -p "Pesan commit [default: 'deploy: update $(date +%Y-%m-%d)']: " COMMIT_MSG
+    COMMIT_MSG=""
+    if [ -t 0 ]; then
+        read -t 10 -p "Pesan commit [default: 'deploy: update $(date +%Y-%m-%d)']: " COMMIT_MSG || true
+    fi
     COMMIT_MSG="${COMMIT_MSG:-deploy: update $(date +%Y-%m-%d)}"
 
     git add -A
