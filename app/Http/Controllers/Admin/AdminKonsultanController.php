@@ -41,12 +41,21 @@ class AdminKonsultanController extends Controller
     {
         $request->validate([
             'spesialisasi'   => 'required|string|max:150',
+            'klasifikasi'    => 'required|in:umum,spesialis,super_spesialis',
             'harga_per_sesi' => 'required|numeric|min:0',
             'durasi_menit'   => 'required|integer|min:15',
             'bio'            => 'nullable|string',
+            'foto'           => 'nullable|string|max:255',
         ]);
 
-        $konsultan->update($request->only(['spesialisasi', 'harga_per_sesi', 'durasi_menit', 'bio']));
+        $konsultan->update($request->only([
+            'spesialisasi', 'klasifikasi', 'harga_per_sesi', 'durasi_menit', 'bio', 'foto',
+        ]));
+
+        // Sync avatar on the user account if foto changed
+        if ($request->filled('foto') && $konsultan->user) {
+            $konsultan->user->update(['avatar' => $request->foto]);
+        }
 
         return back()->with('success', 'Data praktisi ' . $konsultan->user->name . ' berhasil diperbarui.');
     }

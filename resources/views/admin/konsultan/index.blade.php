@@ -131,6 +131,15 @@
                                                        class="w-full text-xs p-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#16A34A]">
                                             </div>
 
+                                            <div>
+                                                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Klasifikasi</label>
+                                                <select name="klasifikasi" required class="w-full text-xs p-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#16A34A]">
+                                                    <option value="umum" {{ old('klasifikasi', $k->klasifikasi) === 'umum' ? 'selected' : '' }}>🌱 Praktisi Umum</option>
+                                                    <option value="spesialis" {{ old('klasifikasi', $k->klasifikasi) === 'spesialis' ? 'selected' : '' }}>🔬 Praktisi Spesialis</option>
+                                                    <option value="super_spesialis" {{ old('klasifikasi', $k->klasifikasi) === 'super_spesialis' ? 'selected' : '' }}>🏛️ Super Spesialis</option>
+                                                </select>
+                                            </div>
+
                                             <div class="grid grid-cols-2 gap-4">
                                                 <div>
                                                     <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Tarif / Sesi (Rp)</label>
@@ -151,6 +160,16 @@
                                                            min="15"
                                                            class="w-full text-xs p-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#16A34A]">
                                                 </div>
+                                            </div>
+
+                                            <div>
+                                                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">URL Foto Profil</label>
+                                                <input type="text"
+                                                       name="foto"
+                                                       value="{{ old('foto', $k->foto) }}"
+                                                       placeholder="/images/praktisi/nama.jpg"
+                                                       class="w-full text-xs p-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#16A34A]">
+                                                <p class="text-[10px] text-gray-400 mt-1">Contoh: /images/praktisi/kismatullaili.jpg</p>
                                             </div>
 
                                             <div>
