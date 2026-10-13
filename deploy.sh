@@ -237,7 +237,7 @@ deploy_rumahweb() {
 
         chmod -R 775 storage bootstrap/cache 2>/dev/null || true
         echo "Setup hosting selesai!"
-REM
+REMOTE
 
     success "Deploy ke halobun.com selesai! 🚀🌿"
     echo -e "  ${CYAN}Buka website: https://halobun.com${NC}"
