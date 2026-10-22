@@ -139,9 +139,9 @@
                     <label class="block text-xs font-semibold text-slate-600 mb-1.5">Harga Maks</label>
                     <select name="harga_max" class="w-full border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#16A34A] bg-slate-50">
                         <option value="">Semua Harga</option>
-                        <option value="50000" {{ request('harga_max')=='50000' ? 'selected' : '' }}>≤ Rp 50.000</option>
-                        <option value="100000" {{ request('harga_max')=='100000' ? 'selected' : '' }}>≤ Rp 100.000</option>
+                        <option value="150000" {{ request('harga_max')=='150000' ? 'selected' : '' }}>≤ Rp 150.000</option>
                         <option value="200000" {{ request('harga_max')=='200000' ? 'selected' : '' }}>≤ Rp 200.000</option>
+                        <option value="350000" {{ request('harga_max')=='350000' ? 'selected' : '' }}>≤ Rp 350.000</option>
                         <option value="500000" {{ request('harga_max')=='500000' ? 'selected' : '' }}>≤ Rp 500.000</option>
                     </select>
                 </div>
