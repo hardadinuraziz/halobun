@@ -91,6 +91,11 @@
                                                 <span>🎥</span> Buka Room
                                             </a>
                                         @endif
+                                    @elseif($b->status === 'pending')
+                                        <a href="{{ route('konsultasi.payment', $b) }}"
+                                           class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-bold shadow-xs transition-all">
+                                            <span>💳</span> Bayar / Info TF
+                                        </a>
                                     @else
                                         <span class="text-gray-400 text-xs italic">-</span>
                                     @endif

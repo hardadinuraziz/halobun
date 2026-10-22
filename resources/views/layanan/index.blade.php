@@ -219,7 +219,7 @@
                 </div>
                 <h3 class="font-bold text-slate-900 text-lg mb-1">Tentukan Jadwal &amp; Konfirmasi</h3>
                 <p class="text-slate-600 text-sm leading-relaxed">
-                    Pilih jam sesi yang cocok dan selesaikan pembayaran aman via QRIS atau transfer otomatis. Tautan sesi dikirim langsung ke WhatsApp.
+                    Pilih jam sesi yang cocok dan selesaikan pembayaran via transfer Bank Mandiri (CV SARANA HIJAU) atau QRIS. Tautan sesi dikirim langsung ke WhatsApp.
                 </p>
             </div>
 
@@ -299,7 +299,7 @@
 
         <div class="space-y-3" x-data="{ active: null }">
             @foreach([
-                ['q'=>'Bagaimana cara konsultasi video call dengan praktisi kebun?','a'=>'Pilih praktisi atau pakar agronomi di halaman Konsultasi, tentukan jadwal yang tersedia, dan selesaikan pembayaran via QRIS atau transfer Midtrans. Tautan ruang konsultasi video interaktif (Jitsi Meet) akan dikirimkan otomatis ke WhatsApp Anda.'],
+                ['q'=>'Bagaimana cara konsultasi video call dengan praktisi kebun?','a'=>'Pilih praktisi atau pakar agronomi di halaman Konsultasi, tentukan jadwal yang tersedia, dan selesaikan pembayaran via transfer Bank Mandiri (a.n CV SARANA HIJAU) atau QRIS. Tautan ruang konsultasi video interaktif (Jitsi Meet) akan dikirimkan otomatis ke WhatsApp Anda.'],
                 ['q'=>'Apakah tim praktisi Hallobun bisa datang ke luar kota untuk kunjungan lahan?','a'=>'Bisa. Tim praktisi perkebunan dan agronomi kami melayani kunjungan kebun, pekarangan, dan greenhouse di berbagai kota di Indonesia. Rincian akomodasi dan jadwal akan dikonfirmasikan transparan sebelum keberangkatan.'],
                 ['q'=>'Apakah benih dan bibit di Toko Sarana Hallobun bergaransi?','a'=>'Seluruh benih dan bibit yang tersedia di Hallobun memiliki sertifikasi resmi dari produsen tepercaya dengan garansi daya kecambah tinggi serta panduan penyemaian langsung dari praktisi kami.'],
                 ['q'=>'Berapa lama proses konfirmasi pemesanan layanan?','a'=>'Untuk konsultasi online, jadwal terkonfirmasi secara instan setelah pembayaran berhasil diverifikasi otomatis oleh sistem. Untuk kunjungan lapangan atau narasumber, tim kami mengonfirmasi maksimal dalam 1x24 jam kerja.'],

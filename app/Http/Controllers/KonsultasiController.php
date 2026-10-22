@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Konsultan;
 use App\Models\Jadwal;
 use App\Models\Booking;
+use App\Models\Payment;
 use App\Services\PaymentService;
 use App\Services\VideoCallService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class KonsultasiController extends Controller
 {
@@ -112,16 +114,58 @@ class KonsultasiController extends Controller
             // Block jadwal
             $jadwal->update(['is_available' => false]);
 
-            // Buat transaksi Midtrans
-            $snapToken = $this->paymentService->createSnapTransaction($booking);
+            // Siapkan record pembayaran jika belum ada
+            Payment::updateOrCreate(
+                ['booking_id' => $booking->id],
+                [
+                    'amount'      => (float)$konsultan->harga_per_sesi,
+                    'biaya_admin' => 0,
+                    'metode'      => 'transfer',
+                    'status'      => 'pending',
+                    'expired_at'  => now()->addHours(24),
+                ]
+            );
+
+            // Generate snap token Midtrans jika kredensial aktif
+            $snapToken = null;
+            if (config('midtrans.server_key') && !str_contains(config('midtrans.server_key'), 'XXXX')) {
+                try {
+                    $snapToken = $this->paymentService->createSnapTransaction($booking);
+                } catch (\Exception $e) {
+                    Log::warning('Midtrans token generation skipped: ' . $e->getMessage());
+                }
+            }
 
             DB::commit();
 
-            return view('konsultasi.payment', compact('booking', 'snapToken'));
+            return redirect()->route('konsultasi.payment', $booking);
         } catch (\Exception $e) {
             DB::rollBack();
-            return back()->with('error', 'Terjadi kesalahan. Silakan coba lagi.');
+            Log::error('Booking error: ' . $e->getMessage());
+            return back()->with('error', 'Terjadi kesalahan saat membuat booking. Silakan coba lagi.');
         }
+    }
+
+    /**
+     * Halaman instruksi pembayaran & info transfer bank
+     */
+    public function paymentPage(Booking $booking)
+    {
+        $user = Auth::user();
+        if ($booking->user_id !== $user->id) {
+            abort(403);
+        }
+
+        $snapToken = $booking->payment?->snap_token;
+        if (!$snapToken && config('midtrans.server_key') && !str_contains(config('midtrans.server_key'), 'XXXX')) {
+            try {
+                $snapToken = $this->paymentService->createSnapTransaction($booking);
+            } catch (\Exception $e) {
+                Log::warning('Midtrans snap token skipped: ' . $e->getMessage());
+            }
+        }
+
+        return view('konsultasi.payment', compact('booking', 'snapToken'));
     }
 
     /**

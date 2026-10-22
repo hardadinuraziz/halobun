@@ -124,7 +124,7 @@
                         </div>
 
                         <p class="text-[11px] text-slate-500 leading-relaxed">
-                            💳 Pembayaran resmi via <strong>QRIS</strong> atau <strong>Transfer Bank</strong> (Midtrans). Tautan ruang konsultasi video call langsung dikirimkan ke WhatsApp Anda setelah verifikasi berhasil.
+                            💳 Pembayaran resmi via <strong>Transfer Bank Mandiri (a.n CV SARANA HIJAU)</strong> atau <strong>QRIS</strong>. Tautan ruang konsultasi video call langsung dikirimkan ke WhatsApp Anda setelah pembayaran diverifikasi.
                         </p>
 
                         @auth

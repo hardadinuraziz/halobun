@@ -28,10 +28,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Rekening Bank Transfer Resmi
+    |--------------------------------------------------------------------------
+    */
+    'bank' => [
+        'name'           => env('BANK_NAME', 'Bank Mandiri'),
+        'account_number' => env('BANK_ACCOUNT_NUMBER', '1030012983454'),
+        'account_name'   => env('BANK_ACCOUNT_NAME', 'CV SARANA HIJAU'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | App Settings
     |--------------------------------------------------------------------------
     */
     'app_name'      => env('HALLOBUN_APP_NAME', 'Hallobun'),
-    'admin_phone'   => env('HALLOBUN_ADMIN_PHONE', ''),
+    'admin_phone'   => env('HALLOBUN_ADMIN_PHONE', '081234567890'),
     'admin_email'   => env('HALLOBUN_ADMIN_EMAIL', 'admin@hallobun.com'),
 ];

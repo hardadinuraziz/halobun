@@ -49,6 +49,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('konsultasi')->name('konsultasi.')->group(function () {
         Route::post('/{konsultan}/booking',            [KonsultasiController::class, 'booking'])->name('booking');
         Route::post('/{konsultan}/store',              [KonsultasiController::class, 'store'])->name('store');
+        Route::get('/payment/{booking}',               [KonsultasiController::class, 'paymentPage'])->name('payment');
         Route::get('/meeting/{booking}',               [KonsultasiController::class, 'meetingRoom'])->name('meeting');
         Route::get('/payment-finish/{kodeBooking}',   [KonsultasiController::class, 'paymentFinish'])->name('payment-finish');
         Route::get('/riwayat',                         [KonsultasiController::class, 'riwayat'])->name('riwayat');
