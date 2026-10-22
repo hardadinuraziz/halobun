@@ -463,7 +463,13 @@
                        class="w-full sm:w-auto bg-white text-[#16A34A] hover:bg-gray-50 font-bold px-6 py-3 rounded-2xl text-xs sm:text-sm text-center transition-all shadow-md active:scale-95">
                         Tanya Pakar Sekarang
                     </a>
-                    <a href="https://wa.me/{{ config('hallobun.admin_phone', '081234567890') }}" 
+                    @php
+                        $homeAdminPhone = preg_replace('/[^0-9]/', '', config('hallobun.admin_phone', '6285713850615'));
+                        if (str_starts_with($homeAdminPhone, '0')) {
+                            $homeAdminPhone = '62' . substr($homeAdminPhone, 1);
+                        }
+                    @endphp
+                    <a href="https://wa.me/{{ $homeAdminPhone }}?text={{ urlencode('Halo Kak Amanda, saya ingin berkonsultasi mengenai layanan Hallobun.') }}" 
                        target="_blank"
                        class="w-full sm:w-auto bg-white/15 hover:bg-white/25 border border-white/20 text-white font-bold px-5 py-3 rounded-2xl text-xs sm:text-sm text-center transition-all">
                         Hubungi WhatsApp

@@ -137,6 +137,7 @@ class PaymentService
         // Generate meeting room dan kirim notifikasi
         app(VideoCallService::class)->assignMeetingRoom($booking);
         app(NotificationService::class)->sendBookingConfirmation($booking);
+        app(NotificationService::class)->notifyAdminPembayaranMasuk($payment);
     }
 
     private function hitungBiayaAdmin(float $amount): float

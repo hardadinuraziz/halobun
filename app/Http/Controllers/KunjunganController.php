@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\KunjunganOffline;
 use App\Models\Konsultan;
+use App\Services\NotificationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class KunjunganController extends Controller
 {
+    public function __construct(
+        private NotificationService $notificationService
+    ) {}
+
     public function index()
     {
         $konsultans = Konsultan::active()->with('user')->get();
@@ -35,7 +41,14 @@ class KunjunganController extends Controller
         $validated['user_id'] = Auth::id();
         $validated['status']  = 'pending';
 
-        KunjunganOffline::create($validated);
+        $kunjungan = KunjunganOffline::create($validated);
+
+        // Kirim notifikasi WA order kunjungan ke Admin (Amanda)
+        try {
+            $this->notificationService->notifyAdminKunjunganBaru($kunjungan);
+        } catch (\Exception $e) {
+            Log::warning('Gagal kirim WA kunjungan ke admin: ' . $e->getMessage());
+        }
 
         return redirect()->route('kunjungan.index')
             ->with('success', 'Permintaan kunjungan offline berhasil dikirim! Tim kami akan segera menghubungi Anda.');

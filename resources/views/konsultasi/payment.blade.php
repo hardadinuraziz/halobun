@@ -5,12 +5,12 @@
 @section('content')
 @php
     $totalAmount = $booking->payment?->amount ?? $booking->konsultan->harga_per_sesi;
-    $adminPhone = preg_replace('/[^0-9]/', '', config('hallobun.admin_phone', '6281234567890'));
+    $adminPhone = preg_replace('/[^0-9]/', '', config('hallobun.admin_phone', '6285713850615'));
     if (str_starts_with($adminPhone, '0')) {
         $adminPhone = '62' . substr($adminPhone, 1);
     }
     
-    $waText = "Halo Admin Hallobun, saya telah melakukan transfer pembayaran konsultasi:\n\n"
+    $waText = "Halo Kak Amanda (Admin Hallobun), saya telah melakukan transfer pembayaran konsultasi:\n\n"
             . "• Kode Booking: {$booking->kode_booking}\n"
             . "• Praktisi: {$booking->konsultan->user->name}\n"
             . "• Tanggal Sesi: " . ($booking->jadwal ? $booking->jadwal->tanggal->format('d M Y') : 'Fleksibel') . "\n"

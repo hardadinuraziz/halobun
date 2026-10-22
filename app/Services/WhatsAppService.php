@@ -77,8 +77,9 @@ class WhatsAppService
         $message .= "🔗 *Link Meeting Jitsi:*\n";
         $message .= "{$booking->meeting_link}\n\n";
         $message .= "⚠️ Harap masuk 5 menit sebelum sesi dimulai.\n\n";
+        $adminPhone = $this->formatPhone(config('hallobun.admin_phone', '085713850615'));
         $message .= "Terima kasih sudah menggunakan layanan Hallobun! 🙏\n";
-        $message .= "📞 Bantuan: wa.me/6281234567890";
+        $message .= "📞 Bantuan: wa.me/{$adminPhone}";
 
         return $this->sendMessage($user->phone ?? '', $message);
     }

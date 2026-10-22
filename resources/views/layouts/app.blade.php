@@ -256,8 +256,14 @@
 </main>
 
 {{-- WhatsApp FAB --}}
+@php
+    $appAdminPhone = preg_replace('/[^0-9]/', '', config('hallobun.admin_phone', '6285713850615'));
+    if (str_starts_with($appAdminPhone, '0')) {
+        $appAdminPhone = '62' . substr($appAdminPhone, 1);
+    }
+@endphp
 <aside aria-label="Chat WhatsApp" class="fixed bottom-5 right-4 z-40">
-    <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', config('hallobun.admin_phone', '6281234567890')) }}?text={{ urlencode('Halo Hallobun, saya ingin berkonsultasi mengenai layanan kebun dan pertanian.') }}"
+    <a href="https://wa.me/{{ $appAdminPhone }}?text={{ urlencode('Halo Hallobun, saya ingin berkonsultasi mengenai layanan kebun dan pertanian.') }}"
        target="_blank"
        rel="noopener noreferrer"
        class="inline-flex items-center gap-2 bg-[#25D366] text-white pl-3.5 pr-4 py-2.5 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 font-semibold text-sm">

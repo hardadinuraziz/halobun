@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\NarsumUndangan;
+use App\Services\NotificationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class NarsumController extends Controller
 {
+    public function __construct(
+        private NotificationService $notificationService
+    ) {}
+
     public function index()
     {
         return view('narsum.index');
@@ -35,7 +41,14 @@ class NarsumController extends Controller
         $validated['user_id'] = Auth::id();
         $validated['status']  = 'pending';
 
-        NarsumUndangan::create($validated);
+        $undangan = NarsumUndangan::create($validated);
+
+        // Kirim notifikasi WA order narasumber ke Admin (Amanda)
+        try {
+            $this->notificationService->notifyAdminNarsumBaru($undangan);
+        } catch (\Exception $e) {
+            Log::warning('Gagal kirim WA narsum ke admin: ' . $e->getMessage());
+        }
 
         return redirect()->route('narsum.index')
             ->with('success', 'Pengajuan undangan narasumber berhasil dikirim! Tim kami akan menghubungi Anda dalam 1x24 jam.');

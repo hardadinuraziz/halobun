@@ -39,10 +39,11 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | App Settings
+    | App Settings & Admin WhatsApp Notification
     |--------------------------------------------------------------------------
     */
     'app_name'      => env('HALLOBUN_APP_NAME', 'Hallobun'),
-    'admin_phone'   => env('HALLOBUN_ADMIN_PHONE', '081234567890'),
+    'admin_name'    => env('HALLOBUN_ADMIN_NAME', 'Amanda'),
+    'admin_phone'   => env('HALLOBUN_ADMIN_PHONE', '085713850615'),
     'admin_email'   => env('HALLOBUN_ADMIN_EMAIL', 'admin@hallobun.com'),
 ];

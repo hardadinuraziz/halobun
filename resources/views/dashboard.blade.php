@@ -366,7 +366,13 @@
                     <p class="text-xs text-gray-500 mt-0.5">Tim pendamping Hallobun siap membantu via WhatsApp untuk kebutuhan kebun Anda.</p>
                 </div>
             </div>
-            <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Hallobun,%20saya%20sudah%20mendaftar%20dan%20ingin%20bertanya%20mengenai%20layanan."
+            @php
+                $adminPhone = preg_replace('/[^0-9]/', '', config('hallobun.admin_phone', '6285713850615'));
+                if (str_starts_with($adminPhone, '0')) {
+                    $adminPhone = '62' . substr($adminPhone, 1);
+                }
+            @endphp
+            <a href="https://wa.me/{{ $adminPhone }}?text=Halo%20Admin%20Hallobun,%20saya%20sudah%20mendaftar%20dan%20ingin%20bertanya%20mengenai%20layanan."
                target="_blank"
                class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-xs shadow-xs transition-all active:scale-95 whitespace-nowrap">
                 <span>Hubungi CS WhatsApp</span>

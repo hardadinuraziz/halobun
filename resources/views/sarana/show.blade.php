@@ -72,8 +72,14 @@
                 </div>
 
                 {{-- Action Buttons --}}
+                @php
+                    $adminPhone = preg_replace('/[^0-9]/', '', config('hallobun.admin_phone', '6285713850615'));
+                    if (str_starts_with($adminPhone, '0')) {
+                        $adminPhone = '62' . substr($adminPhone, 1);
+                    }
+                @endphp
                 <div class="mt-8 flex flex-col sm:flex-row gap-3">
-                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Hallobun,%20saya%20ingin%20memesan%20produk%20*{{ urlencode($sarana->nama) }}*%20seharga%20Rp%20{{ number_format($sarana->harga, 0, ',', '.') }}.%20Apakah%20stok%20masih%20tersedia?"
+                    <a href="https://wa.me/{{ $adminPhone }}?text=Halo%20Admin%20Hallobun,%20saya%20ingin%20memesan%20produk%20*{{ urlencode($sarana->nama) }}*%20seharga%20Rp%20{{ number_format($sarana->harga, 0, ',', '.') }}.%20Apakah%20stok%20masih%20tersedia?"
                        target="_blank"
                        class="flex-1 bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-sm px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all text-center flex items-center justify-center gap-2">
                         <span>💬</span> Pesan Cepat via WhatsApp

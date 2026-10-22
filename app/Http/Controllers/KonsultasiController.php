@@ -8,6 +8,7 @@ use App\Models\Booking;
 use App\Models\Payment;
 use App\Services\PaymentService;
 use App\Services\VideoCallService;
+use App\Services\NotificationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,8 +17,9 @@ use Illuminate\Support\Facades\Log;
 class KonsultasiController extends Controller
 {
     public function __construct(
-        private PaymentService   $paymentService,
-        private VideoCallService $videoCallService
+        private PaymentService      $paymentService,
+        private VideoCallService    $videoCallService,
+        private NotificationService $notificationService
     ) {}
 
     /**
@@ -137,6 +139,13 @@ class KonsultasiController extends Controller
             }
 
             DB::commit();
+
+            // Kirim notifikasi WA order masuk ke Admin (Amanda)
+            try {
+                $this->notificationService->notifyAdminBookingBaru($booking);
+            } catch (\Exception $ne) {
+                Log::warning('Gagal kirim notifikasi WA admin: ' . $ne->getMessage());
+            }
 
             return redirect()->route('konsultasi.payment', $booking);
         } catch (\Exception $e) {
