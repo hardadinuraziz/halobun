@@ -134,9 +134,9 @@
                                             <div>
                                                 <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Klasifikasi</label>
                                                 <select name="klasifikasi" required class="w-full text-xs p-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#16A34A]">
-                                                    <option value="umum" {{ old('klasifikasi', $k->klasifikasi) === 'umum' ? 'selected' : '' }}>🌱 Praktisi Umum</option>
-                                                    <option value="spesialis" {{ old('klasifikasi', $k->klasifikasi) === 'spesialis' ? 'selected' : '' }}>🔬 Praktisi Spesialis</option>
-                                                    <option value="super_spesialis" {{ old('klasifikasi', $k->klasifikasi) === 'super_spesialis' ? 'selected' : '' }}>🏛️ Super Spesialis</option>
+                                                    <option value="umum" {{ old('klasifikasi', $k->klasifikasi) === 'umum' ? 'selected' : '' }}>🌱 Praktisi Umum (Rp 150.000)</option>
+                                                    <option value="spesialis" {{ old('klasifikasi', $k->klasifikasi) === 'spesialis' ? 'selected' : '' }}>🔬 Praktisi Spesialis (Rp 350.000)</option>
+                                                    <option value="super_spesialis" {{ old('klasifikasi', $k->klasifikasi) === 'super_spesialis' ? 'selected' : '' }}>🏛️ Super Spesialis (Rp 750.000)</option>
                                                 </select>
                                             </div>
 

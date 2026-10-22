@@ -94,7 +94,7 @@
             <span class="text-2xl flex-shrink-0">🌱</span>
             <div class="text-xs sm:text-sm text-emerald-950">
                 <span class="font-bold text-emerald-900 block text-sm sm:text-base">Kategori: Praktisi Umum (Dokter Kebun Pemula)</span>
-                Bimbingan perawatan rutin pekarangan rumah, sayuran hidroponik hobi, media tanam pot, dan pencegahan hama dasar. Cocok untuk pekebun rumahan &amp; pemula. Tarif terjangkau mulai Rp 35.000 / sesi.
+                Bimbingan perawatan rutin pekarangan rumah, sayuran hidroponik hobi, media tanam pot, dan pencegahan hama dasar. Cocok untuk pekebun rumahan &amp; pemula. Tarif Rp 150.000 / sesi.
             </div>
         </div>
         @elseif(request('klasifikasi') === 'spesialis')
@@ -102,7 +102,7 @@
             <span class="text-2xl flex-shrink-0">🔬</span>
             <div class="text-xs sm:text-sm text-blue-950">
                 <span class="font-bold text-blue-900 block text-sm sm:text-base">Kategori: Praktisi Spesialis (Dokter Tanaman Berlisensi)</span>
-                Pakar diagnosa spesifik organisme pengganggu tumbuhan (OPT), penyakit layu/daun, nutrisi presisi hidroponik komersial, dan budidaya cabai/bawang merah/padi.
+                Pakar diagnosa spesifik organisme pengganggu tumbuhan (OPT), penyakit layu/daun, nutrisi presisi hidroponik komersial, dan budidaya cabai/bawang merah/padi. Tarif Rp 350.000 / sesi.
             </div>
         </div>
         @elseif(request('klasifikasi') === 'super_spesialis')
@@ -110,7 +110,7 @@
             <span class="text-2xl flex-shrink-0">🏛️</span>
             <div class="text-xs sm:text-sm text-purple-950">
                 <span class="font-bold text-purple-900 block text-sm sm:text-base">Kategori: Praktisi Super Spesialis (Guru Besar &amp; Konsultan Senior)</span>
-                Pakar uji laboratorium kimia tanah, bioteknologi tanaman hayati, audit kelayakan perkebunan industri luas hektaran, dan riset formulasi pupuk.
+                Pakar uji laboratorium kimia tanah, bioteknologi tanaman hayati, audit kelayakan perkebunan industri luas hektaran, dan riset formulasi pupuk. Tarif Rp 750.000 / sesi.
             </div>
         </div>
         @endif
@@ -143,6 +143,7 @@
                         <option value="200000" {{ request('harga_max')=='200000' ? 'selected' : '' }}>≤ Rp 200.000</option>
                         <option value="350000" {{ request('harga_max')=='350000' ? 'selected' : '' }}>≤ Rp 350.000</option>
                         <option value="500000" {{ request('harga_max')=='500000' ? 'selected' : '' }}>≤ Rp 500.000</option>
+                        <option value="750000" {{ request('harga_max')=='750000' ? 'selected' : '' }}>≤ Rp 750.000</option>
                     </select>
                 </div>
                 <div class="flex items-end gap-2">
