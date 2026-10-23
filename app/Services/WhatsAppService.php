@@ -50,36 +50,12 @@ class WhatsAppService
     }
 
     /**
-     * Kirim undangan meeting ke customer
+     * Kirim konfirmasi sesi konsultasi ke customer sesuai SOP HALLOBUN
      */
     public function sendMeetingInvite(\App\Models\Booking $booking): bool
     {
-        $user      = $booking->user;
-        $konsultan = $booking->konsultan;
-        $jadwal    = $booking->jadwal;
-
-        $tanggal = $jadwal
-            ? $jadwal->tanggal->format('d/m/Y')
-            : $booking->sesi_mulai?->format('d/m/Y') ?? '-';
-
-        $jam = $jadwal
-            ? $jadwal->jam_mulai . ' - ' . $jadwal->jam_selesai . ' WIB'
-            : $booking->sesi_mulai?->format('H:i') . ' WIB' ?? '-';
-
-        $message = "Halo *{$user->name}*! 🌱\n\n";
-        $message .= "Pembayaran konfirmasi! Sesi konsultasi Anda di *Hallobun* siap.\n\n";
-        $message .= "📋 *Detail Konsultasi:*\n";
-        $message .= "• Kode Booking: `{$booking->kode_booking}`\n";
-        $message .= "• Konsultan: *{$konsultan->user->name}*\n";
-        $message .= "• Spesialisasi: {$konsultan->spesialisasi}\n";
-        $message .= "• Tanggal: {$tanggal}\n";
-        $message .= "• Waktu: {$jam}\n\n";
-        $message .= "🔗 *Link Meeting Jitsi:*\n";
-        $message .= "{$booking->meeting_link}\n\n";
-        $message .= "⚠️ Harap masuk 5 menit sebelum sesi dimulai.\n\n";
-        $adminPhone = $this->formatPhone(config('hallobun.admin_phone', '085713850615'));
-        $message .= "Terima kasih sudah menggunakan layanan Hallobun! 🙏\n";
-        $message .= "📞 Bantuan: wa.me/{$adminPhone}";
+        $user = $booking->user;
+        $message = \App\Services\SopTemplateService::konfirmasiKonsultasi($booking);
 
         return $this->sendMessage($user->phone ?? '', $message);
     }

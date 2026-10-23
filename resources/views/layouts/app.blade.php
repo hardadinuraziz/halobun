@@ -316,8 +316,8 @@
                 <h4 class="font-bold text-gray-900 mb-4 text-xs sm:text-sm tracking-wider uppercase">Bantuan &amp; Kontak</h4>
                 <ul class="space-y-2.5 text-xs sm:text-sm text-gray-500">
                     <li class="flex items-center gap-2"><span class="text-[#16A34A]">✉️</span><span>info@hallobun.com</span></li>
-                    <li class="flex items-center gap-2"><span class="text-[#16A34A]">📞</span><span>+62 812-3456-7890</span></li>
-                    <li class="flex items-center gap-2"><span class="text-[#16A34A]">🕐</span><span>Senin – Sabtu, 08.00 – 17.00 WIB</span></li>
+                    <li class="flex items-center gap-2"><span class="text-[#16A34A]">📞</span><a href="https://wa.me/6285713850615" target="_blank" class="hover:text-emerald-600 transition-colors">+62 857-1385-0615 (Amanda)</a></li>
+                    <li class="flex items-center gap-2"><span class="text-[#16A34A]">🕐</span><span>Senin – Sabtu, 09.00 – 17.00 WIB</span></li>
                 </ul>
             </div>
         </div>

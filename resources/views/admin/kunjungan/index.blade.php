@@ -140,9 +140,30 @@
                                 </span>
                             </td>
                             <td class="px-5 py-4 text-right whitespace-nowrap">
-                                <button @click="editModal = true" class="px-3 py-1.5 bg-[#F0FDF4] hover:bg-[#DCFCE7] text-[#16A34A] border border-[#BBF7D0] rounded-xl font-bold text-xs transition-colors">
-                                    Update
-                                </button>
+                                @php
+                                    $kunjunganSopMsg = \App\Services\SopTemplateService::konfirmasiKunjungan($k);
+                                    $kunjunganWaUrl = $cleanPhone ? ('https://wa.me/' . $cleanPhone . '?text=' . urlencode($kunjunganSopMsg)) : '#';
+                                @endphp
+
+                                <div class="flex items-center justify-end gap-1.5">
+                                    @if($cleanPhone)
+                                        <a href="{{ $kunjunganWaUrl }}"
+                                           target="_blank"
+                                           title="Kirim Konfirmasi Kunjungan Sesuai SOP"
+                                           class="px-2.5 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-xl font-bold text-xs transition-colors flex items-center gap-1">
+                                            <span>💬</span> <span class="hidden sm:inline">WA SOP</span>
+                                        </a>
+                                    @endif
+                                    <button type="button"
+                                            @click="navigator.clipboard.writeText(@js($kunjunganSopMsg)); alert('Template Konfirmasi Kunjungan berhasil disalin ke clipboard!');"
+                                            title="Salin Pesan Konfirmasi Kunjungan Sesuai SOP"
+                                            class="px-2.5 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl font-bold text-xs transition-colors">
+                                        📋
+                                    </button>
+                                    <button @click="editModal = true" class="px-3 py-1.5 bg-[#F0FDF4] hover:bg-[#DCFCE7] text-[#16A34A] border border-[#BBF7D0] rounded-xl font-bold text-xs transition-colors">
+                                        Update
+                                    </button>
+                                </div>
 
                                 {{-- Modal Update Kunjungan --}}
                                 <div x-show="editModal"

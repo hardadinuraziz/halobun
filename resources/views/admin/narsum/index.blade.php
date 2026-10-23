@@ -129,9 +129,34 @@
                                 </span>
                             </td>
                             <td class="px-5 py-4 text-right whitespace-nowrap">
-                                <button @click="editModal = true" class="px-3 py-1.5 bg-[#F0FDF4] hover:bg-[#DCFCE7] text-[#16A34A] border border-[#BBF7D0] rounded-xl font-bold text-xs transition-colors">
-                                    Update
-                                </button>
+                                @php
+                                    $narsumSopMsg = \App\Services\SopTemplateService::konfirmasiNarasumber($n);
+                                    $cleanPicPhone = preg_replace('/[^0-9]/', '', $n->phone_pic ?? '');
+                                    if (str_starts_with($cleanPicPhone, '0')) {
+                                        $cleanPicPhone = '62' . substr($cleanPicPhone, 1);
+                                    }
+                                    $narsumWaUrl = $cleanPicPhone ? ('https://wa.me/' . $cleanPicPhone . '?text=' . urlencode($narsumSopMsg)) : '#';
+                                @endphp
+
+                                <div class="flex items-center justify-end gap-1.5">
+                                    @if($cleanPicPhone)
+                                        <a href="{{ $narsumWaUrl }}"
+                                           target="_blank"
+                                           title="Kirim Konfirmasi Narasumber Sesuai SOP"
+                                           class="px-2.5 py-1.5 bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 rounded-xl font-bold text-xs transition-colors flex items-center gap-1">
+                                            <span>💬</span> <span class="hidden sm:inline">WA SOP</span>
+                                        </a>
+                                    @endif
+                                    <button type="button"
+                                            @click="navigator.clipboard.writeText(@js($narsumSopMsg)); alert('Template Konfirmasi Narasumber berhasil disalin ke clipboard!');"
+                                            title="Salin Pesan Konfirmasi Narasumber Sesuai SOP"
+                                            class="px-2.5 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl font-bold text-xs transition-colors">
+                                        📋
+                                    </button>
+                                    <button @click="editModal = true" class="px-3 py-1.5 bg-[#F0FDF4] hover:bg-[#DCFCE7] text-[#16A34A] border border-[#BBF7D0] rounded-xl font-bold text-xs transition-colors">
+                                        Update
+                                    </button>
+                                </div>
 
                                 {{-- Modal Update Narsum --}}
                                 <div x-show="editModal"

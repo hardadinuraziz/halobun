@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\AdminKunjunganController;
 use App\Http\Controllers\Admin\AdminNarsumController;
 use App\Http\Controllers\Admin\AdminSaranaController;
 use App\Http\Controllers\Admin\AdminKonsultanController;
+use App\Http\Controllers\Admin\AdminSopController;
 use Illuminate\Support\Facades\Route;
 
 // ─── Public Routes ──────────────────────────────────────────────────────────
@@ -112,6 +113,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/konsultan', [AdminKonsultanController::class, 'index'])->name('konsultan.index');
     Route::patch('/konsultan/{konsultan}/toggle', [AdminKonsultanController::class, 'toggleStatus'])->name('konsultan.toggle');
     Route::put('/konsultan/{konsultan}', [AdminKonsultanController::class, 'update'])->name('konsultan.update');
+
+    // SOP & Template Operasional Hallobun
+    Route::get('/sop', [AdminSopController::class, 'index'])->name('sop.index');
 });
 
 require __DIR__ . '/auth.php';

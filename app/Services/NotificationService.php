@@ -41,15 +41,12 @@ class NotificationService
     }
 
     /**
-     * Kirim reminder 1 jam sebelum sesi
+     * Kirim reminder 1 jam sebelum sesi sesuai SOP HALLOBUN
      */
     public function sendSessionReminder(Booking $booking): void
     {
-        $user    = $booking->user;
-        $message = "⏰ *Reminder Konsultasi!*\n\n";
-        $message .= "Halo *{$user->name}*, sesi konsultasi Anda dimulai dalam *1 JAM*.\n\n";
-        $message .= "🔗 Link Meeting:\n{$booking->meeting_link}\n\n";
-        $message .= "Siapkan pertanyaan Anda! 🌱 Hallobun";
+        $user = $booking->user;
+        $message = SopTemplateService::reminderKonsultasi($booking);
 
         if ($user->phone) {
             $this->whatsAppService->sendMessage($user->phone, $message);

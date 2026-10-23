@@ -136,22 +136,63 @@
                                 @endif
                             </td>
                             <td class="px-5 py-4 text-right whitespace-nowrap">
-                                <button @click="editModal = true" class="px-3 py-1.5 bg-[#F0FDF4] hover:bg-[#DCFCE7] text-[#16A34A] border border-[#BBF7D0] rounded-xl font-bold text-xs transition-colors">
-                                    Edit Status
-                                </button>
+                                @php
+                                    $sopMsg = \App\Services\SopTemplateService::konfirmasiKonsultasi($b);
+                                    $cleanPhone = preg_replace('/[^0-9]/', '', $b->user->phone ?? '');
+                                    if (str_starts_with($cleanPhone, '0')) {
+                                        $cleanPhone = '62' . substr($cleanPhone, 1);
+                                    }
+                                    $waUrl = $cleanPhone ? ('https://wa.me/' . $cleanPhone . '?text=' . urlencode($sopMsg)) : '#';
+                                @endphp
+
+                                <div class="flex items-center justify-end gap-1.5">
+                                    @if($cleanPhone)
+                                        <a href="{{ $waUrl }}"
+                                           target="_blank"
+                                           title="Kirim Konfirmasi WhatsApp Sesuai SOP"
+                                           class="px-2.5 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 rounded-xl font-bold text-xs transition-colors flex items-center gap-1">
+                                            <span>💬</span> <span class="hidden sm:inline">WA SOP</span>
+                                        </a>
+                                    @endif
+                                    <button type="button"
+                                            @click="navigator.clipboard.writeText(@js($sopMsg)); alert('Template Konfirmasi SOP berhasil disalin ke clipboard!');"
+                                            title="Salin Pesan Konfirmasi Sesuai SOP"
+                                            class="px-2.5 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl font-bold text-xs transition-colors">
+                                        📋
+                                    </button>
+                                    <button @click="editModal = true" class="px-3 py-1.5 bg-[#F0FDF4] hover:bg-[#DCFCE7] text-[#16A34A] border border-[#BBF7D0] rounded-xl font-bold text-xs transition-colors">
+                                        Edit
+                                    </button>
+                                </div>
 
                                 {{-- Modal Update Status --}}
                                 <div x-show="editModal"
                                      x-cloak
                                      class="fixed inset-0 z-50 overflow-y-auto bg-gray-900/50 backdrop-blur-xs flex items-center justify-center p-4">
-                                    <div @click.away="editModal = false" class="bg-white rounded-2xl max-w-md w-full p-5 sm:p-6 text-left shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+                                    <div @click.away="editModal = false" class="bg-white rounded-2xl max-w-lg w-full p-5 sm:p-6 text-left shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
                                         <div class="flex items-center justify-between pb-3 border-b border-gray-100">
-                                            <h4 class="font-extrabold text-base text-gray-900">Update Booking {{ $b->kode_booking }}</h4>
+                                            <div>
+                                                <h4 class="font-extrabold text-base text-gray-900">Update Booking {{ $b->kode_booking }}</h4>
+                                                <p class="text-xs text-gray-400">Pastikan seluruh checklist SOP terpenuhi sebelum mengonfirmasi.</p>
+                                            </div>
                                             <button @click="editModal = false" class="text-gray-400 hover:text-gray-600">
                                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                                                 </svg>
                                             </button>
+                                        </div>
+
+                                        {{-- Checklist SOP Mini --}}
+                                        <div class="bg-emerald-50/70 border border-emerald-200/70 rounded-xl p-3 text-[11px] text-emerald-950 space-y-1">
+                                            <div class="font-bold text-emerald-900 flex items-center gap-1">
+                                                <span>✓</span> Checklist SOP Pra-Konsultasi:
+                                            </div>
+                                            <div class="grid grid-cols-2 gap-1 text-[10px] text-emerald-900/80">
+                                                <div>• Data &amp; topik lengkap</div>
+                                                <div>• Jadwal praktisi disetujui</div>
+                                                <div>• Pembayaran Mandiri valid</div>
+                                                <div>• Link video call aktif</div>
+                                            </div>
                                         </div>
 
                                         <form method="POST" action="{{ route('admin.bookings.update-status', $b) }}" class="space-y-4">
@@ -169,13 +210,13 @@
                                             </div>
 
                                             <div>
-                                                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Link Meeting (Google Meet / Zoom)</label>
+                                                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Link Meeting (Zoom / Google Meet / Jitsi)</label>
                                                 <input type="url"
                                                        name="meeting_link"
                                                        value="{{ old('meeting_link', $b->meeting_link) }}"
-                                                       placeholder="https://meet.google.com/xxx-xxxx-xxx"
+                                                       placeholder="https://meet.jit.si/hallobun-..."
                                                        class="w-full text-xs p-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#16A34A]">
-                                                <p class="text-[10px] text-gray-400 mt-1">Klien dan praktisi akan melihat link ini di dashboard mereka setelah status dikonfirmasi.</p>
+                                                <p class="text-[10px] text-gray-400 mt-1">Sesuai SOP, link meeting akan dikirim ke customer &amp; praktisi.</p>
                                             </div>
 
                                             <div class="flex items-center justify-end gap-2 pt-2">

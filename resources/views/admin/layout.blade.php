@@ -106,6 +106,17 @@
                     </svg>
                     Praktisi Kebun
                 </a>
+
+                <div class="pt-4 text-[11px] font-extrabold text-gray-400 tracking-wider uppercase px-3 mb-2">Standar & Dokumen</div>
+
+                <a href="{{ route('admin.sop.index') }}"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-xl font-semibold text-sm transition-all {{ request()->routeIs('admin.sop.*') ? 'bg-[#16A34A] text-white shadow-sm' : 'text-gray-700 hover:bg-[#F0FDF4] hover:text-[#16A34A]' }}">
+                    <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    <span>SOP &amp; Template WA</span>
+                    <span class="ml-auto text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded-md">Resmi</span>
+                </a>
             </div>
 
             {{-- Footer menu --}}
