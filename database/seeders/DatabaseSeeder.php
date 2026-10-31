@@ -236,6 +236,17 @@ class DatabaseSeeder extends Seeder
                 'rating'        => 4.9,
                 'foto'          => '/images/praktisi/ruslan.jpg',
             ],
+            [
+                'name'          => 'Prof. Dr. Ir. Rubiyo, M.Si',
+                'email'         => 'prof.rubiyo@hallobun.com',
+                'phone'         => '081200000023',
+                'spesialisasi'  => 'Kakao (Benih, Budidaya & Pengolahan)',
+                'klasifikasi'   => 'super_spesialis',
+                'bio'           => 'Profesor Riset dan Praktisi Super Spesialis Kakao (Benih, Budidaya & Pengolahan). Pakar pemuliaan dan pelepasan varietas unggul baru (VUB) kakao, teknologi perbenihan, manajemen budidaya kakao berkelanjutan, pengendalian penyakit utama kakao, serta teknologi fermentasi dan pengolahan pasca panen kakao mutu ekspor.',
+                'harga'         => 750000,
+                'rating'        => 5.0,
+                'foto'          => '/images/praktisi/prof_rubiyo.jpg',
+            ],
         ];
 
         // Hapus konsultan lama yang tidak ada di daftar resmi docx
