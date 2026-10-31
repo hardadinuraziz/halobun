@@ -82,7 +82,7 @@
                     </div>
                     <div class="mt-2.5">
                         <div class="font-extrabold text-xs sm:text-sm">Super Spesialis</div>
-                        <div class="text-[10px] {{ request('klasifikasi') === 'super_spesialis' ? 'text-purple-100' : 'text-gray-400' }} truncate">Riset, Uji Lab &amp; Audit</div>
+                        <div class="text-[10px] {{ request('klasifikasi') === 'super_spesialis' ? 'text-purple-100' : 'text-gray-400' }} truncate">ISO, SNI, ISPO &amp; Audit</div>
                     </div>
                 </a>
             </div>
@@ -102,15 +102,15 @@
             <span class="text-2xl flex-shrink-0">🔬</span>
             <div class="text-xs sm:text-sm text-blue-950">
                 <span class="font-bold text-blue-900 block text-sm sm:text-base">Kategori: Praktisi Spesialis (Dokter Tanaman Berlisensi)</span>
-                Pakar diagnosa spesifik organisme pengganggu tumbuhan (OPT), penyakit layu/daun, nutrisi presisi hidroponik komersial, dan budidaya cabai/bawang merah/padi. Tarif Rp 350.000 / sesi.
+                Pakar diagnosa spesifik organisme pengganggu tumbuhan (OPT), penyakit layu/daun, nutrisi presisi hidroponik komersial, dan budidaya komoditas unggulan. Tarif Rp 350.000 / sesi.
             </div>
         </div>
         @elseif(request('klasifikasi') === 'super_spesialis')
         <div class="bg-purple-50 border border-purple-200 rounded-2xl p-4 sm:p-5 mb-6 flex items-start gap-3.5">
             <span class="text-2xl flex-shrink-0">🏛️</span>
             <div class="text-xs sm:text-sm text-purple-950">
-                <span class="font-bold text-purple-900 block text-sm sm:text-base">Kategori: Praktisi Super Spesialis (Guru Besar &amp; Konsultan Senior)</span>
-                Pakar uji laboratorium kimia tanah, bioteknologi tanaman hayati, audit kelayakan perkebunan industri luas hektaran, dan riset formulasi pupuk. Tarif Rp 750.000 / sesi.
+                <span class="font-bold text-purple-900 block text-sm sm:text-base">Kategori: Praktisi Super Spesialis (Pakar Standarisasi &amp; Konsultan Senior)</span>
+                Pakar standarisasi &amp; sertifikasi (ISO, SNI &amp; ISPO), audit kelayakan perkebunan industri luas hektaran, uji laboratorium kimia tanah, dan bioteknologi tanaman. Tarif Rp 750.000 / sesi.
             </div>
         </div>
         @endif

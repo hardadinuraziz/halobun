@@ -214,6 +214,28 @@ class DatabaseSeeder extends Seeder
                 'rating'        => 4.9,
                 'foto'          => '/images/praktisi/agus_susanto.jpg',
             ],
+            [
+                'name'          => 'Ir. Hindarwati Sudjatmiko, MSc',
+                'email'         => 'hindarwati.sudjatmiko@hallobun.com',
+                'phone'         => '081200000021',
+                'spesialisasi'  => 'Standarisasi (ISO, SNI & ISPO)',
+                'klasifikasi'   => 'super_spesialis',
+                'bio'           => 'Praktisi Super Spesialis Standarisasi (ISO, SNI & ISPO). Ahli dalam konsultasi sistem manajemen mutu (ISO), Standar Nasional Indonesia (SNI), serta pendampingan sertifikasi Indonesian Sustainable Palm Oil (ISPO) dan kepatuhan regulasi industri perkebunan.',
+                'harga'         => 750000,
+                'rating'        => 5.0,
+                'foto'          => '/images/praktisi/hindarwati_sudjatmiko.jpg',
+            ],
+            [
+                'name'          => 'Ir. Ruslan',
+                'email'         => 'ruslan@hallobun.com',
+                'phone'         => '081200000022',
+                'spesialisasi'  => 'Kelapa Genjah Kopyor & Pengembangan Kampung Wisata Kelapa',
+                'klasifikasi'   => 'spesialis',
+                'bio'           => 'Ketua Asosiasi Petani Kelapa Indonesia (APKI) dan produsen benih Kelapa Genjah Kopyor Pati. Praktisi spesialis budidaya Kelapa Genjah Kopyor, seleksi benih unggul, pemupukan terpadu, serta pengembangan konsep agrowisata Kampung Wisata Kelapa.',
+                'harga'         => 350000,
+                'rating'        => 4.9,
+                'foto'          => '/images/praktisi/ruslan.jpg',
+            ],
         ];
 
         // Hapus konsultan lama yang tidak ada di daftar resmi docx
