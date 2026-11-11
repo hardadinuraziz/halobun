@@ -247,6 +247,17 @@ class DatabaseSeeder extends Seeder
                 'rating'        => 5.0,
                 'foto'          => '/images/praktisi/prof_rubiyo.jpg',
             ],
+            [
+                'name'          => 'Hendrikus Titus Tibo, S.P.',
+                'email'         => 'hendrikus.titus@hallobun.com',
+                'phone'         => '081200000024',
+                'spesialisasi'  => 'Budidaya Hortikultura (Persemaian Bibit, Penanaman, Pemupukan, Pengendalian Hama Penyakit & Panen)',
+                'klasifikasi'   => 'umum',
+                'bio'           => 'Praktisi hortikultura berpengalaman dalam pendampingan budidaya tanaman hortikultura secara menyeluruh dari hulu ke hilir: mulai dari teknik persemaian bibit unggul, penanaman, manajemen pemupukan berimbang, pengendalian hama dan penyakit tanaman terpadu (OPT), hingga penanganan panen optimal.',
+                'harga'         => 150000,
+                'rating'        => 4.9,
+                'foto'          => '/images/praktisi/hendrikus_titus_tibo.jpg',
+            ],
         ];
 
         // Hapus konsultan lama yang tidak ada di daftar resmi docx
