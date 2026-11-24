@@ -258,6 +258,17 @@ class DatabaseSeeder extends Seeder
                 'rating'        => 4.9,
                 'foto'          => '/images/praktisi/hendrikus_titus_tibo.jpg',
             ],
+            [
+                'name'          => 'Diana Wati, S.P.',
+                'email'         => 'diana.wati@hallobun.com',
+                'phone'         => '081200000025',
+                'spesialisasi'  => 'Sertifikasi Organik (EU Organic & USDA-NOP), ICS, Fairtrade & Gula Kelapa Organik',
+                'klasifikasi'   => 'spesialis',
+                'bio'           => 'Praktisi spesialis pertanian berkelanjutan dan sistem sertifikasi organik (>6 tahun pengalaman) pada komoditas kelapa (gula kelapa organik / organic coconut sugar & coconut nectar). Ahli dalam pengembangan dan implementasi sertifikasi EU Organic, USDA-NOP, serta standar Fairtrade, pengelolaan Internal Control System (ICS), ketertelusuran produk (traceability), penyusunan dokumen sertifikasi, pendampingan kelompok tani & koperasi, hingga persiapan dan tindak lanjut audit sertifikasi.',
+                'harga'         => 350000,
+                'rating'        => 4.9,
+                'foto'          => '/images/praktisi/diana_wati.jpg',
+            ],
         ];
 
         // Hapus konsultan lama yang tidak ada di daftar resmi docx
