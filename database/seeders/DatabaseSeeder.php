@@ -269,6 +269,17 @@ class DatabaseSeeder extends Seeder
                 'rating'        => 4.9,
                 'foto'          => '/images/praktisi/diana_wati.jpg',
             ],
+            [
+                'name'          => 'Ainayya Aulia Ramandari, S.P.',
+                'email'         => 'ainayya.aulia@hallobun.com',
+                'phone'         => '081200000026',
+                'spesialisasi'  => 'Proteksi Tanaman, Pengendalian OPT, Mikrobiologi Pertanian & Kelapa Sawit',
+                'klasifikasi'   => 'umum',
+                'bio'           => 'Sarjana Proteksi Tanaman dari Institut Teknologi Sawit Indonesia (ITSI). Memiliki pengalaman di PT Lonsum Bahlias sebagai asisten laboratorium mikrobiologi serta penelitian proteksi tanaman pada pembibitan kelapa sawit. Menguasai pengamatan dan identifikasi gejala penyakit tanaman, pengamatan jamur patogen, pengendalian organisme pengganggu tanaman (OPT), serta mikrobiologi pertanian.',
+                'harga'         => 150000,
+                'rating'        => 4.9,
+                'foto'          => '/images/praktisi/ainayya_aulia_ramandari.jpg',
+            ],
         ];
 
         // Hapus konsultan lama yang tidak ada di daftar resmi docx
